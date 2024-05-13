@@ -2,5 +2,5 @@ https://github.com/YaChugunov/yachugunov.atgs-portal-dognet
 
 -----
 
-git remote add github-dognet https://yachugunov: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@github.com/YaChugunov/yachugunov.atgs-portal-dognet
+git remote add github-dognet https://yachugunov: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@github.com/YaChugunov/yachugunov.atgs-portal-dognet
 
