@@ -1,0 +1,144 @@
+/* 
+	----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+*/
+#dognet_current, #outbox {
+	margin-top:10%;
+/* 	background-color:#fafafa; */
+/* 	border:2px #ddd solid; */
+}
+
+#dognet_current > tbody, #outbox > tbody, #sp-zakazchiki > tbody {
+	font-size: 0.85em;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#dognet_current > thead, #outbox > thead, #sp-zakazchiki > thead, #sp-users > thead {
+	font-family: 'Ubuntu', sans-serif;
+	background-color:#f1f1f1;
+	color:#111;
+	font-weight: 300;
+	font-size: 0.9em;	
+}
+#dognet_current > thead > tr > th { vertical-align:bottom; border-bottom:none }
+#dognet_current > tfoot > tr > td, #dognet_current > tfoot >tr > th { padding:5px 4px }
+#dognet_current > tfoot, #outbox > tfoot {
+	background-color:#999;
+}
+
+#dognet_current > tbody > tr > td {
+    padding: 5px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+#dognet_current > tbody > tr > td > a {	text-decoration: underline }
+#dognet_current > tbody > tr > td > a:hover { text-decoration:none }
+
+#dognet_current_details, #outbox_details, #sp-details {
+	width: -webkit-fill-available;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	border-left: 2px #333 solid;
+}
+#dognet_current_details > tbody > tr > td, #outbox_details > tbody > tr > td, #sp_details > tbody > tr > td { padding-left: 20px; vertical-align: top }
+
+#column2_search, #column3_search, #column4_search, #column5_search, #column6_search, #column7_search, #column8_search, #column9_search {
+	width: 100%;
+	padding: 5px 5px;
+	font-weight: 400;
+	font-size: 0.9em;
+	color: #333;
+}
+#column2_search { max-height:31px }
+#column3_search { text-align: center }
+
+#filters_clear, #filters_apply {
+	padding: 6px;
+    font-weight: 400;
+    font-size: 0.9em;
+/*     color: #333;	 */
+} 
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#legend {
+	font-family:'Oswald', sans-serif;
+}
+#legend > div > div > div > div > div > h3 {
+	margin-bottom:0.45em;
+	font-weight: 400;
+	font-size: 1.95em;
+	letter-spacing: normal;
+}
+#legend > div > div > div > div > div > p { line-height:1.2em }
+#legend > div > div > div > div > div > h4 {
+	margin-bottom:0.45em;
+	font-weight: 500;
+	font-size: 1.15em;
+	color: #333;
+	letter-spacing: normal;
+    background-color: #f1f1f1;
+    padding:5px 2px;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#quickhelp {
+	font-family:'Oswald', sans-serif;
+}
+#quickhelp > div > div > div > div > div > h3 {
+	margin-bottom: 0.55em;
+	font-weight: 400;
+	font-size: 1.95em;
+	letter-spacing: normal;
+}
+#quickhelp > div > div > div > div > div > h4 {
+	margin-bottom: 0.35em;
+	font-weight: 400;
+	font-size: 1.45em;
+	color: #111;
+	letter-spacing: normal;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.title-main { font-family:'BebasNeueRegular',sans-serif; font-weight:200; font-size:4.0em }
+	h3.subtitle-main > span { background-color:#111; color:#f1f1f1; padding:2px 4px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:400; font-size:1.0em; text-transform:uppercase; letter-spacing:0.05em; margin-left:2px }
+	.title-small { color:red; font-family:'BebasNeueRegular',sans-serif; font-weight:200; font-size:4.0em; line-height:0.75em }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.dataTables_length { float: left; text-align: left; }	
+	.dataTables_filter { float: right; text-align: right; }	
+	.dataTables_info { float: left; text-align: left; }	
+	.dataTables_paginate { float: right; text-align: right; }
+	td.details-control {
+/* 	    background: url('images/slide-down.png') no-repeat center center; */
+	    cursor: pointer;
+	}
+	tr.details td.details-control {
+/*     	background: url('images/slide-up.png') no-repeat center center; */
+	}
+
+	#dognet_current > tbody > tr > td > table.tableDetails, #outbox > tbody > tr > td > table.tableDetails {
+		color: #333;
+	    font-size: 1.0em;
+	}
+	
+#dognet_current .hr-small, #outbox .hr-small {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#DTE_Field_namezakshot, #DTE_Field_namezaklong, #DTE_Field_zakuraddress, #DTE_Field_zakdolg, #DTE_Field_zakfio, #DTE_Field_zaktelnumber, #DTE_Field_zakinn, #DTE_Field_zakkpp
+ { min-width: 100%; max-width: 100%; min-height: max-content }
+ #DTE_Field_zakbankch { min-width: 100%; min-height: max-content }
+
+#dognet_current_wrapper .dt-buttons.btn-group { float:left; margin-bottom:10px }
+#dognet_current_wrapper .dataTables_length { float:right; font-family:'Play', sans-serif }
+#dognet_current_length > label > select { height:34px }
+
+#record-details {  }
+#record-details > div > div > div > span.details-docID { font-family:'Oswald', sans-serif; background-color:#111; color:#fafafa; padding:0 5px }
+#record-details > div > div > div > h2 { font-family:'Oswald', sans-serif; font-weight:300 }
+#record-details-table1, #record-details-table2 { font-family:'Oswald', sans-serif }
+#record-details-table1 > tbody > tr > td > p.details-sender { color:#333; font-weight:400 }
+#record-details-table1 > tbody > tr > td > p.details-sendername { color:#333; font-weight:400 }
+#record-details-table1 > tbody > tr > td > p.details-sendernumber { color:#333; font-weight:400 }
+#record-details-table1, #record-details-table2 { font-size:1.1em }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+table.dataTable.display tbody > tr.selected > td, table.dataTable.order-column.stripe tbody > tr.selected > td { background-color:#0085c8; color:#fff }

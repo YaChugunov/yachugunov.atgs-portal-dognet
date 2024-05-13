@@ -1,0 +1,126 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица авансов: #zayvsp-details-tab_postav-table
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#zayvsp-details-tab_postav-table {  }
+#zayvsp-details-tab_postav-table .details-control:hover { cursor:pointer }
+/*
+/*
+/* Заголовок таблицы */
+#zayvsp-details-tab_postav-table > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#zayvsp-details-tab_postav-table > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#zayvsp-details-tab_postav-table .sorting:after, #zayvsp-details-tab_postav-table .sorting_asc:after, #zayvsp-details-tab_postav-table .sorting_desc:after { display:none }
+#zayvsp-details-tab_postav-table > thead > tr > th.sorting, #zayvsp-details-tab_postav-table > thead > tr > th.sorting_asc, #zayvsp-details-tab_postav-table > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#zayvsp-details-tab_postav-table > tbody > tr > td {  }
+#zayvsp-details-tab_postav-table > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#zayvsp-details-tab_postav-table > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+#zayvsp-details-tab_postav-table > thead > tr > th:first-child, #zayvsp-details-tab_postav-table > tbody > tr > td:first-child { width:2%; text-align:center }
+#zayvsp-details-tab_postav-table > thead > tr > th:nth-child(2), #zayvsp-details-tab_postav-table > tbody > tr > td:nth-child(2) { width:28%; text-align:left }
+#zayvsp-details-tab_postav-table > thead > tr > th:nth-child(3), #zayvsp-details-tab_postav-table > tbody > tr > td:nth-child(3) { width:24%; text-align:left }
+#zayvsp-details-tab_postav-table > thead > tr > th:nth-child(4), #zayvsp-details-tab_postav-table > tbody > tr > td:nth-child(4) { width:23%; text-align:left }
+#zayvsp-details-tab_postav-table > thead > tr > th:nth-child(5), #zayvsp-details-tab_postav-table > tbody > tr > td:nth-child(5) { width:23%; text-align:left }
+
+#zayvsp-details-tab_postav-table > tbody > tr.dtrg-group > td { font-family: 'Play', sans-serif; font-weight:700; text-align:left; letter-spacing:0.2em }
+
+#zayvsp-details-tab_postav-table > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+
+/* Подвал таблицы */
+
+
+/* Разное */
+#row-details-zayvsp-tab_postav { font-family:'Oswald', sans-serif; font-size:1.0em }
+#row-details-zayvsp-tab_postav > tbody >tr > td { text-align:left }
+#row-details-zayvsp-tab_postav .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+#row-details-zayvsp-tab_postav .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+
+/*
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-zayvsp-tab_postav-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+*/
+	#template-details-zayvsp-tab_postav { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-zayvsp-tab_postav-tabs .nav > li > a { color:#fff }
+	#row-details-zayvsp-tab_postav-tabs .nav > li > a:focus, #row-details-zayvsp-tab_postav-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvsp-tab_postav-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvsp-tab_postav-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvsp-tab_postav-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvsp-tab_postav-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvsp-tab_postav-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvsp-tab_postav-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvsp-tab_postav-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvsp-tab_postav-tabs-menu > li.active > a::after,
+	#row-details-zayvsp-tab_postav-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-zayvsp-tab_postav-tabs .nav > li > a { color:#fff }
+	#row-details-zayvsp-tab_postav-tabs .nav > li > a:focus, #row-details-zayvsp-tab_postav-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvsp-tab_postav-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvsp-tab_postav-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvsp-tab_postav-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvsp-tab_postav-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvsp-tab_postav-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvsp-tab_postav-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvsp-tab_postav-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvsp-tab_postav-tabs-menu > li.active > a::after,
+	#row-details-zayvsp-tab_postav-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-zayvsp-tab_postav-table { margin-bottom:0; background-color:transparent }
+#row-details-zayvsp-tab_postav-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-zayvsp-tab_postav-table > tbody > tr {  }
+
+#row-details-zayvsp-tab_postav-table > thead > tr > th, #row-details-zayvsp-tab_postav-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-zayvsp-tab_postav-table > thead > tr > th:first-child, #row-details-zayvsp-tab_postav-table > tbody > tr > td:first-child { text-align:left }
+#row-details-zayvsp-tab_postav-table > thead > tr > th:nth-child(2), #row-details-zayvsp-tab_postav-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-zayvsp-tab_postav-table > thead > tr > th:nth-child(3), #row-details-zayvsp-tab_postav-table > tbody > tr > td:nth-child(3) { text-align:left }
+#row-details-zayvsp-tab_postav-table > thead > tr > th:nth-child(4), #row-details-zayvsp-tab_postav-table > tbody > tr > td:nth-child(4) { text-align:left }
+
+.row-details-zayvsp-tab_postav-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-zayvsp-tab_postav-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-zayvsp-tab_postav-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-zayvsp-tab_postav-table-title_topic2 { color:#000; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:uppercase; font-weight:400 }
+.row-details-zayvsp-tab_postav-table-title { color:#666; font-weight:700 }
+.row-details-zayvsp-tab_postav-table-txt { color:#666; font-weight:300 }
+.row-details-zayvsp-tab_postav-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-zayvsp-tab_postav-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+a.link-to-post { color:#31708f; text-decoration:underline }
+a.link-to-post:hover { color:#111; text-decoration:none }

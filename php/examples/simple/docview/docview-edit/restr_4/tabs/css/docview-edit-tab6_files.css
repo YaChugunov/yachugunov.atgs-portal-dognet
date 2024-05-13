@@ -1,0 +1,122 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица договоров-субподряда: #docview-edit-tab6_files
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-edit-tab6_files {  }
+#docview-edit-tab6_files .details-control:hover { cursor:pointer }
+#docview-edit-tab6_files .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#docview-edit-tab6_files > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-edit-tab6_files > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#docview-edit-tab6_files .sorting:after, #docview-edit-tab6_files .sorting_asc:after, #docview-edit-tab6_files .sorting_desc:after { display:none }
+#docview-edit-tab6_files > thead > tr > th.sorting, #docview-edit-tab6_files > thead > tr > th.sorting_asc, #docview-edit-tab6_files > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#docview-edit-tab6_files > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#docview-edit-tab6_files > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+#docview-edit-tab6_files > thead > tr > th:first-child, #docview-edit-tab6_files > tbody > tr > td:first-child { width:2%; text-align:center }
+#docview-edit-tab6_files > thead > tr > th:nth-child(2), #docview-edit-tab6_files > tbody > tr > td:nth-child(2) { width:10%; text-align:left }
+#docview-edit-tab6_files > thead > tr > th:nth-child(3), #docview-edit-tab6_files > tbody > tr > td:nth-child(3) { width:13%; text-align:center }
+#docview-edit-tab6_files > thead > tr > th:nth-child(4), #docview-edit-tab6_files > tbody > tr > td:nth-child(4) { width:73%; text-align:left }
+#docview-edit-tab6_files > thead > tr > th:nth-child(5), #docview-edit-tab6_files > tbody > tr > td:nth-child(5) { width:2%; text-align:center }
+#docview-edit-tab6_files > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+#docview-edit-tab6_files > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+/*
+/*
+/* Подвал таблицы */
+
+
+
+/*
+/*
+/* Разное */
+#docview-edit-tab6_files .sorting_asc:after { display:none }
+#docview-edit-tab6_files > thead > tr > th.sorting_asc { padding-right:8px }
+#docview-edit-tab6_files .sorting_desc:after { display:none }
+#docview-edit-tab6_files > thead > tr > th.sorting_desc { padding-right:8px }
+#docview-edit-tab6_files .details-body { border:3px #333 solid; border-radius:10px; border-collapse:collapse }
+#docview-edit-tab6_files > tbody > tr > td.row_kalplan { font-weight:700 }
+
+#docview-edit-tab6_files > tbody > tr.dtrg-group > td { font-family:'Play', sans-serif; font-weight:700; text-align:left; letter-spacing:0.2em }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-doc-edit-tab6-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-doc-edit-tab6 { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-docview-doc-edit-tab6-tabs .nav > li > a { color:#fff }
+	#row-details-docview-doc-edit-tab6-tabs .nav > li > a:focus, #row-details-docview-doc-edit-tab6-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-doc-edit-tab6-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab6-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab6-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-doc-edit-tab6-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-doc-edit-tab6-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-doc-edit-tab6-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-doc-edit-tab6-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-doc-edit-tab6-tabs-menu > li.active > a::after,
+	#row-details-docview-doc-edit-tab6-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-docview-doc-edit-tab6-tabs .nav > li > a { color:#fff }
+	#row-details-docview-doc-edit-tab6-tabs .nav > li > a:focus, #row-details-docview-doc-edit-tab6-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-doc-edit-tab6-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab6-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab6-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-doc-edit-tab6-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-doc-edit-tab6-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-doc-edit-tab6-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-doc-edit-tab6-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-doc-edit-tab6-tabs-menu > li.active > a::after,
+	#row-details-docview-doc-edit-tab6-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-docview-doc-edit-tab6-table { margin-bottom:0; background-color:transparent }
+#row-details-docview-doc-edit-tab6-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-docview-doc-edit-tab6-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-docview-doc-edit-tab6-table > tbody > tr > td:first-child { text-align:left }
+#row-details-docview-doc-edit-tab6-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-docview-doc-edit-tab6-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-docview-doc-edit-tab6-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-docview-doc-edit-tab6-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-docview-doc-edit-tab6-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-docview-doc-edit-tab6-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-docview-doc-edit-tab6-table-title { color:#666; font-weight:700 }
+.row-details-docview-doc-edit-tab6-table-txt { color:#666; font-weight:300 }
+.row-details-docview-doc-edit-tab6-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-docview-doc-edit-tab6-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

@@ -1,0 +1,132 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#zayvview-details-tab3 {  }
+#zayvview-details-tab3 .details-control:hover { cursor:hand }
+/*
+/*
+/* Заголовок таблицы */
+#zayvview-zayv-main > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#zayvview-zayv-main > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#zayvview-zayv-main .sorting:after, #zayvview-zayv-main .sorting_asc:after, #zayvview-zayv-main .sorting_desc:after { display:none }
+#zayvview-zayv-main > thead > tr > th.sorting_asc { padding-right:8px }
+#zayvview-zayv-main > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#zayvview-zayv-main {  }
+#zayvview-zayv-main > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#zayvview-zayv-main > tbody > tr > td {  }
+#zayvview-zayv-main > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#zayvview-zayv-main > thead > tr > th { border-bottom:none }
+#zayvview-zayv-main > tbody > tr > td {  }
+#zayvview-zayv-main > tbody > tr > td:last-child { text-align:right }
+
+#zayvview-zayv-main > tfoot > tr > td { padding:5px 4px }
+#zayvview-zayv-main > tfoot {
+	background-color:#999;
+}
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#zayvview-zayv-main > thead > tr > th:first-child, #zayvview-zayv-main > tbody > tr > td:first-child { width:1%; text-align:center }
+	#zayvview-zayv-main > thead > tr > th:nth-child(2), #zayvview-zayv-main > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+	#zayvview-zayv-main > thead > tr > th:nth-child(3), #zayvview-zayv-main > tbody > tr > td:nth-child(3) { width:7%; text-align:center }
+	#zayvview-zayv-main > thead > tr > th:nth-child(4), #zayvview-zayv-main > tbody > tr > td:nth-child(4) { width:5%; text-align:center }
+	#zayvview-zayv-main > thead > tr > th:nth-child(5), #zayvview-zayv-main > tbody > tr > td:nth-child(5) { width:5%; text-align:center }
+	#zayvview-zayv-main > thead > tr > th:nth-child(6), #zayvview-zayv-main > tbody > tr > td:nth-child(6) { width:59%; text-align:left }
+	#zayvview-zayv-main > thead > tr > th:nth-child(7), #zayvview-zayv-main > tbody > tr > td:nth-child(7) { width:10%; text-align:center }
+	#zayvview-zayv-main > thead > tr > th:nth-child(8), #zayvview-zayv-main > tbody > tr > td:nth-child(8) { width:5%; text-align:center; color:#000; white-space:nowrap }
+	#zayvview-zayv-main > thead > tr > th:nth-child(9), #zayvview-zayv-main > tbody > tr > td:nth-child(9) { width:5%; text-align:center; color:#000; white-space:nowrap }
+
+	#zayvview-zayv-main .details-control:hover { cursor:pointer }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#zayvview-zayv-main .sorting_asc:after { display:none }
+	#zayvview-zayv-main > thead > tr > th.sorting_asc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+	#column1_search_current, #column2_search_current, #column3_search_current, #column4_search_current {
+		width: 100%;
+		padding: 5px 5px;
+		font-weight: 400;
+		font-size: 0.9em;
+		color: #333;
+		max-height:31px;
+	}
+	#column1_search_current { text-align:center }
+	#column2_search_current { text-align:center }
+	#column3_search_current { text-align:left }
+	#column4_search_current { text-align:left }
+
+	#filters_clear_current, #filters_apply_current { padding:6px; font-weight:400; font-size:0.9em	}
+
+	#zayvview-current-filters { padding:15px 0; background-color:#f1f1f1 }
+	#columnSearch_btnApply .focus, #columnSearch_btnApply .active:focus, #columnSearch_btnApply:active.focus, #columnSearch_btnApply:active:focus, #columnSearch_btnApply:focus { outline:none; border-color:#ccc }
+	#columnSearch_btnClear .focus, #columnSearch_btnClear .active:focus, #columnSearch_btnClear:active.focus, #columnSearch_btnClear:active:focus, #columnSearch_btnClear:focus { outline:none; border-color:#ccc }
+
+	#row-details-current-table .title-column { color:#333; font-family: 'Oswald', sans-serif; font-weight:400; text-align:left }
+	#row-details-current-table .data-column { font-family: Courier, Courier new, Serif; font-weight:300; text-align:left }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#customForm-zayv-main div.DTE_Field_InputControl { text-align:center }
+#customForm-zayv-main > div.Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+#customForm-zayv-main div.DTE_Field_InputControl > div > div > label { display:none }
+#customForm-zayv-main fieldset > div > label.control-label { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm-zayv-main div.rDS2 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm-zayv-main > div.Section > div.rDS2 > fieldset.docnamefullm > div > div { width:100% }
+
+	#customForm-zayv-main > div.Section > div.rDS2 > fieldset > div > label.control-label { width: 100% }
+	#customForm-zayv-main > div.Section > div.rDS3 > fieldset > div > label.control-label { width: 100% }
+	#customForm-zayv-main div.rDS3 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+	#customForm-zayv-main > div.Section > div.rDS3 > fieldset > div > div { width:100% }
+		#customForm-zayv-main fieldset.docnumberRel {	flex-grow:1; flex-shrink:3; flex-basis:100%; }
+		#DTE_Field_mailbox_incoming-outbox_docnumber_rel { width: 99.99%; }
+		#DTE_Field_inbox_docnumber_rel { width:100%; }
+
+#customForm-zayv-main > div.Section > div > legend,
+#customForm-zayv-main > div.Section > div > div > legend { padding: 5px 0 5px 15px; font-family: 'HeliosCond', sans-serif; font-weight: normal; border: none; border-left: 10px #b95959 solid; text-transform: none; color: #111; background-color: #ddd; }
+
+
+#docsearch-filters-block .panel-title {
+    font-family: 'HeliosCond', sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-top: 5px;
+    text-transform:none;
+}
+#docsearch-filters-block .panel { border:transparent }
+
+#customForm-zayv-main > div.Section > div > fieldset.kodobjectFilter > input, #customForm-zayv-main > div.Section > div > fieldset.kodzakazFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+
+#customForm-zayv-main div.DTE_Field div([data-dte-e="msg-message"]) {
+    color:#46a512;
+    font-style:italic;
+}
+#customForm-zayv-main div.DTE_Field div([data-dte-e="msg-error"]) {
+    color:#b95959;
+    font-style:italic;
+}
+
+div.DTE div.DTE_Processing_Indicator span,
+div.DTE div.DTE_Processing_Indicator:before,
+div.DTE div.DTE_Processing_Indicator:after { display:none }

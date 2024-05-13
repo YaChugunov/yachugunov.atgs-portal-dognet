@@ -1,0 +1,118 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица авансов: #docview-edit-tab4_avans
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-edit-tab4_avans {  }
+#docview-edit-tab4_avans .details-control:hover { cursor:pointer }
+/*
+/*
+/* Заголовок таблицы */
+#docview-edit-tab4_avans > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-edit-tab4_avans > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#docview-edit-tab4_avans .sorting:after, #docview-edit-tab4_avans .sorting_asc:after, #docview-edit-tab4_avans .sorting_desc:after { display:none }
+#docview-edit-tab4_avans > thead > tr > th.sorting, #docview-edit-tab4_avans > thead > tr > th.sorting_asc, #docview-edit-tab4_avans > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#docview-edit-tab4_avans > tbody > tr > td {  }
+#docview-edit-tab4_avans > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#docview-edit-tab4_avans > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+#docview-edit-tab4_avans > thead > tr > th:first-child, #docview-edit-tab4_avans > tbody > tr > td:first-child { width:2%; text-align:center }
+#docview-edit-tab4_avans > thead > tr > th:nth-child(2), #docview-edit-tab4_avans > tbody > tr > td:nth-child(2) { width:10%; text-align:left }
+#docview-edit-tab4_avans > thead > tr > th:nth-child(3), #docview-edit-tab4_avans > tbody > tr > td:nth-child(3) { width:8%; text-align:center }
+#docview-edit-tab4_avans > thead > tr > th:nth-child(4), #docview-edit-tab4_avans > tbody > tr > td:nth-child(4) { width:47%; text-align:left }
+#docview-edit-tab4_avans > thead > tr > th:nth-child(5), #docview-edit-tab4_avans > tbody > tr > td:nth-child(5) { width:15%; text-align:left }
+#docview-edit-tab4_avans > thead > tr > th:nth-child(6), #docview-edit-tab4_avans > tbody > tr > td:nth-child(6) { width:18%; text-align:left }
+
+#docview-edit-tab4_avans > tbody > tr.dtrg-group > td { font-family: 'Play', sans-serif; font-weight:700; text-align:left; letter-spacing:0.2em }
+
+#docview-edit-tab4_avans > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+
+/* Подвал таблицы */
+
+
+/* Разное */
+#row-edit-tab4_avans { font-family:'Oswald', sans-serif; font-size:1.0em }
+#row-edit-tab4_avans > tbody >tr > td { text-align:left }
+#row-edit-tab4_avans .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+#row-edit-tab4_avans .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-doc-edit-tab4-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-doc-edit-tab4 { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-docview-doc-edit-tab4-tabs .nav > li > a { color:#fff }
+	#row-details-docview-doc-edit-tab4-tabs .nav > li > a:focus, #row-details-docview-doc-edit-tab4-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-doc-edit-tab4-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab4-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab4-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-doc-edit-tab4-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-doc-edit-tab4-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-doc-edit-tab4-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-doc-edit-tab4-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-doc-edit-tab4-tabs-menu > li.active > a::after,
+	#row-details-docview-doc-edit-tab4-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-docview-doc-edit-tab4-tabs .nav > li > a { color:#fff }
+	#row-details-docview-doc-edit-tab4-tabs .nav > li > a:focus, #row-details-docview-doc-edit-tab4-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-doc-edit-tab4-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab4-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-doc-edit-tab4-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-doc-edit-tab4-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-doc-edit-tab4-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-doc-edit-tab4-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-doc-edit-tab4-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-doc-edit-tab4-tabs-menu > li.active > a::after,
+	#row-details-docview-doc-edit-tab4-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-docview-doc-edit-tab4-table { margin-bottom:0; background-color:transparent }
+#row-details-docview-doc-edit-tab4-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-docview-doc-edit-tab4-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-docview-doc-edit-tab4-table > tbody > tr > td:first-child { text-align:left }
+#row-details-docview-doc-edit-tab4-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-docview-doc-edit-tab4-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-docview-doc-edit-tab4-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-docview-doc-edit-tab4-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-docview-doc-edit-tab4-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-docview-doc-edit-tab4-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-docview-doc-edit-tab4-table-title { color:#666; font-weight:700 }
+.row-details-docview-doc-edit-tab4-table-txt { color:#666; font-weight:300 }
+.row-details-docview-doc-edit-tab4-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-docview-doc-edit-tab4-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

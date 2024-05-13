@@ -1,0 +1,10 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#docsearch-filters { padding:10px; background:#f1f1f1 }
+#docsearch-filters-block .panel-title { font-family:'HeliosCond', sans-serif; font-size:1.5em; font-weight:500; padding-top:5px; text-transform:none }
+#docsearch-filters-block .panel { border:transparent }
+
+#IspSelector, #IsprukSelector, #YearSelector, #ZakazSelector, #ObjectSelector, #TypeSelector, #StatusSelector { height:80px; padding:5px 5px; font-size:0.9em }
+#IspSelector1, #IsprukSelector1, #YearSelector1, #ZakazSelector1, #ObjectSelector1, #TypeSelector1, #StatusSelector1 { font-size:0.9em }

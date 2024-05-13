@@ -1,0 +1,11 @@
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+#customForm-tab8_contact > div > div > div > div.Section > div > fieldset.kodzakazFilter > input, #customForm-tab8_contact > div > div > div > div.Section > div > div > fieldset.kodzakazFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+#customForm-tab8_contact > div > div > div > div.Section > div > fieldset.koddocFilter > input, #customForm-tab8_contact > div > div > div > div.Section > div > div > fieldset.koddocFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+#customForm-tab8_contact > div > div > div > div.Section > div > fieldset.kodblankworkFilter > input, #customForm-tab8_contact > div > div > div > div.Section > div > div > fieldset.kodblankworkFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+/**/
+textarea[id=DTE_Field_dognet_spcontact-contactprim] { resize:none }

@@ -1,0 +1,149 @@
+
+div.DTE div.DTE_Processing_Indicator {
+    top: 15px;
+    right: 32px;
+}
+
+#customForm { display: flex; flex-flow: row wrap; }
+#customForm fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm fieldset.name { flex: 1 50%; }
+#customForm fieldset.name legend {}
+#customForm fieldset.office legend {}
+#customForm fieldset.hr legend { background: #ffbfbf; }
+#customForm div.DTE_Field { padding:0; text-align: left; }
+#customForm div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+div.modal-dialog {
+    margin: 1em;
+    float: right;
+    width: 50%;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content:flex-start;
+}
+#customForm fieldset {
+/*     border: 1px solid #aaa; */
+/*     margin: 0.1em; */
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm div.regDocSection, #customForm div.contrDocSection, #customForm div.senderDocSection, #customForm div.fileDocSection, #customForm div.infoDocSection { justify-content:flex-start; padding:0; margin:5px; background-color:#fafafa; }
+
+/* regDocSection ( rDS ) */
+#customForm div.regDocSection { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:2; flex-basis:70%; align-content:flex-start; }
+#customForm > div.regDocSection > div.rDS1 > fieldset > div > label.control-label { width: 100% }
+	#customForm div.rDS1 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+	#customForm > div.regDocSection > div.rDS1 > fieldset.docDate > div > div { width:100% }
+
+		#customForm fieldset.docID { flex-grow:1; flex-shrink:1; flex-basis:33%; }
+		#customForm fieldset.docDate { flex-grow:1; flex-shrink:2; flex-basis:33%; }
+		#customForm fieldset.docType { flex-grow:1; flex-shrink:1; flex-basis:33%; }
+		#customForm fieldset.docRecipient { flex-grow:1; flex-shrink:1; flex-basis:33%; }
+		#customForm fieldset.docAbout {	flex-grow:2; flex-shrink:2; flex-basis:66%; }
+		#customForm > div.regDocSection > div.rDS2 > fieldset.docAbout > div > div { width:100% }
+
+#customForm > div.regDocSection > div.rDS2 > fieldset > div > label.control-label { width: 100% }
+	#customForm div.rDS2 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+#customForm > div.regDocSection > div.rDS3 > fieldset > div > label.control-label { width: 100% }
+	#customForm div.rDS3 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+	#customForm > div.regDocSection > div.rDS3 > fieldset > div > div { width:100% }
+		#customForm fieldset.docIDRel {	flex-grow:1; flex-shrink:3; flex-basis:100%; }
+		#DTE_Field_mailbox_incoming-outbox_docID_rel { width: 99.99%; }
+		#DTE_Field_inbox_docID_rel { width:100%; }
+
+/* fileDocSection ( fDS ) */
+#customForm div.fileDocSection { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; align-content:flex-start; }
+	#customForm div.fDS1 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm fieldset.docFileID { flex-grow:1; flex-shrink:1; flex-basis:65%; }
+		#customForm fieldset.msgField { flex-grow:1; flex-shrink:1; flex-basis:100%;  }
+		#DTE_Field_mailbox_incoming-msgDocFileID { font-size:1.5em; text-transform:uppercase; font-weight:400; text-align:center; font-family:'HeliosCond',sans-serif; color:#b95959; border:2px #b95959 solid; background-color:transparent }
+
+#customForm > div.fileDocSection > div > fieldset.docFileID > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.clearValue { display: none }
+
+#customForm > div.fileDocSection > div > fieldset.docFileID > div > div > div.DTE_Field_InputControl > div > div > div.row.second > div:nth-child(1) { display: none }
+#customForm > div.fileDocSection > div > fieldset.docFileID > div > div > div.DTE_Field_InputControl > div > div > div.row.second > div:nth-child(2) { padding-left: 0 }
+
+/* contrDocSection ( cDS ) */
+#customForm div.contrDocSection { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; align-content:flex-start; }
+
+	#customForm div.cDS1 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start }
+	#customForm > div.contrDocSection > div.cDS1 > fieldset.docContractor > div.DTE_Field > label.control-label, #customForm > div.contrDocSection > div.cDS1 > fieldset.docDeadline > div.DTE_Field > label.control-label { width:100% }
+	#customForm > div.contrDocSection > div.cDS1 > fieldset.sendEmail > div.DTE_Field > label.control-label { width:100%; text-align: center }
+	#customForm > div.contrDocSection > div.cDS1 > fieldset.docDeadline > div > div { width:100% }
+	#customForm > div.contrDocSection > div.cDS1 > fieldset.sendEmail > div > div { width:100%; text-align: center }
+		#customForm fieldset.docContractor { flex-grow:1; flex-shrink:1; flex-basis:33%; }
+		#customForm fieldset.docDeadline { flex-grow:1; flex-shrink:2; flex-basis:33%; }
+		#customForm fieldset.sendEmail { flex-grow:1; flex-shrink:2; flex-basis:33%; }
+
+	#customForm div.cDS2 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start }
+		#customForm > div.contrDocSection > div.cDS2 > fieldset.docContractorComment > div.DTE_Field > label.control-label { width:100% }
+		#customForm > div.contrDocSection > div.cDS2 > fieldset.docContractorComment > div > div { width:100% }
+		#customForm fieldset.docContractorComment { flex-grow:1; flex-shrink:1; flex-basis:100%; }
+
+/* senderDocSection ( sDS ) */
+#customForm div.senderDocSection { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; align-content:flex-start; }
+	#customForm div.sDS1 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm > div.senderDocSection > div.sDS1 > fieldset.docSender > div.DTE_Field > label.control-label { width:100% }
+		#customForm > div.senderDocSection > div.sDS1 > fieldset.docSender > div > div { width:100% }
+		#customForm fieldset.docSender { flex-grow:1; flex-shrink:1; flex-basis:66%; }
+	
+	#customForm div.sDS2 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm > div.senderDocSection > div.sDS2 > fieldset.docSenderOrg > div.DTE_Field > label.control-label { width:100% }
+		#customForm > div.senderDocSection > div.sDS2 > fieldset.enblSenderManual > div.DTE_Field > label.control-label { width:100%; text-align: center }
+		#customForm > div.senderDocSection > div.sDS2 > fieldset.docSenderOrg > div > div { width:100% }
+		#customForm > div.senderDocSection > div.sDS2 > fieldset.enblSenderManual > div > div { width:100%; text-align: center }
+		#customForm fieldset.docSenderOrg { flex-grow:1; flex-shrink:2; flex-basis:66%; }
+		#customForm fieldset.enblSenderManual { flex-grow:1; flex-shrink:2; flex-basis:33%; }
+
+	#customForm div.sDS3 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm > div.senderDocSection > div.sDS3 > fieldset.docSenderName > div.DTE_Field > label.control-label, #customForm > div.senderDocSection > div.sDS3 > fieldset.docSourceID > div.DTE_Field > label.control-label { width:100% }
+		#customForm > div.senderDocSection > div.sDS3 > fieldset.enblSenderName > div.DTE_Field > label.control-label { width:100%; text-align: center }
+		#customForm > div.senderDocSection > div.sDS3 > fieldset.docSenderName > div > div, #customForm > div.senderDocSection > div.sDS3 > fieldset.docSourceID > div > div { width:100% }
+		#customForm > div.senderDocSection > div.sDS3 > fieldset.enblSenderName > div > div { width:100%; text-align: center }
+		#customForm fieldset.docSenderName { flex-grow:1; flex-shrink:2; flex-basis:66%; }
+		#customForm fieldset.enblSenderName { flex-grow:1; flex-shrink:2; flex-basis:33%; }
+		#customForm fieldset.docSourceID { flex-grow:1; flex-shrink:1; flex-basis:33%; }
+
+/* infoDocSection ( iDS ) */
+#customForm div.infoDocSection { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; align-content:flex-start; }
+	#customForm > div.infoDocSection > div.iDS1 > fieldset.docComment > div.DTE_Field > label.control-label { width:100% }
+	#customForm > div.infoDocSection > div.iDS1 > fieldset.docComment > div > div { width:100% }
+	#customForm div.iDS1 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm fieldset.docComment { flex-grow:1; flex-shrink:1; flex-basis:100%; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm > div.regDocSection > legend, 
+#customForm > div.contrDocSection > legend, 
+#customForm > div.senderDocSection > legend, 
+#customForm > div.fileDocSection > legend, 
+#customForm > div.infoDocSection > legend { padding: 5px 0 5px 15px; font-family: 'HeliosCond', sans-serif; font-weight: normal; border: none; border-left: 10px #b95959 solid; text-transform: none; color: #111; background-color: #ddd; }
+ 
+/* #customForm > div > div > fieldset > div.DTE_Field > label {  } */
+
+#customForm > div.regDocSection > div.cDS1 > fieldset.sendEmail > div.DTE_Field > label.control-label, 
+#customForm > div.fileDocSection > div > fieldset > div.DTE_Field > label.control-label 
+{ display: none }
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div.row.second > div.cell > button.btn { cursor: pointer }
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div.row.second > div.cell { vertical-align: middle; text-align: center }
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div.row.second > div.cell > div.drop { min-height:8em; border:2px #ccc dashed; border-radius:1px; padding:15% 5px; }
+
+#customForm > div.fileDocSection > div > fieldset > div > div.controls, 
+#customForm > div.regDocSection > div > fieldset > div.DTE_Field_Name_toSendEmail > div.controls { width:100% }
+
+
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.upload > button, 
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.clearValue > button { color:#333; background-color:#f1f1f1; border-color:#f0f0f0; font-size:1.0em; height:3.0em }
+
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.upload > input { height:-webkit-fill-available }
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.upload > input:hover { cursor: pointer; }
+
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.upload > button:hover, 
+#customForm > div.fileDocSection > div > fieldset > div > div > div.DTE_Field_InputControl > div > div > div > div.cell.clearValue > button:hover { border-color:#fff; color:#fff; background-color:#000 }
+

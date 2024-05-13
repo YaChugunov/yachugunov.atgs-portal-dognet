@@ -1,0 +1,14 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ПАНЕЛЬ ФИЛЬТРОВ
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#filters-tab1_zakazchiki-block .panel-title { font-family:'HeliosCond', sans-serif; font-size:1.5em; font-weight:500; padding-top:5px; text-transform:none }
+#filters-tab1_zakazchiki-block .panel { border:transparent }
+
+#filters-tab1_zakazchiki { padding:15px 0; background-color:#f1f1f1 }
+tab1_zakazchikiSearch_btnApply .focus, tab1_zakazchikiSearch_btnApply .active:focus, tab1_zakazchikiSearch_btnApply:active.focus, tab1_zakazchikiSearch_btnApply:active:focus, tab1_zakazchikiSearch_btnApply:focus { outline:none; border-color:#ccc }
+tab1_zakazchikiSearch_btnClear .focus, tab1_zakazchikiSearch_btnClear .active:focus, tab1_zakazchikiSearch_btnClear:active.focus, tab1_zakazchikiSearch_btnClear:active:focus, tab1_zakazchikiSearch_btnClear:focus { outline:none; border-color:#ccc }
+

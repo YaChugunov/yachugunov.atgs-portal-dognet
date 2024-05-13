@@ -1,0 +1,28 @@
+<?php // ----- // ?>
+
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/bootstrap/bootstrap-select.min.css">
+<!-- 	<link rel="stylesheet" href="_assets/css/bootstrap/bootstrap-theme.min.css"> -->
+
+	<!-- ICONS -->
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/icons/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/icons/fontawesome/css/style.css">
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/icons/style.css">
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/icons/icon2/style.css">
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/js/vendors/swipebox/css/swipebox.min.css">
+
+	<!-- My CSS -->
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/dognet/_assets/css/dognet_style.css">
+
+	<!-- SKIN -->
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/css/skin/stone.css">
+
+	<!-- Include Fonts -->
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/dognet/_assets/css/dognet_font-face.css">
+
+	<!-- My CSS -->
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/dognet/_assets/css/dognet_additional.css">
+
+
+	<link rel="stylesheet" href="<?php echo __ROOT; ?>/_assets/js/jquery-confirm/3.3.2/jquery-confirm.min.css">

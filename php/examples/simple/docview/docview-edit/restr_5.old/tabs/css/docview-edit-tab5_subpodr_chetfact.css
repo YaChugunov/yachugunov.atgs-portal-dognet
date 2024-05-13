@@ -1,0 +1,458 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #docview-edit-tab5_chfsubpodr
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-edit-tab5_chfsubpodr {}
+
+#docview-edit-tab5_chfsubpodr .details-control:hover {
+  cursor: pointer
+}
+
+#docview-edit-tab5_chfsubpodr .font-courier {
+  font-family: courier, courier new, serif
+}
+
+/*
+/*
+/* Заголовок таблицы */
+#docview-edit-tab5_chfsubpodr>thead {
+  background-color: #f1f1f1;
+  color: #111;
+  font-family: 'Oswald', sans-serif;
+  border-bottom: none;
+  border-top: none
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th {
+  color: #333;
+  border-bottom: none;
+  font-weight: 400;
+  font-size: 1.0em;
+  text-transform: none;
+  padding: 5px
+}
+
+#docview-edit-tab5_chfsubpodr .sorting:after,
+#docview-edit-tab5_chfsubpodr .sorting_asc:after,
+#docview-edit-tab5_chfsubpodr .sorting_desc:after {
+  display: none
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th.sorting,
+#docview-edit-tab5_chfsubpodr>thead>tr>th.sorting_asc,
+#docview-edit-tab5_chfsubpodr>thead>tr>th.sorting_desc {
+  padding-right: 8px
+}
+
+/*
+/*
+/* Тело таблицы */
+#docview-edit-tab5_chfsubpodr>tbody {
+  font-family: 'Play', sans-serif;
+  font-size: 0.85em;
+  color: #666;
+  border-bottom: none;
+  border-top: none
+}
+
+#docview-edit-tab5_chfsubpodr>tbody>tr>td {
+  padding: 2px 5px;
+  line-height: 1.42857143;
+  vertical-align: middle;
+}
+
+#docview-edit-tab5_chfsubpodr>tbody>tr>td {}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th:first-child,
+#docview-edit-tab5_chfsubpodr>tbody>tr>td:first-child {
+  width: 100px;
+  min-width: 100px;
+  text-align: left
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th:nth-child(2),
+#docview-edit-tab5_chfsubpodr>tbody>tr>td:nth-child(2) {
+  width: 82px;
+  min-width: 60px;
+  text-align: left
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th:nth-child(3),
+#docview-edit-tab5_chfsubpodr>tbody>tr>td:nth-child(3) {
+  width: 27%;
+  text-align: left
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th:nth-child(4),
+#docview-edit-tab5_chfsubpodr>tbody>tr>td:nth-child(4) {
+  width: 27%;
+  text-align: right
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th:nth-child(5),
+#docview-edit-tab5_chfsubpodr>tbody>tr>td:nth-child(5) {
+  width: 27%;
+  text-align: right
+}
+
+#docview-edit-tab5_chfsubpodr>tbody>tr>td.dataTables_empty {
+  text-align: center;
+  text-transform: none;
+  color: #CB1010;
+  background-color: #FFF;
+  padding: 8px 0;
+  font-size: 14px;
+  font-family: 'Oswald', sans-serif;
+  /* font-style: italic; */
+}
+
+/*
+/*
+/* Подвал таблицы */
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#docview-edit-tab5_chfsubpodr .sorting_asc:after {
+  display: none
+}
+
+#docview-edit-tab5_chfsubpodr>thead>tr>th.sorting_asc {
+  padding-right: 8px
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#customForm_tab5_chfsubpodr fieldset legend {
+  padding: 5px 20px;
+  font-weight: bold;
+}
+
+#customForm_tab5_chfsubpodr fieldset.name {
+  flex: 1 50%;
+}
+
+#customForm_tab5_chfsubpodr fieldset.name legend {}
+
+#customForm_tab5_chfsubpodr fieldset.office legend {}
+
+#customForm_tab5_chfsubpodr fieldset.hr legend {
+  background: #ffbfbf;
+}
+
+#customForm_tab5_chfsubpodr div.DTE_Field {
+  padding: 0;
+  text-align: left;
+}
+
+#customForm_tab5_chfsubpodr div.DTE_Field>label.control-label {
+  text-align: left;
+  font-family: 'HeliosCond', sans-serif;
+  text-transform: none;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #000;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr {
+  font-family: 'Play', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr div.Section {
+  justify-content: flex-start;
+  padding: 0;
+  background-color: #fafafa;
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 1;
+  flex-shrink: 2;
+  flex-basis: 70%;
+  align-content: flex-start;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr div.Block100 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%;
+  justify-content: flex-start;
+  align-content: flex-start
+}
+
+#customForm_tab5_chfsubpodr div.Block75 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 75%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block70 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 70%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block60 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 60%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block50 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 50%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block40 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 40%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block30 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 30%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block25 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 25%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+#customForm_tab5_chfsubpodr div.Block20 {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 20%;
+  justify-content: flex-start;
+  align-content: flex-start;
+  padding: 0 2px
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr>div.Section>div>fieldset>div>label.control-label {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr>div.Section>div.Block100>fieldset.dateplan>div>div {
+  width: 100%
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr fieldset.field10 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 10%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field10>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field15 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 15%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field15>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field20 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 20%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field20>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field25 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 25%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field25>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field30 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 30%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field30>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field40 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 40%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field40>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field45 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 45%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field45>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field50 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 50%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field50>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field60 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 60%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field60>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field70 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 70%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field70>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field80 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 80%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field80>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field90 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 90%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field90>div>div {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field100 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 100%
+}
+
+#customForm_tab5_chfsubpodr fieldset.field100>div>div {
+  width: 100%
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab5_chfsubpodr div.DTE_Field_InputControl {
+  text-align: center
+}
+
+#customForm_tab5_chfsubpodr>div.Section>div>fieldset>div.DTE_Field_Type_checkbox>label.control-label {
+  text-align: center
+}
+
+#customForm_tab5_chfsubpodr div.DTE_Field_InputControl>div>div>label {
+  display: none
+}
+
+#customForm_tab5_chfsubpodr fieldset>div>label.control-label {
+  width: 100%
+}
+
+#customForm_tab5_chfsubpodr>div.Section>div>legend,
+#customForm_tab5_chfsubpodr>div.Section>div>div>legend {
+  padding: 5px 0 5px 15px;
+  font-family: 'HeliosCond', sans-serif;
+  font-weight: normal;
+  border: none;
+  border-left: 10px #b95959 solid;
+  text-transform: none;
+  color: #111;
+  background-color: #ddd;
+}

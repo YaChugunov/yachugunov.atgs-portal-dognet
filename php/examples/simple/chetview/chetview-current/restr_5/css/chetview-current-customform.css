@@ -1,0 +1,53 @@
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+#customForm-chet-main>div>div>div>div.Section>div>fieldset.kodzakazFilter>input,
+#customForm-chet-main>div>div>div>div.Section>div>div>fieldset.kodzakazFilter>input {
+    height: 34px;
+    padding: 6px 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px
+}
+
+#customForm-chet-main>div>div>div>div.Section>div>fieldset.kodobjectFilter>input,
+#customForm-chet-main>div>div>div>div.Section>div>div>fieldset.kodobjectFilter>input {
+    height: 34px;
+    padding: 6px 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px
+}
+
+/**/
+textarea[id=DTE_Field_dognet_docbase-docnameshot],
+textarea[id=DTE_Field_dognet_docbase-docnamefullm],
+textarea[id=DTE_Field_dognet_docbase-comments] {
+    resize: none
+}
+
+#customForm-chet-main ul.nav-tabs>li {
+    margin-bottom: 0 !important;
+}
+
+#customForm-chet-main ul.nav-tabs>li.active a.error,
+#customForm-chet-main ul.nav-tabs>li a.error {
+    background-color: #FFD5D4;
+    color: #333 !important;
+}
+
+#customForm-chet-main ul.nav-tabs>li.active a.error {}
+
+#customForm-chet-main div.firstAvans {
+    background-color: #B95959;
+    color: #FFF !important;
+    width: 100%;
+    text-align: center;
+    padding: 0.25rem 1.0rem;
+    border: 2px #fff solid;
+    border-top: none;
+}

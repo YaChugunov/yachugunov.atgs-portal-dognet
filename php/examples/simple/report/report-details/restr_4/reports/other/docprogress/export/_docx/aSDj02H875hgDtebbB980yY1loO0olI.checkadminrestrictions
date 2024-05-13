@@ -1,0 +1,28 @@
+<?php
+include ("../../../drivers/bd.php");
+session_start();
+// echo $_SESSION['id'] . " - " . $_SESSION['login'] . " - " .$_SESSION['password'];
+
+
+if (!empty($_SESSION['login']) and !empty($_SESSION['password'])) {
+	$login = $_SESSION['login'];
+	$password = $_SESSION['password'];
+	$id = $_SESSION['id'];
+	
+	mysql_query("SET character_set_results = 'utf8', character_set_client = 'utf8', character_set_connection = 'utf8', character_set_database = 'utf8', character_set_server = 'utf8'");
+	$result2 = mysql_query("SELECT id FROM users WHERE login='$login' AND password='$password' AND activation='1' AND admin='1'", $db); 
+	$myrow2 = mysql_fetch_array($result2); 
+	if (empty($myrow2['id'])) {
+		include('message_access-denied.php');
+		exit;
+   }
+}
+else {
+		include('message_access-denied.php');
+		exit;
+}
+
+	$result = mysql_query("SELECT * FROM users WHERE id='$id'", $db); 
+	$myrow = mysql_fetch_array($result);//Извлекаем все данные пользователя с данным id
+if (empty($myrow['login'])) { exit("Пользователя не существует! Возможно он был удален."); }
+?>

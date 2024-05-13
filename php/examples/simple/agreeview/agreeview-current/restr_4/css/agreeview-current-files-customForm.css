@@ -1,0 +1,35 @@
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+#DTE_Field_dognet_agreepaper-msgDocFileID {
+    font-size: 1.3em;
+    text-transform:none;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'HeliosCond',sans-serif;
+    color: #b95959;
+    border: 2px #b95959 solid;
+    background-color: transparent;
+    padding: 5% 0;
+}
+#DTE_Field_dognet_agreepaper-lnkDocFileID {
+    font-size: 1.3em;
+    text-transform:none;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'HeliosCond',sans-serif;
+    color: #31708f;
+    border: 2px #31708f solid;
+    background-color: transparent;
+    padding: 5% 0;
+}
+#lnkDocFileID { width:100%; text-align:center; margin:5px; font-family:'Play', sans-serif; font-size:1.0em }
+#lnkDocFileID a { color:#08c; text-decoration:underline }
+#lnkDocFileID a:hover { color:#111; text-decoration:none }
+
+.lnkDocFileID { width:100%; text-align:center; margin:5px; font-family:'Play', sans-serif; font-size:1.0em }
+.lnkDocFileID a { color:#08c; text-decoration:underline }
+.lnkDocFileID a:hover { color:#111; text-decoration:none }

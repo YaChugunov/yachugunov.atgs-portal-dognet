@@ -1,0 +1,224 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #zayvview-zayv-child-chet
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+
+/*
+/* Общее для таблицы */
+#zayvview-zayv-child-chet {  }
+#zayvview-zayv-child-chet { /* border:2px #951402 solid */ }
+#zayvview-zayv-child-chet .details-control:hover { cursor:pointer }
+#zayvview-zayv-child-chet .font-courier { font-family:courier,courier new,serif }
+
+#zayvview-zayv-child-chet td.highlight { background-color:#faeeaa }
+#zayvview-zayv-child-chet.dataTable tbody tr.selected td.highlight { color:#666 }
+
+#zayvview-zayv-child-chet.dataTable tbody tr.selected, #zayvview-zayv-child-chet.dataTable tbody th.selected, #zayvview-zayv-child-chet.dataTable tbody td.selected { color:white }
+/*
+/*
+/* Заголовок таблицы */
+#zayvview-zayv-child-chet > thead {  }
+#zayvview-zayv-child-chet > thead { background-color:#000;	color:#fff;	font-weight:300 }
+#zayvview-zayv-child-chet > thead > tr > th { font-family:'Oswald', sans-serif; font-weight:500; border-bottom:none; padding:2px 5px; text-transform:uppercase }
+#zayvview-zayv-child-chet > thead > tr > th:first-child { text-align:center }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(2) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(3) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(4) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(5) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(6) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(7) { text-align:center }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(8) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(9) { text-align:center }
+/* Тело таблицы */
+#zayvview-zayv-child-chet > tbody { font-size:0.85em; color:#666; border-bottom:none;	border-top:none }
+#zayvview-zayv-child-chet > tbody > tr > td { padding:2px 5px; line-height: 1.42857143; vertical-align: middle }
+#zayvview-zayv-child-chet > tbody > tr > td {  }
+#zayvview-zayv-child-chet > tbody > tr > td:first-child { width:1%; text-align:center }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(2) { width:7%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(3) { width:12%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(4) { width:7%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(5) { width:46%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(6) { width:12%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(7) { width:3%; text-align:center }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(8) { width:9%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(9) { width:3%; text-align:center }
+#zayvview-zayv-child-chet > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#666; background-color:#fafafa }
+/* Подвал таблицы */
+#zayvview-zayv-child-chet > tfoot > tr > th:first-child { text-align:center }
+#zayvview-zayv-child-chet > tfoot > tr > th:nth-child(2) { text-align:left }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(3) { text-align:left }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(4) { text-align:left }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(5) { text-align:left }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(6) { text-align:left }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(7) { text-align:center }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(8) { text-align:left }
+#zayvview-zayv-child-chet > tfoot > tr > td:nth-child(9) { text-align:center }
+
+#zayvview-zayv-child-chet .sorting_asc:after, #zayvview-zayv-child-chet .sorting_desc:after, #zayvview-zayv-child-chet .sorting:after { display:none }
+#zayvview-zayv-child-chet > thead > tr > th.sorting_asc { padding-right:8px }
+/* Подвал таблицы */
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-chet { display: flex; flex-flow: row wrap; }
+#customForm-zayv-child-chet fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm-zayv-child-chet fieldset.name { flex: 1 50%; }
+#customForm-zayv-child-chet fieldset.name legend {}
+#customForm-zayv-child-chet fieldset.office legend {}
+#customForm-zayv-child-chet fieldset.hr legend { background: #ffbfbf; }
+#customForm-zayv-child-chet div.DTE_Field { padding:0; text-align: left; }
+#customForm-zayv-child-chet div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+div.modal-dialog { margin:1.0em auto; width:80% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-chet {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-chet div.Section {
+	justify-content:flex-start;
+	padding:0;
+	background-color:#fafafa;
+	display:flex;
+	flex-flow:row wrap;
+	flex-grow:1;
+	flex-shrink:2;
+	flex-basis:70%;
+	align-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-chet div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+#customForm-zayv-child-chet div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-chet div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-chet > div.Section > div > fieldset > div > label.control-label { width: 100% }
+#customForm-zayv-child-chet > div.Section > div.Block100 > fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm-zayv-child-chet fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+		#customForm-zayv-child-chet fieldset.field10 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+		#customForm-zayv-child-chet fieldset.field15 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+		#customForm-zayv-child-chet fieldset.field20 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+		#customForm-zayv-child-chet fieldset.field25 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+		#customForm-zayv-child-chet fieldset.field30 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+		#customForm-zayv-child-chet fieldset.field40 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field45 {	flex-grow:0; flex-shrink:0; flex-basis:45% }
+		#customForm-zayv-child-chet fieldset.field45 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+		#customForm-zayv-child-chet fieldset.field50 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+		#customForm-zayv-child-chet fieldset.field60 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+		#customForm-zayv-child-chet fieldset.field70 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+		#customForm-zayv-child-chet fieldset.field80 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+		#customForm-zayv-child-chet fieldset.field90 > div > div { width:100% }
+		#customForm-zayv-child-chet fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm-zayv-child-chet fieldset.field100 > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-chet div.DTE_Field_InputControl { text-align:center }
+#customForm-zayv-child-chet > div.Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+#customForm-zayv-child-chet div.DTE_Field_InputControl > div > div > label { display:none }
+#customForm-zayv-child-chet fieldset > div > label.control-label { width:100% }
+
+#customForm-zayv-child-chet > div.Section > div > legend,
+#customForm-zayv-child-chet > div.Section > div > div > legend { padding: 5px 0 5px 15px; font-family: 'HeliosCond', sans-serif; font-weight: normal; border: none; border-left: 10px #b95959 solid; text-transform: none; color: #111; background-color: #ddd; }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-zayvview-zayv-child-chet-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-zayvview-zayv-child-chet-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-zayv-child-chet-tabs .nav > li > a:focus, #row-details-zayvview-zayv-child-chet-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-zayv-child-chet-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-chet-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-chet-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-zayv-child-chet-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-zayv-child-chet-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li.active > a::after,
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-zayvview-zayv-child-chet-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-zayv-child-chet-tabs .nav > li > a:focus, #row-details-zayvview-zayv-child-chet-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-zayv-child-chet-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-chet-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-chet-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-zayv-child-chet-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-zayv-child-chet-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li.active > a::after,
+	#row-details-zayvview-zayv-child-chet-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-zayvview-zayv-child-chet-table { margin-bottom:0; background-color:transparent }
+#row-details-zayvview-zayv-child-chet-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-zayvview-zayv-child-chet-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-zayvview-zayv-child-chet-table > tbody > tr > td:first-child { text-align:left }
+#row-details-zayvview-zayv-child-chet-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-zayvview-zayv-child-chet-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-zayvview-zayv-child-chet-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-zayvview-zayv-child-chet-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-zayvview-zayv-child-chet-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-zayvview-zayv-child-chet-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-zayvview-zayv-child-chet-table-title { color:#666; font-weight:700 }
+.row-details-zayvview-zayv-child-chet-table-txt { color:#666; font-weight:300 }
+.row-details-zayvview-zayv-child-chet-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-zayvview-zayv-child-chet-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

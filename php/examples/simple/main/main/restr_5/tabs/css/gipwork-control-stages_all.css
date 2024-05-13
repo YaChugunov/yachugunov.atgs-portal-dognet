@@ -1,0 +1,54 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/* #gipwork-control-stages_all > thead { display:none } */
+/* #gipwork-control-stages_all > tbody > tr:first-child { display:none } */
+#gipwork-control-stages_all > tbody > tr > td {  }
+
+#gipwork-control-stages_all {  }
+#gipwork-control-stages_all > tbody {  }
+#gipwork-control-stages_all > thead {
+	background-color:#f5f5f5;
+	color:#333;
+	font-weight: 300;
+}
+#gipwork-control-stages_all > thead > tr > th {
+	padding: 8px 5px;
+	font-size:1.0em;
+	font-family:'Oswald', sans-serif;
+	font-weight:500;
+	text-transform:uppercase;
+	border-bottom:none;
+}
+#gipwork-control-stages_all > tbody > tr > td {
+	font-family: 'Play', sans-serif;
+	color:#111;
+	font-size:0.9em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle;
+}
+#gipwork-control-stages_all > tbody > tr:first-child > td { border-top:none }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#gipwork-control-stages_all > thead > tr > th:first-child, #gipwork-control-stages_all > tbody > tr > td:first-child { width:2%; text-align:center }
+#gipwork-control-stages_all > thead > tr > th:nth-child(2), #gipwork-control-stages_all > tbody > tr > td:nth-child(2) { width:5%; text-align:center }
+#gipwork-control-stages_all > thead > tr > th:nth-child(3), #gipwork-control-stages_all > tbody > tr > td:nth-child(3) { width:5%; text-align:center }
+#gipwork-control-stages_all > thead > tr > th:nth-child(4), #gipwork-control-stages_all > tbody > tr > td:nth-child(4) { width:48%; text-align:left }
+#gipwork-control-stages_all > thead > tr > th:nth-child(5), #gipwork-control-stages_all > tbody > tr > td:nth-child(5) { width:10%; text-align:center }
+#gipwork-control-stages_all > thead > tr > th:nth-child(6), #gipwork-control-stages_all > tbody > tr > td:nth-child(6) { width:10%; text-align:center }
+#gipwork-control-stages_all > thead > tr > th:nth-child(7), #gipwork-control-stages_all > tbody > tr > td:nth-child(7) { width:10%; text-align:center }
+#gipwork-control-stages_all > thead > tr > th:nth-child(8), #gipwork-control-stages_all > tbody > tr > td:nth-child(8) { width:10%; text-align:center }
+#gipwork-control-stages_all .details-control:hover { cursor:pointer }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+#gipwork-control-stages_all .sorting_asc:after, #gipwork-control-stages_all .sorting_desc:after { display:none }
+#gipwork-control-stages_all > thead > tr > th.sorting_asc { padding-right:8px }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+

@@ -1,0 +1,124 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица оплат: docview-edit-tab5_avsubpodr
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-edit-tab5_avsubpodr {}
+
+#docview-edit-tab5_avsubpodr .details-control:hover {
+    cursor: pointer
+}
+
+#docview-edit-tab5_avsubpodr .font-courier {
+    font-family: courier, courier new, serif
+}
+
+/*
+/*
+/* Заголовок таблицы */
+#docview-edit-tab5_avsubpodr>thead {
+    background-color: #f1f1f1;
+    color: #111;
+    font-family: 'Oswald', sans-serif;
+    border-bottom: none;
+    border-top: none
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th {
+    color: #333;
+    border-bottom: none;
+    font-weight: 400;
+    font-size: 1.0em;
+    text-transform: none;
+    padding: 5px
+}
+
+#docview-edit-tab5_avsubpodr .sorting:after,
+#docview-edit-tab5_avsubpodr .sorting_asc:after,
+#docview-edit-tab5_avsubpodr .sorting_desc:after {
+    display: none
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th.sorting,
+#docview-edit-tab5_avsubpodr>thead>tr>th.sorting_asc,
+#docview-edit-tab5_avsubpodr>thead>tr>th.sorting_desc {
+    padding-right: 8px
+}
+
+/*
+/*
+/* Тело таблицы */
+#docview-edit-tab5_avsubpodr>tbody {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 0.9em;
+    color: #666;
+    border-bottom: none;
+    border-top: none
+}
+
+#docview-edit-tab5_avsubpodr>tbody>tr>td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th:first-child,
+#docview-edit-tab5_avsubpodr>tbody>tr>td:first-child {
+    width: 8%;
+    text-align: left
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th:nth-child(2),
+#docview-edit-tab5_avsubpodr>tbody>tr>td:nth-child(2) {
+    width: 8%;
+    text-align: center
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th:nth-child(3),
+#docview-edit-tab5_avsubpodr>tbody>tr>td:nth-child(3) {
+    width: 15%;
+    text-align: left
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th:nth-child(4),
+#docview-edit-tab5_avsubpodr>tbody>tr>td:nth-child(4) {
+    width: 39%;
+    text-align: left
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th:nth-child(5),
+#docview-edit-tab5_avsubpodr>tbody>tr>td:nth-child(5) {
+    width: 15%;
+    text-align: left
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th:nth-child(5),
+#docview-edit-tab5_avsubpodr>tbody>tr>td:nth-child(6) {
+    width: 15%;
+    text-align: left
+}
+
+#docview-edit-tab5_avsubpodr>tbody>tr>td.dataTables_empty {
+    text-align: left;
+    text-transform: none;
+    color: #666;
+    background-color: #fafafa
+}
+
+/*
+*/
+#docview-edit-tab5_avsubpodr .sorting_asc:after,
+#docview-edit-tab5_avsubpodr .sorting_desc:after {
+    display: none
+}
+
+#docview-edit-tab5_avsubpodr>thead>tr>th.sorting_asc,
+#docview-edit-tab5_avsubpodr>thead>tr>th.sorting_desc {
+    padding-right: 8px
+}
+
+/*
+*/
+/* Подвал таблицы */

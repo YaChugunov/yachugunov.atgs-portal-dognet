@@ -1,0 +1,47 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-doc-main {  }
+#docview-doc-main .details-control:hover { cursor:pointer }
+/*
+/*
+/* Заголовок таблицы */
+#docview-doc-main > thead {	background-color:#f1f1f1; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-doc-main > thead > tr > th { color:#111; border-bottom:none; font-weight:400; font-size:1.2em; text-transform:uppercase }
+#docview-doc-main .sorting:after, #docview-doc-main .sorting_asc:after, #docview-doc-main .sorting_desc:after { display:none }
+#docview-doc-main > thead > tr > th.sorting_asc { padding-right:8px }
+#docview-doc-main > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#docview-doc-main {  }
+#docview-doc-main > tbody {  }
+#docview-doc-main > tbody > tr > td { font-size:1.0em; color:#666; font-weight:200 }
+#docview-doc-main > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+#docview-doc-main > tbody > tr > td:last-child { text-align:right }
+
+#docview-doc-main > tfoot > tr > td { padding:5px 4px }
+#docview-doc-main > tfoot {	background-color:#999 }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#docview-doc-main > thead > tr > th:first-child { width:2%; text-align:center }
+	#docview-doc-main > thead > tr > th:nth-child(2) { width:5%; text-align:center }
+	#docview-doc-main > thead > tr > th:nth-child(3) { width:5%; text-align:center }
+	#docview-doc-main > thead > tr > th:nth-child(4) { width:86%; text-align:left }
+	#docview-doc-main > thead > tr > th:nth-child(5) { width:2%; text-align:center }
+
+	#docview-doc-main > tbody > tr > td:first-child { width:2%; text-align:center }
+	#docview-doc-main > tbody > tr > td:nth-child(2) { width:5%; text-align:center }
+	#docview-doc-main > tbody > tr > td:nth-child(3) { width:5%; text-align:center }
+	#docview-doc-main > tbody > tr > td:nth-child(4) { width:86%; text-align:left  }
+	#docview-doc-main > tbody > tr > td:nth-child(5) { width:2%; text-align:center }
+
+	#docsearch-result h3 { font-family:'Oswald', sans-serif; font-size:2.0em; font-weight:500; text-transform:uppercase; letter-spacing:0.1em }

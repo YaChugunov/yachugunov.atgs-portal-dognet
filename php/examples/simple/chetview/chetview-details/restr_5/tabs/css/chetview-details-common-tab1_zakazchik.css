@@ -1,0 +1,11 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#chetview-details-tab1_zakazchik > thead { display:none }
+#chetview-details-tab1_zakazchik > tbody > tr:first-child { display:none }
+#chetview-details-tab1_zakazchik > tbody > tr > td { border:none }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/

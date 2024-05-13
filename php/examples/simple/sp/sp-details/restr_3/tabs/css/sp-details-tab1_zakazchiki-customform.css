@@ -1,0 +1,15 @@
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+#customForm-tab1_zakazchiki > div > div > div > div.Section > div > fieldset.kodzakazFilter > input, #customForm-tab1_zakazchiki > div > div > div > div.Section > div > div > fieldset.kodzakazFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+#customForm-tab1_zakazchiki > div > div > div > div.Section > div > fieldset.kodobjectFilter > input, #customForm-tab1_zakazchiki > div > div > div > div.Section > div > div > fieldset.kodobjectFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+/**/
+textarea[id=DTE_Field_namezakshot],
+textarea[id=DTE_Field_namezaklong],
+textarea[id=DTE_Field_zakuraddress],
+textarea[id=DTE_Field_zakaddressfact],
+textarea[id=DTE_Field_zakbankch] { resize:none }

@@ -1,0 +1,34 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ПАНЕЛЬ ФИЛЬТРОВ
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#docsearch-filters-block .panel-title {
+	    font-family: 'HeliosCond', sans-serif;
+	    font-size: 1.5em;
+	    font-weight: 500;
+	    padding-top: 5px;
+	    text-transform:none;
+	}
+	#docsearch-filters-block .panel { border:transparent }
+	#column1_search_current, #column2_search_current, #column3_search_current, #column4_search_current {
+		width: 100%;
+		padding: 5px 5px;
+		font-weight: 400;
+		font-size: 0.9em;
+		color: #333;
+		max-height:31px;
+	}
+	#column1_search_current { text-align:center }
+	#column2_search_current { text-align:center }
+	#column3_search_current { text-align:left }
+	#column4_search_current { text-align:left }
+
+	#filters_clear_current, #filters_apply_current { padding:6px; font-weight:400; font-size:0.9em	}
+
+	#otgrview-current-filters { padding:15px 0; background-color:#f1f1f1 }
+	#columnSearch_btnApply .focus, #columnSearch_btnApply .active:focus, #columnSearch_btnApply:active.focus, #columnSearch_btnApply:active:focus, #columnSearch_btnApply:focus { outline:none; border-color:#ccc }
+	#columnSearch_btnClear .focus, #columnSearch_btnClear .active:focus, #columnSearch_btnClear:active.focus, #columnSearch_btnClear:active:focus, #columnSearch_btnClear:focus { outline:none; border-color:#ccc }
+

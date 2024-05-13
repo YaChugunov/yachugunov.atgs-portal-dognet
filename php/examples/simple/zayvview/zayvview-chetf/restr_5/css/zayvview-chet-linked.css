@@ -1,0 +1,164 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#zayvview-details-tab3 {  }
+#zayvview-details-tab3 .details-control:hover { cursor:hand }
+
+#zayvview-chet-linked td.highlight_warning { background-color:#faeeaa }
+#zayvview-chet-linked.dataTable tbody tr.selected td.highlight_warning { color:#666 }
+#zayvview-chet-linked td.highlight_alarm { background-color:#fbe7e7 }
+#zayvview-chet-linked.dataTable tbody tr.selected td.highlight_alarm { color:#666 }
+/*
+/*
+/* Заголовок таблицы */
+#zayvview-chet-linked > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#zayvview-chet-linked > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#zayvview-chet-linked .sorting:after, #zayvview-chet-linked .sorting_asc:after, #zayvview-chet-linked .sorting_desc:after { display:none }
+#zayvview-chet-linked > thead > tr > th.sorting_asc { padding-right:8px }
+#zayvview-chet-linked > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#zayvview-chet-linked {  }
+#zayvview-chet-linked > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.85em; color:#666; border-bottom:none; border-top:none }
+#zayvview-chet-linked > tbody > tr > td {  }
+#zayvview-chet-linked > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#zayvview-chet-linked > thead > tr > th { padding:8px 5px; border-bottom:none }
+#zayvview-chet-linked > tbody > tr > td {  }
+#zayvview-chet-linked > tbody > tr > td:last-child { text-align:right }
+
+#zayvview-chet-linked > tfoot > tr > td { padding:5px 4px }
+#zayvview-chet-linked > tfoot {
+	background-color:#999;
+}
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#zayvview-chet-linked > thead > tr > th:first-child, #zayvview-chet-linked > tbody > tr > td:first-child { width:1%; text-align:center }
+	#zayvview-chet-linked > thead > tr > th:nth-child(2), #zayvview-chet-linked > tbody > tr > td:nth-child(2) { width:7%; text-align:left }
+	#zayvview-chet-linked > thead > tr > th:nth-child(3), #zayvview-chet-linked > tbody > tr > td:nth-child(3) { width:12%; text-align:left }
+	#zayvview-chet-linked > thead > tr > th:nth-child(4), #zayvview-chet-linked > tbody > tr > td:nth-child(4) { width:7%; text-align:center }
+	#zayvview-chet-linked > thead > tr > th:nth-child(5), #zayvview-chet-linked > tbody > tr > td:nth-child(5) { width:15%; text-align:left }
+	#zayvview-chet-linked > thead > tr > th:nth-child(6), #zayvview-chet-linked > tbody > tr > td:nth-child(6) { width:30%; text-align:left }
+	#zayvview-chet-linked > thead > tr > th:nth-child(7), #zayvview-chet-linked > tbody > tr > td:nth-child(7) { width:11%; text-align:left }
+	#zayvview-chet-linked > thead > tr > th:nth-child(8), #zayvview-chet-linked > tbody > tr > td:nth-child(8) { width:3%; text-align:center }
+	#zayvview-chet-linked > thead > tr > th:nth-child(9), #zayvview-chet-linked > tbody > tr > td:nth-child(9) { width:11%; text-align:left }
+	#zayvview-chet-linked > thead > tr > th:nth-child(10), #zayvview-chet-linked > tbody > tr > td:nth-child(10) { width:3%; text-align:center }
+
+	#zayvview-chet-linked .details-control:hover { cursor:pointer }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#zayvview-chet-linked .sorting_asc:after, #zayvview-chet-linked .sorting_desc:after { display:none }
+	#zayvview-chet-linked > thead > tr > th.sorting_asc, #zayvview-chet-linked > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+	#column1_search_chet, #column2_search_chet, #column3_search_chet, #column4_search_chet {
+		width: 100%;
+		padding: 5px 5px;
+		font-weight: 400;
+		font-size: 0.9em;
+		color: #333;
+		max-height:31px;
+	}
+	#column1_search_chet { text-align:center }
+	#column2_search_chet { text-align:center }
+	#column3_search_chet { text-align:left }
+	#column4_search_chet { text-align:left }
+
+	#filters_clear_chet, #filters_apply_chet { padding:6px; font-weight:400; font-size:0.9em	}
+
+	#zayvview-chet-filters { padding:15px 0; background-color:#f1f1f1 }
+	#columnSearch_btnApply .focus, #columnSearch_btnApply .active:focus, #columnSearch_btnApply:active.focus, #columnSearch_btnApply:active:focus, #columnSearch_btnApply:focus { outline:none; border-color:#ccc }
+	#columnSearch_btnClear .focus, #columnSearch_btnClear .active:focus, #columnSearch_btnClear:active.focus, #columnSearch_btnClear:active:focus, #columnSearch_btnClear:focus { outline:none; border-color:#ccc }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-zayvview-chet-linked-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+	#template-details-chet-linked { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-zayvview-chet-linked-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-chet-linked-tabs .nav > li > a:focus, #row-details-zayvview-chet-linked-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-chet-linked-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-linked-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-linked-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-chet-linked-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-chet-linked-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-chet-linked-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-chet-linked-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-chet-linked-tabs-menu > li.active > a::after,
+	#row-details-zayvview-chet-linked-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-zayvview-chet-linked-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-chet-linked-tabs .nav > li > a:focus, #row-details-zayvview-chet-linked-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-chet-linked-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-linked-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-linked-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-chet-linked-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-chet-linked-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-chet-linked-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-chet-linked-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-chet-linked-tabs-menu > li.active > a::after,
+	#row-details-zayvview-chet-linked-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-zayvview-chet-linked-table { margin-bottom:0; background-color:transparent }
+#row-details-zayvview-chet-linked-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-zayvview-chet-linked-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-zayvview-chet-linked-table > tbody > tr > td:first-child { text-align:left }
+#row-details-zayvview-chet-linked-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-zayvview-chet-linked-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-zayvview-chet-linked-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-zayvview-chet-linked-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-zayvview-chet-linked-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-zayvview-chet-linked-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-zayvview-chet-linked-table-title { color:#666; font-weight:700 }
+.row-details-zayvview-chet-linked-table-txt { color:#666; font-weight:300 }
+.row-details-zayvview-chet-linked-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-zayvview-chet-linked-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

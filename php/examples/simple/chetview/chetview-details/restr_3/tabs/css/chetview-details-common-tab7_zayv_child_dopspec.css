@@ -1,0 +1,128 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #chetview-zayv-child-dopspec
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#chetview-zayv-child-dopspec-spec {	 }
+#chetview-zayv-child-dopspec-msg .zayv-warning-message {	font-family:'Oswald', sans-serif; font-size:1.3em; letter-spacing:0.2em }
+#chetview-zayv-child-dopspec-msg .zayv-warning-message-small {	font-family:'Oswald', sans-serif; font-size:1.1em; letter-spacing:0.1em }
+#chetview-zayv-child-dopspec-msg > tbody > tr > td { border:none }
+
+/*
+/* Общее для таблицы */
+#chetview-zayv-child-dopspec {  }
+#chetview-zayv-child-dopspec { /* border:2px #951402 solid */ }
+#chetview-zayv-child-dopspec .details-control:hover { cursor:pointer }
+#chetview-zayv-child-dopspec .font-courier { font-family:courier,courier new,serif }
+
+#chetview-zayv-child-dopspec td.highlight { background-color:#faeeaa }
+#chetview-zayv-child-dopspec.dataTable tbody tr.selected td.highlight { color:#666 }
+
+#chetview-zayv-child-dopspec.dataTable tbody tr.selected, #chetview-zayv-child-dopspec.dataTable tbody th.selected, #chetview-zayv-child-dopspec.dataTable tbody td.selected { color:white }
+/*
+/*
+/* Заголовок таблицы */
+#chetview-zayv-child-dopspec > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#chetview-zayv-child-dopspec > thead > tr > th { color:#333; border-bottom:none; font-weight:500; text-transform:uppercase }
+#chetview-zayv-child-dopspec > thead > tr > th:first-child { text-align:center }
+#chetview-zayv-child-dopspec > thead > tr > th:nth-child(2) { text-align:center }
+#chetview-zayv-child-dopspec > thead > tr > th:nth-child(3) { text-align:left }
+#chetview-zayv-child-dopspec > thead > tr > th:nth-child(4) { text-align:center }
+/* Тело таблицы */
+#chetview-zayv-child-dopspec > tbody { font-size:0.9em; color:#666; border-bottom:none;	border-top:none }
+#chetview-zayv-child-dopspec > tbody > tr > td { padding:2px 5px; line-height: 1.42857143; vertical-align: middle }
+#chetview-zayv-child-dopspec > tbody > tr > td {  }
+#chetview-zayv-child-dopspec > tbody > tr > td:first-child { width:1%; text-align:center }
+#chetview-zayv-child-dopspec > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+#chetview-zayv-child-dopspec > tbody > tr > td:nth-child(3) { width:93%; text-align:left }
+#chetview-zayv-child-dopspec > tbody > tr > td:nth-child(4) { width:3%; text-align:center }
+#chetview-zayv-child-dopspec > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#666; background-color:#fafafa }
+/* Подвал таблицы */
+#chetview-zayv-child-dopspec > tfoot > tr > th:first-child { text-align:center }
+#chetview-zayv-child-dopspec > tfoot > tr > th:nth-child(2) { text-align:center }
+#chetview-zayv-child-dopspec > tfoot > tr > td:nth-child(3) { text-align:left }
+#chetview-zayv-child-dopspec > tfoot > tr > td:nth-child(4) { text-align:center }
+
+#chetview-zayv-child-dopspec .sorting_asc:after, #chetview-zayv-child-dopspec .sorting_desc:after, #chetview-zayv-child-dopspec .sorting:after { display:none }
+#chetview-zayv-child-dopspec > thead > tr > th.sorting_asc { padding-right:8px }
+/* Подвал таблицы */
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-chetview-zayv-child-dopspec-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-chetview-zayv-child-dopspec-tabs .nav > li > a { color:#fff }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav > li > a:focus, #row-details-chetview-zayv-child-dopspec-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-chetview-zayv-child-dopspec-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-chetview-zayv-child-dopspec-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li.active > a::after,
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-chetview-zayv-child-dopspec-tabs .nav > li > a { color:#fff }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav > li > a:focus, #row-details-chetview-zayv-child-dopspec-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-chetview-zayv-child-dopspec-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-chetview-zayv-child-dopspec-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-chetview-zayv-child-dopspec-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li.active > a::after,
+	#row-details-chetview-zayv-child-dopspec-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-chetview-zayv-child-dopspec-table { margin-bottom:0; background-color:transparent }
+#row-details-chetview-zayv-child-dopspec-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-chetview-zayv-child-dopspec-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-chetview-zayv-child-dopspec-table > tbody > tr > td:first-child { text-align:left }
+#row-details-chetview-zayv-child-dopspec-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-chetview-zayv-child-dopspec-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-chetview-zayv-child-dopspec-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-chetview-zayv-child-dopspec-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-chetview-zayv-child-dopspec-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-chetview-zayv-child-dopspec-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-chetview-zayv-child-dopspec-table-title { color:#666; font-weight:700 }
+.row-details-chetview-zayv-child-dopspec-table-txt { color:#666; font-weight:300 }
+.row-details-chetview-zayv-child-dopspec-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-chetview-zayv-child-dopspec-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+

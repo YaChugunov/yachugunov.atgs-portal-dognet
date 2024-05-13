@@ -1,0 +1,204 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СВОДКА ПО ЭТАПАМ"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-details-tab2 {}
+
+#docview-details-tab2 .details-control:hover {
+    cursor: pointer
+}
+
+#docview-details-tab2 .font-courier {
+    font-family: courier, courier new, serif
+}
+
+/*
+/*
+/* Заголовок таблицы */
+#docview-details-tab2>thead {
+    color: #111;
+    font-family: 'Oswald', sans-serif;
+    border-bottom: none;
+    border-top: none
+}
+
+#docview-details-tab2>thead>tr>th {
+    background-color: #f0f0f0;
+    color: #111;
+    border-bottom: none;
+    font-weight: 500;
+    text-transform: uppercase
+}
+
+/*
+/*
+/* Тело таблицы */
+#docview-details-tab2>tbody>tr>td {
+    font-family: 'Play', sans-serif;
+    font-size: 1.0em;
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle
+}
+
+#docview-details-tab2>thead>tr>th:first-child,
+#docview-details-tab2>tbody>tr>td:first-child {
+    width: 5%;
+    text-align: center
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(2),
+#docview-details-tab2>tbody>tr>td:nth-child(2) {
+    width: auto;
+    text-align: left
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(3),
+#docview-details-tab2>tbody>tr>td:nth-child(3) {
+    width: 8%;
+    text-align: center
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(4),
+#docview-details-tab2>tbody>tr>td:nth-child(4) {
+    width: 8%;
+    text-align: center
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(5),
+#docview-details-tab2>tbody>tr>td:nth-child(5) {
+    width: 12%;
+    text-align: center
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(6),
+#docview-details-tab2>tbody>tr>td:nth-child(6) {
+    width: 12%;
+    text-align: center
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(7),
+#docview-details-tab2>tbody>tr>td:nth-child(7) {
+    width: 12%;
+    text-align: center
+}
+
+#docview-details-tab2>thead>tr>th:nth-child(8),
+#docview-details-tab2>tbody>tr>td:nth-child(8) {
+    width: 10%;
+    text-align: center
+}
+
+#docview-details-tab2>tbody>tr>td.dataTables_empty {
+    text-align: center;
+    border-bottom: 1px #951402 solid;
+    border-top: 1px #951402 solid;
+    text-transform: uppercase;
+    font-style: italic;
+    color: #951402
+}
+
+#docview-details-tab2>tbody>tr.shown>td {
+    background-color: #336a86;
+    color: #fff;
+    font-weight: 300
+}
+
+/*
+/*
+/* Подвал таблицы */
+#docview-details-tab2>tfoot>tr>th {
+    font-family: 'Play', sans-serif;
+    font-size: 1.0em;
+    color: #111;
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle
+}
+
+#docview-details-tab2>tfoot>tr>th {
+    color: #111;
+    font-family: 'Play', sans-serif;
+    border-bottom: none;
+    font-weight: 700
+}
+
+#docview-details-tab2>tfoot>tr>th:first-child {
+    text-align: right;
+    text-transform: uppercase
+}
+
+#docview-details-tab2>tfoot>tr>th:nth-child(2) {
+    text-align: center
+}
+
+#docview-details-tab2>tfoot>tr>th:nth-child(3) {
+    text-align: center
+}
+
+#docview-details-tab2>tfoot>tr>th:nth-child(4) {
+    text-align: center;
+    color: #a94442
+}
+
+
+/*
+/*
+/* Разное */
+#docview-tab2 .panel-title {
+    font-size: 1.3em;
+    font-weight: 600;
+    text-transform: none;
+    padding: 0
+}
+
+#docview-tab2 .panel {
+    border: 1px solid #f5f5f5
+}
+
+#docview-details-tab2 .sorting_asc:after {
+    display: none
+}
+
+#docview-details-tab2>thead>tr>th.sorting_asc {
+    padding-right: 8px
+}
+
+#docview-details-tab2 .sorting_desc:after {
+    display: none
+}
+
+#docview-details-tab2>thead>tr>th.sorting_desc {
+    padding-right: 8px
+}
+
+#row-details-tab2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.0em
+}
+
+#row-details-tab2>tbody>tr>td {
+    text-align: left
+}
+
+#docview-details-tab2 .details-body {
+    border: 3px #333 solid;
+    border-radius: 10px;
+    border-collapse: collapse
+}
+
+#end-of-child {
+    border-bottom: 3px #333 solid;
+    border-left: 3px #333 solid;
+    border-right: 3px #333 solid
+}
+
+#docview-details-tab2-chfact.table < div < td {
+    border-left: 3px #333 solid;
+    border-right: 3px #333 solid
+}

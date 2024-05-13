@@ -1,0 +1,248 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица этапов: #blankview-gip-blankwork-table
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#blankview-gip-blankwork-table {  }
+#blankview-gip-blankwork-table .details-control-docblank:hover, #blankview-gip-blankwork-table .details-control-blankwork:hover { cursor:pointer }
+#blankview-gip-blankwork-table > tbody > tr.selected {  }
+/*
+/*
+/* Заголовок таблицы */
+#blankview-gip-blankwork-table > thead { background-color:#333333; color:#fafafa; font-family:'Oswald', sans-serif }
+#blankview-gip-blankwork-table > thead > tr > th { font-weight:400; font-size:1.0em; text-transform:uppercase }
+#blankview-gip-blankwork-table .sorting:after, #blankview-gip-blankwork-table .sorting_asc:after, #blankview-gip-blankwork-table .sorting_desc:after { display:none }
+#blankview-gip-blankwork-table > thead > tr > th.sorting_asc { padding-right:5px }
+#blankview-gip-blankwork-table > thead > tr > th.sorting_desc { padding-right:5px }
+
+#blankview-gip-blankwork-table > thead > tr > th { padding:8px 5px; font-size:0.9em; font-family:'Oswald', sans-serif; font-weight:500; text-transform:uppercase; border-bottom:none }
+/*
+/*
+/* Тело таблицы */
+#blankview-gip-blankwork-table {  }
+#blankview-gip-blankwork-table > tbody {  }
+#blankview-gip-blankwork-table > tbody > tr > td { font-size:0.9em; line-height:1.42857143; vertical-align:middle }
+#blankview-gip-blankwork-table > tbody > tr > td:last-child { text-align:right }
+
+#blankview-gip-blankwork-table > tbody > tr > td { font-family: 'Play', sans-serif; padding:4px 5px 5px; line-height:1.42857143; vertical-align: middle }
+#blankview-gip-blankwork-table > tbody > tr:first-child > td { border-top:none }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#blankview-gip-blankwork-table > thead > tr > th:first-child, #blankview-gip-blankwork-table > tbody > tr > td:first-child { width:1%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(2), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(3), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(3) { width:9%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(4), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(4) { width:3%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(5), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(5) { text-align:left }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(6), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(6) { width:23%; text-align:left }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(7), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(7) { width:6%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(8), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(8) { width:7%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(9), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(9) { width:7%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(10), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(10) { width:7%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(11), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(11) { width:1%; text-align:center }
+	#blankview-gip-blankwork-table > thead > tr > th:nth-child(12), #blankview-gip-blankwork-table > tbody > tr > td:nth-child(12) { width:1%; text-align:center }
+
+	#blankview-gip-blankwork-table > tbody > tr > td:nth-child(3) { padding:0px 5px 3px 5px }
+	#blankview-gip-blankwork-table .details-control:hover { cursor:pointer }
+/*
+/*
+/* Подвал таблицы */
+#blankview-gip-blankwork-table > tfoot > tr > td { padding:5px 4px }
+#blankview-gip-blankwork-table > tfoot > tr > td:last-child { text-align:right }
+#blankview-gip-blankwork-table > tfoot { background-color:#999 }
+/*
+/*
+/* Разное */
+	#blankview-gip-blankwork-table .sorting_asc:after { display:none }
+	#blankview-gip-blankwork-table > thead > tr > th.sorting_asc { padding-right:8px }
+	#blankview-gip-blankwork-table > tbody > tr > td > a.docview-details-link { color:#000; font-weight:700; text-decoration:underline }
+	#blankview-gip-blankwork-table > tbody > tr > td > a.docview-details-link:hover { text-decoration:none }
+/**/
+/* ----- ----- ----- ----- ----- */
+/**/
+	#row-details { padding:0 35px }
+	#row-details-subpodr { font-family:'Oswald', sans-serif; font-size:1.0em; color:#333 }
+	#row-details-subpodr > tbody >tr > td { text-align:left }
+
+	#row-details-subpodr .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+	#row-details-subpodr .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+
+	#blankview-gip-blankwork-table > tfoot > tr > td { padding:5px 4px }
+	#blankview-gip-blankwork-table > tfoot {
+		background-color:#999;
+	}
+
+	#blankview-gip-filters { padding:15px 0; background-color:#f1f1f1 }
+	#columnSearch_btnApply .focus, #columnSearch_btnApply .active:focus, #columnSearch_btnApply:active.focus, #columnSearch_btnApply:active:focus, #columnSearch_btnApply:focus { outline:none; border-color:#ccc }
+	#columnSearch_btnClear .focus, #columnSearch_btnClear .active:focus, #columnSearch_btnClear:active.focus, #columnSearch_btnClear:active:focus, #columnSearch_btnClear:focus { outline:none; border-color:#ccc }
+
+	#column1_search_docwork, #column2_search_docwork, #column3_search_docwork, #column4_search_docwork {
+		width: 100%;
+		padding: 5px 5px;
+		font-weight: 400;
+		font-size: 0.9em;
+		color: #333;
+		max-height:31px;
+	}
+	#column1_search_docwork { text-align:center }
+	#column2_search_docwork { text-align:center }
+	#column3_search_docwork { text-align:left }
+	#column4_search_docwork { text-align:left }
+
+	#filters_clear_docwork, #filters_apply_docwork { min-width:50px; max-width:50px; padding:6px; font-weight:400; font-size:0.9em }
+
+#blanksearch-filters-blankwork-block .panel-title { font-family: 'HeliosCond', sans-serif; font-size: 1.5em; font-weight: 500; padding-top: 5px; text-transform:none }
+#blanksearch-filters-blankwork-block .panel { border:transparent }
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ШАБЛОН CHILD-ТАБЛИЦЫ : template-details-tab1-table
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+#template-details { border:2px #666 solid; border-radius:5px; background-color:#fff }
+#template-details-tab1-table { margin-bottom:0; background-color:transparent }
+#template-details-tab1-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#template-details-tab1-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#template-details-tab1-table > tbody > tr > td:first-child { text-align:left }
+#template-details-tab1-table > tbody > tr > td:nth-child(2) { text-align:left }
+#template-details-tab1-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#template-details-tab1-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.template-details-tab1-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.template-details-tab1-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.template-details-tab1-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.template-details-tab1-table-title { color:#666; font-weight:700 }
+.template-details-tab1-table-txt { color:#666; font-weight:300 }
+.template-details-tab1-table-link { color:#666; font-weight:500; text-decoration:underline }
+.template-details-tab1-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+#blankview-gip-blankwork-table .group { font-family:'Oswald', sans-serif; font-size:1.3em; font-weight:400; color:#000 }
+#blankview-gip-blankwork-table > tbody > tr.dtrg-start.dtrg-level-0 > td { font-family:'Oswald', sans-serif; font-size:1.3em; font-weight:400; text-align:left; background-color:#d9d9d9; color:#111; padding:5px }
+#blankview-gip-blankwork-table > tbody > tr.dtrg-end.dtrg-level-0 > td { font-family:'Oswald', sans-serif; font-size:1.4em; font-weight:500; color:#000; background-color:#f1f1f1 }
+#blankview-gip-blankwork-table > tbody > tr.dtrg-end.dtrg-level-0 > td { font-family:'Oswald', sans-serif; font-size:1.4em; font-weight:500; color:#000; background-color:#f1f1f1 }
+.itogo-lvl0 {  }
+.itogo-lvl0-title { text-transform:uppercase; text-align:left }
+.itogo-lvl0-text { float:right }
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+	#blankview-details-doc-tabs .nav > li > a { color:#fff }
+	#blankview-details-doc-tabs .nav > li > a:focus, #blankview-details-doc-tabs .nav > li > a:hover { background-color:transparent; }
+	#blankview-details-doc-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#blankview-details-doc-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#blankview-details-doc-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#blankview-details-doc-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#blankview-details-doc-tabs-menu {
+		background:#666;
+		padding:0;
+		border-bottom: none;
+		margin-bottom:20px;
+	}
+
+	#blankview-details-doc-tabs-menu > li > a:hover {
+		background-color:#f1f1f1
+	}
+
+	#blankview-details-doc-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#blankview-details-doc-tabs-menu > li.active > a::after, #blankview-details-doc-tabs-menu > li:hover > a::after {
+		transform: scale(1);
+	}
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+	#blankview-details-blank-tabs .nav > li > a { color:#fff }
+	#blankview-details-blank-tabs .nav > li > a:focus, #blankview-details-blank-tabs .nav > li > a:hover { background-color:transparent; }
+	#blankview-details-blank-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#blankview-details-blank-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#blankview-details-blank-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#blankview-details-blank-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#blankview-details-blank-tabs-menu {
+		background:#666;
+		padding:0;
+		border-bottom: none;
+		margin-bottom:20px;
+	}
+
+	#blankview-details-blank-tabs-menu > li > a:hover {
+		background-color:#f1f1f1
+	}
+
+	#blankview-details-blank-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#blankview-details-blank-tabs-menu > li.active > a::after, #blankview-details-blank-tabs-menu > li:hover > a::after {
+		transform: scale(1);
+	}
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+div.modal-dialog { margin:1.0em 95% }

@@ -1,0 +1,103 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+	#main-tabs .nav > li > a { color:#666 }
+	#main-tabs .nav > li > a:focus, #main-tabs .nav > li > a:hover { background-color:transparent; }
+	#main-tabs .nav-tabs > li.active > a, #main-tabs .nav-tabs > li > a:hover { color: #336a86 !important; }
+	#main-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#main-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#main-tabs-menu {
+		border-bottom: none;
+		padding: 10px;
+		border: 2px #336a86 solid;
+		border-radius: 10px;
+		margin-bottom:20px;
+	}
+	#main-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#main-tabs-menu > li.active > a::after, #main-tabs-menu > li:hover > a::after {
+		transform: scale(1);
+	}
+
+/*
+/* Стилизуем вкладки */
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#doc-details-tabs { font-family:'Play', sans-serif; font-style:normal; font-weight:normal; font-size:0.9em; display:flex; flex-flow:row wrap; justify-content:flex-start }
+	#doc-details-tabs { border:2px #336a86 solid; border-radius:0px; background-color:#fff }
+	#doc-details-tabs { display: flex; flex-flow: row wrap; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#doc-details-tabs .nav > li > a { color:#fff }
+	#doc-details-tabs .nav > li > a:focus, #doc-details-tabs .nav > li > a:hover { background-color:transparent; }
+	#doc-details-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#doc-details-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#doc-details-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#doc-details-tabs > ul > li > a { font-family: 'Play', sans-serif; font-size:1.0em }
+/* Изменено 20.06.2019 --- */
+	#doc-details-tabs-menu { width:100%; background:#336a86; padding:0; border-bottom:none; margin-bottom:10px }
+	#doc-details-tabs-menu > li > a:hover { background-color:#f1f1f1	}
+	#doc-details-tabs-menu > li > a::after { content:""; background:#f1f1f1; height:40px; z-index:-1; position:absolute; width:100%; left:0px; bottom:-1px; transition:all 250ms ease 0s; transform:scale(0) }
+	#doc-details-tabs-menu > li.active > a::after, #doc-details-tabs-menu > li:hover > a::after { transform:scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+#row-details-chetview-details-table > tbody > tr > td { border-top:none; padding:3px 5px; text-align:left }
+/**/
+#row-details-chetview-details-table .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+#row-details-chetview-details-table .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+/**/
+.row-details-chetview-details-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-chetview-details-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+/**/
+.row-details-chetview-details-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-chetview-details-table-title { color:#666; font-weight:700 }
+.row-details-chetview-details-table-txt { color:#666; font-weight:300 }
+.row-details-chetview-details-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-chetview-details-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+
+.chetview-details-title1 {
+    color:#666;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.7em;
+    font-weight: 300;
+    margin-bottom: 10px;
+    letter-spacing: 0.2em;
+    text-align:left;
+}
+.chetview-details-title2 {
+    color:#666;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.7em;
+    font-weight: 300;
+    margin-bottom: 10px;
+    letter-spacing: 0.2em;
+    text-align:right;
+}
+.chetview-details-title3 {
+    color:#666;
+    font-family:'Oswald', sans-serif;
+    font-size:1.5em;
+    font-weight:300;
+    margin-bottom:10px;
+    letter-spacing:0.2em;
+}
+td.chetview-details-td-message { font-family: 'Oswald', sans-serif; font-size: 1.3em; letter-spacing: 0.2em }
+#chetview-details-tab7-zayv-message-table > tbody > tr > td { border-top:none; border-bottom:none }
+

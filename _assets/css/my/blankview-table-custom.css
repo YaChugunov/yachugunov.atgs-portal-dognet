@@ -1,0 +1,105 @@
+/* 
+	----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+*/
+#blankview-tab1, #blankview-tab2, #blankview-tab3 {
+	margin-top:10%;
+/* 	background-color:#fafafa; */
+/* 	border:2px #ddd solid; */
+}
+
+#blankview-tab1 > tbody, #blankview-tab2 > tbody, #blankview-tab3 > tbody {
+	font-size: 0.85em;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#blankview-tab1 > thead, #blankview-tab2 > thead, #blankview-tab3 > thead, #blankview-tab1 > thead, #blankview-tab2 > thead, #blankview-tab3 > thead {
+	font-family: 'Ubuntu', sans-serif;
+	background-color:#f1f1f1;
+	color:#111;
+	font-weight: 300;
+	font-size: 0.9em;	
+}
+#blankview-tab1 > thead > tr > th, #blankview-tab2 > thead > tr > th, #blankview-tab3 > thead > tr > th { vertical-align:bottom; border-bottom:none }
+#blankview-tab1 > tfoot > tr > td, #blankview-tab1 > tfoot >tr > th { padding:5px 4px }
+#blankview-tab2 > tfoot > tr > td, #blankview-tab2 > tfoot >tr > th { padding:5px 4px }
+#blankview-tab3 > tfoot > tr > td, #blankview-tab3 > tfoot >tr > th { padding:5px 4px }
+#blankview-tab1 > tfoot, #blankview-tab2 > tfoot, #blankview-tab3 > tfoot { background-color:#999 }
+
+#blankview-tab1 > tbody > tr > td, #blankview-tab2 > tbody > tr > td, #blankview-tab3 > tbody > tr > td {
+    padding: 5px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+
+#blankview-tab1_details, #blankview-tab2_details, #blankview-tab3_details, #sp-details {
+	width: -webkit-fill-available;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	border-left: 2px #333 solid;
+}
+#blankview-tab1_details > tbody > tr > td, #blankview-tab2_details > tbody > tr > td, #blankview-tab3_details > tbody > tr > td, #sp_details > tbody > tr > td { padding-left: 20px; vertical-align: top }
+
+#column3_search, #column4_search, #column5_search, #column6_search, #column7_search, #column8_search {
+	width: 100%;
+	padding: 5px 5px;
+	font-weight: 400;
+	font-size: 0.9em;
+	color: #333;
+}
+#column3_search { text-align: center }
+
+#filters_clear, #filters_apply {
+	padding: 6px;
+    font-weight: 400;
+    font-size: 0.9em;
+/*     color: #333;	 */
+} 
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.dataTables_length { float: left; text-align: left; }	
+	.dataTables_filter { float: right; text-align: right; }	
+	.dataTables_info { float: left; text-align: left; }	
+	.dataTables_paginate { float: right; text-align: right; }
+	td.details-control {
+/* 	    background: url('images/slide-down.png') no-repeat center center; */
+	    cursor: pointer;
+	}
+	tr.details td.details-control {
+/*     	background: url('images/slide-up.png') no-repeat center center; */
+	}
+
+	#blankview-tab1 > tbody > tr > td > table.tableDetails, #blankview-tab2 > tbody > tr > td > table.tableDetails, #blankview-tab3 > tbody > tr > td > table.tableDetails {
+		color: #333;
+	    font-size: 1.0em;
+	}
+	
+#blankview-tab1 .hr-small, #blankview-tab2 .hr-small, #blankview-tab3 .hr-small {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#DTE_Field_namezakshot, #DTE_Field_namezaklong, #DTE_Field_zakuraddress, #DTE_Field_zakdolg, #DTE_Field_zakfio, #DTE_Field_zaktelnumber, #DTE_Field_zakinn, #DTE_Field_zakkpp
+ { min-width: 100%; max-width: 100%; min-height: max-content }
+ #DTE_Field_zakbankch { min-width: 100%; min-height: max-content }
+
+#blankview-tab1_wrapper .dt-buttons.btn-group, #blankview-tab2_wrapper .dt-buttons.btn-group, #blankview-tab3_wrapper .dt-buttons.btn-group { float:left; margin-bottom:10px; margin-right:20px }
+#blankview-tab1_wrapper .dataTables_length, #blankview-tab2_wrapper .dataTables_length, #blankview-tab3_wrapper .dataTables_length { float:right; font-family:'Play', sans-serif }
+#blankview-tab1_filter, #blankview-tab2_filter, #blankview-tab3_filter { float:left; font-family:'Play', sans-serif }
+#blankview-tab1_length > label > select, #blankview-tab1_filter > label > input { height:34px }
+#blankview-tab2_length > label > select, #blankview-tab2_filter > label > input { height:34px }
+#blankview-tab3_length > label > select, #blankview-tab3_filter > label > input { height:34px }
+
+#row-details {  }
+#row-details-docnamefull { border:2px #333 solid; border-radius:10px; padding:10px }
+#row-details-docnamefull > div > h4.details-docnamefull { font-family:'Oswald', sans-serif; font-weight:300; font-size:1.75em; line-height:-1; letter-spacing:normal }
+
+#row-details > div > div > div > div > span.details-docID { font-family:'Oswald', sans-serif; background-color:#111; color:#fafafa; padding:0 5px }
+
+
+#row-details-docnamefull, #row-details-table-dates, #row-details-table-finance, #row-details-table1, #row-details-table2 { font-family:'Oswald', sans-serif; font-size:1.1em }
+
+#row-details-table1 > tbody > tr > td > p.details-sender { color:#333; font-weight:400 }
+#row-details-table1 > tbody > tr > td > p.details-sendername { color:#333; font-weight:400 }
+#row-details-table1 > tbody > tr > td > p.details-sendernumber { color:#333; font-weight:400 }

@@ -1,0 +1,557 @@
+/*
+	----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+.vh-content {
+	min-height: calc(100vh - 185px);
+}
+
+.elements-content {
+    padding: 50px 0 10px 0;
+}
+
+section.dinner-closed {
+	height: 61vh; /* высота секции равна высоте области просмотра */
+}
+
+.section-head h1, .section-head h1 span,
+.column-head h1, .column-head h1 span,
+.column-head h2, .column-head h2 span {
+	font-family: 'BebasNeueRegular', sans-serif;
+	font-weight: 200;
+	letter-spacing: normal;
+	line-height: normal;
+/* 	padding: 10px 4px 2px 4px; */
+}
+
+.section-head h1, .section-head h1 span {
+	font-size: 64px;
+}
+.section-head h1 {
+	color: #06376c;
+	font-size: 64px;
+}
+.section-head h1 span {
+	background-color: #1F1F1F;
+	color: #fff;
+}
+.column-head h1, .column-head h1 span {
+	font-size: 48px;
+}
+.column-head h2, .column-head h2 span {
+	font-size: 32px;
+	color: #1F1F1F;
+}
+
+
+#item-list-table, #cart-list-table {
+	color: #333;
+}
+
+#item-list-table > thead > tr,
+#cart-list-table > thead > tr {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+#item-list-table > thead > tr {
+	background-color: #000;
+	color: #fff;
+}
+#cart-list-table > thead > tr {
+	background-color: #03a9f4;
+	color: #fff;
+}
+#cart_popup-list-table > thead > tr {
+	background-color: #111;
+	color: #fafafa;
+/* 	text-transform: uppercase; */
+}
+
+
+#providers_list, #days_list, #categories_list { width:100%; }
+
+
+
+
+a.btnRemoveAction{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
+a.btnRemoveAction:visited{color:#D60202;border:0;padding:2px 10px;font-size:0.9em;}
+
+.btnOrder {
+	background-color: #1F1F1F;
+    border: 0;
+    padding: 3px 10px;
+    color: #ffffff;
+    margin-left: 2px;
+    border-radius: 2px;
+    width: 100%;
+    height: 32px;
+}
+.btnEmpty {
+	background-color: #1F1F1F;
+    border: 0;
+    padding: 3px 10px;
+    color: #FF0000;
+    margin-left: 2px;
+    border-radius: 2px;
+    width: 100%;
+    height: 32px;
+}
+.btnAddAction {
+	text-transform: uppercase;
+	background-color: transparent;
+    border: 0;
+    padding: 5px 0 3px 0;
+    color: #111;
+/*     margin-left: 2px; */
+    width: auto;
+    height: inherit;
+}
+.btnRemAction {
+	text-transform: uppercase;
+	background-color: transparent;
+    border: 0;
+    padding: 5px 0 3px 0;
+    color: #111;
+/*     margin-left: 2px; */
+    width: auto;
+    height: inherit;
+}
+
+
+#shopping-cart {margin-bottom:30px;}
+.cart-item {border-bottom: #79b946 1px dotted;padding: 10px;}
+#product-grid {margin-bottom:30px;}
+.meal-item {	background: #ffffff;margin:15px 10px;	padding:5px; }
+.meal-item div{text-align:center;	margin:10px;}
+.meal-price {
+	color: #005dbb;
+    font-weight: 600;
+}
+.meal-image {height:100px;background-color:#FFF;}
+.clear-float{clear:both;}
+.demo-input-box{border-radius:2px;border:#CCC 1px solid;padding:2px 1px;}
+
+.btnLogin {
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 200;
+	text-transform: uppercase;
+	padding: 11px 36px;
+	border: none;
+	border-radius: 10px;
+	color: #000;
+/* 	font-family: Montserrat; */
+}
+.panel-info {
+    border: none;
+/*     border: 3px solid #111; */
+    padding: 3px;
+    color: #111;
+}
+.panel-info > .panel-heading {
+    color: #FAFAFA;
+    background-color: #111;
+}
+.panel-heading {
+	border-bottom: none;
+}
+
+.form-horizontal .form-group {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+.panel-title {
+/* 	font-family: 'BebasNeueRegular', sans-serif; */
+	font-size: 20px;
+	padding-top: 5px;
+	text-transform: uppercase;
+}
+.form-group > label {
+	font-weight: 200;
+}
+
+.page_head {
+	background: #FAFAFA;
+	padding-top: 120px;
+}
+
+.navbar-inverse {
+    transition: .4s;
+    background-color: #111;
+}
+
+.navbar-inverse .navbar-nav > li > span {
+	position: relative;
+    display: block;
+    padding: 15px 15px;
+    line-height: 20px;
+    color: #FFF;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #f1f1f1;
+    font-size: 1.1em;
+}
+
+
+input, button, select, textarea {
+}
+select {
+	height: 34px;
+	font-size: 1.0em;
+	color: #000;
+/* 	max-width: -webkit-fill-available; */
+}
+
+
+footer .list-inline li {
+/*     width: 33%; */
+}
+.contact-info {
+	border: none;
+}
+
+footer {
+    padding: 20px 0;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+
+.datepicker.dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* Based on https://github.com/kenwheeler/slick/issues/187#issuecomment-59123524 */
+/* bootstrap hack: fix content width inside hidden tabs */
+.tab-content > .tab-pane,
+.pill-content > .pill-pane {
+    display: block;    /* undo display:none          */
+    height: 0;         /* height:0 is also invisible */
+    overflow: hidden;  /* no-overflow                */
+	margin-bottom: 0;
+	padding: 0;
+}
+.tab-content > .active,
+.pill-content > .active {
+    height: auto;      /* let the content decide it  */
+	overflow: visible;
+}
+/* bootstrap hack end */
+
+.tab-content.slider-dotted {
+padding-bottom: 30px;
+}
+
+.tab-content.slider-dotted .slick-dotted.slick-slider {
+margin-bottom: 0;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+#accordion .panel-title > a {
+	font-size: 0.85em;
+}
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*****
+BREAKING NEWS
+*****
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+.space10 {
+	margin-bottom: 10px;
+}
+
+.space20 {
+	margin-bottom: 20px;
+}
+
+.space30 {
+	margin-bottom: 30px;
+}
+
+.space40 {
+	margin-bottom: 40px;
+}
+
+.space50 {
+	margin-bottom: 50px;
+}
+
+.space60 {
+	margin-bottom: 60px;
+}
+
+.space70 {
+	margin-bottom: 70px;
+}
+
+.space80 {
+	margin-bottom: 80px;
+}
+
+.space90 {
+	margin-bottom: 90px;
+}
+
+.space100 {
+	margin-bottom: 100px;
+}
+
+/* Preloader
+-----------------------------------------------*/
+
+#before-load {
+  position: fixed; /*фиксированное положение блока*/
+  left: 0; /*положение элемента слева*/
+  top: 0; /*положение элемента сверху*/
+  right: 0; /*положение элемента справа*/
+  bottom: 0; /*положение элемента снизу*/
+  background: #fff; /*цвет заднего фона блока*/
+  z-index: 1001; /*располагаем его над всеми элементами на странице*/
+}
+
+#before-load i {
+  position: absolute; /*положение абсолютное, позиционируется относительно его ближайшего предка*/
+  left: 50%; /*слева 50% от ширины родительского блока*/
+  top: 50%; /*сверху 50% от высоты родительского блока*/
+  margin: -35px 0 0 -35px; /*смещение иконки, чтобы она располагалась по центру*/
+}
+
+#before-load i {
+/* 	font-size: 70px; /* размер шрифта */
+    width: 70px; /*ширина gif-изображения*/
+    height: 70px; /*высота gif-изображения*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: url('../../../../_assets/images/Snake.gif') no-repeat 50% 50%; /*расположение (url) изображения gif и др. параметры*/
+    margin: -35px 0 0 -35px;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+.dropdown-menu {
+	min-width: 200px;
+	border:1px #f1f1f1 solid;
+	-webkit-box-shadow: 6px 6px 12px rgba(0,0,0,.175);
+	box-shadow: 6px 6px 12px rgba(0,0,0,.175);
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
+}
+
+.dropdown-menu > li > a {
+	padding: 12px 20px;
+	width: 100%;
+	color: #111;
+	font-size: 0.9em;
+}
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    text-decoration: none;
+    background-color: #fff;
+    color: #111;
+}
+.navbar-nav > li > .dropdown-menu {
+/* 	margin-top: 14px; */
+/* 	margin-top: -15px; */
+/* 	margin-left: -13px; */
+	border: none;
+	background-color: #fafafa;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+.dropdown-submenu { position: relative }
+.dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+/*     margin-left: -1px; */
+    -webkit-border-radius:0;
+    -moz-border-radius:0;
+    border-radius:0;
+    background-color: #fafafa;
+    border-left: none;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu > a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #111;
+    margin-top: 5px;
+    margin-right: -10px;
+}
+.dropdown-submenu:hover > a:after {
+    border-left-color: #111;
+}
+.dropdown-submenu.pull-left {
+    float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+.alert-top {
+	font-family: 'Oswald', sans-serif;
+	font-size: 1.2em;
+    color: #8a6d3b;
+    background-color: #efdd4d;
+    /* border-color: #faebcc; */
+    border-top: 5px #d9524f solid;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+li.logo-current-section {
+	font-weight: 500;
+    min-width: 330px;
+    color: #111111;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4em;
+    margin-right: 2px;
+/*     background-color:#000; */
+	margin-left:-15px;
+	border-right: 1px #fff solid;
+}
+.nav > li.logo-current-section > a:focus, .nav > li.logo-current-section > a:hover {
+    color:inherit;
+    text-decoration: none;
+    background-color:transparent;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+li.user-access-level {
+    font-family: 'Oswald', sans-serif;
+		line-height:0.7em;
+/* 		background-color: #d9d9d9; */
+}
+li.user-access-level .navbar-text .txt { color:#333; font-size:1.2em }
+li.user-access-level .navbar-text .lvl { font-weight:700; color:#009a00; font-size:3.0em }
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+.btn-default:hover { color: #fff; background-color: #000; border-color: #fafafa; }
+a.btn.disabled, fieldset[disabled] a.btn { color: #f0f0f0; }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    color: #f0f0f0;
+    background-color: #000;
+    border-color: #333;
+}
+.pagination>li>a, .pagination>li>span {
+    color: #111;
+    background-color: #fff;
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    color: #f0f0f0;
+    background-color: #999;
+    border-color: #333;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- -----  */
+
+div.dataTables_wrapper div.dataTables_processing {
+    position: absolute;
+    top: 0.4%;
+    left: 50%;
+    width: 200px;
+    margin-left: -100px;
+    margin-top: -26px;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 'Oswald', sans-serif;
+    padding: 1em 0;
+/* 	border: 2px solid #d9524f; */
+	border: 5px solid #f0f0f0;
+	color: #111;
+/* 	background-color: #efdd4d; */
+	background-color: #f0f0f0;
+}
+.panel-default {
+    border-color: #ddd;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+
+.hide_element {
+	display:none;
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* >>> ДОБАВЛЕНО 01.04.2020 */
+
+.common-top-block {
+	margin-top:20px;
+	margin-bottom:20px;
+/* 	border-bottom:10px #31708f solid; */
+/* 	border-radius:5px */
+}
+.common-content-block {
+	margin-left:-15px;
+	margin-right:-15px;
+/* 	border-bottom:10px #31708f solid; */
+/* 	border-radius:5px */
+}
+.base-top-block {
+	margin-top:20px;
+	margin-bottom:34px;
+/* 	border-bottom:10px #31708f solid; */
+/* 	border-radius:5px */
+}
+
+/* <<< ДОБАВЛЕНО 01.04.2020 */
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+

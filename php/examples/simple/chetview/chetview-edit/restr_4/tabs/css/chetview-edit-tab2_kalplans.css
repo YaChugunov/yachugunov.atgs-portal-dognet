@@ -1,0 +1,192 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#chetview-edit-tab2_kalplans {  }
+#chetview-edit-tab2_kalplans .details-control:hover { cursor:pointer }
+/*
+/*
+/* Заголовок таблицы */
+#chetview-edit-tab2_kalplans > thead {  }
+#chetview-edit-tab2_kalplans { border:2px #951402 solid }
+#chetview-edit-tab2_kalplans > thead { background-color:#951402;	color:#fff;	font-weight:300 }
+#chetview-edit-tab2_kalplans > thead > tr > th { font-family:'Oswald', sans-serif; font-weight:500; border-bottom:none }
+#chetview-edit-tab2_kalplans > thead > tr > th:first-child { width:2%; text-align:center }
+#chetview-edit-tab2_kalplans > thead > tr > th:nth-child(2) { width:5%; text-align:center; border-left:1px #f7f7f7 solid }
+#chetview-edit-tab2_kalplans > thead > tr > th:nth-child(3) { width:53%; border-left:1px #f7f7f7 solid }
+#chetview-edit-tab2_kalplans > thead > tr > th:nth-child(4) { width:15%; border-left:1px #f7f7f7 solid }
+#chetview-edit-tab2_kalplans > thead > tr > th:nth-child(5) { width:10%; border-left:1px #f7f7f7 solid }
+#chetview-edit-tab2_kalplans > thead > tr > th:nth-child(6) { width:15%; text-align:right; border-left:1px #f7f7f7 solid }
+#chetview-edit-tab2_kalplans > thead > tr > th:nth-child(2):hover { cursor:default }
+#chetview-edit-tab2_kalplans .sorting_asc:after { display:none }
+#chetview-edit-tab2_kalplans > thead > tr > th.sorting_asc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#chetview-edit-tab2_kalplans > tbody > tr > td { border-top:none }
+#chetview-edit-tab2_kalplans > tbody {	font-family: Courier, Courier new, Serif; color:#666;	border-bottom:none; border-top:none }
+#chetview-edit-tab2_kalplans > tbody > tr > td { padding:5px 8px; line-height:1.42857143; vertical-align:middle }
+#chetview-edit-tab2_kalplans > tbody > tr > td:first-child { width:2%; text-align:center }
+#chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(2) { width:5%; text-align:center }
+#chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(3) { width:53% }
+#chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(4) { width:15% }
+#chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(5) { width:10% }
+#chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(6) { width:15	%; text-align:right }
+#chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(2), #chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(3), #chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(4), #chetview-edit-tab2_kalplans > tbody > tr > td:nth-child(5) { font-family: Courier, Courier new, Serif; font-weight:300 }
+#chetview-edit-tab2_kalplans > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+/*
+/*
+/* Подвал таблицы */
+
+
+
+/*
+/*
+/* Разное */
+
+#row-edit-tab2_kalplans { font-family:'Oswald', sans-serif; font-size:1.0em }
+#row-edit-tab2_kalplans > tbody >tr > td { text-align:left }
+
+#chetview-tab2_kalplans .panel { border:1px solid #f5f5f5 }
+#row-edit-tab2_kalplans .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+#row-edit-tab2_kalplans .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+div.DTE div.DTE_Processing_Indicator { top:15px; right:32px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab2_kalplans { display: flex; flex-flow: row wrap; }
+#customForm_tab2_kalplans fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm_tab2_kalplans fieldset.name { flex: 1 50%; }
+#customForm_tab2_kalplans fieldset.name legend {}
+#customForm_tab2_kalplans fieldset.office legend {}
+#customForm_tab2_kalplans fieldset.hr legend { background: #ffbfbf; }
+#customForm_tab2_kalplans div.DTE_Field { padding:0; text-align: left; }
+#customForm_tab2_kalplans div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+div.modal-dialog { margin:1.0em auto; width:80% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab2_kalplans {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab2_kalplans div.Section {
+	justify-content:flex-start;
+	padding:0;
+	background-color:#fafafa;
+	display:flex;
+	flex-flow:row wrap;
+	flex-grow:1;
+	flex-shrink:2;
+	flex-basis:70%;
+	align-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab2_kalplans div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+#customForm_tab2_kalplans div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_tab2_kalplans div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm_tab2_kalplans fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+		#customForm_tab2_kalplans fieldset.field10 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+		#customForm_tab2_kalplans fieldset.field15 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+		#customForm_tab2_kalplans fieldset.field20 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+		#customForm_tab2_kalplans fieldset.field25 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+		#customForm_tab2_kalplans fieldset.field30 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field35 {	flex-grow:0; flex-shrink:0; flex-basis:35% }
+		#customForm_tab2_kalplans fieldset.field35 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+		#customForm_tab2_kalplans fieldset.field40 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field45 {	flex-grow:0; flex-shrink:0; flex-basis:45% }
+		#customForm_tab2_kalplans fieldset.field45 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+		#customForm_tab2_kalplans fieldset.field50 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+		#customForm_tab2_kalplans fieldset.field60 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+		#customForm_tab2_kalplans fieldset.field70 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+		#customForm_tab2_kalplans fieldset.field80 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+		#customForm_tab2_kalplans fieldset.field90 > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm_tab2_kalplans fieldset.field100 > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab2_kalplans > div.Section > div > fieldset > div > label.control-label { width: 100% }
+#customForm_tab2_kalplans > div.Section > div > fieldset > div > div.controls { width: 100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#DTE_Field_dognet_dockalplan-kodobject { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm_tab2_kalplans fieldset.idsrokstage { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+		#customForm_tab2_kalplans fieldset.idsrokstage > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.srokstage { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+		#customForm_tab2_kalplans fieldset.srokstage > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.srokstage_tmpSrok { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+		#customForm_tab2_kalplans fieldset.srokstage_tmpSrok > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.srokstage_tmpDate { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+		#customForm_tab2_kalplans fieldset.srokstage_tmpDate > div > div { width:100% }
+
+		#customForm_tab2_kalplans fieldset.idsrokopl { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+		#customForm_tab2_kalplans fieldset.idsrokopl > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.srokopl { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+		#customForm_tab2_kalplans fieldset.srokopl > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.srokopl_tmpSrok { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+		#customForm_tab2_kalplans fieldset.srokopl_tmpSrok > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.srokopl_tmpDate { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+		#customForm_tab2_kalplans fieldset.srokopl_tmpDate > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm_tab2_kalplans fieldset.useavplan { flex-grow:0; flex-shrink:0; flex-basis:10%; margin-bottom:-10px }
+		#customForm_tab2_kalplans fieldset.useavplan > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.pravplanstage { flex-grow:0; flex-shrink:0; flex-basis:30%; margin-bottom:-10px }
+		#customForm_tab2_kalplans fieldset.pravplanstage > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.dateplanavstage { flex-grow:0; flex-shrink:0; flex-basis:60%; margin-bottom:-10px }
+		#customForm_tab2_kalplans fieldset.dateplanavstage > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm_tab2_kalplans fieldset.usedocsubpodr { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm_tab2_kalplans fieldset.usedocsubpodr > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.numberdayoplstage { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm_tab2_kalplans fieldset.numberdayoplstage > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.dateoplall { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm_tab2_kalplans fieldset.dateoplall > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.dateplan { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+		#customForm_tab2_kalplans fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_tab2_kalplans fieldset > div > label.control-label { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm_tab2_kalplans div.rDS2 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm_tab2_kalplans > div.Section > div.rDS2 > fieldset.namefullstage > div > div { width:100% }
+
+	#customForm_tab2_kalplans > div.Section > div.rDS2 > fieldset > div > label.control-label { width: 100% }
+	#customForm_tab2_kalplans > div.Section > div.rDS3 > fieldset > div > label.control-label { width: 100% }
+	#customForm_tab2_kalplans div.rDS3 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+	#customForm_tab2_kalplans > div.Section > div.rDS3 > fieldset > div > div { width:100% }
+		#customForm_tab2_kalplans fieldset.numberstageRel {	flex-grow:1; flex-shrink:3; flex-basis:100%; }
+		#DTE_Field_mailbox_incoming-outbox_numberstage_rel { width: 99.99%; }
+		#DTE_Field_inbox_numberstage_rel { width:100%; }
+
+#customForm_tab2_kalplans > div.Section > div > legend,
+#customForm_tab2_kalplans > div.Section > div > div > legend { padding: 5px 0 5px 15px; font-family: 'HeliosCond', sans-serif; font-weight: normal; border: none; border-left: 10px #b95959 solid; text-transform: none; color: #111; background-color: #ddd; }
+
+textarea[id=DTE_Field_dognet_docsubpodr-namedocsubpodr] { resize:none }

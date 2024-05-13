@@ -1,0 +1,80 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СВОДКА ПО АВАНСАМ"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-details-tab2-avans {  }
+#docview-details-tab2-avans .details-control:hover { cursor:pointer }
+#docview-details-tab2-avans .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#docview-details-tab2-avans > thead {	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-details-tab2-avans > thead > tr > th { background-color:#f0f0f0; color:#111; border-bottom:none; font-weight:500; text-transform:uppercase }
+/*
+/*
+/* Тело таблицы */
+#docview-details-tab2-avans > tbody > tr > td {
+	font-family:'Play', sans-serif;
+	font-size:1.0em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+#docview-details-tab2-avans > thead > tr > th:first-child, #docview-details-tab2-avans > tbody > tr > td:first-child { width:36px; text-align:center }
+#docview-details-tab2-avans > thead > tr > th:nth-child(2), #docview-details-tab2-avans > tbody > tr > td:nth-child(2) { width:5%; text-align:center }
+#docview-details-tab2-avans > thead > tr > th:nth-child(3), #docview-details-tab2-avans > tbody > tr > td:nth-child(3) { width:10%; text-align:center }
+#docview-details-tab2-avans > thead > tr > th:nth-child(4), #docview-details-tab2-avans > tbody > tr > td:nth-child(4) {  }
+#docview-details-tab2-avans > thead > tr > th:nth-child(5), #docview-details-tab2-avans > tbody > tr > td:nth-child(5) { width:14%; text-align:center }
+#docview-details-tab2-avans > thead > tr > th:nth-child(6), #docview-details-tab2-avans > tbody > tr > td:nth-child(6) { width:14%; text-align:center }
+#docview-details-tab2-avans > thead > tr > th:nth-child(7), #docview-details-tab2-avans > tbody > tr > td:nth-child(7) { width:14%; text-align:center }
+#docview-details-tab2-avans > tbody > tr > td.dataTables_empty { text-align:center; border-bottom:1px #951402 solid; border-top:1px #951402 solid; text-transform:uppercase; font-style:italic; color:#951402 }
+#docview-details-tab2-avans > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+#docview-details-tab2-avans-avans > tbody > tr > td.docview-details-tab2-avans-avans-collapse { padding:0 }
+/*
+/*
+/* Подвал таблицы */
+#docview-details-tab2-avans > tfoot > tr > th {
+	font-family:'Play', sans-serif;
+	font-size:1.0em;
+	color:#111;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+#docview-details-tab2-avans > tfoot > tr > th { color:#111; font-family:'Play', sans-serif; border-bottom:none;border-top:none; border-bottom:none; font-weight:700 }
+#docview-details-tab2-avans > tfoot > tr > th:first-child { text-align:right; text-transform:uppercase }
+#docview-details-tab2-avans > tfoot > tr > th:nth-child(2) { text-align:center }
+#docview-details-tab2-avans > tfoot > tr > th:nth-child(3) { text-align:center }
+#docview-details-tab2-avans > tfoot > tr > th:nth-child(4) { text-align:center; color:#a94442 }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СЧЕТА-ФАКТУРЫ COLLAPSE"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/*
+/* Тело таблицы */
+#docview-details-tab2-avans-collapse-table > tbody > tr > td {
+	font-family:'Play', sans-serif;
+	font-size:1.0em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+#docview-details-tab2-avans-collapse-table > tbody > tr:first-child > td {	border-top:none }
+/**/
+#docview-details-tab2-avans-collapse-table { margin-bottom:0 }
+#docview-details-tab2-avans-collapse-table > tbody > tr > td:first-child { width:10% }
+#docview-details-tab2-avans-collapse-table > tbody > tr > td:nth-child(2) { text-align:left }
+#docview-details-tab2-avans-collapse-table > tbody > tr > td:nth-child(3) { width:16% }
+#docview-details-tab2-avans-collapse-table > tbody > tr > td:nth-child(4) { width:15%; text-align:center }
+#docview-details-tab2-avans-collapse-table > tbody > tr > td:nth-child(5) { width:15%; text-align:center }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+

@@ -1,0 +1,55 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица этапов: #chetview-edit-tab3_kalplanchf
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#chetview-edit-tab3_kalplanchf {  }
+#chetview-edit-tab3_kalplanchf .details-control:hover { cursor:pointer }
+#chetview-edit-tab3_kalplanchf .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#chetview-edit-tab3_kalplanchf > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#chetview-edit-tab3_kalplanchf > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#chetview-edit-tab3_kalplanchf .sorting:after, #chetview-edit-tab3_kalplanchf .sorting_asc:after, #chetview-edit-tab3_kalplanchf .sorting_desc:after { display:none }
+#chetview-edit-tab3_kalplanchf > thead > tr > th.sorting, #chetview-edit-tab3_kalplanchf > thead > tr > th.sorting_asc, #chetview-edit-tab3_kalplanchf > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#chetview-edit-tab3_kalplanchf > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#chetview-edit-tab3_kalplanchf > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#chetview-edit-tab3_kalplanchf > thead > tr > th:first-child, #chetview-edit-tab3_kalplanchf > tbody > tr > td:first-child { width:15%; text-align:left }
+#chetview-edit-tab3_kalplanchf > thead > tr > th:nth-child(2), #chetview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(2) { width:8%; text-align:center }
+#chetview-edit-tab3_kalplanchf > thead > tr > th:nth-child(3), #chetview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(3) { width:8%; text-align:center }
+#chetview-edit-tab3_kalplanchf > thead > tr > th:nth-child(4), #chetview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(4) { width:43%; text-align:left }
+#chetview-edit-tab3_kalplanchf > thead > tr > th:nth-child(5), #chetview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(5) { width:13%; text-align:left }
+#chetview-edit-tab3_kalplanchf > thead > tr > th:nth-child(6), #chetview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(6) { width:13%; text-align:left }
+
+
+#chetview-edit-tab3_kalplanchf > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+
+#chetview-edit-tab3_kalplanchf > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+/*
+/*
+/* Подвал таблицы */
+
+
+
+/*
+/*
+/* Разное */
+#chetview-edit-tab3_kalplanchf .sorting_asc:after { display:none }
+#chetview-edit-tab3_kalplanchf > thead > tr > th.sorting_asc { padding-right:8px }
+#chetview-edit-tab3_kalplanchf .sorting_desc:after { display:none }
+#chetview-edit-tab3_kalplanchf > thead > tr > th.sorting_desc { padding-right:8px }
+#chetview-edit-tab3_kalplanchf .details-body { border:3px #333 solid; border-radius:10px; border-collapse:collapse }
+#chetview-edit-tab3_kalplanchf > tbody > tr > td.row_kalplan { font-weight:700 }
+
+#chetview-edit-tab3_kalplanchf > tbody > tr.dtrg-group > td { font-family:'Play', sans-serif; font-weight:700; text-align:left; letter-spacing:0.2em }
+

@@ -1,0 +1,56 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица этапов: #docview-edit-tab3_kalplanchf
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-edit-tab3_kalplanchf {  }
+#docview-edit-tab3_kalplanchf .details-control:hover { cursor:pointer }
+#docview-edit-tab3_kalplanchf .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#docview-edit-tab3_kalplanchf > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-edit-tab3_kalplanchf > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#docview-edit-tab3_kalplanchf .sorting:after, #docview-edit-tab3_kalplanchf .sorting_asc:after, #docview-edit-tab3_kalplanchf .sorting_desc:after { display:none }
+#docview-edit-tab3_kalplanchf > thead > tr > th.sorting, #docview-edit-tab3_kalplanchf > thead > tr > th.sorting_asc, #docview-edit-tab3_kalplanchf > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#docview-edit-tab3_kalplanchf > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#docview-edit-tab3_kalplanchf > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#docview-edit-tab3_kalplanchf > thead > tr > th:first-child, #docview-edit-tab3_kalplanchf > tbody > tr > td:first-child { width:5%; text-align:center }
+#docview-edit-tab3_kalplanchf > thead > tr > th:nth-child(2), #docview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(2) { width:14%; text-align:center }
+#docview-edit-tab3_kalplanchf > thead > tr > th:nth-child(3), #docview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(3) { width:5%; text-align:center }
+#docview-edit-tab3_kalplanchf > thead > tr > th:nth-child(4), #docview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(4) { width:8%; text-align:center }
+#docview-edit-tab3_kalplanchf > thead > tr > th:nth-child(5), #docview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(5) { width:42%; text-align:left }
+#docview-edit-tab3_kalplanchf > thead > tr > th:nth-child(6), #docview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(6) { width:13%; text-align:left }
+#docview-edit-tab3_kalplanchf > thead > tr > th:nth-child(7), #docview-edit-tab3_kalplanchf > tbody > tr > td:nth-child(7) { width:13%; text-align:left }
+
+
+#docview-edit-tab3_kalplanchf > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+
+#docview-edit-tab3_kalplanchf > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+/*
+/*
+/* Подвал таблицы */
+
+
+
+/*
+/*
+/* Разное */
+#docview-edit-tab3_kalplanchf .sorting_asc:after { display:none }
+#docview-edit-tab3_kalplanchf > thead > tr > th.sorting_asc { padding-right:8px }
+#docview-edit-tab3_kalplanchf .sorting_desc:after { display:none }
+#docview-edit-tab3_kalplanchf > thead > tr > th.sorting_desc { padding-right:8px }
+#docview-edit-tab3_kalplanchf .details-body { border:3px #333 solid; border-radius:10px; border-collapse:collapse }
+#docview-edit-tab3_kalplanchf > tbody > tr > td.row_kalplan { font-weight:700 }
+
+#docview-edit-tab3_kalplanchf > tbody > tr.dtrg-group > td { font-family:'Play', sans-serif; font-weight:700; text-align:left; letter-spacing:0.2em }
+

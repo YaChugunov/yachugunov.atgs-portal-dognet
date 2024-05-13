@@ -1,0 +1,32 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА ФАЙЛОВ ПРИЛОЖЕНИЙ : blankview-gip-blankarchive-blankpril-table
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#blankview-gip-blankarchive-blankpril { padding:10px 15px; border:2px #e9e9e9 solid; border-radius:5px }
+#blankview-gip-blankarchive-blankpril > h3 { color:#111; font-family:'Oswald', sans-serif; font-weight:400; font-size:1.7em; letter-spacing:0.05em }
+#blankview-gip-blankarchive-blankpril-table > tbody > tr.selected { color:#000;	background-color:#e9e9e9 }
+/* Общее для таблицы */
+#blankview-gip-blankarchive-blankpril-table {  }
+#blankview-gip-blankarchive-blankpril-table .details-control:hover { cursor:hand }
+/* Заголовок таблицы */
+#blankview-gip-blankarchive-blankpril-table > thead {	display:none }
+#blankview-gip-blankarchive-blankpril-table > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#blankview-gip-blankarchive-blankpril-table .sorting:after, #blankview-gip-blankarchive-table .sorting_asc:after, #blankview-gip-blankarchive-table .sorting_desc:after { display:none }
+#blankview-gip-blankarchive-blankpril-table > thead > tr > th.sorting_asc { padding-right:8px }
+#blankview-gip-blankarchive-blankpril-table > thead > tr > th.sorting_desc { padding-right:8px }
+#blankview-gip-blankarchive-blankpril-table .sorting_asc:after { display:none }
+#blankview-gip-blankarchive-blankpril-table > thead > tr > th.sorting_asc { padding-right:8px }
+/* Тело таблицы */
+#blankview-gip-blankarchive-blankpril-table > tbody > tr > td { padding:5px; border:none }
+#blankview-gip-blankarchive-blankpril-table > tbody > tr > td:first-child { width:5%; text-align:left }
+#blankview-gip-blankarchive-blankpril-table > tbody > tr > td:nth-child(2) { width:7%; text-align:left }
+#blankview-gip-blankarchive-blankpril-table > tbody > tr > td:nth-child(3) { width:83%; text-align:left }
+#blankview-gip-blankarchive-blankpril-table > tbody > tr > td:nth-child(4) { width:5%; text-align:right; text-transform:uppercase }
+/* Разное */
+#blankview-gip-blankarchive-blankpril-table a.blank_link { color:#08C; text-decoration:underline }
+#blankview-gip-blankarchive-blankpril-table a.blank_link:hover { text-decoration:none }
+
+div.DTE div.DTE_Processing_Indicator span, div.DTE div.DTE_Processing_Indicator:before, div.DTE div.DTE_Processing_Indicator:after { display:none }

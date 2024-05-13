@@ -1,0 +1,146 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/* #report-view-main-table > thead { display:none } */
+/* #report-view-main-table > tbody > tr:first-child { display:none } */
+#report-view-main-table > tbody > tr > td {  }
+
+#report-view-main-table {  }
+#report-view-main-table > tbody {  }
+#report-view-main-table > thead {
+	background-color:#f5f5f5;
+	color:#333;
+	font-weight: 300;
+}
+#report-view-main-table > thead > tr > th {
+	padding: 8px 5px;
+	font-size:0.9em;
+	font-family:'Oswald', sans-serif;
+	font-weight:500;
+	text-transform:uppercase;
+	border-bottom:none;
+}
+#report-view-main-table > tbody > tr > td {
+	font-family: 'Play', sans-serif;
+	color:#111;
+	font-size:0.8em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle;
+}
+#report-view-main-table > tbody > tr:first-child > td { border-top:none }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#report-view-main-table > thead > tr > th:first-child, #report-view-main-table > tbody > tr > td:first-child { width:2%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(2), #report-view-main-table > tbody > tr > td:nth-child(2) { width:4%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(3), #report-view-main-table > tbody > tr > td:nth-child(3) { width:2%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(4), #report-view-main-table > tbody > tr > td:nth-child(4) { width:42%; text-align:left }
+#report-view-main-table > thead > tr > th:nth-child(5), #report-view-main-table > tbody > tr > td:nth-child(5) { width:14%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(6), #report-view-main-table > tbody > tr > td:nth-child(6) { width:4%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(7), #report-view-main-table > tbody > tr > td:nth-child(7) { width:6%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(8), #report-view-main-table > tbody > tr > td:nth-child(8) { width:10%; text-align:center; white-space:nowrap }
+#report-view-main-table > thead > tr > th:nth-child(9), #report-view-main-table > tbody > tr > td:nth-child(9) { width:6%; text-align:center }
+#report-view-main-table > thead > tr > th:nth-child(10), #report-view-main-table > tbody > tr > td:nth-child(10) { width:10%; text-align:center }
+#report-view-main-table .details-control:hover { cursor:pointer }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+#report-view-main-table .sorting_asc:after, #report-view-main-table .sorting_desc:after { display:none }
+#report-view-main-table > thead > tr > th.sorting_asc { padding-right:8px }
+
+#report-view-main-table > tbody > tr > td a.docview-details-link { color:#22AEDB; text-decoration:underline }
+#report-view-main-table > tbody > tr > td a.docview-details-link:hover { color:#111; text-decoration:none }
+
+#report-view-main-table > tfoot > tr > th {
+	border-bottom:none;
+	font-family: 'Play', sans-serif;
+	color:#111;
+	font-size:0.9em;
+	padding: 8px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle;
+}
+
+
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-report-view-main-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-report-view-main { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-report-view-main-tabs .nav > li > a { color:#fff }
+	#row-details-report-view-main-tabs .nav > li > a:focus, #row-details-report-view-main-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-report-view-main-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-report-view-main-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-report-view-main-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-report-view-main-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-report-view-main-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-report-view-main-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-report-view-main-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-report-view-main-tabs-menu > li.active > a::after,
+	#row-details-report-view-main-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-report-view-main-tabs .nav > li > a { color:#fff }
+	#row-details-report-view-main-tabs .nav > li > a:focus, #row-details-report-view-main-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-report-view-main-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-report-view-main-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-report-view-main-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-report-view-main-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-report-view-main-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-report-view-main-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-report-view-main-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-report-view-main-tabs-menu > li.active > a::after,
+	#row-details-report-view-main-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-report-view-main-table { margin-bottom:0; background-color:transparent }
+#row-details-report-view-main-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-report-view-main-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-report-view-main-table > tbody > tr > td:first-child { text-align:left }
+#row-details-report-view-main-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-report-view-main-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-report-view-main-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-report-view-main-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-report-view-main-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-report-view-main-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-report-view-main-table-title { color:#666; font-weight:700 }
+.row-details-report-view-main-table-txt { color:#666; font-weight:300 }
+.row-details-report-view-main-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-report-view-main-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

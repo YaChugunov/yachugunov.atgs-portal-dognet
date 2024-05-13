@@ -1,0 +1,120 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/* #docview-details-tab1_kalplans > thead { display:none } */
+/* #docview-details-tab1_kalplans > tbody > tr:first-child { display:none } */
+#docview-details-tab1_kalplans > tbody > tr > td {  }
+
+#docview-details-tab1_kalplans {  }
+#docview-details-tab1_kalplans > tbody {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 0.95em;
+	color:#111;
+}
+#docview-details-tab1_kalplans > thead {
+	background-color:#f5f5f5;
+	color:#333;
+	font-weight: 300;
+}
+#docview-details-tab1_kalplans > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#docview-details-tab1_kalplans > thead > tr > th { font-family:'Oswald', sans-serif; font-weight:500; border-bottom:none }
+#docview-details-tab1_kalplans > tbody > tr > td {  }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#docview-details-tab1_kalplans > thead > tr > th:first-child, #docview-details-tab1_kalplans > tbody > tr > td:first-child { width:1%; text-align:center }
+#docview-details-tab1_kalplans > thead > tr > th:nth-child(2), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(2) { width:4%; text-align:center }
+#docview-details-tab1_kalplans > thead > tr > th:nth-child(2):hover { cursor:default }
+#docview-details-tab1_kalplans .details-control:hover { cursor:pointer }
+#docview-details-tab1_kalplans > thead > tr > th:nth-child(3), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(3) { width:68% }
+#docview-details-tab1_kalplans > thead > tr > th:nth-child(4), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(4) { width:15%; text-align:center }
+#docview-details-tab1_kalplans > thead > tr > th:nth-child(5), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(5) { width:12%; text-align:center }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+#docview-details-tab1_kalplans .sorting_asc:after, #docview-details-tab1_kalplans .sorting_desc:after { display:none }
+#docview-details-tab1_kalplans > thead > tr > th.sorting_asc { padding-right:8px }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-common-kalplans-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-common-kalplans { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-docview-common-kalplans-tabs .nav > li > a { color:#fff }
+	#row-details-docview-common-kalplans-tabs .nav > li > a:focus, #row-details-docview-common-kalplans-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-common-kalplans-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-common-kalplans-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-common-kalplans-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-common-kalplans-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-common-kalplans-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-common-kalplans-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-common-kalplans-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-common-kalplans-tabs-menu > li.active > a::after,
+	#row-details-docview-common-kalplans-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-docview-common-kalplans-tabs .nav > li > a { color:#fff }
+	#row-details-docview-common-kalplans-tabs .nav > li > a:focus, #row-details-docview-common-kalplans-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-common-kalplans-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-common-kalplans-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-common-kalplans-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-common-kalplans-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-common-kalplans-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-common-kalplans-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-common-kalplans-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-common-kalplans-tabs-menu > li.active > a::after,
+	#row-details-docview-common-kalplans-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-docview-common-kalplans-table { margin-bottom:0; background-color:transparent }
+#row-details-docview-common-kalplans-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-docview-common-kalplans-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-docview-common-kalplans-table > tbody > tr > td:first-child { text-align:left }
+#row-details-docview-common-kalplans-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-docview-common-kalplans-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-docview-common-kalplans-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-docview-common-kalplans-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-docview-common-kalplans-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-docview-common-kalplans-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-docview-common-kalplans-table-title { color:#666; font-weight:700 }
+.row-details-docview-common-kalplans-table-txt { color:#666; font-weight:300 }
+.row-details-docview-common-kalplans-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-docview-common-kalplans-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

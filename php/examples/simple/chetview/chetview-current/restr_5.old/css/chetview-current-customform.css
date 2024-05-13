@@ -1,0 +1,13 @@
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+#customForm-chet-main > div > div > div > div.Section > div > fieldset.kodzakazFilter > input, #customForm-chet-main > div > div > div > div.Section > div > div > fieldset.kodzakazFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+#customForm-chet-main > div > div > div > div.Section > div > fieldset.kodobjectFilter > input, #customForm-chet-main > div > div > div > div.Section > div > div > fieldset.kodobjectFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+/**/
+textarea[id=DTE_Field_dognet_docbase-docnameshot],
+textarea[id=DTE_Field_dognet_docbase-docnamefullm],
+textarea[id=DTE_Field_dognet_docbase-comments] { resize:none }

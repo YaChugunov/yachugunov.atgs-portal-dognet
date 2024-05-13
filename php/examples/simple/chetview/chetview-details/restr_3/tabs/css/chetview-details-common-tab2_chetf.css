@@ -1,0 +1,80 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СВОДКА ПО СЧЕТАМ-ФАКТУРАМ"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#chetview-details-tab2-chetfzadolg {  }
+#chetview-details-tab2-chetfzadolg .details-control:hover { cursor:pointer }
+#chetview-details-tab2-chetfzadolg .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#chetview-details-tab2-chetfzadolg > thead {	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#chetview-details-tab2-chetfzadolg > thead > tr > th { background-color:#f0f0f0; color:#111; border-bottom:none; font-weight:500; text-transform:uppercase }
+/*
+/*
+/* Тело таблицы */
+#chetview-details-tab2-chetfzadolg > tbody > tr > td {
+	font-family:'Play', sans-serif;
+	font-size:1.0em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+#chetview-details-tab2-chetfzadolg > thead > tr > th:first-child, #chetview-details-tab2-chetfzadolg > tbody > tr > td:first-child { width:36px; text-align:center }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(2), #chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(2) { width:5%; text-align:center }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(3) { width:5%; text-align:center }
+#chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(3) { text-align:left }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(4) { text-align:left }
+#chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(4) { text-align:left }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(5), #chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(5) { width:14%; text-align:center }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(6), #chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(6) { width:12%; text-align:center }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(7), #chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(7) { width:12%; text-align:center }
+#chetview-details-tab2-chetfzadolg > thead > tr > th:nth-child(8), #chetview-details-tab2-chetfzadolg > tbody > tr > td:nth-child(8) { width:12%; text-align:center }
+#chetview-details-tab2-chetfzadolg > tbody > tr > td.dataTables_empty { text-align:center; border-bottom:1px #951402 solid; border-top:1px #951402 solid; text-transform:uppercase; font-style:italic; color:#951402 }
+#chetview-details-tab2-chetfzadolg > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+#chetview-details-tab2-chetfzadolg-avans > tbody > tr > td.chetview-details-tab2-chetfzadolg-avans-collapse { padding:0 }
+/*
+/*
+/* Подвал таблицы */
+#chetview-details-tab2-chetfzadolg > tfoot {	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#chetview-details-tab2-chetfzadolg > tfoot > tr > th { border-bottom:none; font-weight:500; font-size:1.3em; text-transform:uppercase }
+#chetview-details-tab2-chetfzadolg > tfoot > tr > th.chetview-details-tab2-chetfzadolg-summastage { text-align:right; text-transform:none }
+
+#chetview-details-tab2-chetfzadolg > tbody > tr > td.chetview-details-tab2-chetfzadolg-collapse { padding:0 }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СЧЕТА-ФАКТУРЫ COLLAPSE"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/*
+/* Тело таблицы */
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td {
+	font-family:'Play', sans-serif;
+	font-size:1.0em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr:first-child > td {	border-top:none }
+/**/
+#chetview-details-tab2-chetfzadolg-collapse-table { margin-bottom:0 }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:first-child { width:36px }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(2) { width:5% }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(3) { width:5% }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(4) { text-align:left }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(5) { width:14%; text-align:center }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(6) { width:12%; text-align:center }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(7) { width:12%; text-align:center }
+#chetview-details-tab2-chetfzadolg-collapse-table > tbody > tr > td:nth-child(8) { width:12%; text-align:center }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#chetview-details-tab2-chetfzadolg .chetview-details-tab2-nokalplan,
+#chetview-details-tab2-chetfzadolg .chetview-details-tab2-nokalplan { color:#111; font-weight:500; font-size:1.0em }
+

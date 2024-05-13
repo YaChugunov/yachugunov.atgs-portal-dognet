@@ -1,0 +1,162 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Стилизуем вкладки формы */
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.sp-details-tabs { font-family:'Play', sans-serif; font-style:normal; font-weight:normal; font-size:0.9em; display:flex; flex-flow:row wrap; justify-content:flex-start }
+	.sp-details-tabs { border:2px #666 solid; border-radius:5px; background-color:#fff }
+	.sp-details-tabs { display: flex; flex-flow: row wrap; }
+	.sp-details-tabs fieldset legend { padding: 5px 20px; font-weight: bold; }
+	.sp-details-tabs fieldset.name { flex: 1 50%; }
+	.sp-details-tabs fieldset.name legend {}
+	.sp-details-tabs fieldset.office legend {}
+	.sp-details-tabs fieldset.hr legend { background: #ffbfbf; }
+	.sp-details-tabs div.DTE_Field { padding:0; text-align: left; }
+	.sp-details-tabs div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.sp-details-tabs .nav > li > a { color:#fff }
+	.sp-details-tabs .nav > li > a:focus, .sp-details-tabs .nav > li > a:hover { background-color:transparent; }
+	.sp-details-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	.sp-details-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	.sp-details-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	.sp-details-tabs > ul > li > a { font-family: 'Play', sans-serif; font-size:1.0em }
+/* Изменено 20.06.2019 --- */
+	.sp-details-tabs-menu { width:100%; background:#666; padding:0; border-bottom:none; margin-bottom:10px }
+	.sp-details-tabs-menu > li > a:hover { background-color:#f1f1f1	}
+	.sp-details-tabs-menu > li > a::after { content:""; background:#f1f1f1; height:40px; z-index:-1; position:absolute; width:100%; left:0px; bottom:-1px; transition:all 250ms ease 0s; transform:scale(0) }
+	.sp-details-tabs-menu > li.active > a::after, .sp-details-tabs-menu > li:hover > a::after { transform:scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.sp-details-tabs div.Section { justify-content:flex-start; padding:0;	background-color:#fafafa; display:flex;	flex-flow:row wrap;	flex-grow:1; flex-shrink:2;	flex-basis:70%;	align-content:flex-start }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.sp-details-tabs div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+	.sp-details-tabs div.Block95 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:95%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block90 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:90%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block85 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:85%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block80 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:80%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block65 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:65%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block55 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:55%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block45 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:45%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block35 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:35%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block15 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:15%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block10 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:10%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+	.sp-details-tabs div.Block5 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:5%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+.sp-details-tabs > div > div > div.Section > div > fieldset > div > label.control-label { width: 100% }
+.sp-details-tabs > div > div > div.Section > div.Block100 > fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.sp-details-tabs fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+	.sp-details-tabs fieldset.field10 > div > div { width:100% }
+	.sp-details-tabs fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+	.sp-details-tabs fieldset.field15 > div > div { width:100% }
+	.sp-details-tabs fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+	.sp-details-tabs fieldset.field20 > div > div { width:100% }
+	.sp-details-tabs fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+	.sp-details-tabs fieldset.field25 > div > div { width:100% }
+	.sp-details-tabs fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+	.sp-details-tabs fieldset.field30 > div > div { width:100% }
+	.sp-details-tabs fieldset.field35 {	flex-grow:0; flex-shrink:0; flex-basis:35% }
+	.sp-details-tabs fieldset.field35 > div > div { width:100% }
+	.sp-details-tabs fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+	.sp-details-tabs fieldset.field40 > div > div { width:100% }
+	.sp-details-tabs fieldset.field45 {	flex-grow:0; flex-shrink:0; flex-basis:45% }
+	.sp-details-tabs fieldset.field45 > div > div { width:100% }
+	.sp-details-tabs fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+	.sp-details-tabs fieldset.field50 > div > div { width:100% }
+	.sp-details-tabs fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+	.sp-details-tabs fieldset.field60 > div > div { width:100% }
+	.sp-details-tabs fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+	.sp-details-tabs fieldset.field70 > div > div { width:100% }
+	.sp-details-tabs fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+	.sp-details-tabs fieldset.field80 > div > div { width:100% }
+	.sp-details-tabs fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+	.sp-details-tabs fieldset.field90 > div > div { width:100% }
+	.sp-details-tabs fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+	.sp-details-tabs fieldset.field100 > div > div { width:100% }
+/**/
+/**/
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+/**/
+	.sp-details-tabs .Section > div > div.fieldset-table-row,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-row,
+	.sp-details-tabs .Section > div > div > div > div.fieldset-table-row,
+	.sp-details-tabs .Section > div > div > div > div > div.fieldset-table-row { display:table-row }
+/**/
+	.sp-details-tabs .Section > div > div.fieldset-table-row > div.fieldset-table-cell-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-row > div.fieldset-table-cell-text,
+	.sp-details-tabs .Section > div > div > div > div.fieldset-table-row > div.fieldset-table-cell-text,
+	.sp-details-tabs .Section > div > div > div > div > div.fieldset-table-row > div.fieldset-table-cell-text { display:table-cell; vertical-align:middle }
+/**/
+	.sp-details-tabs .Section > div > div.fieldset-table-row > div.fieldset-table-cell > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-row > div.fieldset-table-cell > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div.fieldset-table-row > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-row > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div.fieldset-table-row > div > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-row > div > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-cell-text > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-cell-text > div > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div > div.fieldset-table-cell-text > div > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div > div.fieldset-table-cell-text > div > div > div.chekbox-inline-text {
+		font-family:'HeliosCond', sans-serif; text-align:left; font-size:1.3em; font-weight:700 }
+/**/
+	.sp-details-tabs .Section > div > fieldset.fieldset-table-row,
+	.sp-details-tabs .Section > div > div > fieldset.fieldset-table-row,
+	.sp-details-tabs .Section > div > div > div > fieldset.fieldset-table-row { display:table-row; padding:0 10px }
+/**/
+	.sp-details-tabs .Section > div > div > div.fieldset-table-cell,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-cell,
+	.sp-details-tabs .Section > div > div > div > div.fieldset-table-cell,
+	.sp-details-tabs .Section > div > div.fieldset-table-cell { display:table-cell; vertical-align:middle }
+/**/
+	.sp-details-tabs .Section > div > div > div.fieldset-table-cell > fieldset > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div.fieldset-table-cell > fieldset > div.chekbox-inline-text,
+	.sp-details-tabs .Section > div > div > div > div.fieldset-table-cell > fieldset > div.chekbox-inline-text { font-family:'HeliosCond', sans-serif; text-align:left; font-size:1.3em; font-weight:700 }
+/**/
+	.sp-details-tabs .Section > div > div > div > fieldset > div > div.controls,
+	.sp-details-tabs .Section > div > div > div > fieldset > div > div.controls,
+	.sp-details-tabs .Section > div > div > div > div > fieldset > div > div.controls { width:100% }
+/**/
+/**/
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+/**/
+	.sp-details-tabs .DTE_Field_InputControl { text-align:center }
+	.sp-details-tabs .DTE_Field_InputControl > div > div > label { display:none }
+/**/
+	.sp-details-tabs .Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label,
+	.sp-details-tabs .Section > div > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+/**/
+	.sp-details-tabs .Section > div > fieldset > div > label.control-label,
+	.sp-details-tabs .Section > div > div > fieldset > div > label.control-label { width:100% }
+/**/
+	.sp-details-tabs .Section > div > legend,
+	.sp-details-tabs .Section > div > div > legend,
+	.sp-details-tabs .Section > div > div > div > legend { padding:5px 0 5px 15px; font-family:'HeliosCond', sans-serif; font-size:1.3em; font-weight:normal; border:none; border-left:10px #b95959 solid; text-transform:none; color:#111; background-color:#ddd; margin-bottom:5px }
+/**/
+	.sp-details-tabs .Section > div > fieldset > div.fieldset-info,
+	.sp-details-tabs .Section > div > div > fieldset > div.fieldset-info { min-height:34px; font-style:italic; padding:2px }
+/**/
+/**/
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+/**/
+	div.DTE div.DTE_Processing_Indicator span,
+	div.DTE div.DTE_Processing_Indicator:before,
+	div.DTE div.DTE_Processing_Indicator:after { display:none }

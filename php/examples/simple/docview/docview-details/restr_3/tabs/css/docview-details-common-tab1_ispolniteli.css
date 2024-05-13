@@ -1,0 +1,11 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#docview-details-tab1_ispolniteli > thead { display:none }
+#docview-details-tab1_ispolniteli > tbody > tr:first-child { display:none }
+#docview-details-tab1_ispolniteli > tbody > tr > td { border:none }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/

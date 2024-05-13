@@ -1,0 +1,47 @@
+/* 
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+Общие настройки
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+*/
+#docview-details-tab11, #docview-details-tab12, #docview-details-tab13 {
+
+}
+#docview-details-tab11 > thead, #docview-details-tab11 > tbody, #docview-details-tab12 > thead, #docview-details-tab12 > tbody, #docview-details-tab13 > thead, #docview-details-tab13 > tbody {
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 0.9em;
+	color:#666;
+	border-bottom:none;
+	border-top:none;
+}
+#docview-details-tab11 > thead, #docview-details-tab12 > thead, #docview-details-tab13 > thead { 
+	background-color:#f5f5f5;
+	color:#333;
+	font-weight: 300;
+}
+#docview-details-tab11 > tbody > tr > td, #docview-details-tab12 > tbody > tr > td, #docview-details-tab13 > tbody > tr > td {
+    padding: 5px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#docview-details-tab11 > thead > tr > th, #docview-details-tab12 > thead > tr > th, #docview-details-tab13 > thead > tr > th { border-bottom:none }
+#docview-details-tab11 > tbody > tr > td, #docview-details-tab12 > tbody > tr > td, #docview-details-tab13 > tbody > tr > td { border-top:none }
+/* 
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+Datatable "Календарные планы"
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+*/
+/* 	#docview-details-tab12 > thead { display:none } */
+/* 	#docview-details-tab12 > tbody > tr:first-child { display:none } */
+	#docview-details-tab12 > tbody > tr:first-child  > td { border:none }
+/* 	#docview-details-tab12 > thead > tr:first-child  > td:first-child { width:2% } */
+/* 	#docview-details-tab12 > tbody > tr > td { border:none } */
+	#docview-tab12 .panel-title {
+		font-size:1.3em;
+		font-weight:600;
+		text-transform:none;
+		padding:0;
+	}
+	#docview-tab12 .panel {
+	    border:1px solid #f5f5f5;
+	}
+	#row-details-table15 { font-family:'Oswald', sans-serif; font-size:1.0em }

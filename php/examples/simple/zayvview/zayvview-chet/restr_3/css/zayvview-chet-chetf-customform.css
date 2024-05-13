@@ -1,0 +1,195 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+Пользовательская форма создания/редактирования записи
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#customForm-chet-chetf-editor-tabs .nav > li > a { color:#fff }
+	#customForm-chet-chetf-editor-tabs .nav > li > a:focus, #customForm-chet-chetf-editor-tabs .nav > li > a:hover { background-color:transparent; }
+	#customForm-chet-chetf-editor-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#customForm-chet-chetf-editor-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#customForm-chet-chetf-editor-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#customForm-chet-chetf-editor-tabs > ul > li > a { font-family: 'Play', sans-serif; font-size:1.0em }
+/* Изменено 20.06.2019 --- */
+	#customForm-chet-chetf-editor-tabs-menu {
+		background:#666;
+		padding:0;
+		border-bottom: none;
+		margin-bottom:10px;
+	}
+	#customForm-chet-chetf-editor-tabs-menu > li > a:hover {
+		background-color:#f1f1f1
+	}
+	#customForm-chet-chetf-editor-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#customForm-chet-chetf-editor-tabs-menu > li.active > a::after, #customForm-chet-chetf-editor-tabs-menu > li:hover > a::after {
+		transform: scale(1);
+	}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-chet-chetf {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-chet-chetf div.Section {
+	justify-content:flex-start;
+	padding:0;
+	background-color:#fafafa;
+	display:flex;
+	flex-flow:row wrap;
+	flex-grow:1;
+	flex-shrink:2;
+	flex-basis:70%;
+	align-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-chet-chetf { border:2px #666 solid; border-radius:5px; background-color:#fff }
+#customForm-chet-chetf { display: flex; flex-flow: row wrap; }
+#customForm-chet-chetf fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm-chet-chetf fieldset.name { flex: 1 50%; }
+#customForm-chet-chetf fieldset.name legend {}
+#customForm-chet-chetf fieldset.office legend {}
+#customForm-chet-chetf fieldset.hr legend { background: #ffbfbf; }
+#customForm-chet-chetf div.DTE_Field { padding:0; text-align: left; }
+#customForm-chet-chetf div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-chet-chetf div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+#customForm-chet-chetf div.Block80 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:80%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block35 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:35%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-chet-chetf div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-chet-chetf > div.Section > div > fieldset > div > label.control-label { width: 100% }
+#customForm-chet-chetf > div.Section > div.Block100 > fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm-chet-chetf fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+		#customForm-chet-chetf fieldset.field10 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+		#customForm-chet-chetf fieldset.field15 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+		#customForm-chet-chetf fieldset.field20 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+		#customForm-chet-chetf fieldset.field25 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+		#customForm-chet-chetf fieldset.field30 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field35 {	flex-grow:0; flex-shrink:0; flex-basis:35% }
+		#customForm-chet-chetf fieldset.field35 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+		#customForm-chet-chetf fieldset.field40 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+		#customForm-chet-chetf fieldset.field50 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field55 {	flex-grow:0; flex-shrink:0; flex-basis:55% }
+		#customForm-chet-chetf fieldset.field55 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+		#customForm-chet-chetf fieldset.field60 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+		#customForm-chet-chetf fieldset.field70 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field75 {	flex-grow:0; flex-shrink:0; flex-basis:75% }
+		#customForm-chet-chetf fieldset.field75 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+		#customForm-chet-chetf fieldset.field80 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+		#customForm-chet-chetf fieldset.field90 > div > div { width:100% }
+		#customForm-chet-chetf fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm-chet-chetf fieldset.field100 > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-chet-chetf div.DTE_Field_InputControl { text-align:center }
+#customForm-chet-chetf > div.Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+#customForm-chet-chetf div.DTE_Field_InputControl > div > div > label { display:none }
+#customForm-chet-chetf fieldset > div > label.control-label { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm-chet-chetf div.rDS2 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+		#customForm-chet-chetf > div.Section > div.rDS2 > fieldset.docnamefullm > div > div { width:100% }
+
+	#customForm-chet-chetf > div.Section > div.rDS2 > fieldset > div > label.control-label { width: 100% }
+	#customForm-chet-chetf > div.Section > div.rDS3 > fieldset > div > label.control-label { width: 100% }
+	#customForm-chet-chetf div.rDS3 { display:flex; flex-flow:row wrap; flex-grow:1; flex-shrink:1; flex-basis:100%; justify-content:flex-end; align-content:flex-start; }
+	#customForm-chet-chetf > div.Section > div.rDS3 > fieldset > div > div { width:100% }
+		#customForm-chet-chetf fieldset.docnumberRel {	flex-grow:1; flex-shrink:3; flex-basis:100%; }
+		#DTE_Field_mailbox_incoming-outbox_docnumber_rel { width: 99.99%; }
+		#DTE_Field_inbox_docnumber_rel { width:100%; }
+
+
+#customForm-chet-chetf div.DTE_Field > label.control-label {
+    text-align: left;
+    font-family: 'HeliosCond', sans-serif;
+    text-transform: none;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #000;
+}
+
+#customForm-chet-chetf > div > div > div > div.Section > div > legend,
+#customForm-chet-chetf > div > div > div > div.Section > div > div > legend { padding:5px 0 5px 15px; font-family:'HeliosCond', sans-serif; font-size:1.3em; font-weight:normal; border:none; border-left:10px #b95959 solid; text-transform:none; color:#111; background-color:#ddd }
+
+
+#docsearch-filters-block .panel-title {
+    font-family: 'HeliosCond', sans-serif;
+    font-size: 1.5em;
+    font-weight: 500;
+    padding-top: 5px;
+    text-transform:none;
+}
+#docsearch-filters-block .panel { border:transparent }
+
+#customForm-chet-chetf > div.Section > div > fieldset.kodobjectFilter > input, #customForm-chet-chetf > div.Section > div > fieldset.kodzakazFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+
+
+
+textarea[id=DTE_Field_dognet_docsubpodr-namedocsubpodr] { resize:none }
+
+#DTE_Field_dognet_doczayvchetf-msgDocFileID {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'HeliosCond',sans-serif;
+    color: #b95959;
+    border: 2px #b95959 solid;
+    background-color: transparent;
+    padding: 5% 0;
+}
+
+div.DTE div.editor_upload div.cell {
+    display: table-cell;
+    position: relative;
+    width: 100%;
+    vertical-align: top;
+}
+
+
+#customForm-chet-chetf .cell.upload,
+#customForm-chet-chetf div.DTE_Field_InputControl div.cell.upload.limitHide > button {
+    color: #333;
+    background-color: #f1f1f1;
+    border-color: #f0f0f0;
+    font-size: 1.0em;
+    height: 3.0em;
+}
+#customForm-chet-chetf div.DTE_Field_InputControl div.row.second div.cell.limitHide,
+#customForm-chet-chetf div.DTE_Field_InputControl div.cell.clearValue {
+    display: none;
+}

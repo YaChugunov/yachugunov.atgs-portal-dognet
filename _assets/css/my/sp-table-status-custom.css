@@ -1,0 +1,105 @@
+/* 
+	----- ----- ----- ----- ----- ----- ----- ----- ----- -----  
+*/
+#sp-status-tab1, #sp-status-tab2, #sp-status-tab3 {
+	margin-top:10%;
+/* 	background-color:#fafafa; */
+/* 	border:2px #ddd solid; */
+}
+
+#sp-status-tab1 > tbody, #sp-status-tab2 > tbody, #sp-status-tab3 > tbody {
+	font-size: 0.85em;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+#sp-status-tab1 > thead, #sp-status-tab2 > thead, #sp-status-tab3 > thead, #sp-status-tab1 > thead, #sp-status-tab2 > thead, #sp-status-tab3 > thead {
+	font-family: 'Ubuntu', sans-serif;
+	background-color:#f1f1f1;
+	color:#111;
+	font-weight: 300;
+	font-size: 0.9em;	
+}
+#sp-status-tab1 > thead > tr > th, #sp-status-tab2 > thead > tr > th, #sp-status-tab3 > thead > tr > th { vertical-align:bottom; border-bottom:none }
+#sp-status-tab1 > tfoot > tr > td, #sp-status-tab1 > tfoot >tr > th { padding:5px 4px }
+#sp-status-tab2 > tfoot > tr > td, #sp-status-tab2 > tfoot >tr > th { padding:5px 4px }
+#sp-status-tab3 > tfoot > tr > td, #sp-status-tab3 > tfoot >tr > th { padding:5px 4px }
+#sp-status-tab1 > tfoot, #sp-status-tab2 > tfoot, #sp-status-tab3 > tfoot { background-color:#999 }
+
+#sp-status-tab1 > tbody > tr > td, #sp-status-tab2 > tbody > tr > td, #sp-status-tab3 > tbody > tr > td {
+    padding: 5px 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+
+#sp-status-tab1_details, #sp-status-tab2_details, #sp-status-tab3_details, #sp-details {
+	width: -webkit-fill-available;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	border-left: 2px #333 solid;
+}
+#sp-status-tab1_details > tbody > tr > td, #sp-status-tab2_details > tbody > tr > td, #sp-status-tab3_details > tbody > tr > td, #sp_details > tbody > tr > td { padding-left: 20px; vertical-align: top }
+
+#column3_search, #column4_search, #column5_search, #column6_search, #column7_search, #column8_search {
+	width: 100%;
+	padding: 5px 5px;
+	font-weight: 400;
+	font-size: 0.9em;
+	color: #333;
+}
+#column3_search { text-align: center }
+
+#filters_clear, #filters_apply {
+	padding: 6px;
+    font-weight: 400;
+    font-size: 0.9em;
+/*     color: #333;	 */
+} 
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.title-main { font-family:'BebasNeueRegular',sans-serif; font-weight:200; font-size:4.0em }
+	h3.subtitle-main > span { background-color:#111; color:#f1f1f1; padding:2px 4px; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-weight:400; font-size:1.0em; text-transform:uppercase; letter-spacing:0.05em; margin-left:2px }
+	.title-small { color:red; font-family:'BebasNeueRegular',sans-serif; font-weight:200; font-size:4.0em; line-height:0.75em }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.dataTables_length { float: left; text-align: left; }	
+	.dataTables_filter { float: right; text-align: right; }	
+	.dataTables_info { float: left; text-align: left; }	
+	.dataTables_paginate { float: right; text-align: right; }
+	td.details-control {
+/* 	    background: url('images/slide-down.png') no-repeat center center; */
+	    cursor: pointer;
+	}
+	tr.details td.details-control {
+/*     	background: url('images/slide-up.png') no-repeat center center; */
+	}
+
+	#sp-status-tab1 > tbody > tr > td > table.tableDetails, #sp-status-tab2 > tbody > tr > td > table.tableDetails, #sp-status-tab3 > tbody > tr > td > table.tableDetails {
+		color: #333;
+	    font-size: 1.0em;
+	}
+	
+#sp-status-tab1 .hr-small, #sp-status-tab2 .hr-small, #sp-status-tab3 .hr-small {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+#DTE_Field_namezakshot, #DTE_Field_namezaklong, #DTE_Field_zakuraddress, #DTE_Field_zakdolg, #DTE_Field_zakfio, #DTE_Field_zaktelnumber, #DTE_Field_zakinn, #DTE_Field_zakkpp
+ { min-width: 100%; max-width: 100%; min-height: max-content }
+ #DTE_Field_zakbankch { min-width: 100%; min-height: max-content }
+
+#sp-status-tab1_wrapper .dt-buttons.btn-group, #sp-status-tab2_wrapper .dt-buttons.btn-group, #sp-status-tab3_wrapper .dt-buttons.btn-group { float:left; margin-bottom:10px; margin-right:20px }
+#sp-status-tab1_wrapper .dataTables_length, #sp-status-tab2_wrapper .dataTables_length, #sp-status-tab3_wrapper .dataTables_length { float:right; font-family:'Play', sans-serif }
+#sp-status-tab1_filter, #sp-status-tab2_filter, #sp-status-tab3_filter { float:left; font-family:'Play', sans-serif }
+#sp-status-tab1_length > label > select, #sp-status-tab1_filter > label > input { height:34px }
+#sp-status-tab2_length > label > select, #sp-status-tab2_filter > label > input { height:34px }
+#sp-status-tab3_length > label > select, #sp-status-tab3_filter > label > input { height:34px }
+
+#record-details {  }
+#record-details > div > div > div > span.details-docID { font-family:'Oswald', sans-serif; background-color:#111; color:#fafafa; padding:0 5px }
+#record-details > div > div > div > h2 { font-family:'Oswald', sans-serif; font-weight:300 }
+#record-details-table1, #record-details-table2 { font-family:'Oswald', sans-serif }
+#record-details-table1 > tbody > tr > td > p.details-sender { color:#333; font-weight:400 }
+#record-details-table1 > tbody > tr > td > p.details-sendername { color:#333; font-weight:400 }
+#record-details-table1 > tbody > tr > td > p.details-sendernumber { color:#333; font-weight:400 }
+#record-details-table1, #record-details-table2 { font-size:1.1em }

@@ -1,0 +1,28 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица оплат: #chetview-edit-tab3_oplata
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+/* Общее для таблицы */
+#chetview-edit-tab3_oplata {  }
+#chetview-edit-tab3_oplata .details-control:hover { cursor:pointer }
+
+/* Заголовок таблицы */
+#chetview-edit-tab3_oplata > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#chetview-edit-tab3_oplata > thead > tr > th { color:#666; border-bottom:none; font-weight:500; font-size:1.0em; text-transform:uppercase; padding:5px }
+#chetview-edit-tab3_oplata .sorting:after, #chetview-edit-tab3_oplata .sorting_asc:after, #chetview-edit-tab3_oplata .sorting_desc:after { display:none }
+#chetview-edit-tab3_oplata > thead > tr > th.sorting, #chetview-edit-tab3_oplata > thead > tr > th.sorting_asc, #chetview-edit-tab3_oplata > thead > tr > th.sorting_desc { padding-right:8px }
+
+/* Тело таблицы */
+#chetview-edit-tab3_oplata > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#chetview-edit-tab3_oplata > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+
+#chetview-edit-tab3_oplata > thead > tr > th:first-child, #chetview-edit-tab3_oplata > tbody > tr > td:first-child, #chetview-edit-tab3_oplata > tfoot > tr > th:first-child { width:20%; text-align:left }
+#chetview-edit-tab3_oplata > thead > tr > th:nth-child(2), #chetview-edit-tab3_oplata > tbody > tr > td:nth-child(2), #chetview-edit-tab3_oplata > tfoot > tr > th:nth-child(2) { width:15%; text-align:center }
+#chetview-edit-tab3_oplata > thead > tr > th:nth-child(3), #chetview-edit-tab3_oplata > tbody > tr > td:nth-child(3), #chetview-edit-tab3_oplata > tfoot > tr > th:nth-child(3) { width:65%; text-align:right }
+#chetview-edit-tab3_oplata > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+
+/* Подвал таблицы */
+#chetview-edit-tab3_oplata .sorting_asc:after, #chetview-edit-tab3_oplata .sorting_desc:after { display:none }
+#chetview-edit-tab3_oplata > thead > tr > th.sorting_asc { padding-right:8px }
+
+

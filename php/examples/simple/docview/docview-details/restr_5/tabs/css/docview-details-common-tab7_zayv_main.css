@@ -1,0 +1,146 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+
+#docview-zayv-main td.highlight_td { background-color:#fafafa; font-weight:500; color:#000 }
+#docview-zayv-main td.highlight_0 { background-color:#fafafa }
+#docview-zayv-main td.highlight_1 { background-color:#fafafa }
+#docview-zayv-main td.highlight_2 { background-color:#fafafa }
+#docview-zayv-main.dataTable tbody tr.selected td.highlight_0,
+#docview-zayv-main.dataTable tbody tr.selected td.highlight_1,
+#docview-zayv-main.dataTable tbody tr.selected td.highlight_2 { color:#666 }
+
+/*
+/*
+/* Заголовок таблицы */
+#docview-zayv-main > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-zayv-main > thead > tr > th { color:#333; border-bottom:none; font-weight:500; text-transform:uppercase }
+#docview-zayv-main .sorting:after, #docview-zayv-main .sorting_asc:after, #docview-zayv-main .sorting_desc:after { display:none }
+#docview-zayv-main > thead > tr > th.sorting, #docview-zayv-main > thead > tr > th.sorting_asc, #docview-zayv-main > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#docview-zayv-main {  }
+#docview-zayv-main > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#docview-zayv-main > tbody > tr > td {  }
+#docview-zayv-main > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#docview-zayv-main > thead > tr > th { border-bottom:none }
+#docview-zayv-main > tbody > tr > td {  }
+#docview-zayv-main > tbody > tr > td:last-child { text-align:right }
+
+#docview-zayv-main > tfoot > tr > td { padding:5px 4px }
+#docview-zayv-main > tfoot {
+	background-color:#999;
+}
+
+#docview-details-tab7-zayv-message-table > tbody > tr > td { border-top:none; border-bottom:none }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#docview-zayv-main > thead > tr > th:first-child, #docview-zayv-main > tbody > tr > td:first-child { width:1%; text-align:center }
+	#docview-zayv-main > thead > tr > th:nth-child(2), #docview-zayv-main > tbody > tr > td:nth-child(2) { width:2%; text-align:center }
+	#docview-zayv-main > thead > tr > th:nth-child(3), #docview-zayv-main > tbody > tr > td:nth-child(3) { width:7%; text-align:left }
+	#docview-zayv-main > thead > tr > th:nth-child(4), #docview-zayv-main > tbody > tr > td:nth-child(4) { width:5%; text-align:center }
+	#docview-zayv-main > thead > tr > th:nth-child(5), #docview-zayv-main > tbody > tr > td:nth-child(5) { width:5%; text-align:center }
+	#docview-zayv-main > thead > tr > th:nth-child(6), #docview-zayv-main > tbody > tr > td:nth-child(6) { width:60%; text-align:left }
+	#docview-zayv-main > thead > tr > th:nth-child(7), #docview-zayv-main > tbody > tr > td:nth-child(7) { width:10%; text-align:center }
+	#docview-zayv-main > thead > tr > th:nth-child(8), #docview-zayv-main > tbody > tr > td:nth-child(8) { width:5%; text-align:left; color:#000; white-space:nowrap }
+	#docview-zayv-main > thead > tr > th:nth-child(9), #docview-zayv-main > tbody > tr > td:nth-child(9) { width:5%; text-align:center; color:#000; white-space:nowrap }
+
+	#docview-zayv-main .details-control:hover { cursor:pointer }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#docview-zayv-main .sorting_asc:after { display:none }
+	#docview-zayv-main > thead > tr > th.sorting_asc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-zayv-main-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-zayv-main { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-docview-zayv-main-tabs .nav > li > a { color:#fff }
+	#row-details-docview-zayv-main-tabs .nav > li > a:focus, #row-details-docview-zayv-main-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-zayv-main-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-main-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-main-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-zayv-main-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-zayv-main-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-zayv-main-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-zayv-main-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-zayv-main-tabs-menu > li.active > a::after,
+	#row-details-docview-zayv-main-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-docview-zayv-main-tabs .nav > li > a { color:#fff }
+	#row-details-docview-zayv-main-tabs .nav > li > a:focus, #row-details-docview-zayv-main-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-zayv-main-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-main-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-main-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-zayv-main-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-zayv-main-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-zayv-main-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-zayv-main-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-zayv-main-tabs-menu > li.active > a::after,
+	#row-details-docview-zayv-main-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-docview-zayv-main-table { margin-bottom:0; background-color:transparent }
+#row-details-docview-zayv-main-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-docview-zayv-main-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-docview-zayv-main-table > tbody > tr > td:first-child { text-align:left }
+#row-details-docview-zayv-main-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-docview-zayv-main-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-docview-zayv-main-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-docview-zayv-main-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-docview-zayv-main-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-docview-zayv-main-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-docview-zayv-main-table-title { color:#666; font-weight:700 }
+.row-details-docview-zayv-main-table-txt { color:#666; font-weight:300 }
+.row-details-docview-zayv-main-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-docview-zayv-main-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

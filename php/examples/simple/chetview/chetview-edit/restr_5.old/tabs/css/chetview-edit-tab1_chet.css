@@ -1,0 +1,164 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#chetview-edit-tab1_chet {  }
+#chetview-edit-tab1_chet .details-control:hover { cursor:pointer }
+/*
+/*
+/* Заголовок таблицы */
+#chetview-edit-tab1_chet > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#chetview-edit-tab1_chet > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#chetview-edit-tab1_chet .sorting:after, #chetview-edit-tab1_chet .sorting_asc:after, #chetview-edit-tab1_chet .sorting_desc:after { display:none }
+#chetview-edit-tab1_chet > thead > tr > th.sorting, #chetview-edit-tab1_chet > thead > tr > th.sorting_asc, #chetview-edit-tab1_chet > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#chetview-edit-tab1_chet {  }
+#chetview-edit-tab1_chet > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#chetview-edit-tab1_chet > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+#chetview-edit-tab1_chet > thead > tr > th { border-bottom:none }
+#chetview-edit-tab1_chet > tbody > tr > td {  }
+#chetview-edit-tab1_chet > tbody > tr > td:last-child { text-align:right }
+#chetview-edit-tab1_chet .details-control:hover { cursor:pointer }
+#chetview-edit-tab1_chet > thead > tr > th:first-child, #chetview-edit-tab1_chet > tbody > tr > td:first-child { width:2%; text-align:center }
+#chetview-edit-tab1_chet > thead > tr > th:nth-child(2), #chetview-edit-tab1_chet > tbody > tr > td:nth-child(2) { width:83%; text-align:left }
+#chetview-edit-tab1_chet > thead > tr > th:nth-child(3), #chetview-edit-tab1_chet > tbody > tr > td:nth-child(3) { width:15%; text-align:left }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#chetview-edit-tab1_chet .sorting_asc:after { display:none }
+#chetview-edit-tab1_chet > thead > tr > th.sorting_asc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#row-edit-tab1_chet { font-family:'Oswald', sans-serif; font-size:1.0em }
+#row-edit-tab1_chet > tbody >tr > td { text-align:left }
+
+#chetview-tab1_chet .panel { border:1px solid #f5f5f5 }
+#row-edit-tab1_chet .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+#row-edit-tab1_chet .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+	#doc-editor-tabs .nav > li > a { color:#fff }
+	#doc-editor-tabs .nav > li > a:focus, #doc-editor-tabs .nav > li > a:hover { background-color:transparent; }
+	#doc-editor-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#doc-editor-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#doc-editor-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#doc-editor-tabs > ul > li > a { font-family: 'Play', sans-serif; font-size:1.0em }
+/* Изменено 20.06.2019 --- */
+	#doc-editor-tabs-menu {
+		background:#666;
+		padding:0;
+		border-bottom: none;
+		margin-bottom:10px;
+	}
+	#doc-editor-tabs-menu > li > a:hover {
+		background-color:#f1f1f1
+	}
+	#doc-editor-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#doc-editor-tabs-menu > li.active > a::after, #doc-editor-tabs-menu > li:hover > a::after {
+		transform: scale(1);
+	}
+/**/
+/**/
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/
+/**/
+/**/
+	#row-details-current-table .title-column { color:#333; font-family: 'Oswald', sans-serif; font-weight:400; text-align:left }
+	#row-details-current-table .data-column { font-family: Courier, Courier new, Serif; font-weight:300; text-align:left }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-chetview-doc-edit-tab1-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-doc-edit-tab1 { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-chetview-doc-edit-tab1-tabs .nav > li > a { color:#fff }
+	#row-details-chetview-doc-edit-tab1-tabs .nav > li > a:focus, #row-details-chetview-doc-edit-tab1-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-chetview-doc-edit-tab1-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-chetview-doc-edit-tab1-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-chetview-doc-edit-tab1-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-chetview-doc-edit-tab1-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-chetview-doc-edit-tab1-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li.active > a::after,
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-chetview-doc-edit-tab1-tabs .nav > li > a { color:#fff }
+	#row-details-chetview-doc-edit-tab1-tabs .nav > li > a:focus, #row-details-chetview-doc-edit-tab1-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-chetview-doc-edit-tab1-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-chetview-doc-edit-tab1-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-chetview-doc-edit-tab1-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-chetview-doc-edit-tab1-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-chetview-doc-edit-tab1-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li.active > a::after,
+	#row-details-chetview-doc-edit-tab1-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-chetview-doc-edit-tab1-table { margin-bottom:0; background-color:transparent }
+#row-details-chetview-doc-edit-tab1-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-chetview-doc-edit-tab1-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-chetview-doc-edit-tab1-table > tbody > tr > td:first-child { text-align:left }
+#row-details-chetview-doc-edit-tab1-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-chetview-doc-edit-tab1-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-chetview-doc-edit-tab1-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-chetview-doc-edit-tab1-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-chetview-doc-edit-tab1-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-chetview-doc-edit-tab1-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-chetview-doc-edit-tab1-table-title { color:#666; font-weight:700 }
+.row-details-chetview-doc-edit-tab1-table-txt { color:#666; font-weight:300 }
+.row-details-chetview-doc-edit-tab1-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-chetview-doc-edit-tab1-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+

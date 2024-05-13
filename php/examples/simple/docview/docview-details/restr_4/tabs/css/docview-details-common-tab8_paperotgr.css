@@ -1,0 +1,121 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СВОДКА ПО СЧЕТАМ-ФАКТУРАМ"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-details-tab8-paperotgr {  }
+#docview-details-tab8-paperotgr .details-control:hover { cursor:pointer }
+#docview-details-tab8-paperotgr .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#docview-details-tab8-paperotgr > thead {	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-details-tab8-paperotgr > thead > tr > th { background-color:#f0f0f0; color:#111; border-bottom:none; font-weight:500; font-size:1.0em; text-transform:uppercase }
+/*
+/*
+/* Тело таблицы */
+#docview-details-tab8-paperotgr > tbody > tr > td {
+	font-family:'Play', sans-serif;
+	font-size:0.9em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+#docview-details-tab8-paperotgr > thead > tr > th:first-child, #docview-details-tab8-paperotgr > tbody > tr > td:first-child { width:36px; text-align:center }
+#docview-details-tab8-paperotgr > thead > tr > th:nth-child(2), #docview-details-tab8-paperotgr > tbody > tr > td:nth-child(2) { width:10%; text-align:center }
+#docview-details-tab8-paperotgr > thead > tr > th:nth-child(3), #docview-details-tab8-paperotgr > tbody > tr > td:nth-child(3) { width:10%; text-align:center }
+#docview-details-tab8-paperotgr > thead > tr > th:nth-child(4), #docview-details-tab8-paperotgr > tbody > tr > td:nth-child(4) { width:30%; text-align:left }
+#docview-details-tab8-paperotgr > thead > tr > th:nth-child(5), #docview-details-tab8-paperotgr > tbody > tr > td:nth-child(5) { text-align:left }
+#docview-details-tab8-paperotgr > thead > tr > th:nth-child(6), #docview-details-tab8-paperotgr > tbody > tr > td:nth-child(6) { width:5%; text-align:center }
+#docview-details-tab8-paperotgr > tbody > tr > td.dataTables_empty { text-align:center; border-bottom:1px #951402 solid; border-top:1px #951402 solid; text-transform:uppercase; font-style:italic; color:#951402 }
+#docview-details-tab8-paperotgr > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+#docview-details-tab8-paperotgr-avans > tbody > tr > td.docview-details-tab8-paperotgr-avans-collapse { padding:0 }
+/*
+/*
+/* Подвал таблицы */
+#docview-details-tab8-paperotgr > tfoot {	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-details-tab8-paperotgr > tfoot > tr > th { border-bottom:none; font-weight:500; font-size:1.3em; text-transform:uppercase }
+#docview-details-tab8-paperotgr > tfoot > tr > th.docview-details-tab8-paperotgr-summastage { text-align:right; text-transform:none }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СЧЕТА-ФАКТУРЫ COLLAPSE"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/*
+/* Тело таблицы */
+#docview-details-tab8-paperotgr > tbody > tr > td.docview-details-tab8-paperotgr-collapse { padding:2px 5px }
+#docview-details-tab8-paperotgr-collapse-table > tbody > tr > td {
+	font-family:'Play', sans-serif;
+	font-size:1.0em;
+	padding: 2px 5px;
+	line-height: 1.42857143;
+	vertical-align: middle
+}
+
+#docview-details-tab8-paperotgr-message-table > tbody > tr > td { border-top:none; border-bottom:none }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-paperotgr-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-paperotgr { border:2px #336a86 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-docview-paperotgr-tabs .nav > li > a { color:#fff }
+	#row-details-docview-paperotgr-tabs .nav > li > a:focus, #row-details-docview-paperotgr-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-paperotgr-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-paperotgr-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-paperotgr-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-paperotgr-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+	#row-details-docview-paperotgr-tabs .nav > li > a { color:#fff }
+	#row-details-docview-paperotgr-tabs .nav > li > a:focus, #row-details-docview-paperotgr-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-paperotgr-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-paperotgr-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-paperotgr-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-paperotgr-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-paperotgr-tabs-menu { background:#336a86; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-paperotgr-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-paperotgr-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-paperotgr-tabs-menu > li.active > a::after,
+	#row-details-docview-paperotgr-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-docview-paperotgr-table { margin-bottom:0; background-color:transparent }
+#row-details-docview-paperotgr-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-docview-paperotgr-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-docview-paperotgr-table > tbody > tr > td:first-child { text-align:left }
+#row-details-docview-paperotgr-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-docview-paperotgr-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-docview-paperotgr-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-docview-paperotgr-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-docview-paperotgr-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-docview-paperotgr-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-docview-paperotgr-table-title { color:#666; font-weight:700 }
+.row-details-docview-paperotgr-table-txt { color:#666; font-weight:300 }
+.row-details-docview-paperotgr-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-docview-paperotgr-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

@@ -1,0 +1,229 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #zayvview-zayv-child-files
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#zayvview-zayv-child-files-spec {	 }
+#zayvview-zayv-child-files-msg .zayv-warning-message {	font-family:'Oswald', sans-serif; font-size:1.3em; letter-spacing:0.2em }
+#zayvview-zayv-child-files-msg .zayv-warning-message-small {	font-family:'Oswald', sans-serif; font-size:1.1em; letter-spacing:0.1em }
+#zayvview-zayv-child-files-msg > tbody > tr > td { border:none }
+
+/*
+/* Общее для таблицы */
+#zayvview-zayv-child-files {  }
+#zayvview-zayv-child-files { /* border:2px #951402 solid */ }
+#zayvview-zayv-child-files .details-control:hover { cursor:pointer }
+#zayvview-zayv-child-files .font-courier { font-family:courier,courier new,serif }
+
+#zayvview-zayv-child-files td.highlight { background-color:#faeeaa }
+#zayvview-zayv-child-files.dataTable tbody tr.selected td.highlight { color:#666 }
+
+#zayvview-zayv-child-files.dataTable tbody tr.selected, #zayvview-zayv-child-files.dataTable tbody th.selected, #zayvview-zayv-child-files.dataTable tbody td.selected { color:white }
+/*
+/*
+/* Заголовок таблицы */
+#zayvview-zayv-child-files > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#zayvview-zayv-child-files > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#zayvview-zayv-child-files > thead > tr > th:first-child { text-align:center }
+#zayvview-zayv-child-files > thead > tr > th:nth-child(2) { text-align:center }
+#zayvview-zayv-child-files > thead > tr > th:nth-child(3) { text-align:left }
+#zayvview-zayv-child-files > thead > tr > th:nth-child(4) { text-align:center }
+/* Тело таблицы */
+#zayvview-zayv-child-files > tbody { font-size:0.9em; color:#666; border-bottom:none;	border-top:none }
+#zayvview-zayv-child-files > tbody > tr > td { padding:2px 5px; line-height: 1.42857143; vertical-align: middle }
+#zayvview-zayv-child-files > tbody > tr > td {  }
+#zayvview-zayv-child-files > tbody > tr > td:first-child { width:1%; text-align:center }
+#zayvview-zayv-child-files > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+#zayvview-zayv-child-files > tbody > tr > td:nth-child(3) { width:93%; text-align:left }
+#zayvview-zayv-child-files > tbody > tr > td:nth-child(4) { width:3%; text-align:center }
+#zayvview-zayv-child-files > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#666; background-color:#fafafa }
+/* Подвал таблицы */
+#zayvview-zayv-child-files > tfoot > tr > th:first-child { text-align:center }
+#zayvview-zayv-child-files > tfoot > tr > th:nth-child(2) { text-align:center }
+#zayvview-zayv-child-files > tfoot > tr > td:nth-child(3) { text-align:left }
+#zayvview-zayv-child-files > tfoot > tr > td:nth-child(4) { text-align:center }
+
+#zayvview-zayv-child-files .sorting_asc:after, #zayvview-zayv-child-files .sorting_desc:after, #zayvview-zayv-child-files .sorting:after { display:none }
+#zayvview-zayv-child-files > thead > tr > th.sorting_asc { padding-right:8px }
+/* Подвал таблицы */
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-files { display: flex; flex-flow: row wrap; }
+#customForm-zayv-child-files fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm-zayv-child-files fieldset.name { flex: 1 50%; }
+#customForm-zayv-child-files fieldset.name legend {}
+#customForm-zayv-child-files fieldset.office legend {}
+#customForm-zayv-child-files fieldset.hr legend { background: #ffbfbf; }
+#customForm-zayv-child-files div.DTE_Field { padding:0; text-align: left; }
+#customForm-zayv-child-files div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+div.modal-dialog { margin:1.0em auto; width:80% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-files {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-files div.Section {
+	justify-content:flex-start;
+	padding:0;
+	background-color:#fafafa;
+	display:flex;
+	flex-flow:row wrap;
+	flex-grow:1;
+	flex-shrink:2;
+	flex-basis:70%;
+	align-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-files div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+#customForm-zayv-child-files div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm-zayv-child-files div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-files > div.Section > div > fieldset > div > label.control-label { width: 100% }
+#customForm-zayv-child-files > div.Section > div.Block100 > fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm-zayv-child-files fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+		#customForm-zayv-child-files fieldset.field10 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+		#customForm-zayv-child-files fieldset.field15 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+		#customForm-zayv-child-files fieldset.field20 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+		#customForm-zayv-child-files fieldset.field25 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+		#customForm-zayv-child-files fieldset.field30 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+		#customForm-zayv-child-files fieldset.field40 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field45 {	flex-grow:0; flex-shrink:0; flex-basis:45% }
+		#customForm-zayv-child-files fieldset.field45 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+		#customForm-zayv-child-files fieldset.field50 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+		#customForm-zayv-child-files fieldset.field60 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+		#customForm-zayv-child-files fieldset.field70 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+		#customForm-zayv-child-files fieldset.field80 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+		#customForm-zayv-child-files fieldset.field90 > div > div { width:100% }
+		#customForm-zayv-child-files fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm-zayv-child-files fieldset.field100 > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm-zayv-child-files div.DTE_Field_InputControl { text-align:center }
+#customForm-zayv-child-files > div.Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+#customForm-zayv-child-files div.DTE_Field_InputControl > div > div > label { display:none }
+#customForm-zayv-child-files fieldset > div > label.control-label { width:100% }
+
+#customForm-zayv-child-files > div.Section > div > legend,
+#customForm-zayv-child-files > div.Section > div > div > legend { padding: 5px 0 5px 15px; font-family: 'HeliosCond', sans-serif; font-weight: normal; border: none; border-left: 10px #b95959 solid; text-transform: none; color: #111; background-color: #ddd; }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-zayvview-zayv-child-files-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-zayvview-zayv-child-files-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-zayv-child-files-tabs .nav > li > a:focus, #row-details-zayvview-zayv-child-files-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-zayv-child-files-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-files-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-files-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-zayv-child-files-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-zayv-child-files-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-zayv-child-files-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-zayv-child-files-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-zayv-child-files-tabs-menu > li.active > a::after,
+	#row-details-zayvview-zayv-child-files-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-zayvview-zayv-child-files-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-zayv-child-files-tabs .nav > li > a:focus, #row-details-zayvview-zayv-child-files-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-zayv-child-files-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-files-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-files-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-zayv-child-files-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-zayv-child-files-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-zayv-child-files-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-zayv-child-files-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-zayv-child-files-tabs-menu > li.active > a::after,
+	#row-details-zayvview-zayv-child-files-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-zayvview-zayv-child-files-table { margin-bottom:0; background-color:transparent }
+#row-details-zayvview-zayv-child-files-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-zayvview-zayv-child-files-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-zayvview-zayv-child-files-table > tbody > tr > td:first-child { text-align:left }
+#row-details-zayvview-zayv-child-files-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-zayvview-zayv-child-files-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-zayvview-zayv-child-files-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-zayvview-zayv-child-files-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-zayvview-zayv-child-files-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-zayvview-zayv-child-files-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-zayvview-zayv-child-files-table-title { color:#666; font-weight:700 }
+.row-details-zayvview-zayv-child-files-table-txt { color:#666; font-weight:300 }
+.row-details-zayvview-zayv-child-files-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-zayvview-zayv-child-files-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#zayvview-zayv-child-files > tbody > tr > td.dataTables_empty {
+    padding: 15px 5px 15px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top:none;
+    border-bottom:none;
+    background-color:#fff2f2;
+    font-family: 'Play', sans-serif;
+    font-size: 12px;
+    text-align: center;
+}
+

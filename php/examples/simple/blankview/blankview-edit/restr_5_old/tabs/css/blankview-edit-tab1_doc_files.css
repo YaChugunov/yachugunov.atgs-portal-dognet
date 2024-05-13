@@ -1,0 +1,29 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА ФАЙЛОВ БЛАНКОВ : blankview-edit-blankwork-docfiles-table
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#blankview-edit-blankwork-docfiles { padding:10px 15px; border:1px #ddd solid; border-radius:4px }
+#blankview-edit-blankwork-docfiles > h3 { color:#111; font-family:'Oswald', sans-serif; font-weight:400; font-size:1.7em; letter-spacing:0.05em }
+/* Общее для таблицы */
+#blankview-edit-blankwork-docfiles-table {  }
+#blankview-edit-blankwork-docfiles-table .details-control:hover { cursor:hand }
+/* Заголовок таблицы */
+#blankview-edit-blankwork-docfiles-table > thead {	display:none }
+#blankview-edit-blankwork-docfiles-table > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#blankview-edit-blankwork-docfiles-table .sorting:after, #blankview-edit-blankwork-table .sorting_asc:after, #blankview-edit-blankwork-table .sorting_desc:after { display:none }
+#blankview-edit-blankwork-docfiles-table > thead > tr > th.sorting_asc { padding-right:8px }
+#blankview-edit-blankwork-docfiles-table > thead > tr > th.sorting_desc { padding-right:8px }
+#blankview-edit-blankwork-docfiles-table .sorting_asc:after { display:none }
+#blankview-edit-blankwork-docfiles-table > thead > tr > th.sorting_asc { padding-right:8px }
+/* Тело таблицы */
+#blankview-edit-blankwork-docfiles-table > tbody > tr > td { padding:5px; border:none }
+#blankview-edit-blankwork-docfiles-table > tbody > tr > td:first-child { width:12%; text-align:left }
+#blankview-edit-blankwork-docfiles-table > tbody > tr > td:nth-child(2) { width:83%; text-align:left }
+#blankview-edit-blankwork-docfiles-table > tbody > tr > td:nth-child(3) { width:5%; text-align:right; text-transform:uppercase }
+/* Разное */
+#blankview-edit-blankwork-docfiles-table a.blank_link { color:#08C; text-decoration:underline }
+#blankview-edit-blankwork-docfiles-table a.blank_link:hover { text-decoration:none }
+

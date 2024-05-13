@@ -1,0 +1,55 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#actview-details-tab2 {  }
+#actview-details-tab2 .details-control:hover { cursor:hand }
+/*
+/*
+/* Заголовок таблицы */
+#actview-act-log > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#actview-act-log > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#actview-act-log .sorting:after, #actview-act-log .sorting_asc:after, #actview-act-log .sorting_desc:after { display:none }
+#actview-act-log > thead > tr > th.sorting, #actview-act-log > thead > tr > th.sorting_asc, #actview-act-log > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#actview-act-log {  }
+#actview-act-log > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#actview-act-log > tbody > tr > td {  }
+#actview-act-log > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#actview-act-log > thead > tr > th { border-bottom:none }
+#actview-act-log > tbody > tr > td {  }
+#actview-act-log > tbody > tr > td:last-child { /* text-align:right */ }
+
+#actview-act-log > tfoot > tr > td { padding:5px 4px }
+#actview-act-log > tfoot {	background-color:#999 }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#actview-act-log > thead > tr > th:first-child, #actview-act-log > tbody > tr > td:first-child { width:5%; text-align:center }
+	#actview-act-log > thead > tr > th:nth-child(2), #actview-act-log > tbody > tr > td:nth-child(2) { width:12%; text-align:left }
+	#actview-act-log > thead > tr > th:nth-child(3), #actview-act-log > tbody > tr > td:nth-child(3) { width:3%; text-align:center }
+	#actview-act-log > thead > tr > th:nth-child(4), #actview-act-log > tbody > tr > td:nth-child(4) { width:55%; text-align:left }
+	#actview-act-log > thead > tr > th:nth-child(5), #actview-act-log > tbody > tr > td:nth-child(5) { width:13%; text-align:right; white-space:nowrap }
+	#actview-act-log > thead > tr > th:nth-child(6), #actview-act-log > tbody > tr > td:nth-child(6) { width:10%; text-align:left; white-space:nowrap }
+	#actview-act-log > thead > tr > th:nth-child(7), #actview-act-log > tbody > tr > td:nth-child(7) { width:2%; text-align:right; white-space:nowrap }
+	#actview-act-log .details-control:hover { cursor:pointer }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#actview-act-log .sorting_asc:after { display:none }
+	#actview-act-log > thead > tr > th.sorting_asc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/

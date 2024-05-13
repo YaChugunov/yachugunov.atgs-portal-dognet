@@ -1,0 +1,51 @@
+	div.jumbotron { padding-left:20px; padding-right:20px; }
+	div.jumbotron a.close { padding-left:20px; padding-right:20px; }
+	.jumbotron h1, .jumbotron p { font-family: 'Oswald', sans-serif; }
+	.jumbotron h1 { font-size:3.0em; font-weight:400; }
+	.jumbotron p { font-size:1.3em; font-weight:200; line-height:normal; }
+
+	#main-tabs .nav > li > a { color:#666 }
+	#main-tabs .nav > li > a:focus, #main-tabs .nav > li > a:hover,
+	#main-tabs .nav > li > form > a:focus, #main-tabs .nav > li > form > a:hover { background-color:transparent; }
+	#main-tabs .nav-tabs > li.active > a, #main-tabs .nav-tabs > li > a:hover,
+	#main-tabs .nav-tabs > li.active > form > a, #main-tabs .nav-tabs > li > form > a:hover { color: #336a86 !important; }
+	#main-tabs .nav-tabs > li > a::after, #main-tabs .nav-tabs > li > form > a::after { background:#f1f1f1 }
+	#main-tabs > div.row > div > ul > li > a, #main-tabs > div.row > div > ul > li > form > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#main-tabs-menu {
+		border-bottom: none;
+	}
+	#main-tabs-menu {
+		padding: 10px;
+		border: 2px #336a86 solid;
+		border-radius: 10px;
+	}
+	#main-tabs-menu > li > a::after, #main-tabs-menu > li > form > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#main-tabs-menu > li.active > a::after, #main-tabs-menu > li:hover > a::after, #main-tabs-menu > li:hover > form > a::after {
+		transform: scale(1);
+	}
+
+	#summa-zadolzh h3 { font-family: 'Oswald', sans-serif; font-size:2.0em; font-weight:400; text-transform:uppercase; letter-spacing:0.2em }
+	#summa-zadolzh .list-group-item { font-family: 'Play', sans-serif; font-size:1.0em; font-weight:400; text-transform:uppercase }
+	#summa-zadolzh .panel-footer { font-family: 'Oswald', sans-serif; font-size:2.0em; font-weight:400; text-transform:uppercase; border:none }
+
+	.update-timestamp-label {
+			font-size: 0.9em;
+			font-weight: 300;
+	    background-color: #951402;
+	    color: #fafafa;
+	    padding: 3px 5px 4px;
+	    letter-spacing: normal;
+	}

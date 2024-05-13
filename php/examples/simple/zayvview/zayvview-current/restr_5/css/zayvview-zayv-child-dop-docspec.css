@@ -1,0 +1,133 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #zayvview-zayv-child-dop-docspec
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#zayvview-zayv-child-dop-docspec-spec {
+	border:3px #31708f solid;
+	border-radius:7px;
+	padding:15px;
+}
+
+/*
+/* Общее для таблицы */
+#zayvview-zayv-child-dop-docspec {  }
+#zayvview-zayv-child-dop-docspec { /* border:2px #951402 solid */ }
+#zayvview-zayv-child-dop-docspec .details-control:hover { cursor:pointer }
+#zayvview-zayv-child-dop-docspec .font-courier { font-family:courier,courier new,serif }
+
+#zayvview-zayv-child-dop-docspec td.highlight { background-color:#faeeaa }
+#zayvview-zayv-child-dop-docspec.dataTable tbody tr.selected td.highlight { color:#666 }
+
+#zayvview-zayv-child-dop-docspec.dataTable tbody tr.selected, #zayvview-zayv-child-dop-docspec.dataTable tbody th.selected, #zayvview-zayv-child-dop-docspec.dataTable tbody td.selected { color:white }
+/*
+/*
+/* Заголовок таблицы */
+#zayvview-zayv-child-dop-docspec > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#zayvview-zayv-child-dop-docspec > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#zayvview-zayv-child-dop-docspec > thead > tr > th:first-child { text-align:center }
+#zayvview-zayv-child-dop-docspec > thead > tr > th:nth-child(2) { text-align:center }
+#zayvview-zayv-child-dop-docspec > thead > tr > th:nth-child(3) { text-align:left }
+#zayvview-zayv-child-dop-docspec > thead > tr > th:nth-child(4) { text-align:left }
+#zayvview-zayv-child-dop-docspec > thead > tr > th:nth-child(5) { text-align:center }
+/* Тело таблицы */
+#zayvview-zayv-child-dop-docspec > tbody { font-size:0.9em; color:#666; border-bottom:none;	border-top:none }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td { padding:2px 5px; line-height: 1.42857143; vertical-align: middle }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td {  }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td:first-child { width:1%; text-align:center }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td:nth-child(3) { width:61%; text-align:left }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td:nth-child(4) { width:32%; text-align:left }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td:nth-child(5) { width:3%; text-align:center }
+#zayvview-zayv-child-dop-docspec > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#666; background-color:#fafafa }
+/* Подвал таблицы */
+#zayvview-zayv-child-dop-docspec > tfoot > tr > th:first-child { text-align:center }
+#zayvview-zayv-child-dop-docspec > tfoot > tr > th:nth-child(2) { text-align:center }
+#zayvview-zayv-child-dop-docspec > tfoot > tr > td:nth-child(3) { text-align:left }
+#zayvview-zayv-child-dop-docspec > tfoot > tr > td:nth-child(4) { text-align:left }
+#zayvview-zayv-child-dop-docspec > tfoot > tr > td:nth-child(5) { text-align:center }
+
+#zayvview-zayv-child-dop-docspec .sorting_asc:after, #zayvview-zayv-child-dop-docspec .sorting_desc:after, #zayvview-zayv-child-dop-docspec .sorting:after { display:none }
+#zayvview-zayv-child-dop-docspec > thead > tr > th.sorting_asc { padding-right:8px }
+/* Подвал таблицы */
+
+
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-zayvview-zayv-child-dop-docspec-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav > li > a:focus, #row-details-zayvview-zayv-child-dop-docspec-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li.active > a::after,
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav > li > a:focus, #row-details-zayvview-zayv-child-dop-docspec-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li.active > a::after,
+	#row-details-zayvview-zayv-child-dop-docspec-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-zayvview-zayv-child-dop-docspec-table { margin-bottom:0; background-color:transparent }
+#row-details-zayvview-zayv-child-dop-docspec-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-zayvview-zayv-child-dop-docspec-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-zayvview-zayv-child-dop-docspec-table > tbody > tr > td:first-child { text-align:left }
+#row-details-zayvview-zayv-child-dop-docspec-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-zayvview-zayv-child-dop-docspec-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-zayvview-zayv-child-dop-docspec-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-zayvview-zayv-child-dop-docspec-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-zayvview-zayv-child-dop-docspec-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-zayvview-zayv-child-dop-docspec-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-zayvview-zayv-child-dop-docspec-table-title { color:#666; font-weight:700 }
+.row-details-zayvview-zayv-child-dop-docspec-table-txt { color:#666; font-weight:300 }
+.row-details-zayvview-zayv-child-dop-docspec-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-zayvview-zayv-child-dop-docspec-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+

@@ -1,0 +1,122 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица договоров-субподряда: #agreeview-doc-files
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#agreeview-doc-files {  }
+#agreeview-doc-files .details-control:hover { cursor:pointer }
+#agreeview-doc-files .font-courier { font-family:courier,courier new,serif }
+/*
+/*
+/* Заголовок таблицы */
+#agreeview-doc-files > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#agreeview-doc-files > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#agreeview-doc-files .sorting:after, #agreeview-doc-files .sorting_asc:after, #agreeview-doc-files .sorting_desc:after { display:none }
+#agreeview-doc-files > thead > tr > th.sorting, #agreeview-doc-files > thead > tr > th.sorting_asc, #agreeview-doc-files > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#agreeview-doc-files > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#agreeview-doc-files > tbody > tr > td { padding:2px 5px; line-height:1.42857143; vertical-align:middle }
+#agreeview-doc-files > thead > tr > th:first-child, #agreeview-doc-files > tbody > tr > td:first-child { width:2%; text-align:center }
+#agreeview-doc-files > thead > tr > th:nth-child(2), #agreeview-doc-files > tbody > tr > td:nth-child(2) { width:12%; text-align:left }
+#agreeview-doc-files > thead > tr > th:nth-child(3), #agreeview-doc-files > tbody > tr > td:nth-child(3) { width:13%; text-align:center }
+#agreeview-doc-files > thead > tr > th:nth-child(4), #agreeview-doc-files > tbody > tr > td:nth-child(4) { width:71%; text-align:left }
+#agreeview-doc-files > thead > tr > th:nth-child(5), #agreeview-doc-files > tbody > tr > td:nth-child(5) { width:2%; text-align:center }
+#agreeview-doc-files > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#999 }
+#agreeview-doc-files > tbody > tr.shown > td { background-color:#336a86; color:#fff; font-weight:300 }
+/*
+/*
+/* Подвал таблицы */
+
+
+
+/*
+/*
+/* Разное */
+#agreeview-doc-files .sorting_asc:after { display:none }
+#agreeview-doc-files > thead > tr > th.sorting_asc { padding-right:8px }
+#agreeview-doc-files .sorting_desc:after { display:none }
+#agreeview-doc-files > thead > tr > th.sorting_desc { padding-right:8px }
+#agreeview-doc-files .details-body { border:3px #333 solid; border-radius:10px; border-collapse:collapse }
+#agreeview-doc-files > tbody > tr > td.row_kalplan { font-weight:700 }
+
+#agreeview-doc-files > tbody > tr.dtrg-group > td { font-family:'Play', sans-serif; font-weight:700; text-align:left; letter-spacing:0.2em }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-agreeview-doc-files-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-doc-edit-files { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-agreeview-doc-files-tabs .nav > li > a { color:#fff }
+	#row-details-agreeview-doc-files-tabs .nav > li > a:focus, #row-details-agreeview-doc-files-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-agreeview-doc-files-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-agreeview-doc-files-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-agreeview-doc-files-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-agreeview-doc-files-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-agreeview-doc-files-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-agreeview-doc-files-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-agreeview-doc-files-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-agreeview-doc-files-tabs-menu > li.active > a::after,
+	#row-details-agreeview-doc-files-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-agreeview-doc-files-tabs .nav > li > a { color:#fff }
+	#row-details-agreeview-doc-files-tabs .nav > li > a:focus, #row-details-agreeview-doc-files-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-agreeview-doc-files-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-agreeview-doc-files-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-agreeview-doc-files-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-agreeview-doc-files-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-agreeview-doc-files-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-agreeview-doc-files-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-agreeview-doc-files-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-agreeview-doc-files-tabs-menu > li.active > a::after,
+	#row-details-agreeview-doc-files-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-agreeview-doc-files-table { margin-bottom:0; background-color:transparent }
+#row-details-agreeview-doc-files-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-agreeview-doc-files-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-agreeview-doc-files-table > tbody > tr > td:first-child { text-align:left }
+#row-details-agreeview-doc-files-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-agreeview-doc-files-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-agreeview-doc-files-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-agreeview-doc-files-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-agreeview-doc-files-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-agreeview-doc-files-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-agreeview-doc-files-table-title { color:#666; font-weight:700 }
+.row-details-agreeview-doc-files-table-txt { color:#666; font-weight:300 }
+.row-details-agreeview-doc-files-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-agreeview-doc-files-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }

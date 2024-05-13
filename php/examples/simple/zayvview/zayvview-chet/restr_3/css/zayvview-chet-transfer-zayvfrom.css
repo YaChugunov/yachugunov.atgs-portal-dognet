@@ -1,0 +1,162 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#zayvview-details-tab3 {  }
+#zayvview-details-tab3 .details-control:hover { cursor:hand }
+/*
+/*
+/* Заголовок таблицы */
+#zayvview-chet-transfer-zayvfrom > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#zayvview-chet-transfer-zayvfrom > thead > tr > th { padding: 2px 5px; color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#zayvview-chet-transfer-zayvfrom .sorting:after, #zayvview-chet-transfer-zayvfrom .sorting_asc:after, #zayvview-chet-transfer-zayvfrom .sorting_desc:after { display:none }
+#zayvview-chet-transfer-zayvfrom > thead > tr > th.sorting_asc { padding-right:8px }
+#zayvview-chet-transfer-zayvfrom > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#zayvview-chet-transfer-zayvfrom {  }
+#zayvview-chet-transfer-zayvfrom > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.85em; color:#666; border-bottom:none; border-top:none }
+#zayvview-chet-transfer-zayvfrom > tbody > tr > td {  }
+#zayvview-chet-transfer-zayvfrom > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#zayvview-chet-transfer-zayvfrom > thead > tr > th { padding:8px 5px; border-bottom:none }
+#zayvview-chet-transfer-zayvfrom > tbody > tr > td {  }
+#zayvview-chet-transfer-zayvfrom > tbody > tr > td:last-child { text-align:right }
+
+#zayvview-chet-transfer-zayvfrom > tfoot > tr > td { padding:5px 4px }
+#zayvview-chet-transfer-zayvfrom > tfoot {
+	background-color:#999;
+}
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:first-child, #zayvview-chet-transfer-zayvfrom > tbody > tr > td:first-child { width:1%; text-align:center }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:nth-child(2), #zayvview-chet-transfer-zayvfrom > tbody > tr > td:nth-child(2) { width:1%; text-align:center }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:nth-child(3), #zayvview-chet-transfer-zayvfrom > tbody > tr > td:nth-child(3) { width:7%; text-align:left }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:nth-child(4), #zayvview-chet-transfer-zayvfrom > tbody > tr > td:nth-child(4) { width:3%; text-align:center }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:nth-child(5), #zayvview-chet-transfer-zayvfrom > tbody > tr > td:nth-child(5) { width:5%; text-align:center }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:nth-child(6), #zayvview-chet-transfer-zayvfrom > tbody > tr > td:nth-child(6) { width:12%; text-align:left }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th:nth-child(7), #zayvview-chet-transfer-zayvfrom > tbody > tr > td:nth-child(7) { width:60%; text-align:left }
+
+	#zayvview-chet-transfer-zayvfrom .details-control:hover { cursor:pointer }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#zayvview-chet-transfer-zayvfrom .sorting_asc:after, #zayvview-chet-transfer-zayvfrom .sorting_desc:after { display:none }
+	#zayvview-chet-transfer-zayvfrom > thead > tr > th.sorting_asc, #zayvview-chet-transfer-zayvfrom > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+	#column1_search_chet, #column2_search_chet, #column3_search_chet, #column4_search_chet {
+		width: 100%;
+		padding: 5px 5px;
+		font-weight: 400;
+		font-size: 0.9em;
+		color: #333;
+		max-height:31px;
+	}
+	#column1_search_chet { text-align:center }
+	#column2_search_chet { text-align:center }
+	#column3_search_chet { text-align:left }
+	#column4_search_chet { text-align:left }
+
+	#filters_clear_chet, #filters_apply_chet { padding:6px; font-weight:400; font-size:0.9em	}
+
+	#zayvview-chet-filters { padding:15px 0; background-color:#f1f1f1 }
+	#columnSearch_btnApply .focus, #columnSearch_btnApply .active:focus, #columnSearch_btnApply:active.focus, #columnSearch_btnApply:active:focus, #columnSearch_btnApply:focus { outline:none; border-color:#ccc }
+	#columnSearch_btnClear .focus, #columnSearch_btnClear .active:focus, #columnSearch_btnClear:active.focus, #columnSearch_btnClear:active:focus, #columnSearch_btnClear:focus { outline:none; border-color:#ccc }
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-zayvview-chet-transfer-zayvfrom-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+	#template-details-chet-transfer-zayvfrom { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav > li > a:focus, #row-details-zayvview-chet-transfer-zayvfrom-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li.active > a::after,
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav > li > a { color:#fff }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav > li > a:focus, #row-details-zayvview-chet-transfer-zayvfrom-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li.active > a::after,
+	#row-details-zayvview-chet-transfer-zayvfrom-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-zayvview-chet-transfer-zayvfrom-table { margin-bottom:0; background-color:transparent }
+#row-details-zayvview-chet-transfer-zayvfrom-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-zayvview-chet-transfer-zayvfrom-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-zayvview-chet-transfer-zayvfrom-table > tbody > tr > td:first-child { text-align:left }
+#row-details-zayvview-chet-transfer-zayvfrom-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-zayvview-chet-transfer-zayvfrom-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-zayvview-chet-transfer-zayvfrom-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-zayvview-chet-transfer-zayvfrom-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-zayvview-chet-transfer-zayvfrom-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-zayvview-chet-transfer-zayvfrom-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-zayvview-chet-transfer-zayvfrom-table-title { color:#666; font-weight:700 }
+.row-details-zayvview-chet-transfer-zayvfrom-table-txt { color:#666; font-weight:300 }
+.row-details-zayvview-chet-transfer-zayvfrom-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-zayvview-chet-transfer-zayvfrom-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+
+#zayv-transfer-from h3.transfer-title { color:#333; font-family: 'Oswald', sans-serif; font-weight:400; text-align:left }
+
+h4.transfer-title-from { font-family:'Oswald', sans-serif; font-weight:400; letter-spacing:0.1em; text-transform:uppercase; color:#f1f1f1 }
+h4.transfer-title-from > span { padding:0 1px; background-color:#111 }

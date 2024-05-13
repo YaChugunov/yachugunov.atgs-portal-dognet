@@ -1,0 +1,60 @@
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm_tab2_kalplans .doc-editor-tabs .DTE_Field_InputControl > div > div > label { display:unset }
+	#customForm_tab2_kalplans .doc-editor-tabs .DTE_Field_InputControl { text-align:left }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#DTE_Field_dognet_dockalplan-kodobject { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm_tab2_kalplans fieldset.idsrokstage { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+	#customForm_tab2_kalplans fieldset.idsrokstage > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.srokstage { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+	#customForm_tab2_kalplans fieldset.srokstage > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.srokstage_tmpSrok { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+	#customForm_tab2_kalplans fieldset.srokstage_tmpSrok > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.srokstage_tmpDate { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+	#customForm_tab2_kalplans fieldset.srokstage_tmpDate > div > div { width:100% }
+
+	#customForm_tab2_kalplans fieldset.idsrokopl { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+	#customForm_tab2_kalplans fieldset.idsrokopl > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.srokopl { flex-grow:0; flex-shrink:0; flex-basis:50%; }
+	#customForm_tab2_kalplans fieldset.srokopl > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.srokopl_tmpSrok { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+	#customForm_tab2_kalplans fieldset.srokopl_tmpSrok > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.srokopl_tmpDate { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+	#customForm_tab2_kalplans fieldset.srokopl_tmpDate > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm_tab2_kalplans fieldset.useavplan { flex-grow:0; flex-shrink:0; flex-basis:10% }
+	#customForm_tab2_kalplans fieldset.useavplan > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.pravplanstage { flex-grow:0; flex-shrink:0; flex-basis:20% }
+	#customForm_tab2_kalplans fieldset.pravplanstage > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.dateplanavstage { flex-grow:0; flex-shrink:0; flex-basis:40% }
+	#customForm_tab2_kalplans fieldset.dateplanavstage > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.daysplanavstage { flex-grow:0; flex-shrink:0; flex-basis:30% }
+	#customForm_tab2_kalplans fieldset.daysplanavstage > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm_tab2_kalplans fieldset.usedocsubpodr { flex-grow:0; flex-shrink:0; flex-basis:100% }
+	#customForm_tab2_kalplans fieldset.usedocsubpodr > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.numberdayoplstage { flex-grow:0; flex-shrink:0; flex-basis:100% }
+	#customForm_tab2_kalplans fieldset.numberdayoplstage > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.dateoplall { flex-grow:0; flex-shrink:0; flex-basis:100% }
+	#customForm_tab2_kalplans fieldset.dateoplall > div > div { width:100% }
+	#customForm_tab2_kalplans fieldset.dateplan { flex-grow:0; flex-shrink:0; flex-basis:100%; }
+	#customForm_tab2_kalplans fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#customForm_tab2_kalplans fieldset > div > label.control-label { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	.errmsg {
+		position: absolute;
+	    right: 1px;
+	    top: -1px;
+	    font-weight: 300;
+	}
+	
+	fieldset.pravplanstage input, fieldset.dateplanavstage input, fieldset.daysplanavstage input { text-align:center; padding-left:2px; padding-right:2px }
+	fieldset.pravplanstage.av1 input, fieldset.dateplanavstage.av1 input, fieldset.daysplanavstage.av1 input { border: 2px #ff8c36 solid }
+	
+/* 	#doc-editor-tab2-4 div[data-dte-e="msg-message"] { margin-top: -10px; } */
+

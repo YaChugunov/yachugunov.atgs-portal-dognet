@@ -1,0 +1,18 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА "СВОДКА ПО СЧЕТАМ-ФАКТУРАМ"
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#chetview-details-tab4_1 > tbody > tr > td.dataTables_empty,
+#chetview-details-tab4_2 > tbody > tr > td.dataTables_empty,
+#chetview-details-tab4_3 > tbody > tr > td.dataTables_empty,
+#chetview-details-tab4_4 > tbody > tr > td.dataTables_empty,
+#chetview-details-tab4_5 > tbody > tr > td.dataTables_empty,
+#chetview-details-tab4_6 > tbody > tr > td.dataTables_empty,
+#chetview-details-tab4_7 > tbody > tr > td.dataTables_empty { text-align:left }
+/*
+/*

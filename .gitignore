@@ -1,0 +1,16 @@
+# /.vscode/sftp.*
+# /_tmp/*
+/adminize/*
+# .htaccess
+# .editorconfig
+# .gitignore
+# .gitattributes
+/_assets/_PHPExcel/*
+/_assets/cron-phpscript/addons/_Morpher/*
+/_assets/cron-phpscript/addons/_NCL/*
+/_assets/cron-phpscript/addons/_PHPOffice/*
+/_assets/libs/*
+/_assets/fonts/*
+/_assets/dbconn/*
+/tmp/*
+# config.*.*

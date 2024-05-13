@@ -1,0 +1,29 @@
+<?php
+# ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- 
+# Подключаемся к базе
+require($_SERVER['DOCUMENT_ROOT'].'/_assets/drivers/db_connection.php');
+# ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- 
+# Подключаем общие функции безопасности
+require($_SERVER['DOCUMENT_ROOT'].'/_assets/functions/funcSecure.inc.php');
+# Подключаем собственные функции сервиса Договор
+require($_SERVER['DOCUMENT_ROOT'].'/dognet/_assets/functions/funcDognet.inc.php');
+# Включаем режим сессии
+session_start();
+# ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- 
+if (!empty($_SESSION['login']) and !empty($_SESSION['password'])) {
+	$login = $_SESSION['login'];
+	$password = $_SESSION['password'];
+	$id = $_SESSION['id'];
+	if (checkUserRestrictions($id, 'dognet', 1) == 0) {
+		include('message_access-denied.php');
+		exit;
+	}
+}
+else {
+		include('message_access-denied.php');
+		exit;
+}
+	$result = mysqlQuery("SELECT * FROM users WHERE id='$id'", $db); 
+	$myrow = mysqli_fetch_array($result, MYSQLI_ASSOC);//Извлекаем все данные пользователя с данным id
+if (empty($myrow['login'])) { exit("Пользователя не существует! Возможно он был удален."); }
+?>

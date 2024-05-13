@@ -1,0 +1,64 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ОСНОВНАЯ ТАБЛИЦА
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#letterview-act-log {  }
+#letterview-act-log .details-control:hover { cursor:pointer }
+/*
+/*
+/* Заголовок таблицы */
+#letterview-act-log > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#letterview-act-log > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#letterview-act-log .sorting:after, #letterview-act-log .sorting_asc:after, #letterview-act-log .sorting_desc:after { display:none }
+#letterview-act-log > thead > tr > th.sorting, #letterview-act-log > thead > tr > th.sorting_asc, #letterview-act-log > thead > tr > th.sorting_desc { padding-right:8px }
+/*
+/*
+/* Тело таблицы */
+#letterview-act-log {  }
+#letterview-act-log > tbody { font-family:'Ubuntu', sans-serif; font-size: 0.9em; color:#666; border-bottom:none; border-top:none }
+#letterview-act-log > tbody > tr > td {  }
+#letterview-act-log > tbody > tr > td {
+    padding: 2px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+}
+#letterview-act-log > thead > tr > th { border-bottom:none }
+#letterview-act-log > tbody > tr > td:last-child { /* text-align:right */ }
+
+#letterview-act-log > tfoot > tr > td { padding:5px 4px }
+#letterview-act-log > tfoot {	background-color:#999 }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#letterview-act-log > thead > tr > th:first-child, #letterview-act-log > tbody > tr > td:first-child { width:12%; text-align:center }
+	#letterview-act-log > thead > tr > th:nth-child(2), #letterview-act-log > tbody > tr > td:nth-child(2) { width:12%; text-align:center }
+	#letterview-act-log > thead > tr > th:nth-child(3), #letterview-act-log > tbody > tr > td:nth-child(3) { width:46%; text-align:left }
+	#letterview-act-log > thead > tr > th:nth-child(4), #letterview-act-log > tbody > tr > td:nth-child(4) { width:13%; text-align:center; white-space:nowrap }
+	#letterview-act-log > thead > tr > th:nth-child(5), #letterview-act-log > tbody > tr > td:nth-child(5) { width:15%; text-align:center }
+	#letterview-act-log > thead > tr > th:nth-child(6), #letterview-act-log > tbody > tr > td:nth-child(6) { width:2%; text-align:center; white-space:nowrap }
+	#letterview-act-log .details-control:hover { cursor:pointer }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#letterview-act-log .sorting_asc:after { display:none }
+	#letterview-act-log > thead > tr > th.sorting_asc { padding-right:8px }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+h3.log-message-info {
+    padding: 2px 4px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height:1.3em;
+}
+h3.log-message-info > a { text-decoration:underline }
+h3.log-message-info > a:hover { text-decoration:none }
