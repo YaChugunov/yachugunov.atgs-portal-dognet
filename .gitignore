@@ -1,5 +1,5 @@
-#/.vscode/sftp.*
-#/_tmp/*
+/.vscode/sftp.*
+/_tmp/*
 /adminize/*
 .htaccess
 .editorconfig
@@ -13,4 +13,4 @@
 /_assets/fonts/*
 /_assets/dbconn/*
 /tmp/*
-#config.*.*
+config.*.*
