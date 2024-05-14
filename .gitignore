@@ -1,4 +1,5 @@
 /.vscode/sftp.*
+/.vscode/settings.*
 /_tmp/*
 /adminize/*
 .htaccess
