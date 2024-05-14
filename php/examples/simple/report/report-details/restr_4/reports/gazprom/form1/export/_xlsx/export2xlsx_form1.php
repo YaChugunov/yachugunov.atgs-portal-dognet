@@ -95,19 +95,20 @@ $activeSheet->getColumnDimension('B')->setWidth(15); // ИНН
 $activeSheet->getColumnDimension('C')->setWidth(100); // Заказчик и реквизиты
 $activeSheet->getColumnDimension('D')->setWidth(30); // Email
 $activeSheet->getColumnDimension('E')->setWidth(100); // Наименование договора
-$activeSheet->getColumnDimension('F')->setWidth(15); // Номер договора
-$activeSheet->getColumnDimension('G')->setWidth(18); // Дата заключения
-$activeSheet->getColumnDimension('H')->setWidth(18); // Дата завершения
-$activeSheet->getColumnDimension('I')->setWidth(35); // 
-$activeSheet->getColumnDimension('J')->setWidth(18); // 
-$activeSheet->getColumnDimension('K')->setWidth(24); // 
-$activeSheet->getColumnDimension('L')->setWidth(18); // 
+$activeSheet->getColumnDimension('F')->setWidth(100); // Наименование договора
+$activeSheet->getColumnDimension('G')->setWidth(15); // Номер договора
+$activeSheet->getColumnDimension('H')->setWidth(18); // Дата заключения
+$activeSheet->getColumnDimension('I')->setWidth(18); // Дата завершения
+$activeSheet->getColumnDimension('J')->setWidth(35); // 
+$activeSheet->getColumnDimension('K')->setWidth(18); // 
+$activeSheet->getColumnDimension('L')->setWidth(24); // 
 $activeSheet->getColumnDimension('M')->setWidth(18); // 
 $activeSheet->getColumnDimension('N')->setWidth(18); // 
 $activeSheet->getColumnDimension('O')->setWidth(18); // 
 $activeSheet->getColumnDimension('P')->setWidth(18); // 
-$activeSheet->getColumnDimension('Q')->setWidth(30); // 
-$activeSheet->getColumnDimension('R')->setWidth(45); // 
+$activeSheet->getColumnDimension('Q')->setWidth(18); // 
+$activeSheet->getColumnDimension('R')->setWidth(30); // 
+$activeSheet->getColumnDimension('S')->setWidth(45); // 
 #
 // Для удобства заводим переменную $line, в ней будем считать номер строки
 $line = 1;
@@ -120,7 +121,7 @@ $activeSheet->setCellValue("A{$line}", 'ГАЗПРОМ МОНИТОРИНГ');
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(24);
 // Объединяем ячейки по горизонтали
-$activeSheet->mergeCells("A{$line}:R{$line}");
+$activeSheet->mergeCells("A{$line}:S{$line}");
 // Делаем выравнивание по центру вертикали и горизонтали
 $activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -137,7 +138,7 @@ $activeSheet->setCellValue("A{$line}", 'Дата отчета: ' . date("d.m.Y H
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(20);
 // Объединяем ячейки по горизонтали
-$activeSheet->mergeCells("A{$line}:R{$line}");
+$activeSheet->mergeCells("A{$line}:S{$line}");
 // Делаем выравнивание по центру вертикали и горизонтали
 $activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -154,7 +155,7 @@ $activeSheet->setCellValue("A{$line}", "Отчет составлен: " . $_SES
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(20);
 // Объединяем ячейки по горизонтали
-$activeSheet->mergeCells("A{$line}:R{$line}");
+$activeSheet->mergeCells("A{$line}:S{$line}");
 // Делаем выравнивание по центру вертикали и горизонтали
 $activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -177,41 +178,43 @@ $activeSheet->setCellValue("B{$line}", 'ИНН заказчика');
 $activeSheet->setCellValue("C{$line}", 'Наименование заказчика' . "\n" . '(реквизиты, адрес, контактный телефон заказчика, контактное лицо)');
 $activeSheet->setCellValue("D{$line}", 'Адрес электронной почты' . "\n" . 'контактного лица Заказчика');
 $activeSheet->setCellValue("E{$line}", 'Наименование / Предмет договора');
-$activeSheet->setCellValue("F{$line}", 'Номер' . "\n" . 'договора');
-$activeSheet->setCellValue("G{$line}", 'Дата заключения' . "\n" . 'договора');
-$activeSheet->setCellValue("H{$line}", 'Дата окончания' . "\n" . 'выполнения работ' . "\n" . '(оказания услуг / поставки товаров)');
-$activeSheet->setCellValue("I{$line}", 'Регион выполнения работ' . "\n" . '(оказания услуг / поставки товаров)');
-$activeSheet->setCellValue("J{$line}", 'Роль Участника' . "\n" . '(генподрядчик / субподрядчик)');
-$activeSheet->setCellValue("K{$line}", 'Наименование и вид выполненных работ /' . "\n" . 'оказанных услуг по предмету предквалификации');
-$activeSheet->setCellValue("L{$line}", 'Привлекаемые субподрядчики' . "\n" . '(соисполнители) ');
-$activeSheet->setCellValue("M{$line}", 'Сумма договора' . "\n" . '(тыс. руб. с НДС)');
-$activeSheet->setCellValue("N{$line}", 'Размер затрат на субподряд' . "\n" . '(тыс. руб. с НДС)');
-$activeSheet->setCellValue("O{$line}", 'Выполнено по договору' . "\n" . 'на начало текущего года' . "\n" . '(тыс. руб. с НДС)');
-$activeSheet->setCellValue("P{$line}", 'Выполнено по договору' . "\n" . 'на отчетную дату' . "\n" . '(тыс. руб. с НДС)');
-$activeSheet->setCellValue("Q{$line}", 'Численный состав' . "\n" . 'непосредственных исполнителей' . "\n" . 'выполненных работ/услуг Участника, чел.');
-$activeSheet->setCellValue("R{$line}", 'Примечание');
+$activeSheet->setCellValue("F{$line}", 'Полное наименование договора');
+$activeSheet->setCellValue("G{$line}", 'Номер' . "\n" . 'договора');
+$activeSheet->setCellValue("H{$line}", 'Дата заключения' . "\n" . 'договора');
+$activeSheet->setCellValue("I{$line}", 'Дата окончания' . "\n" . 'выполнения работ' . "\n" . '(оказания услуг / поставки товаров)');
+$activeSheet->setCellValue("J{$line}", 'Регион выполнения работ' . "\n" . '(оказания услуг / поставки товаров)');
+$activeSheet->setCellValue("K{$line}", 'Роль Участника' . "\n" . '(генподрядчик / субподрядчик)');
+$activeSheet->setCellValue("L{$line}", 'Наименование и вид выполненных работ /' . "\n" . 'оказанных услуг по предмету предквалификации');
+$activeSheet->setCellValue("M{$line}", 'Привлекаемые субподрядчики' . "\n" . '(соисполнители) ');
+$activeSheet->setCellValue("N{$line}", 'Сумма договора' . "\n" . '(тыс. руб. с НДС)');
+$activeSheet->setCellValue("O{$line}", 'Размер затрат на субподряд' . "\n" . '(тыс. руб. с НДС)');
+$activeSheet->setCellValue("P{$line}", 'Выполнено по договору' . "\n" . 'на начало текущего года' . "\n" . '(тыс. руб. с НДС)');
+$activeSheet->setCellValue("Q{$line}", 'Выполнено по договору' . "\n" . 'на отчетную дату' . "\n" . '(тыс. руб. с НДС)');
+$activeSheet->setCellValue("R{$line}", 'Численный состав' . "\n" . 'непосредственных исполнителей' . "\n" . 'выполненных работ/услуг Участника, чел.');
+$activeSheet->setCellValue("S{$line}", 'Примечание');
 // Стили для текста в шапки таблицы.
 $activeSheet->getRowDimension($line)->setRowHeight(72); // высота строки
-$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setSize(10); // размер шрифта
-$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setBold(true); // делаем шрифт жирным
-$activeSheet->getStyle("A{$line}:R{$line}")->getAlignment()->setWrapText(true); // разрешаем перенос строк в ячейке
-$activeSheet->getStyle("A{$line}:R{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER); // вырванивание по вертикали - середина
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(10); // размер шрифта
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(true); // делаем шрифт жирным
+$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setWrapText(true); // разрешаем перенос строк в ячейке
+$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER); // вырванивание по вертикали - середина
 // Выравнивание по горизонтали - слева
 $activeSheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 $activeSheet->getStyle("E{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-$activeSheet->getStyle("R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+$activeSheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+$activeSheet->getStyle("S{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 // Выравнивание по горизонтали - центр
 $activeSheet->getStyle("A{$line}:B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $activeSheet->getStyle("D{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-$activeSheet->getStyle("F{$line}:Q{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$activeSheet->getStyle("G{$line}:R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 // Делаем заливку области ячеек
-$activeSheet->getStyle("A{$line}:R{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-$activeSheet->getStyle("A{$line}:R{$line}")->getFill()->getStartColor()->setRGB("31708F");
+$activeSheet->getStyle("A{$line}:S{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+$activeSheet->getStyle("A{$line}:S{$line}")->getFill()->getStartColor()->setRGB("31708F");
 // Задаем цвет текста строки
-$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->getColor()->setRGB('FFFFFF');
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('FFFFFF');
 // Оформляем границы
-$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_INSIDE);
-$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
+$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
+$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 #
 #
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -238,20 +241,21 @@ $activeSheet->setCellValue("O{$line}", '15');
 $activeSheet->setCellValue("P{$line}", '16');
 $activeSheet->setCellValue("Q{$line}", '17');
 $activeSheet->setCellValue("R{$line}", '18');
+$activeSheet->setCellValue("S{$line}", '19');
 // Стили для текста в шапки таблицы.
 $activeSheet->getRowDimension($line)->setRowHeight(18); // высота строки
-$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setSize(9); // размер шрифта
-$activeSheet->getStyle("A{$line}:R{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER); // вырванивание по вертикали - середина
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(9); // размер шрифта
+$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER); // вырванивание по вертикали - середина
 // Выравнивание по горизонтали - центр
-$activeSheet->getStyle("A{$line}:R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 // Делаем заливку области ячеек
-$activeSheet->getStyle("A{$line}:R{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-$activeSheet->getStyle("A{$line}:R{$line}")->getFill()->getStartColor()->setRGB("F1F1F1");
+$activeSheet->getStyle("A{$line}:S{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+$activeSheet->getStyle("A{$line}:S{$line}")->getFill()->getStartColor()->setRGB("F1F1F1");
 // Задаем цвет текста строки
-$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->getColor()->setRGB('999999');
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('999999');
 // Оформляем границы
-$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_INSIDE);
-$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_OUTSIDE_THICK);
+$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
+$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_OUTSIDE_THICK);
 #
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -319,7 +323,7 @@ while ($_ROW_DOCBASE = mysqli_fetch_assoc($_QRY_DOCBASE)) {
 	$_QRY_DOCBLANK = mysqlQuery("SELECT kodblankwork, kodtipblank FROM dognet_docblankwork WHERE koddoc='" . $_ROW_DOCBASE['koddoc'] . "' AND kodstatusblank='DO'");
 	if ($_QRY_DOCBLANK) {
 		$_ROW_DOCBLANK = mysqli_fetch_assoc($_QRY_DOCBLANK);
-		switch ($_ROW_DOCBLANK["kodtipblank"]) {
+		switch (!empty($_ROW_DOCBLANK["kodtipblank"]) ? $_ROW_DOCBLANK["kodtipblank"] : "") {
 			case "PNR":
 				$_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact, dopcontact1, dopcontact2 FROM dognet_blankdocpnr WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
 				if ($_QRY_BLANKGIP) {
@@ -370,7 +374,9 @@ while ($_ROW_DOCBASE = mysqli_fetch_assoc($_QRY_DOCBASE)) {
 	$_colOBJ = $_ROW_OBJ['nameobjectshot'];
 	#
 	// Предмет договора
-	$_colDOC = $_ROW_DOCBASE['docnamefullm'];
+	$_colDOCShot	= $_ROW_DOCBASE['docnameshot'];
+	$_colDOCFullm	= $_ROW_DOCBASE['docnamefullm'];
+	$_colDOCFull	= $_ROW_DOCBASE['docnamefull'];
 	#
 	// Сумма договора (в тысячах рублей)
 	$_colSUMDOC = $_ROW_DOCBASE['docsumma'] / 1000.00;
@@ -382,46 +388,49 @@ while ($_ROW_DOCBASE = mysqli_fetch_assoc($_QRY_DOCBASE)) {
 	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	// Задаем высоту строки и шрифт
 	$activeSheet->getRowDimension($line)->setRowHeight(72);
-	$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setSize(10);
-	$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setBold(false);
+	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(10);
+	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(false);
 	// Задаем цвет текста строки
-	$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->getColor()->setRGB('111111');
+	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('111111');
 	// Выравниваем строку по вертикали ( середина )
-	$activeSheet->getStyle("A{$line}:R{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+	$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 	// Выравнивание по горизонтали - слева
 	$activeSheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 	$activeSheet->getStyle("E{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-	$activeSheet->getStyle("R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+	$activeSheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+	$activeSheet->getStyle("S{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 	// Выравнивание по горизонтали - центр
 	$activeSheet->getStyle("A{$line}:B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	$activeSheet->getStyle("D{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-	$activeSheet->getStyle("F{$line}:Q{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+	$activeSheet->getStyle("G{$line}:R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 	//
 	$activeSheet->getStyle("C{$line}")->getAlignment()->setWrapText(true);
 	$activeSheet->getStyle("E{$line}")->getAlignment()->setWrapText(true);
+	$activeSheet->getStyle("F{$line}")->getAlignment()->setWrapText(true);
 	//
 	$activeSheet->setCellValue("A{$line}", $_colN);
 	$activeSheet->setCellValue("B{$line}", $_colZAKinn);
 	$activeSheet->setCellValue("C{$line}", $_colZAK);
 	$activeSheet->setCellValue("D{$line}", $_colZAKmail);
-	$activeSheet->setCellValue("E{$line}", $_colDOC);
-	$activeSheet->setCellValue("F{$line}", "3-4/" . $_colNUM);
-	$activeSheet->setCellValue("G{$line}", $_colDATE1);
-	$activeSheet->setCellValue("H{$line}", $_colDATE2);
-	$activeSheet->setCellValue("I{$line}", $_colOBJ);
-	$activeSheet->setCellValue("J{$line}", "");
+	$activeSheet->setCellValue("E{$line}", $_colDOCShot);
+	$activeSheet->setCellValue("F{$line}", $_colDOCFullm);
+	$activeSheet->setCellValue("G{$line}", "3-4/" . $_colNUM);
+	$activeSheet->setCellValue("H{$line}", $_colDATE1);
+	$activeSheet->setCellValue("I{$line}", $_colDATE2);
+	$activeSheet->setCellValue("J{$line}", $_colOBJ);
 	$activeSheet->setCellValue("K{$line}", "");
 	$activeSheet->setCellValue("L{$line}", "");
-	$activeSheet->setCellValue("M{$line}", $_colSUMDOC);
-	$activeSheet->getStyle("M{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
-	$activeSheet->setCellValue("N{$line}", "");
+	$activeSheet->setCellValue("M{$line}", "");
+	$activeSheet->setCellValue("N{$line}", $_colSUMDOC);
+	$activeSheet->getStyle("N{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 	$activeSheet->setCellValue("O{$line}", "");
 	$activeSheet->setCellValue("P{$line}", "");
 	$activeSheet->setCellValue("Q{$line}", "");
 	$activeSheet->setCellValue("R{$line}", "");
+	$activeSheet->setCellValue("S{$line}", "");
 	// Оформляем границы
-	$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_INSIDE);
-	$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
+	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
+	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
 	$_colN++;
 	#
 	#
@@ -436,24 +445,24 @@ while ($_ROW_DOCBASE = mysqli_fetch_assoc($_QRY_DOCBASE)) {
 /*
 	// Задаем высоту строки и шрифт
 	$activeSheet->getRowDimension($line)->setRowHeight(22);
-	$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setSize(12);
-	$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->setBold(true);
+	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(12);
+	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(true);
 	// Задаем цвет текста строки
-	$activeSheet->getStyle("A{$line}:R{$line}")->getFont()->getColor()->setRGB('111111');
+	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('111111');
 	// Объединяем ячейки по горизонтали
-	$activeSheet->mergeCells("A{$line}:G{$line}");
+	$activeSheet->mergeCells("A{$line}:H{$line}");
 	// Выравниваем строку по вертикали ( середина )
-	$activeSheet->getStyle("A{$line}:R{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+	$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
 	// Выравнивание по горизонтали - центр
 	$activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
 	// Выравнивание по горизонтали - центр
-	$activeSheet->getStyle("H{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+	$activeSheet->getStyle("I{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 	$activeSheet->setCellValue("A{$line}", "ИТОГО: ");
-	$activeSheet->setCellValue("H{$line}", $_SUM_TOTAL);
-		$activeSheet->getStyle("H{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+	$activeSheet->setCellValue("I{$line}", $_SUM_TOTAL);
+		$activeSheet->getStyle("I{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 	// Оформляем границы
-	$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_INSIDE);
-	$activeSheet->getStyle("A{$line}:R{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
+	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
+	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
 */
 
 #
@@ -466,7 +475,7 @@ $line = $line - 1;
 // Добавляем рамку к шапке таблицы
 $activeSheet->getStyle("A{$start_table}:R{$start_table}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 // Добавляем рамку ко всей таблице
-$activeSheet->getStyle("A{$start_table}:R{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
+$activeSheet->getStyle("A{$start_table}:S{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 
 
 // $objPHPExcel->getActiveSheet()->setAutoFilter($objPHPExcel->getActiveSheet()->calculateWorksheetDimension());
