@@ -3,28 +3,30 @@
 // Подключаем стили для таблиц
 // :::
 ?>
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-details/restr_4/tabs/css/docview-details-common-tab2_progress.css">
+<link rel="stylesheet"
+      href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-details/restr_4/tabs/css/docview-details-common-tab2_progress.css">
 
 <section>
-	<div class="" style="padding-left:5px; padding-right:5px">
-		<h3 class="docview-details-title2">Выполнение по этапам</h3>
-		<div class="demo-html"></div>
-		<table id="docview-details-tab2" class="table table-responsive table-bordered display compact" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>Этап</th>
-					<th>Краткое наименование этапа</th>
-					<th>1й аванс</th>
-					<th>Срок</th>
-					<th class="text-center">Сумма этапа</th>
-					<th class="text-center">Закрыто</th>
-					<th class="text-center">Не закрыто</th>
-					<th class="text-center">Гарантия до</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
-				$query_getKalplan = mysqlQuery("SELECT * FROM dognet_dockalplan WHERE koddoc = " . $varKoddoc . " AND koddel <> '99'");
+    <div class="" style="padding-left:5px; padding-right:5px">
+        <h3 class="docview-details-title2">Выполнение по этапам</h3>
+        <div class="demo-html"></div>
+        <table id="docview-details-tab2" class="table table-responsive table-bordered display compact" cellspacing="0"
+               width="100%">
+            <thead>
+                <tr>
+                    <th>Этап</th>
+                    <th>Краткое наименование этапа</th>
+                    <th>1й аванс</th>
+                    <th>Срок</th>
+                    <th class="text-center">Сумма этапа</th>
+                    <th class="text-center">Закрыто</th>
+                    <th class="text-center">Не закрыто</th>
+                    <th class="text-center">Гарантия до</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+				$query_getKalplan = mysqlQuery("SELECT * FROM dognet_dockalplan WHERE koddoc = " . $varKoddoc . " AND koddel <> '99' ORDER BY numberstage ASC");
 				$totalStage = 0.00;
 				$totalSumChf = 0.00;
 				$totalZadolg = 0.00;
@@ -87,86 +89,89 @@
 
 						# ----- ----- ----- ----- -----
 				?>
-						<tr>
-							<td class="docview-details-tab2-numberstage text-center">
-								<?php echo $row_getKalplan['numberstage']; ?></td>
-							<td class="docview-details-tab2-namestage text-left"><?php echo $row_getKalplan['nameshotstage']; ?>
-							</td>
-							<td class="docview-details-tab2-dateplan text-left"><?php echo $firstavans; ?></td>
-							<td class="docview-details-tab2-dateplan text-left <?php echo ($objectready) ? "highlight_warning" : ""; ?>">
-								<?php echo $expiry_date; ?></td>
-							<td class="docview-details-tab2-summastage text-right">
-								<?php echo number_format((float)($row_getKalplan['summastage']), 2, '.', ' ') . $__dened; ?>
-							</td>
-							<td class="docview-details-tab2-summastage text-right">
-								<?php echo number_format((float)(StageSumChf($row_getKalplan['kodkalplan'])), 2, '.', ' ') . $__dened; ?>
-							</td>
-							<td class="docview-details-tab2-summastage <?php echo (StageZadolg($row_getKalplan['kodkalplan']) <> 0 ? 'text-danger' : 'text-default'); ?> text-right">
-								<?php echo number_format((float)(StageZadolg($row_getKalplan['kodkalplan'])), 2, '.', ' ') . $__dened; ?>
-							</td>
-							<td class="docview-details-tab2-dateplan text-left"><?php echo $expiry_warranty; ?></td>
-						</tr>
-					<?php
+                <tr>
+                    <td class="docview-details-tab2-numberstage text-center">
+                        <?php echo $row_getKalplan['numberstage']; ?></td>
+                    <td class="docview-details-tab2-namestage text-left"><?php echo $row_getKalplan['nameshotstage']; ?>
+                    </td>
+                    <td class="docview-details-tab2-dateplan text-left"><?php echo $firstavans; ?></td>
+                    <td
+                        class="docview-details-tab2-dateplan text-left <?php echo ($objectready) ? "highlight_warning" : ""; ?>">
+                        <?php echo $expiry_date; ?></td>
+                    <td class="docview-details-tab2-summastage text-right">
+                        <?php echo number_format((float)($row_getKalplan['summastage']), 2, '.', ' ') . $__dened; ?>
+                    </td>
+                    <td class="docview-details-tab2-summastage text-right">
+                        <?php echo number_format((float)(StageSumChf($row_getKalplan['kodkalplan'])), 2, '.', ' ') . $__dened; ?>
+                    </td>
+                    <td
+                        class="docview-details-tab2-summastage <?php echo (StageZadolg($row_getKalplan['kodkalplan']) <> 0 ? 'text-danger' : 'text-default'); ?> text-right">
+                        <?php echo number_format((float)(StageZadolg($row_getKalplan['kodkalplan'])), 2, '.', ' ') . $__dened; ?>
+                    </td>
+                    <td class="docview-details-tab2-dateplan text-left"><?php echo $expiry_warranty; ?></td>
+                </tr>
+                <?php
 						// ----- ----- -----
 						$totalStage += $row_getKalplan['summastage'];
 						$totalSumChf += StageSumChf($row_getKalplan['kodkalplan']);
 						$totalZadolg += StageZadolg($row_getKalplan['kodkalplan']);
 					}
 					?>
-			</tbody>
-			<tfoot>
-				<tr>
-					<th colspan="4" class="text-right text-uppercase text-right">Итоги по договору :</th>
-					<th class="docview-details-tab2-summastage text-right">
-						<?php echo number_format((float)($totalStage), 2, '.', ' ') . $__dened; ?></th>
-					<th class="docview-details-tab2-summastage text-right">
-						<?php echo number_format((float)($totalSumChf), 2, '.', ' ') . $__dened; ?></th>
-					<th class="docview-details-tab2-summastage <?php echo ($totalZadolg <> 0 ? 'text-danger' : 'text-default'); ?> text-right">
-						<?php echo number_format((float)($totalZadolg), 2, '.', ' ') . $__dened; ?></th>
-				</tr>
-			</tfoot>
-		</table>
-		<table id="compact-legend-table" class="table table-responsive" cellspacing="0" width="100%">
-			<tbody>
-				<tr>
-					<td width="8%" valign="middle"><span class="label label-default text-uppercase">Закрыто</span></td>
-					<td width="2%"><span class=""></span></td>
-					<td><span>Сумма выставленных счетов-фактур по этапу.</span></td>
-				</tr>
-				<tr>
-					<td width="8%" valign="middle"><span class="label label-default text-uppercase">Не закрыто</span>
-					</td>
-					<td width="2%"><span class=""></span></td>
-					<td><span>Разница между суммой этапа и суммой выставленных счетов-фактур по этапу.</span></td>
-				</tr>
-				<tr>
-					<td width="8%" valign="middle"><span class="label label-default text-uppercase">Срок</span></td>
-					<td width="2%"><span class=""></span></td>
-					<td>
-						<span>1. Если срок выполнения этапа указан в виде даты (ДД/ММ/ГГГГ), то этот срок равен этой
-							дате.</span><br>
-						<span>2. Если срок выполнения этапа указан в днях, то этот срок равен дате 1-го аванса +
-							количество дней.</span><br>
-						<span>3. Если срок выполнения этапа не указан, то этот срок равен планируемой дате либо дате
-							конца года (31/12/ГГГГ).</span><br>
-						<span>4. Если <span style="background-color:#faeeaa; padding:0 3px">срок выполнения</span> этапа
-							помечен таким образом, то это означает, что срок учитывается "при условии своевременной
-							готовности объекта...".</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	<?php
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4" class="text-right text-uppercase text-right">Итоги по договору :</th>
+                    <th class="docview-details-tab2-summastage text-right">
+                        <?php echo number_format((float)($totalStage), 2, '.', ' ') . $__dened; ?></th>
+                    <th class="docview-details-tab2-summastage text-right">
+                        <?php echo number_format((float)($totalSumChf), 2, '.', ' ') . $__dened; ?></th>
+                    <th
+                        class="docview-details-tab2-summastage <?php echo ($totalZadolg <> 0 ? 'text-danger' : 'text-default'); ?> text-right">
+                        <?php echo number_format((float)($totalZadolg), 2, '.', ' ') . $__dened; ?></th>
+                </tr>
+            </tfoot>
+        </table>
+        <table id="compact-legend-table" class="table table-responsive" cellspacing="0" width="100%">
+            <tbody>
+                <tr>
+                    <td width="8%" valign="middle"><span class="label label-default text-uppercase">Закрыто</span></td>
+                    <td width="2%"><span class=""></span></td>
+                    <td><span>Сумма выставленных счетов-фактур по этапу.</span></td>
+                </tr>
+                <tr>
+                    <td width="8%" valign="middle"><span class="label label-default text-uppercase">Не закрыто</span>
+                    </td>
+                    <td width="2%"><span class=""></span></td>
+                    <td><span>Разница между суммой этапа и суммой выставленных счетов-фактур по этапу.</span></td>
+                </tr>
+                <tr>
+                    <td width="8%" valign="middle"><span class="label label-default text-uppercase">Срок</span></td>
+                    <td width="2%"><span class=""></span></td>
+                    <td>
+                        <span>1. Если срок выполнения этапа указан в виде даты (ДД/ММ/ГГГГ), то этот срок равен этой
+                            дате.</span><br>
+                        <span>2. Если срок выполнения этапа указан в днях, то этот срок равен дате 1-го аванса +
+                            количество дней.</span><br>
+                        <span>3. Если срок выполнения этапа не указан, то этот срок равен планируемой дате либо дате
+                            конца года (31/12/ГГГГ).</span><br>
+                        <span>4. Если <span style="background-color:#faeeaa; padding:0 3px">срок выполнения</span> этапа
+                            помечен таким образом, то это означает, что срок учитывается "при условии своевременной
+                            готовности объекта...".</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <?php
 				} else {
 	?>
-		<tr>
-			<td colspan="6" class="docview-details-tab2-txt text-left text-danger" style="text-align:left">По данному
-				договору этапы не определены</td>
-		</tr>
-		</tbody>
-		</table>
-	<?php
+        <tr>
+            <td colspan="6" class="docview-details-tab2-txt text-left text-danger" style="text-align:left">По данному
+                договору этапы не определены</td>
+        </tr>
+        </tbody>
+        </table>
+        <?php
 				}
 	?>
-	</div>
+    </div>
 </section>
