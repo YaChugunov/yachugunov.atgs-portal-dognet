@@ -6,13 +6,13 @@ date_default_timezone_set('Europe/Moscow');
 # require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT']."/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT']."/_assets/drivers/db_controller.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php";
 $db_handle = new DBController();
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Подключаем общие функции безопасности
 # require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require($_SERVER['DOCUMENT_ROOT']."/_assets/functions/funcSecure.inc.php");
+require $_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php";
 # Подключаем собственные функции сервиса Почта
 // require($_SERVER['DOCUMENT_ROOT']."/btrips/_assets/functions/funcDognet.inc.php");
 # Включаем режим сессии
@@ -22,12 +22,11 @@ session_start();
 # These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 #
 # Подключаем библиотеки
-require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/Exception.php";
-require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/PHPMailer.php";
-require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/SMTP.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/src/Exception.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/src/PHPMailer.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/src/SMTP.php";
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # УВЕДОМЛЕНИЕ ПО EMAIL О ПОЯВЛЕНИИ НОВОГО АВАНСА
 
@@ -39,36 +38,43 @@ $_namestage = $_POST['namestage'];
 $_dateavans = $_POST['dateavans'];
 $_summaavans = $_POST['summaavans'];
 
-if ($_summaavans!=""&&$_docnumber!="") {
+if ($_summaavans != "" && $_docnumber != "") {
 
-	// 28.05.2022
-	// Определяем какой это аванс - первый или очередной
-	$avanstype = 'новый аванс';
-	$avansdate = date("Y-m-d", strtotime($_dateavans));
-	$_QRY = mysqlQuery("SELECT id FROM dognet_docavans WHERE koddoc='".$_koddoc."' AND dateavans <= '".$avansdate."'");
-	if (mysqli_num_rows($_QRY) > 1) {
-		$avanstype = 'очередной аванс';
-		$avansstr = '<span style="">очередной аванс</span>';
-	}
-	else {
-		$avanstype = 'первый аванс';
-		$avansstr = '<span style="color:#e20613">первый аванс</span>';
-	}
+    // 28.05.2022
+    // Определяем какой это аванс - первый или очередной
+    $avanstype = 'новый аванс';
+    $avansdate = date("Y-m-d", strtotime($_dateavans));
+    $_QRY = mysqlQuery("SELECT id FROM dognet_docavans WHERE koddoc='" . $_koddoc . "' AND dateavans <= '" . $avansdate . "'");
+    if (mysqli_num_rows($_QRY) > 1) {
+        $avanstype = 'очередной аванс';
+        $avansstr = '<span style="">очередной аванс</span>';
+    } else {
+        $avanstype = 'первый аванс';
+        $avansstr = '<span style="color:#e20613">первый аванс</span>';
+    }
+// 19.06.24
+// Добавляем к выводу в тексте письма Заказчика
+    $_QRY1 = mysqli_fetch_assoc(mysqlQuery("SELECT kodzakaz FROM dognet_docbase WHERE docnumber='" . $_docnumber . "'"));
+    $_kodcontragent = !empty($_QRY1['kodzakaz']) ? $_QRY1['kodzakaz'] : "";
+    $_QRY2 = mysqli_fetch_assoc(mysqlQuery("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodcontragent . "'"));
+    $_namecontragentS = !empty($_QRY2['nameshort']) ? $_QRY2['nameshort'] : "";
+    $_namecontragentF = !empty($_QRY2['namefull']) ? $_QRY2['namefull'] : "";
+    // $_namecontragentF = $_docnumber." / ".$_kodcontragent;
 
-		// Instantiation and passing `true` enables exceptions
-		$mail3 = new PHPMailer(true);
-		$message3 = "";
-		//
-		//
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		//
-		//
-			$subjectTxt = "Договор [Авансы] : Получен ".$avanstype." по договору № 3-4/".$_docnumber."";
-			$subject = "=?utf-8?B?".base64_encode($subjectTxt)."?=";
-		//
-		// Текст сообщения
+    // Instantiation and passing `true` enables exceptions
+    $mail3 = new PHPMailer(true);
+    $message3 = "";
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
+    //
+    $subjectTxt = "Договор [Авансы] : Получен " . $avanstype . " по договору № 3-4/" . $_docnumber . "";
+    $subject = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+    //
+    // Текст сообщения
 
-			$message3 = '
+    $message3 = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -234,8 +240,8 @@ if ($_summaavans!=""&&$_docnumber!="") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 30px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:30px;padding-right:10px;padding-bottom:15px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 24px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 29px; margin: 0;"><span style="color: #ffb400; font-size: 24px;"><span style=""><strong><span style="font-size: 28px; text-transform: uppercase;">'.$avansstr.'</span><br/></strong></span></span></p>
-<p style="font-size: 20px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 24px; margin: 0;"><span style="color: #ffffff; font-size: 20px;"><span style=""><strong><span style="color: #000000;"><span style="background-color: #000000; color: #ffffff;">'.date("d.m.Y", strtotime($_dateavans)).'</span> /</span> </strong></span></span><span style="color: #ffffff; font-size: 20px; background-color: #000000;"><span style=""><strong>'.$_summaavans.'</strong></span></span></p>
+<p style="font-size: 24px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 29px; margin: 0;"><span style="color: #ffb400; font-size: 24px;"><span style=""><strong><span style="font-size: 28px; text-transform: uppercase;">' . $avansstr . '</span><br/></strong></span></span></p>
+<p style="font-size: 20px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 24px; margin: 0;"><span style="color: #ffffff; font-size: 20px;"><span style=""><strong><span style="color: #000000;"><span style="background-color: #000000; color: #ffffff;">' . date("d.m.Y", strtotime($_dateavans)) . '</span> /</span> </strong></span></span><span style="color: #ffffff; font-size: 20px; background-color: #000000;"><span style=""><strong>' . $_summaavans . '</strong></span></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -262,7 +268,7 @@ if ($_summaavans!=""&&$_docnumber!="") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="color: #000000; font-size: 18px;"><span style="">'.$_namestage.'</span></span></strong></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="color: #000000; font-size: 18px;"><span style="">' . $_namestage . '</span></span></strong></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -308,7 +314,53 @@ if ($_summaavans!=""&&$_docnumber!="") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">3-4/'.$_docnumber.'<br/></span></strong><span style="font-size: 12px; color: #808080;">'.$_namedoc.'</span><strong><span style="font-size: 12px;"><br/></span></strong></span></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">3-4/' . $_docnumber . '<br/></span></strong><span style="font-size: 12px; color: #808080;">' . $_namedoc . '</span><strong><span style="font-size: 12px;"><br/></span></strong></span></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+</div>
+</div>
+</div>
+<div style="background-color:transparent;">
+<div class="block-grid mixed-two-up" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+<!--[if (mso)|(IE)]><td align="center" width="200" style="background-color:transparent;width:200px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+<div class="col num4" style="display: table-cell; vertical-align: top; max-width: 320px; min-width: 200px; width: 200px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
+<div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2; padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
+<div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
+<p style="font-size: 12px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px; color: #333333;">КОНТРАГЕНТ</span></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td><td align="center" width="400" style="background-color:transparent;width:400px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+<div class="col num8" style="display: table-cell; vertical-align: top; min-width: 320px; max-width: 400px; width: 400px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
+<div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
+<div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
+<p style="line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong>' . $_namecontragentF . '</strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -354,7 +406,7 @@ if ($_summaavans!=""&&$_docnumber!="") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong>'.$_numberstage.'<br/></strong></span><span style="font-size: 12px; color: #808080;">'.$_namestage.'</span></p>
+<p style="line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong>' . $_numberstage . '<br/></strong></span><span style="font-size: 12px; color: #808080;">' . $_namestage . '</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -400,7 +452,7 @@ if ($_summaavans!=""&&$_docnumber!="") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><strong><span style="font-size: 12px; color: #000000;">'.date("d.m.Y", strtotime($_dateavans)).'</span></strong></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><strong><span style="font-size: 12px; color: #000000;">' . date("d.m.Y", strtotime($_dateavans)) . '</span></strong></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -446,7 +498,7 @@ if ($_summaavans!=""&&$_docnumber!="") {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">'.$_summaavans.'</span></strong></span></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">' . $_summaavans . '</span></strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -512,46 +564,46 @@ if ($_summaavans!=""&&$_docnumber!="") {
 </body>
 </html>
 ';
-		//
-		//
+    //
+    //
 # ----- ----- ----- ----- -----
 #
 # SERVER SETTINGS
 #
 #
 // Enable verbose debug output
-  $mail3->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail3->SMTPDebug = SMTP::DEBUG_SERVER;
 // Disable verbose debug output
-  $mail3->SMTPDebug = 0;
+    $mail3->SMTPDebug = 0;
 // Send using SMTP
-	$mail3->isSMTP();
+    $mail3->isSMTP();
 // Set the SMTP server to send through
-  $mail3->Host = 'mail.atgs.ru';
+    $mail3->Host = 'mail.atgs.ru';
 // Enable SMTP authentication
-  $mail3->SMTPAuth = true;
+    $mail3->SMTPAuth = true;
 // SMTP connection will not close after each email sent, reduces SMTP overhead
-  $mail3->SMTPKeepAlive = true;
+    $mail3->SMTPKeepAlive = true;
 // SMTP username
-  $mail3->Username = 'portal@atgs.ru';
+    $mail3->Username = 'portal@atgs.ru';
 // SMTP password
-  $mail3->Password = 'iu3Li,quohch';
+    $mail3->Password = 'iu3Li,quohch';
 // Enable TLS encryption, `PHPMailer::ENCRYPTION_SMTPS` also accepted
-  $mail3->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail3->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 // TCP port
-  $mail3->Port = 587;
+    $mail3->Port = 587;
 #
 #
 # ----- ----- ----- ----- -----
 #
 #
-  $mail3->setLanguage('ru', $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/language/");
-  $mail3->CharSet = "utf-8";
+    $mail3->setLanguage('ru', $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/language/");
+    $mail3->CharSet = "utf-8";
 #
 # From
-	$from_name = "АТГС.Портал / Корпоративные сервисы";
-	$from_email = "portal@atgs.ru";
-	$from_name = "=?utf-8?B?".base64_encode($from_name)."?=";
-	$mail3->setFrom($from_email, $from_name);
+    $from_name = "АТГС.Портал / Корпоративные сервисы";
+    $from_email = "portal@atgs.ru";
+    $from_name = "=?utf-8?B?" . base64_encode($from_name) . "?=";
+    $mail3->setFrom($from_email, $from_name);
 # ----- ----- ----- ----- -----
 
 #
@@ -559,69 +611,69 @@ if ($_summaavans!=""&&$_docnumber!="") {
 # $mail3->addReplyTo('email', 'name')
 # Email is an recipient address, Name is optional
 #
-// 	$email_to = 'office-all@atgs.ru';
+//     $email_to = 'office-all@atgs.ru';
 //   $mail3->addAddress($email_to, 'ATGS Office');
 
-	// $mail3->addAddress("chugunov@atgs.ru", "Y. Chugunov");
-	$mail3->addAddress("roschin@atgs.ru", "A. Roschin");
- 	$mail3->addAddress("lukiynov@atgs.ru", "R. Lukiyanov");
- 	$mail3->addAddress("tim@atgs.ru", "R. Timofeev");
- 	$mail3->addAddress("sga@atgs.ru", "G. Sundukova");
- 	$mail3->addAddress("zholobova@atgs.ru", "J. Zholobova");
- 	$mail3->addCC("chugunov@atgs.ru", "Y. Chugunov");
-	$mail3->addReplyTo('notreply@atgs.ru', 'Do not reply');
+    // $mail3->addAddress("chugunov@atgs.ru", "Y. Chugunov");
+    $mail3->addAddress("roschin@atgs.ru", "A. Roschin");
+    $mail3->addAddress("lukiynov@atgs.ru", "R. Lukiyanov");
+    $mail3->addAddress("tim@atgs.ru", "R. Timofeev");
+    $mail3->addAddress("sga@atgs.ru", "G. Sundukova");
+    $mail3->addAddress("zholobova@atgs.ru", "J. Zholobova");
+    $mail3->addAddress("kve@atgs.ru", "V. Kocheshkov");
+    $mail3->addAddress("fsd@atgs.ru", "S. Fainerman");
+    $mail3->addCC("chugunov@atgs.ru", "Y. Chugunov");
+    $mail3->addReplyTo('notreply@atgs.ru', 'Do not reply');
 #
 #
 // Content
-  $mail3->isHTML(true);                                  // Set email format to HTML
-  $mail3->Subject = $subject;
-  $mail3->Body    = $message3;
-  $mail3->AltBody = 'Ваш почтовый клиент не принимает сообщений в формате HTML. Вариант рассылки в формате PLAIN TEXT будет реализован позже.';
+    $mail3->isHTML(true); // Set email format to HTML
+    $mail3->Subject = $subject;
+    $mail3->Body = $message3;
+    $mail3->AltBody = 'Ваш почтовый клиент не принимает сообщений в формате HTML. Вариант рассылки в формате PLAIN TEXT будет реализован позже.';
 #
 # ::: Send the message, check for errors
 #
 # Открыли файл для записи данных в конец файла
-	    $filename = $_SERVER['DOCUMENT_ROOT']."/dognet/PHPMailer_errors.log";
-	    if (is_writable($filename)) {
+    $filename = $_SERVER['DOCUMENT_ROOT'] . "/dognet/PHPMailer_errors.log";
+    if (is_writable($filename)) {
 
-	      if (!$handle = fopen($filename, 'a')) {
- 	        // echo "<span style='color:red; text-align:center'><i>Не могу открыть лог-файл для записи отчета об отправке.</i></span>";
-	        echo "-2";
-	        exit;
-	      }
+        if (!$handle = fopen($filename, 'a')) {
+            // echo "<span style='color:red; text-align:center'><i>Не могу открыть лог-файл для записи отчета об отправке.</i></span>";
+            echo "-2";
+            exit;
+        }
 
-	      if (!$mail3->send()) {
-		    $err = $mail3->ErrorInfo.PHP_EOL;
-	        $text = date('Y-m-d h:i:s')." : ошибка рассылки : ".$err;
-	      // Записываем $somecontent в наш открытый файл.
-	        if (fwrite($handle, $text) === FALSE) {
-	          // echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог файл.</i></span>";
-	          echo "-1";
-	          exit;
-	        }
-	        // echo "<span style='color:red; text-align:center'><i>Ошибка при отправке сообщения : $err.</i></span>";
-	        echo "2";
-	        fclose($handle);
-	      }
-	      else {
-	        $text = date('Y-m-d h:i:s')." : сообщение успешно отправлено".PHP_EOL;
-	      // Записываем $somecontent в наш открытый файл.
-	        if (fwrite($handle, $text) === FALSE) {
-	          // echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог-файл.</i></span>";
-	          echo "-1";
-	          exit;
-	        }
-	          // echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
-	          echo "0";
-	          fclose($handle);
-	      }
-	    }
-	    else {
-	      // echo "<span style='color:red; text-align:center'><i>Лог-файл недоступен для записи.</i></span>";
-	      echo "-1";
-	    }
+        if (!$mail3->send()) {
+            $err = $mail3->ErrorInfo . PHP_EOL;
+            $text = date('Y-m-d h:i:s') . " : ошибка рассылки : " . $err;
+            // Записываем $somecontent в наш открытый файл.
+            if (fwrite($handle, $text) === FALSE) {
+                // echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог файл.</i></span>";
+                echo "-1";
+                exit;
+            }
+            // echo "<span style='color:red; text-align:center'><i>Ошибка при отправке сообщения : $err.</i></span>";
+            echo "2";
+            fclose($handle);
+        } else {
+            $text = date('Y-m-d h:i:s') . " : сообщение успешно отправлено" . PHP_EOL;
+            // Записываем $somecontent в наш открытый файл.
+            if (fwrite($handle, $text) === FALSE) {
+                // echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог-файл.</i></span>";
+                echo "-1";
+                exit;
+            }
+            // echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
+            echo "0";
+            fclose($handle);
+        }
+    } else {
+        // echo "<span style='color:red; text-align:center'><i>Лог-файл недоступен для записи.</i></span>";
+        echo "-1";
+    }
 // Clear all addresses and attachments for next loop
-  $mail3->ClearAddresses();
+    $mail3->ClearAddresses();
 }
 
 ?>

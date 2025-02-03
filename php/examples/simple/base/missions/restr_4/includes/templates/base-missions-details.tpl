@@ -30,7 +30,7 @@
 										'</tr>'+
 										'<tr>'+
 											'<td width="30%" style=""><span class="row-details-report-missions-table-title_topic">Организация-плательщик</span></td>'+
-											'<td style=""><span class="row-details-report-missions-table-txt"><span class="">'+d.sp_contragents.namefull+'</span></td>'+
+											'<td style=""><span class="row-details-report-missions-table-txt"><span class="">'+d.sp_contragents_opf.abbr+' "'+d.sp_contragents.namefull+'"</span></td>'+
 										'</tr>'+
 										'<tr>'+
 											'<td width="30%" style=""><span class="row-details-report-missions-table-title_topic">Исполнитель</span></td>'+

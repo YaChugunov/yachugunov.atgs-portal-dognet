@@ -369,7 +369,7 @@ if ($_GET['blankType'] !== "SUB") {
 	$cell = $table->addCell(7500, $_TBL_Body_Cell_Clear);
 	$cell->addText("Исполнитель (Поставщик)", $_FONT_P10, $_TXT_INCELL_1L);
 	$cell = $table->addCell(11000, $_TBL_Body_Cell_B);
-	$cell->addText('АО "АтлантикТрансгазСистема"', $_FONT_P10_B, $_TXT_INCELL_1L);
+	$cell->addText('АО "АТГС"', $_FONT_P10_B, $_TXT_INCELL_1L);
 } else {
 	# ----- ----- -----
 	# 3.1 Заказчик (покупатель)
@@ -381,7 +381,7 @@ if ($_GET['blankType'] !== "SUB") {
 	$cell = $table->addCell(7500, $_TBL_Body_Cell_Clear);
 	$cell->addText("Заказчик (Покупатель)", $_FONT_P10, $_TXT_INCELL_1L);
 	$cell = $table->addCell(11000, $_TBL_Body_Cell_B);
-	$cell->addText('АО "АтлантикТрансгазСистема"', $_FONT_P10_B, $_TXT_INCELL_1L);
+	$cell->addText('АО "АТГС"', $_FONT_P10_B, $_TXT_INCELL_1L);
 	# ----- ----- -----
 	# 3.2 Исполнитель (поставщик)
 	#

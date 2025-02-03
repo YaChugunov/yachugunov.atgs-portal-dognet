@@ -127,6 +127,9 @@ Editor::inst($db, 'dognet_docblankwork')
 					->table('sp_contragents')
 					->value('kodcontragent')
 					->label(array('kodcontragent', 'nameshort'))
+					->where(function ($q) {
+						$q->where('useindog', '1', '=');
+					})
 					->render(function ($row) {
 						return $row['nameshort'];
 					})
@@ -137,6 +140,9 @@ Editor::inst($db, 'dognet_docblankwork')
 					->table('sp_contragents')
 					->value('kodcontragent')
 					->label(array('kodcontragent', 'nameshort'))
+					->where(function ($q) {
+						$q->where('useinsub', '1', '=');
+					})
 					->render(function ($row) {
 						return $row['nameshort'];
 					})
@@ -210,7 +216,21 @@ Editor::inst($db, 'dognet_docblankwork')
 		Field::inst('dognet_blankdocsub.numbertelmob'),
 		Field::inst('dognet_blankdocsub.numbertelfax'),
 		Field::inst('dognet_blankdocsub.nameemail'),
-		Field::inst('dognet_blankdocsub.namedoljcontact')
+		Field::inst('dognet_blankdocsub.namedoljcontact'),
+		//
+		// ::: Включаем в запрос данные из таблицы бланков на ПИР (dognet_blankdocpir)
+		//
+		Field::inst('dognet_blankdocpir.ID'),
+		Field::inst('dognet_blankdocpir.nameendcontact'),
+		Field::inst('dognet_blankdocpir.namefistcontact'),
+		Field::inst('dognet_blankdocpir.namesecondcontact'),
+		Field::inst('dognet_blankdocpir.numbertelrab'),
+		Field::inst('dognet_blankdocpir.numbertelmob'),
+		Field::inst('dognet_blankdocpir.numbertelfax'),
+		Field::inst('dognet_blankdocpir.nameemail'),
+		Field::inst('dognet_blankdocpir.namedoljcontact'),
+		Field::inst('dognet_blankdocpir.dopcontact1'),
+		Field::inst('dognet_blankdocpir.dopcontact2'),
 	)
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	#
@@ -223,6 +243,7 @@ Editor::inst($db, 'dognet_docblankwork')
 	->leftJoin('sp_contragents as sp_contragents_subpodr', 'sp_contragents_subpodr.kodcontragent', '=', 'dognet_docblankwork.kodsubpodr')
 	->leftJoin('dognet_blankdocpost', 'dognet_blankdocpost.id', '=', 'dognet_docblankwork.blank_rowID')
 	->leftJoin('dognet_blankdocpnr', 'dognet_blankdocpnr.id', '=', 'dognet_docblankwork.blank_rowID')
+	->leftJoin('dognet_blankdocpir', 'dognet_blankdocpir.id', '=', 'dognet_docblankwork.blank_rowID')
 	->leftJoin('sp_objects', 'sp_objects.kodobject', '=', 'dognet_blankdocpnr.kodobject')
 	->leftJoin('dognet_blankdocsub', 'dognet_blankdocsub.id', '=', 'dognet_docblankwork.blank_rowID')
 	->where('dognet_docblankwork.kodblankdone', "1", "=")

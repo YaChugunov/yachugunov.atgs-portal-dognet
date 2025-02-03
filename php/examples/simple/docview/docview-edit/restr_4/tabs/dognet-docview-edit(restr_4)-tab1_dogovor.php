@@ -37,6 +37,7 @@ function ajaxRequest_sendMail_docStatus(docnumber, namedoc, ispolname, docstatus
     // Callback handler that will be called on success
     request.done(function(response, textStatus, jqXHR) {
         res1 = response.replace(new RegExp("\\r?\\n", "g"), "");
+        console.log("ajaxRequest_sendMail_docStatus > response", response);
         if (res1 == '0') {
             console.log("Письмо отправлено");
             // $("#ajaxResponse_reqUnlockDoc_msg").html('Запрос в ОД отправлен');
@@ -302,7 +303,9 @@ $(document).ready(function() {
                     value: "3"
                 }
             ],
-            placeholder: "Выберите вариант"
+            placeholder: "Выберите вариант",
+            def: "1",
+            unselectedValue: "1"
         }, {
             label: "Комментарии к договору :",
             name: "dognet_docbase.comments",
@@ -598,10 +601,11 @@ $(document).ready(function() {
         window._kodstatusbefore = data.dognet_docbase.kodstatus;
     });
     editor_tab1_dogovor.on('submitSuccess', function(e, json, data, action) {
+        console.log("submitSuccess");
         if (action === "create") {
             // осуществляем глубокое копирование объекта и инициализируем переменную
             let newObj = JSON.parse(JSON.stringify(json));
-            // console.log( newObj.data[0] );
+            console.log("create > newObj", newObj.data[0]);
             _docnumber = newObj.data[0].dognet_docbase.docnumber;
             _namedoc = newObj.data[0].dognet_docbase.docnameshot;
             _ispolname = newObj.data[0].dognet_spispol.ispolnamefull;
@@ -617,9 +621,10 @@ $(document).ready(function() {
             ajaxRequest_sendMail_docStatus(_docnumber, _namedoc, _ispolname, _docstatus, _summadoc,
                 _koddoc, _kodstatus, _kodispol, 'sendMail');
         } else if (action === "edit") {
+
             // осуществляем глубокое копирование объекта и инициализируем переменную
             let newObj = JSON.parse(JSON.stringify(json));
-            // console.log( newObj.data[0] );
+            console.log("edit > newObj", newObj.data[0]);
             _docnumber = newObj.data[0].dognet_docbase.docnumber;
             _namedoc = newObj.data[0].dognet_docbase.docnameshot;
             _ispolname = newObj.data[0].dognet_spispol.ispolnamefull;
@@ -634,6 +639,9 @@ $(document).ready(function() {
             // Отправляем уведомление на email только если статус договора меняется на "ЕСТЬ СКАН" или "ТЕКУЩИЙ" с отличного (window._kodstatusbefore)
             if ((_kodstatus == "245597345680479" || _kodstatus == "245381842747296") && _kodstatus !=
                 window._kodstatusbefore) {
+                console.log("edit > newObj > status control", _docnumber, _namedoc, _ispolname,
+                    _docstatus, _summadoc,
+                    _koddoc, _kodstatus, _kodispol, 'sendMail');
                 ajaxRequest_sendMail_docStatus(_docnumber, _namedoc, _ispolname, _docstatus, _summadoc,
                     _koddoc, _kodstatus, _kodispol, 'sendMail');
             }

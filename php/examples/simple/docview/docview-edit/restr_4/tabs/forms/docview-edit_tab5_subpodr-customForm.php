@@ -2,9 +2,9 @@
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 // Форма редактирования договора субподряда
 // :::
-?>
+; ?>
 <link rel="stylesheet"
-    href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_5/tabs/css/docview-edit-tab5_subpodr-customForm.css">
+      href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_5/tabs/css/docview-edit-tab5_subpodr-customForm.css">
 <div id="customForm_tab5_subpodr">
     <div class="doc-editor-tabs" style="width:100%">
         <ul id="" class="nav nav-tabs doc-editor-tabs-menu">
@@ -22,6 +22,14 @@
 			</div> -->
             <div id="doc-editor-tab5-subpodr-3" class="tab-pane fade in active">
                 <div class="Section">
+                    <?php if (checkIsItSuperadmin($_SESSION['id']) == 1) { ?>
+                    <div class="Block100">
+                        <legend>Привязка договора к бланку ГИП</legend>
+                        <fieldset class="field100">
+                            <editor-field name="dognet_docsubpodr.kodblankwork"></editor-field>
+                        </fieldset>
+                    </div>
+                    <?php } ?>
                     <div class="Block100">
                         <legend>Параметры субподряда</legend>
                         <fieldset class="field40">

@@ -1,66 +1,64 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-date_default_timezone_set('Europe/Moscow');
-setlocale(LC_ALL, 'rus');
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Включаем режим сессии
-// session_start();
-# Подключаем конфигурационный файл
-// require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
-$db_handle = new DBController();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаем общие функции безопасности
-// require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-// require($_SERVER['DOCUMENT_ROOT']."/_assets/functions/funcSecure.inc.php");
-# Подключаем собственные функции сервиса Почта
-// require($_SERVER['DOCUMENT_ROOT']."/dognet/_assets/functions/funcDognet.inc.php");
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPOffice/vendor/autoload.php");
-//
-//
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
-// СОЗДАЕМ И НАСТРАИВАЕМ ОБЪЕКТ PHPExcel
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-#
-// Создаем новый объект PHPExcel
-$objPHPExcel = new PHPExcel;
-#
-// Устанавливаем свойства документа
-$properties = $objPHPExcel->getProperties();
-#
-$properties->setCreator("АТГС.Портал");
-$properties->setCompany('АТГС');
-$properties->setTitle('Справка о задолженности по субподрядчикам');
-$properties->setDescription('Справка о задолженности по субподрядчикам');
-$properties->setCategory('Отчеты');
-$properties->setLastModifiedBy('АТГС.Портал');
-$properties->setCreated(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
-$properties->setModified(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
-$properties->setSubject('Справка о задолженности по субподрядчикам');
-$properties->setKeywords('Портал, Договор, Отчеты');
-#
-#
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolsub/export/_xlsx/export2xlsx_zdl_common.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolsub/export/_xlsx/export2xlsx_zdl_sub.php");
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    date_default_timezone_set('Europe/Moscow');
+    setlocale(LC_ALL, 'rus');
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Включаем режим сессии
+    // session_start();
+    # Подключаем конфигурационный файл
+    // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Подключаемся к базе
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php";
+    $db_handle = new DBController();
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Подключаем общие функции безопасности
+    // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
+    // require($_SERVER['DOCUMENT_ROOT']."/_assets/functions/funcSecure.inc.php");
+    # Подключаем собственные функции сервиса Почта
+    // require($_SERVER['DOCUMENT_ROOT']."/dognet/_assets/functions/funcDognet.inc.php");
+    #
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPOffice/vendor/autoload.php";
+    //
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
+    // СОЗДАЕМ И НАСТРАИВАЕМ ОБЪЕКТ PHPExcel
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
+    #
+    #
+    // Создаем новый объект PHPExcel
+    $objPHPExcel = new PHPExcel;
+    #
+    // Устанавливаем свойства документа
+    $properties = $objPHPExcel->getProperties();
+    #
+    $properties->setCreator("АТГС.Портал");
+    $properties->setCompany('АТГС');
+    $properties->setTitle('Справка о задолженности по субподрядчикам');
+    $properties->setDescription('Справка о задолженности по субподрядчикам');
+    $properties->setCategory('Отчеты');
+    $properties->setLastModifiedBy('АТГС.Портал');
+    $properties->setCreated(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
+    $properties->setModified(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
+    $properties->setSubject('Справка о задолженности по субподрядчикам');
+    $properties->setKeywords('Портал, Договор, Отчеты');
+    #
+    #
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolsub/export/_xlsx/export2xlsx_zdl_common.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolsub/export/_xlsx/export2xlsx_zdl_sub.php";
 
-
-
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-/*
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    /*
 	СОЗДАЕМ И СВОЙ ФОРМАТ ДЛЯ ЯЧЕЕК : ХХХ.ХХ р.
 	Данный формат позволяет вести дальнейшие расчеты в Excel с ячейками как с денежными единицами
 
@@ -68,52 +66,52 @@ include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-d
 	$sheet->setCellValue("C" . $cnt, floatval($item["price"]));
 	$sheet->getStyle("C" . $cnt)->getNumberFormat()->setFormatCode(PRICE_FORMAT);
 */
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-// Задаем свой формат
-define("PRICE_FORMAT", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
-#
-#
-#
-#
-#
-// Устанавливаем индекс активного листа
-// 		$objPHPExcel->setActiveSheetIndex(0);
-$objPHPExcel->setActiveSheetIndexByName('Worksheet');
-$sheetIndex = $objPHPExcel->getActiveSheetIndex();
-$objPHPExcel->removeSheetByIndex($sheetIndex);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
-//
-//
-//
-// ФАЙЛ ГОТОВ
-//
-// Отдаем его браузеру на скачивание
-//
-//
-//
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
+    // Задаем свой формат
+    define("PRICE_FORMAT", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
+    #
+    #
+    #
+    #
+    #
+    // Устанавливаем индекс активного листа
+    // 		$objPHPExcel->setActiveSheetIndex(0);
+    $objPHPExcel->setActiveSheetIndexByName('Worksheet');
+    $sheetIndex = $objPHPExcel->getActiveSheetIndex();
+    $objPHPExcel->removeSheetByIndex($sheetIndex);
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
+    //
+    //
+    //
+    // ФАЙЛ ГОТОВ
+    //
+    // Отдаем его браузеру на скачивание
+    //
+    //
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-$xmlWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-// $xmlWriter->save('php://output');
-$filepath = $_SERVER['DOCUMENT_ROOT'] . "/dognet/tmp/";
-$filename = "SPRAVKA-ZADOLSUB_" . $_SESSION['id'] . "_" . date('YmdHis') . ".XLSX";
-$xmlWriter->save($filepath . $filename);
+    $xmlWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+    // $xmlWriter->save('php://output');
+    $filepath = $_SERVER['DOCUMENT_ROOT'] . "/dognet/tmp/";
+    $filename = "SPRAVKA-ZADOLSUB_" . $_SESSION['id'] . "_" . date('YmdHis') . ".XLSX";
+    $xmlWriter->save($filepath . $filename);
 
-// Делаем запись в системный лог
-// Все параметры в таблице portal_log_messages
-PORTAL_SYSLOG('99942200', '0000001', null, $_GET['reportview'], "Справка о задолженности по субподрядчикам", "EXCEL");
+    // Делаем запись в системный лог
+    // Все параметры в таблице portal_log_messages
+    // PORTAL_SYSLOG('99942200', '0000001', null, $_GET['reportview'], "Справка о задолженности по субподрядчикам", "EXCEL");
 
 ?>
 

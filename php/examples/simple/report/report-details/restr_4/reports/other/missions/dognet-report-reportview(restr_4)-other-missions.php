@@ -1,17 +1,17 @@
 <?php
-date_default_timezone_set('Europe/Moscow');
+    date_default_timezone_set('Europe/Moscow');
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
 
-$__title = 'Договор';
-$__subtitle = "Отчетные формы";
-$__subsubtitle = "Перечень договоров";
+    $__title       = 'Договор';
+    $__subtitle    = "Отчетные формы";
+    $__subsubtitle = "Перечень договоров";
 
-// Делаем запись в системный лог
-// Все параметры в таблице portal_log_messages
-PORTAL_SYSLOG('99942100', '0000000', null, $_GET['reportview'], $__subsubtitle, null);
+    // Делаем запись в системный лог
+    // Все параметры в таблице portal_log_messages
+    // PORTAL_SYSLOG('99942100', '0000000', null, $_GET['reportview'], $__subsubtitle, null);
 
 ?>
 
@@ -19,7 +19,7 @@ PORTAL_SYSLOG('99942100', '0000000', null, $_GET['reportview'], $__subsubtitle, 
 
 <div class="container">
 	<div class="row" style="margin-top:20px">
-		<?php include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/dognet-topblock.php") ?>
+		<?php include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/dognet-topblock.php" ?>
 	</div>
 
 
@@ -171,7 +171,7 @@ PORTAL_SYSLOG('99942100', '0000000', null, $_GET['reportview'], $__subsubtitle, 
 					tr.addClass('details');
 					rowData = table_reportview_filterdocs.row(row);
 					d = row.data();
-					rowData.child(<?php include('templates/report-details_tab7_missions.tpl'); ?>).show();
+					rowData.child(<?php include 'templates/report-details_tab7_missions.tpl'; ?>).show();
 
 					// Add to the 'open' array
 					if (idx === -1) {
@@ -801,16 +801,16 @@ PORTAL_SYSLOG('99942100', '0000000', null, $_GET['reportview'], $__subsubtitle, 
 								<input type="text" id="docZakazSearch_text" class="form-control" placeholder="По плательщику" name="docZakazSearch_text">
 							</div>
 						</div>
-						<?php // ----- ----- ----- ----- ----- 
-						?>
+						<?php // ----- ----- ----- ----- -----
+                        ?>
 						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right">
 							<div class="input-group-btn">
 								<button id="columnSearch_btnApply" class="btn btn-default" type="button">Применить фильтры</button>
 								<button id="columnSearch_btnClear" class="btn btn-default" type="button"><i class="glyphicon glyphicon-remove"></i></button>
 							</div>
 						</div>
-						<?php // ----- ----- ----- ----- ----- 
-						?>
+						<?php // ----- ----- ----- ----- -----
+                        ?>
 					</div>
 
 

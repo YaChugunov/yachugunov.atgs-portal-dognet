@@ -498,7 +498,7 @@ $(document).ready(function() {
             tr.addClass('edit');
             rowData = table_tab4_avans.row(row);
             d = row.data();
-            rowData.child(<?php include('templates/docview-edit_tab4_avans.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/docview-edit_tab4_avans.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -560,7 +560,7 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Подключаем форму и выводим таблицу авансов
 // :::
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab4_avans-customForm.php");
+include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab4_avans-customForm.php";
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/css/docview-edit-tab4_avans.css">

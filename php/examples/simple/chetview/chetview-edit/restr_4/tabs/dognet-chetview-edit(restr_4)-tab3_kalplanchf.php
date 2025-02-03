@@ -690,11 +690,14 @@ $(document).ready(function() {
     //
     //
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-    /*
-        editor_tab3_chfavans.dependent( 'dognet_chfavans.kodavans', function ( val, data, callback ) {
-
-        } );
-    */
+    table_tab3_kalplanchf.on('draw', function() {
+        cnt_chf = table_tab3_kalplanchf.page.info().recordsTotal;
+        if (cnt_chf > 0) {
+            document.getElementById("chf_newitems_cnt").innerHTML = cnt_chf;
+        } else {
+            document.getElementById("chf_newitems_cnt").innerHTML = "";
+        }
+    });
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     //
     //
@@ -711,7 +714,7 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Форма редактирования этапа
 // :::
-?>
+; ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/chetview/chetview-edit/restr_4/tabs/css/chetview-edit-tab3_kalplanchf.css">
 <div id="customForm_tab3_kalplanchf">
@@ -745,7 +748,7 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Форма редактирования оплаты счета-фактуры
 // :::
-?>
+; ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/chetview/chetview-edit/restr_4/tabs/css/chetview-edit-tab3_kalplanchf_oplata.css">
 <div id="customForm_tab3_oplata">
@@ -776,7 +779,7 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Форма редактирования оплаты счета-фактуры
 // :::
-?>
+; ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/chetview/chetview-edit/restr_4/tabs/css/chetview-edit-tab3_kalplanchf_avans.css">
 <div id="customForm_tab3_avans">
@@ -810,7 +813,7 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Таблица этапов
 // :::
-?>
+; ?>
 <section>
 
     <div class="" style="padding-left:5px; padding-right:5px">

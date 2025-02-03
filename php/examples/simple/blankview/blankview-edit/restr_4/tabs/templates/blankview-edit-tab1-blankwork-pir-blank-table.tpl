@@ -49,7 +49,7 @@
 										'<td width="5%"><span class="template-details-tab1-table-title"></span></td>'+
 										'<td width="5%"><span class="template-details-tab1-table-title">2)</span></td>'+
 										'<td width="30%"><span class="template-details-tab1-table-title">Исполнитель (Поставщик)</span></td>'+
-										'<td width="60%"><span class="template-details-tab1-table-txt"><span class="txt-parameter">АО "АтлантикТрансгазСистема"</span></span></td>'+
+										'<td width="60%"><span class="template-details-tab1-table-txt"><span class="txt-parameter">АО "АТГС"</span></span></td>'+
 									'</tr>'+
 									'<tr><td colspan="4"></td></tr>'+
 									'<tr>'+

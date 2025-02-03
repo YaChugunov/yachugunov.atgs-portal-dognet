@@ -1,0 +1,11 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#docview-details-tab1_finances > thead { display:none }
+#docview-details-tab1_finances > tbody > tr:first-child { display:none }
+#docview-details-tab1_finances > tbody > tr > td { border:none }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/

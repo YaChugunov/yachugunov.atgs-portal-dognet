@@ -283,6 +283,8 @@ div.modal-dialog { margin:1.0em auto; width:80% }
 		#customForm_edit_blankwork fieldset.field60 > div > div { width:100% }
 		#customForm_edit_blankwork fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
 		#customForm_edit_blankwork fieldset.field70 > div > div { width:100% }
+		#customForm_edit_blankwork fieldset.field75 {	flex-grow:0; flex-shrink:0; flex-basis:75% }
+		#customForm_edit_blankwork fieldset.field75 > div > div { width:100% }
 		#customForm_edit_blankwork fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
 		#customForm_edit_blankwork fieldset.field80 > div > div { width:100% }
 		#customForm_edit_blankwork fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }

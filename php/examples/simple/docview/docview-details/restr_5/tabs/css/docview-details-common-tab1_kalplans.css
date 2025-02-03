@@ -7,6 +7,9 @@
 /* #docview-details-tab1_kalplans > tbody > tr:first-child { display:none } */
 #docview-details-tab1_kalplans > tbody > tr > td {  }
 
+#docview-details-tab1_kalplans td.highlight_warning { background-color:#faeeaa }
+#docview-details-tab1_kalplans td.highlight_alarm { background-color:#fbe7e7 }
+
 #docview-details-tab1_kalplans {  }
 #docview-details-tab1_kalplans > tbody {
 	font-family: 'Ubuntu', sans-serif;
@@ -32,10 +35,14 @@
 #docview-details-tab1_kalplans > thead > tr > th:nth-child(2), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(2) { width:4%; text-align:center }
 #docview-details-tab1_kalplans > thead > tr > th:nth-child(2):hover { cursor:default }
 #docview-details-tab1_kalplans .details-control:hover { cursor:pointer }
-#docview-details-tab1_kalplans > thead > tr > th:nth-child(3), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(3) { width:68% }
+#docview-details-tab1_kalplans > thead > tr > th:nth-child(3), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(3) { width:auto }
 #docview-details-tab1_kalplans > thead > tr > th:nth-child(4), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(4) { width:15%; text-align:center }
 #docview-details-tab1_kalplans > thead > tr > th:nth-child(5), #docview-details-tab1_kalplans > tbody > tr > td:nth-child(5) { width:12%; text-align:center }
-/**/
+#docview-details-tab1_kalplans>thead>tr>th:nth-child(6),
+#docview-details-tab1_kalplans>tbody>tr>td:nth-child(6) {
+    width: 15%;
+    text-align: center
+}/**/
 /* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
 /**/
 #docview-details-tab1_kalplans .sorting_asc:after, #docview-details-tab1_kalplans .sorting_desc:after { display:none }

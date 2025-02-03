@@ -10,6 +10,10 @@
 						'<td width="70%"><span class="row-details-docview-details-table-txt">3-4/'+d.dognet_docbase.docnumber+'</span></td>'+
 					'</tr>'+
 					'<tr>'+
+						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Номер договора ( контрагент )</span></td>'+
+						'<td width="70%"><span class="row-details-docview-details-table-txt">'+d.dognet_docbase.docpartnernumberSTR+'</span></td>'+
+					'</tr>'+
+					'<tr>'+
 						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Обоснование ввода</span></td>'+
 						'<td width="70%"><span class="row-details-docview-details-table-txt">'+osn+''+blank+'</span></td>'+
 					'</tr>'+
@@ -38,8 +42,8 @@
 						'<td width="70%"><span class="row-details-docview-details-table-txt">'+d.dognet_sptipdog.nametip+'</span></td>'+
 					'</tr>'+
 					'<tr>'+
-						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Заказчик ( подробно раздел ниже )</span></td>'+
-						'<td width="70%"><span class="row-details-docview-details-table-txt">'+d.sp_contragents.nameshort+'</span></td>'+
+						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Заказчик ( агент )</span></td>'+
+						'<td width="70%"><span class="row-details-docview-details-table-txt">'+d.sp_contragents.nameshort+' ( '+d.agent+' )</span></td>'+
 					'</tr>'+
 					'<tr>'+
 						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Объект</span></td>'+

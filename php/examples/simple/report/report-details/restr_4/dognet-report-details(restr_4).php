@@ -1,17 +1,17 @@
 <?php
-date_default_timezone_set('Europe/Moscow');
+    date_default_timezone_set('Europe/Moscow');
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
 
-$__title = 'Договор';
-$__subtitle = "Отчетные формы";
-$__subsubtitle = "";
+    $__title       = 'Договор';
+    $__subtitle    = "Отчетные формы";
+    $__subsubtitle = "";
 
-// Делаем запись в системный лог
-// Все параметры в таблице portal_log_messages
-PORTAL_SYSLOG('99942000', '0000000', null, null, null, null);
+    // Делаем запись в системный лог
+    // Все параметры в таблице portal_log_messages
+    // PORTAL_SYSLOG('99942000', '0000000', null, null, null, null);
 
 ?>
 
@@ -99,11 +99,11 @@ div.list-group>li>p {
 
 <div class="container">
     <div class="row common-top-block">
-        <?php include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/dognet-topblock.php") ?>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/dognet-topblock.php"; ?>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <?php include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/_fixes-updates/dognet_fixes-updates.php"); ?>
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/_fixes-updates/dognet_fixes-updates.php"; ?>
         </div>
     </div>
     <div class="row report-container-block">
@@ -175,7 +175,7 @@ div.list-group>li>p {
                                       class="label label-primary">Экспорт</span></a>
                         </div>
                     </li>
-                    <li class="list-group-item updated">
+                    <li class="list-group-item">
                         <h4>Справка об авансах, не закрытых счетами-фактурами по договорам субподряда (на любую дату)
                         </h4>
                         <!-- <p class="text-danger">Идет работа над отчетом...</p> -->
@@ -203,18 +203,21 @@ div.list-group>li>p {
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4>Договора (все) с истёкшими сроками выполнения</h4>
+                        <h4>Договора (все) с истёкшими сроками выполнения <span class="label label-danger"
+                                  style="float:right">Обновлено 24.09.2024</span></h4>
                         <div class="labels">
-
                             <a href="dognet-report.php?reportview=alldocsexp" class=""><span
                                       class="label label-default">Онлайн</span></a>
                             <a href="dognet-report.php?reportview=alldocsexp&export=yes" class=""><span
                                       class="label label-primary">Экспорт</span></a>
+                            <a href="dognet-report.php?reportview=alldocsexp2&export=yes" class=""><span
+                                      class="label label-primary disable">Экспорт (версия 2)</span></a>
                         </div>
                     </li>
                     <li class="list-group-item updated">
                         <h4>Договора (поставки) с истёкшими сроками выполнения и расчетом штрафа <span
-                                  class="label label-danger" style="float:right">Обновлен 29.11.2023</span></h4>
+                                  class="label label-danger" style="float:right">Обновлено 16.12.2024</span>
+                        </h4>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=postexp" class=""><span
                                       class="label label-default">Онлайн</span></a>
@@ -256,9 +259,8 @@ div.list-group>li>p {
                     <li class="list-group-item disabled">
                         <h4>Соблюдение сроков поставки за год</h4>
                     </li>
-                    <li class="list-group-item updated">
-                        <h4>Сводный отчет о рисках по заявкам ГИПов на договора за календарный год <span
-                                  class="label label-danger" style="float:right">Обновлен 13.02.2024</span></h4>
+                    <li class="list-group-item">
+                        <h4>Сводный отчет о рисках по заявкам ГИПов на договора за календарный год</h4>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=blankrisks&export=yes" class=""><span
                                       class="label label-primary">Экспорт</span></a>
@@ -284,8 +286,9 @@ div.list-group>li>p {
                 </div>
                 <h4 class="reports-list space20">Формы Газпрома</h4>
                 <div class="list-group">
-                    <li class="list-group-item">
-                        <h4>Газпром мониторинг</h4>
+                    <li class="list-group-item updated">
+                        <h4>Газпром мониторинг <span class="label label-danger" style="float:right">Обновлено
+                                02.10.2024</span></h4>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=gazpromform1&export=yes" class=""><span
                                       class="label label-primary">Экспорт</span></a>
@@ -302,15 +305,15 @@ div.list-group>li>p {
                         </div>
                     </li>
                     <?php
-                    if (checkIsItSuperadmin($_SESSION['id']) == 1 || $_SESSION['id'] == '1073' || $_SESSION['id'] == '1011') {
-                        echo '<li class="list-group-item">';
-                        echo '<h4>Сведения об опыте выполнения работ по предмету ПКО за последние три года (версия 2)</h4>';
-                        echo '<p>*Окончание договора фиксируется по дате последнего счета-фактуры</p>';
-                        echo '<div class="labels">';
-                        echo '<a href="dognet-report.php?reportview=pko_v2&export=yes&format=" class=""><span class="label label-primary">Экспорт</span></a>';
-                        echo '</div>';
-                        echo '</li>';
-                    }
+                        if (checkIsItSuperadmin($_SESSION['id']) == 1 || $_SESSION['id'] == '1073' || $_SESSION['id'] == '1011') {
+                            echo '<li class="list-group-item">';
+                            echo '<h4>Сведения об опыте выполнения работ по предмету ПКО за последние три года (версия 2)</h4>';
+                            echo '<p>*Окончание договора фиксируется по дате последнего счета-фактуры</p>';
+                            echo '<div class="labels">';
+                            echo '<a href="dognet-report.php?reportview=pko_v2&export=yes&format=" class=""><span class="label label-primary">Экспорт</span></a>';
+                            echo '</div>';
+                            echo '</li>';
+                        }
                     ?>
                     <li class="list-group-item">
                         <h4 style="">Сведения об опыте выполнения работ по предмету ПКО за последние три года (разбивка
@@ -321,24 +324,24 @@ div.list-group>li>p {
                         </div>
                     </li>
                     <?php
-                    if (checkIsItSuperadmin($_SESSION['id']) == 1 || $_SESSION['id'] == '1073' || $_SESSION['id'] == '1011') {
-                        echo '<li class="list-group-item">';
-                        echo '<h4>Сведения об опыте выполнения работ по предмету ПКО за последние три года (разбивка по спецификациям, версия 2)</h4>';
-                        echo '<p>*Окончание договора фиксируется по дате последнего счета-фактуры</p>';
-                        echo '<div class="labels">';
-                        echo '<a href="dognet-report.php?reportview=pko_stages_v2&export=yes&format=" class=""><span class="label label-primary">Экспорт</span></a>';
-                        echo '</div>';
-                        echo '</li>';
-                    }
-                    if (checkIsItSuperadmin($_SESSION['id']) == 1 || $_SESSION['id'] == '1073' || $_SESSION['id'] == '1011') {
-                        echo '<li class="list-group-item">';
-                        echo '<h4>Справка об опыте выполнения поставок товара, подобного предмету закупки за последние три года (разбивка по спецификациям)</h4>';
-                        echo '<p>*Только для договоров поставки</p>';
-                        echo '<div class="labels">';
-                        echo '<a href="dognet-report.php?reportview=tend_exp&export=yes&format=" class=""><span class="label label-primary">Экспорт</span></a>';
-                        echo '</div>';
-                        echo '</li>';
-                    }
+                        if (checkIsItSuperadmin($_SESSION['id']) == 1 || $_SESSION['id'] == '1073' || $_SESSION['id'] == '1011') {
+                            echo '<li class="list-group-item">';
+                            echo '<h4>Сведения об опыте выполнения работ по предмету ПКО за последние три года (разбивка по спецификациям, версия 2)</h4>';
+                            echo '<p>*Окончание договора фиксируется по дате последнего счета-фактуры</p>';
+                            echo '<div class="labels">';
+                            echo '<a href="dognet-report.php?reportview=pko_stages_v2&export=yes&format=" class=""><span class="label label-primary">Экспорт</span></a>';
+                            echo '</div>';
+                            echo '</li>';
+                        }
+                        if (checkIsItSuperadmin($_SESSION['id']) == 1 || $_SESSION['id'] == '1073' || $_SESSION['id'] == '1011') {
+                            echo '<li class="list-group-item">';
+                            echo '<h4>Справка об опыте выполнения поставок товара, подобного предмету закупки за последние три года (разбивка по спецификациям)</h4>';
+                            echo '<p>*Только для договоров поставки</p>';
+                            echo '<div class="labels">';
+                            echo '<a href="dognet-report.php?reportview=tend_exp&export=yes&format=" class=""><span class="label label-primary">Экспорт</span></a>';
+                            echo '</div>';
+                            echo '</li>';
+                        }
                     ?>
                 </div>
             </div>

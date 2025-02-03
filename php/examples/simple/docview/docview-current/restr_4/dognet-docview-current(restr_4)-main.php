@@ -393,8 +393,9 @@ $(document).ready(function() {
                     value: "2"
                 }
             ],
-            def: 1,
-            placeholder: "Выберите вариант"
+            placeholder: "Выберите вариант",
+            def: "1",
+            unselectedValue: "1"
         }, {
             label: "Комментарии к договору :",
             name: "dognet_docbase.comments",
@@ -802,7 +803,7 @@ $(document).ready(function() {
                 data: "sp_objects.nameobjectshot"
             },
             {
-                data: "dognet_sptipdog.nametip"
+                data: "dognet_docbase.kodtip"
             },
             {
                 data: "dognet_spispol.ispolnamefull"
@@ -1099,7 +1100,7 @@ $(document).ready(function() {
             d = row.data();
             d.agent = checkVal(d.sp_contragents_agent.nameshort) === 1 ? d.sp_contragents_agent
                 .nameshort : "---";
-            rowData.child(<?php include('templates/docview-current-details.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/docview-current-details.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -1248,8 +1249,8 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Подключаем форму редактирования, форму поиска и выводим таблицу договора
 // :::
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-customForm.php");
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-filters.php");
+include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-customForm.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-filters.php";
 // ----- ----- ----- ----- -----
 ?>
 

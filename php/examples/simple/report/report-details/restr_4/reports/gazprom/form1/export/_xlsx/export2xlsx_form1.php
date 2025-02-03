@@ -30,9 +30,9 @@ $objDrawing->setName('АТГС.Договор');
 #
 // Ориентация страницы и  размер листа
 $activeSheet->getPageSetup()
-	->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+    ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
 $activeSheet->getPageSetup()
-	->SetPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+    ->SetPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
 #
 // $activeSheet->getSheetView()->setView(PHPExcel_Worksheet_SheetView::SHEETVIEW_PAGE_LAYOUT);
 // Задаем повторяющиеся строки листа
@@ -60,7 +60,7 @@ $activeSheet->getHeaderFooter()->setOddFooter('&11&L&B' . $_SESSION["current_use
 $objPHPExcel->getDefaultStyle()->getFont()->setName('Arial');
 $objPHPExcel->getDefaultStyle()->getFont()->setSize(10);
 // Задаем свой формат
-define("PRICE_FORMAT_1", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
+define("PRICE_FORMAT_1", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ т.р.-419]");
 // Предопределим массивы оформления границы ячеек
 $_BORDER_RIGHT = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
 $_BORDER_RIGHT_NONE = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
@@ -99,16 +99,16 @@ $activeSheet->getColumnDimension('F')->setWidth(100); // Наименовани�
 $activeSheet->getColumnDimension('G')->setWidth(15); // Номер договора
 $activeSheet->getColumnDimension('H')->setWidth(18); // Дата заключения
 $activeSheet->getColumnDimension('I')->setWidth(18); // Дата завершения
-$activeSheet->getColumnDimension('J')->setWidth(35); // 
-$activeSheet->getColumnDimension('K')->setWidth(18); // 
-$activeSheet->getColumnDimension('L')->setWidth(24); // 
-$activeSheet->getColumnDimension('M')->setWidth(18); // 
-$activeSheet->getColumnDimension('N')->setWidth(18); // 
-$activeSheet->getColumnDimension('O')->setWidth(18); // 
-$activeSheet->getColumnDimension('P')->setWidth(18); // 
-$activeSheet->getColumnDimension('Q')->setWidth(18); // 
-$activeSheet->getColumnDimension('R')->setWidth(30); // 
-$activeSheet->getColumnDimension('S')->setWidth(45); // 
+$activeSheet->getColumnDimension('J')->setWidth(35); //
+$activeSheet->getColumnDimension('K')->setWidth(18); //
+$activeSheet->getColumnDimension('L')->setWidth(24); //
+$activeSheet->getColumnDimension('M')->setWidth(24); //
+$activeSheet->getColumnDimension('N')->setWidth(18); //
+$activeSheet->getColumnDimension('O')->setWidth(18); //
+$activeSheet->getColumnDimension('P')->setWidth(18); //
+$activeSheet->getColumnDimension('Q')->setWidth(18); //
+$activeSheet->getColumnDimension('R')->setWidth(30); //
+$activeSheet->getColumnDimension('S')->setWidth(45); //
 #
 // Для удобства заводим переменную $line, в ней будем считать номер строки
 $line = 1;
@@ -193,7 +193,7 @@ $activeSheet->setCellValue("Q{$line}", 'Выполнено по договору
 $activeSheet->setCellValue("R{$line}", 'Численный состав' . "\n" . 'непосредственных исполнителей' . "\n" . 'выполненных работ/услуг Участника, чел.');
 $activeSheet->setCellValue("S{$line}", 'Примечание');
 // Стили для текста в шапки таблицы.
-$activeSheet->getRowDimension($line)->setRowHeight(72); // высота строки
+$activeSheet->getRowDimension($line)->setRowHeight(76); // высота строки
 $activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(10); // размер шрифта
 $activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(true); // делаем шрифт жирным
 $activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setWrapText(true); // разрешаем перенос строк в ячейке
@@ -265,10 +265,10 @@ $line++;
 #
 #
 // Делаем выборку договоров
-$sql_query_docbase = "SELECT * FROM dognet_docbase WHERE koddel<>'99' AND ";
-$sql_query_docbase .= " (kodstatus = '245381842145343'"; // статус "Проект"
-$sql_query_docbase .= " OR kodstatus = '245267756667430'"; // статус "Подписание"
-$sql_query_docbase .= " OR kodstatus = '245597345680479'"; // статус "Скан"
+$sql_query_docbase = "SELECT * FROM dognet_docbase WHERE koddel<>'99' AND docnumber!='-1' AND";
+//$sql_query_docbase .= " (kodstatus = '245381842145343'"; // статус "Проект"
+//$sql_query_docbase .= " OR kodstatus = '245267756667430'"; // статус "Подписание"
+$sql_query_docbase .= " (kodstatus = '245597345680479'"; // статус "Скан"
 $sql_query_docbase .= " OR kodstatus = '245381842747296') AND "; // статус "Текущий"
 
 $sql_query_docbase .= " (kodtip = '245287843809309'"; // статус "ПНР"
@@ -284,186 +284,235 @@ $_SUM_TOTAL = 0.0;
 //
 $_colN = 1; // Номер строки
 while ($_ROW_DOCBASE = mysqli_fetch_assoc($_QRY_DOCBASE)) {
-	# ----- ----- ----- ----- -----
-	#
-	$_colZAKinn		= "";
-	$_colZAKname 	= "";
-	$_colZAKaddr 	= "";
-	$_colZAKbank 	= "";
-	$_colZAKkpp 	= "";
-	$_colZAKogrn 	= "";
-	$_colZAKfio 	= "";
-	$_colZAKdolj 	= "";
-	$_colZAKtel 	= "";
-	$_colZAKmail 	= "";
-	// Заказчик по договору
-	$_QRY_ZAK = mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent='" . $_ROW_DOCBASE['kodzakaz'] . "'");
-	if ($_QRY_ZAK) {
-		$_ROW_ZAK = mysqli_fetch_assoc($_QRY_ZAK);
-		$_colZAKinn		= $_ROW_ZAK['inn'];
-		$_colZAKname 	= $_ROW_ZAK['namefull'];
-		$_colZAKaddr 	= $_ROW_ZAK['address_legal'];
-		$_colZAKogrn 	= $_ROW_ZAK['ogrn'];
-		$_colZAKkpp 	= $_ROW_ZAK['kpp'];
-		// $_colZAKbank 	= "ОГРН: " . $_ROW_ZAK['ogrn'] . ", р/с: " . $_ROW_ZAK['payment_account'] . ", банк: " . $_ROW_ZAK['payment_bank'];
-		$_colZAKbank 	= $_ROW_ZAK['zakbankch'];
-		//
-		// Определяем ОПФ контрагента
-		// 12.10.2023
-		// 
-		$opfabbr = "";
-		$kodformlegal = $_ROW_ZAK['kodformlegal'];
-		if (!empty($kodformlegal)) {
-			$_QRY_OPF = mysqli_fetch_assoc(mysqlQuery("SELECT abbr FROM sp_contragents_opf WHERE kodformlegal = '{$kodformlegal}'"));
-			$opfabbr = $_QRY_OPF['abbr'];
-		}
-	}
+    # ----- ----- ----- ----- -----
+    #
+    $_colZAKinn = "";
+    $_colZAKname = "";
+    $_colZAKaddr = "";
+    $_colZAKbank = "";
+    $_colZAKkpp = "";
+    $_colZAKogrn = "";
+    $_colZAKfio = "";
+    $_colZAKdolj = "";
+    $_colZAKtel = "";
+    $_colZAKmail = "";
+    // Заказчик по договору
+    $_QRY_ZAK = mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent='" . $_ROW_DOCBASE['kodzakaz'] . "'");
+    if ($_QRY_ZAK) {
+        $_ROW_ZAK = mysqli_fetch_assoc($_QRY_ZAK);
+        $_colZAKinn = $_ROW_ZAK['inn'];
+        $_colZAKname = $_ROW_ZAK['namefull'];
+        $_colZAKaddr = $_ROW_ZAK['address_legal'];
+        $_colZAKogrn = $_ROW_ZAK['ogrn'];
+        $_colZAKkpp = $_ROW_ZAK['kpp'];
+        // $_colZAKbank     = "ОГРН: " . $_ROW_ZAK['ogrn'] . ", р/с: " . $_ROW_ZAK['payment_account'] . ", банк: " . $_ROW_ZAK['payment_bank'];
+        $_colZAKbank = $_ROW_ZAK['zakbankch'];
+        //
+        // Определяем ОПФ контрагента
+        // 12.10.2023
+        //
+        $opfabbr = "";
+        $kodformlegal = $_ROW_ZAK['kodformlegal'];
+        if (!empty($kodformlegal)) {
+            $_QRY_OPF = mysqli_fetch_assoc(mysqlQuery("SELECT abbr FROM sp_contragents_opf WHERE kodformlegal = '{$kodformlegal}'"));
+            $opfabbr = $_QRY_OPF['abbr'];
+        }
+    }
 
-	// Ищем контакты через бланк ГИПа
-	$_QRY_DOCBLANK = mysqlQuery("SELECT kodblankwork, kodtipblank FROM dognet_docblankwork WHERE koddoc='" . $_ROW_DOCBASE['koddoc'] . "' AND kodstatusblank='DO'");
-	if ($_QRY_DOCBLANK) {
-		$_ROW_DOCBLANK = mysqli_fetch_assoc($_QRY_DOCBLANK);
-		switch (!empty($_ROW_DOCBLANK["kodtipblank"]) ? $_ROW_DOCBLANK["kodtipblank"] : "") {
-			case "PNR":
-				$_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact, dopcontact1, dopcontact2 FROM dognet_blankdocpnr WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
-				if ($_QRY_BLANKGIP) {
-					$_ROW_BLANKGIP = mysqli_fetch_assoc($_QRY_BLANKGIP);
-					$_colZAKfio		= $_ROW_BLANKGIP['nameendcontact'] . " " . $_ROW_BLANKGIP['namefistcontact'] . " " . $_ROW_BLANKGIP['namesecondcontact'];
-					$_colZAKdolj	= $_ROW_BLANKGIP['namedoljcontact'];
-					$_colZAKtel		= $_ROW_BLANKGIP['numbertelrab'] . ", " . $_ROW_BLANKGIP['numbertelmob'];
-					$_colZAKmail	= $_ROW_BLANKGIP['nameemail'];
-				}
-				break;
-			case "POS":
-				$_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact FROM dognet_blankdocpost WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
-				if ($_QRY_BLANKGIP) {
-					$_ROW_BLANKGIP = mysqli_fetch_assoc($_QRY_BLANKGIP);
-					$_colZAKfio		= $_ROW_BLANKGIP['nameendcontact'] . " " . $_ROW_BLANKGIP['namefistcontact'] . " " . $_ROW_BLANKGIP['namesecondcontact'];
-					$_colZAKdolj	= $_ROW_BLANKGIP['namedoljcontact'];
-					$_colZAKtel		= $_ROW_BLANKGIP['numbertelrab'] . ", " . $_ROW_BLANKGIP['numbertelmob'];
-					$_colZAKmail	= $_ROW_BLANKGIP['nameemail'];
-				}
-				break;
-			case "SUB":
-				$_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact FROM dognet_blankdocsub WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
-				if ($_QRY_BLANKGIP) {
-					$_ROW_BLANKGIP = mysqli_fetch_assoc($_QRY_BLANKGIP);
-					$_colZAKfio		= $_ROW_BLANKGIP['nameendcontact'] . " " . $_ROW_BLANKGIP['namefistcontact'] . " " . $_ROW_BLANKGIP['namesecondcontact'];
-					$_colZAKdolj	= $_ROW_BLANKGIP['namedoljcontact'];
-					$_colZAKtel		= $_ROW_BLANKGIP['numbertelrab'] . ", " . $_ROW_BLANKGIP['numbertelmob'];
-					$_colZAKmail	= $_ROW_BLANKGIP['nameemail'];
-				}
-				break;
-		}
-	}
+    // Ищем контакты через бланк ГИПа
+    $_QRY_DOCBLANK = mysqlQuery("SELECT kodblankwork, kodtipblank FROM dognet_docblankwork WHERE koddoc='" . $_ROW_DOCBASE['koddoc'] . "' AND kodstatusblank='DO'");
+    if ($_QRY_DOCBLANK) {
+        $_ROW_DOCBLANK = mysqli_fetch_assoc($_QRY_DOCBLANK);
+        switch (!empty($_ROW_DOCBLANK["kodtipblank"]) ? $_ROW_DOCBLANK["kodtipblank"] : "") {
+        case "PNR":
+            $_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact, dopcontact1, dopcontact2 FROM dognet_blankdocpnr WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
+            if ($_QRY_BLANKGIP) {
+                $_ROW_BLANKGIP = mysqli_fetch_assoc($_QRY_BLANKGIP);
+                $_colZAKfio = $_ROW_BLANKGIP['nameendcontact'] . " " . $_ROW_BLANKGIP['namefistcontact'] . " " . $_ROW_BLANKGIP['namesecondcontact'];
+                $_colZAKdolj = $_ROW_BLANKGIP['namedoljcontact'];
+                $_colZAKtel = $_ROW_BLANKGIP['numbertelrab'] . ", " . $_ROW_BLANKGIP['numbertelmob'];
+                $_colZAKmail = $_ROW_BLANKGIP['nameemail'];
+            }
+            break;
+        case "POS":
+            $_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact FROM dognet_blankdocpost WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
+            if ($_QRY_BLANKGIP) {
+                $_ROW_BLANKGIP = mysqli_fetch_assoc($_QRY_BLANKGIP);
+                $_colZAKfio = $_ROW_BLANKGIP['nameendcontact'] . " " . $_ROW_BLANKGIP['namefistcontact'] . " " . $_ROW_BLANKGIP['namesecondcontact'];
+                $_colZAKdolj = $_ROW_BLANKGIP['namedoljcontact'];
+                $_colZAKtel = $_ROW_BLANKGIP['numbertelrab'] . ", " . $_ROW_BLANKGIP['numbertelmob'];
+                $_colZAKmail = $_ROW_BLANKGIP['nameemail'];
+            }
+            break;
+        case "SUB":
+            $_QRY_BLANKGIP = mysqlQuery("SELECT nameendcontact, namefistcontact, namesecondcontact, numbertelrab, numbertelmob, nameemail, namedoljcontact FROM dognet_blankdocsub WHERE kodblankwork='" . $_ROW_DOCBLANK['kodblankwork'] . "' AND kodtipblank='DO'");
+            if ($_QRY_BLANKGIP) {
+                $_ROW_BLANKGIP = mysqli_fetch_assoc($_QRY_BLANKGIP);
+                $_colZAKfio = $_ROW_BLANKGIP['nameendcontact'] . " " . $_ROW_BLANKGIP['namefistcontact'] . " " . $_ROW_BLANKGIP['namesecondcontact'];
+                $_colZAKdolj = $_ROW_BLANKGIP['namedoljcontact'];
+                $_colZAKtel = $_ROW_BLANKGIP['numbertelrab'] . ", " . $_ROW_BLANKGIP['numbertelmob'];
+                $_colZAKmail = $_ROW_BLANKGIP['nameemail'];
+            }
+            break;
+        }
+    }
 
-	$_colZAK = $opfabbr . " " . $_colZAKname . ", юр. адрес: " . $_colZAKaddr . ", банк. рекв.: " . $_colZAKbank . ", конт. лицо: " . $_colZAKfio . " (" . $_colZAKtel . ", " . $_colZAKmail . ")";
-	#
-	// Номер договора
-	$_colNUM = $_ROW_DOCBASE['docnumber'];
-	#
-	// Дата заключения договора
-	$_colDATE1 = str_pad($_ROW_DOCBASE['daynachdoc'], 2, "0", STR_PAD_LEFT) . "." . str_pad($_ROW_DOCBASE['monthnachdoc'], 2, "0", STR_PAD_LEFT) . "." . $_ROW_DOCBASE['yearnachdoc'];
-	#
-	// Дата окончания договора
-	$_colDATE2 = str_pad($_ROW_DOCBASE['dayenddoc'], 2, "0", STR_PAD_LEFT) . "." . str_pad($_ROW_DOCBASE['monthenddoc'], 2, "0", STR_PAD_LEFT) . "." . $_ROW_DOCBASE['yearenddoc'];
-	#
-	// Объект по договору
-	$_QRY_OBJ = mysqlQuery("SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject='" . $_ROW_DOCBASE['kodobject'] . "'");
-	$_ROW_OBJ = mysqli_fetch_assoc($_QRY_OBJ);
-	$_colOBJ = $_ROW_OBJ['nameobjectshot'];
-	#
-	// Предмет договора
-	$_colDOCShot	= $_ROW_DOCBASE['docnameshot'];
-	$_colDOCFullm	= $_ROW_DOCBASE['docnamefullm'];
-	$_colDOCFull	= $_ROW_DOCBASE['docnamefull'];
-	#
-	// Сумма договора (в тысячах рублей)
-	$_colSUMDOC = $_ROW_DOCBASE['docsumma'] / 1000.00;
-	#
-	// Сумма всех этапов по договору
-	$_QRY_SUMSTAGES = mysqlQuery("SELECT SUM(summastage) as sumstages FROM dognet_dockalplan WHERE koddel<>'99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "'");
-	$_ROW_SUMSTAGES = mysqli_fetch_assoc($_QRY_SUMSTAGES);
-	$_colSUMSTAGES = $_ROW_SUMSTAGES['sumstages'];
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	// Задаем высоту строки и шрифт
-	$activeSheet->getRowDimension($line)->setRowHeight(72);
-	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(10);
-	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(false);
-	// Задаем цвет текста строки
-	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('111111');
-	// Выравниваем строку по вертикали ( середина )
-	$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-	// Выравнивание по горизонтали - слева
-	$activeSheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-	$activeSheet->getStyle("E{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-	$activeSheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-	$activeSheet->getStyle("S{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-	// Выравнивание по горизонтали - центр
-	$activeSheet->getStyle("A{$line}:B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-	$activeSheet->getStyle("D{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-	$activeSheet->getStyle("G{$line}:R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-	//
-	$activeSheet->getStyle("C{$line}")->getAlignment()->setWrapText(true);
-	$activeSheet->getStyle("E{$line}")->getAlignment()->setWrapText(true);
-	$activeSheet->getStyle("F{$line}")->getAlignment()->setWrapText(true);
-	//
-	$activeSheet->setCellValue("A{$line}", $_colN);
-	$activeSheet->setCellValue("B{$line}", $_colZAKinn);
-	$activeSheet->setCellValue("C{$line}", $_colZAK);
-	$activeSheet->setCellValue("D{$line}", $_colZAKmail);
-	$activeSheet->setCellValue("E{$line}", $_colDOCShot);
-	$activeSheet->setCellValue("F{$line}", $_colDOCFullm);
-	$activeSheet->setCellValue("G{$line}", "3-4/" . $_colNUM);
-	$activeSheet->setCellValue("H{$line}", $_colDATE1);
-	$activeSheet->setCellValue("I{$line}", $_colDATE2);
-	$activeSheet->setCellValue("J{$line}", $_colOBJ);
-	$activeSheet->setCellValue("K{$line}", "");
-	$activeSheet->setCellValue("L{$line}", "");
-	$activeSheet->setCellValue("M{$line}", "");
-	$activeSheet->setCellValue("N{$line}", $_colSUMDOC);
-	$activeSheet->getStyle("N{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
-	$activeSheet->setCellValue("O{$line}", "");
-	$activeSheet->setCellValue("P{$line}", "");
-	$activeSheet->setCellValue("Q{$line}", "");
-	$activeSheet->setCellValue("R{$line}", "");
-	$activeSheet->setCellValue("S{$line}", "");
-	// Оформляем границы
-	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
-	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
-	$_colN++;
-	#
-	#
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	# Следующая строка
-	$line++;
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	#
-	#
+    $_colZAK = $opfabbr . " " . $_colZAKname . ", юр. адрес: " . $_colZAKaddr . ", банк. рекв.: " . $_colZAKbank . ", конт. лицо: " . $_colZAKfio . " (" . $_colZAKtel . ", " . $_colZAKmail . ")";
+    #
+    // Номер договора
+    $_colNUM = $_ROW_DOCBASE['docnumber'];
+    #
+    // Дата заключения договора
+    $_colDATE1 = str_pad($_ROW_DOCBASE['daynachdoc'], 2, "0", STR_PAD_LEFT) . "." . str_pad($_ROW_DOCBASE['monthnachdoc'], 2, "0", STR_PAD_LEFT) . "." . $_ROW_DOCBASE['yearnachdoc'];
+    #
+    // Дата окончания договора
+    $_colDATE2 = str_pad($_ROW_DOCBASE['dayenddoc'], 2, "0", STR_PAD_LEFT) . "." . str_pad($_ROW_DOCBASE['monthenddoc'], 2, "0", STR_PAD_LEFT) . "." . $_ROW_DOCBASE['yearenddoc'];
+    #
+    // Объект по договору
+    $_QRY_OBJ = mysqlQuery("SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject='" . $_ROW_DOCBASE['kodobject'] . "'");
+    $_ROW_OBJ = mysqli_fetch_assoc($_QRY_OBJ);
+    $_colOBJ = $_ROW_OBJ['nameobjectshot'];
+    #
+    // Предмет договора
+    $_colDOCShot = $_ROW_DOCBASE['docnameshot'];
+    $_colDOCFullm = $_ROW_DOCBASE['docnamefullm'];
+    $_colDOCFull = $_ROW_DOCBASE['docnamefull'];
+    #
+    // Сумма договора (в тысячах рублей)
+    $_colSUMDOC = $_ROW_DOCBASE['docsumma'] / 1000.00;
+    #
+    // Сумма всех этапов по договору
+    $_QRY_SUMSTAGES = mysqlQuery("SELECT SUM(summastage) as sumstages FROM dognet_dockalplan WHERE koddel<>'99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "'");
+    $_ROW_SUMSTAGES = mysqli_fetch_assoc($_QRY_SUMSTAGES);
+    $_colSUMSTAGES = $_ROW_SUMSTAGES['sumstages'];
+    #
+    //* * * * * * * * * * *
+    //*
+    //* UPD 02.10.2024
+    //* 1. Сумма всех счетов-фактур нв начало года и на текущую дату
+    //* -- Сумма всех счетов-фактур по субподрядным договорам (не верно)
+    //* 2. Сумма всех субподрядных договоров (их сумм)
+    //* 3. Список субподрядчиков
+    //*
+    //* * * * * * * * * * *
+    //*
+    // 1. Сумма всех счетов-фактур нв начало года и на текущую дату
+    $YPREV = (int)(date('Y') - 1);
+    $_REQ_SUMCHF_YPREV = mysqli_fetch_assoc(mysqlQuery("
+	SELECT SUM(chetfsumma) as sumchf FROM dognet_kalplanchf WHERE kodkalplan IN (SELECT kodkalplan FROM dognet_dockalplan WHERE koddel!='99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "') AND YEAR(chetfdate)<='{$YPREV}' AND koddel!='99'
+	"));
+    $_colSUMCHF_YPREV = !empty($_REQ_SUMCHF_YPREV['sumchf']) ? $_REQ_SUMCHF_YPREV['sumchf'] / 1000.0 : 0.0;
+    //
+    $_REQ_SUMCHF = mysqli_fetch_assoc(mysqlQuery("
+	SELECT SUM(chetfsumma) as sumchf FROM dognet_kalplanchf WHERE kodkalplan IN (SELECT kodkalplan FROM dognet_dockalplan WHERE koddel!='99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "') AND koddel!='99'
+	"));
+    $_colSUMCHF = !empty($_REQ_SUMCHF['sumchf']) ? $_REQ_SUMCHF['sumchf'] / 1000.0 : 0.0;
+    // -- Сумма всех счетов-фактур по субподрядным договорам
+    $_REQ_SUMCHF_SUB = mysqli_fetch_assoc(mysqlQuery("
+	SELECT SUM(sumchfsubpodr) as sumchf FROM dognet_docchfsubpodr WHERE koddocsubpodr IN (SELECT koddocsubpodr FROM dognet_docsubpodr WHERE koddoc IN (SELECT kodkalplan FROM dognet_dockalplan WHERE koddel!='99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "')) AND koddel!='99'
+	"));
+    $_colSUMCHF_SUB = !empty($_REQ_SUMCHF_SUB['sumchf']) ? $_REQ_SUMCHF_SUB['sumchf'] / 1000.0 : 0.0;
+    // 2. Сумма субподрядных договоров (их сумм)
+    $_REQ_SUM_SUB = mysqli_fetch_assoc(mysqlQuery("
+    SELECT SUM(sumdocsubpodr) as sum FROM dognet_docsubpodr WHERE koddoc IN (SELECT kodkalplan FROM dognet_dockalplan WHERE koddel!='99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "') AND koddel!='99'
+	"));
+    $_colSUM_SUB = !empty($_REQ_SUM_SUB['sum']) ? $_REQ_SUM_SUB['sum'] / 1000.0 : 0.0;
+    // 3. Список всех субподрядчиков по договору
+    $_REQ_LIST_SUB = mysqlQuery("
+	SELECT * FROM sp_contragents WHERE kodcontragent IN (SELECT kodsubpodr FROM dognet_docsubpodr WHERE koddoc IN (SELECT kodkalplan FROM dognet_dockalplan WHERE koddel!='99' AND koddoc='" . $_ROW_DOCBASE['koddoc'] . "')) AND koddel!='99'
+	");
+    $_colLIST_SUB = "";
+    while ($_ROW_LIST_SUB = mysqli_fetch_assoc($_REQ_LIST_SUB)) {
+        $_colLIST_SUB .= !empty($_colLIST_SUB) ? ", " : "";
+        $_colLIST_SUB .= !empty($_ROW_LIST_SUB['nameshort']) ? $_ROW_LIST_SUB['nameshort'] : "";
+    }
+    $_colLIST_SUB = trim($_colLIST_SUB, " \n\r\t\v\x00");
+    //*
+    //* * * * * * * * * * *
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Задаем высоту строки и шрифт
+    $activeSheet->getRowDimension($line)->setRowHeight(72);
+    $activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(10);
+    $activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(false);
+    // Задаем цвет текста строки
+    $activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('111111');
+    // Выравниваем строку по вертикали ( середина )
+    $activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+    // Выравнивание по горизонтали - слева
+    $activeSheet->getStyle("C{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+    $activeSheet->getStyle("E{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+    $activeSheet->getStyle("F{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+    $activeSheet->getStyle("S{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+    // Выравнивание по горизонтали - центр
+    $activeSheet->getStyle("A{$line}:B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    $activeSheet->getStyle("D{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    $activeSheet->getStyle("G{$line}:R{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+    //
+    $activeSheet->getStyle("C{$line}")->getAlignment()->setWrapText(true);
+    $activeSheet->getStyle("E{$line}")->getAlignment()->setWrapText(true);
+    $activeSheet->getStyle("F{$line}")->getAlignment()->setWrapText(true);
+    $activeSheet->getStyle("J{$line}")->getAlignment()->setWrapText(true);
+    $activeSheet->getStyle("M{$line}")->getAlignment()->setWrapText(true);
+    //
+    $activeSheet->setCellValue("A{$line}", $_colN);
+    $activeSheet->setCellValue("B{$line}", $_colZAKinn);
+    $activeSheet->setCellValue("C{$line}", $_colZAK);
+    $activeSheet->setCellValue("D{$line}", $_colZAKmail);
+    $activeSheet->setCellValue("E{$line}", $_colDOCShot);
+    $activeSheet->setCellValue("F{$line}", $_colDOCFullm);
+    $activeSheet->setCellValue("G{$line}", "3-4/" . $_colNUM);
+    $activeSheet->setCellValue("H{$line}", $_colDATE1);
+    $activeSheet->setCellValue("I{$line}", $_colDATE2);
+    $activeSheet->setCellValue("J{$line}", $_colOBJ);
+    $activeSheet->setCellValue("K{$line}", "");
+    $activeSheet->setCellValue("L{$line}", "");
+    $activeSheet->setCellValue("M{$line}", $_colLIST_SUB);
+    $activeSheet->setCellValue("N{$line}", $_colSUMDOC);
+    $activeSheet->getStyle("N{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+    $activeSheet->setCellValue("O{$line}", $_colSUM_SUB);
+    $activeSheet->getStyle("O{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+    $activeSheet->setCellValue("P{$line}", $_colSUMCHF_YPREV);
+    $activeSheet->getStyle("P{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+    $activeSheet->setCellValue("Q{$line}", $_colSUMCHF);
+    $activeSheet->getStyle("Q{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+    $activeSheet->setCellValue("R{$line}", "");
+    $activeSheet->setCellValue("S{$line}", "");
+    // Оформляем границы
+    $activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
+    $activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
+    $_colN++;
+    #
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Следующая строка
+    $line++;
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
+    #
 }
 
 /*
-	// Задаем высоту строки и шрифт
-	$activeSheet->getRowDimension($line)->setRowHeight(22);
-	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(12);
-	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(true);
-	// Задаем цвет текста строки
-	$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('111111');
-	// Объединяем ячейки по горизонтали
-	$activeSheet->mergeCells("A{$line}:H{$line}");
-	// Выравниваем строку по вертикали ( середина )
-	$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-	// Выравнивание по горизонтали - центр
-	$activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
-	// Выравнивание по горизонтали - центр
-	$activeSheet->getStyle("I{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-	$activeSheet->setCellValue("A{$line}", "ИТОГО: ");
-	$activeSheet->setCellValue("I{$line}", $_SUM_TOTAL);
-		$activeSheet->getStyle("I{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
-	// Оформляем границы
-	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
-	$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
-*/
+// Задаем высоту строки и шрифт
+$activeSheet->getRowDimension($line)->setRowHeight(22);
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setSize(12);
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->setBold(true);
+// Задаем цвет текста строки
+$activeSheet->getStyle("A{$line}:S{$line}")->getFont()->getColor()->setRGB('111111');
+// Объединяем ячейки по горизонтали
+$activeSheet->mergeCells("A{$line}:H{$line}");
+// Выравниваем строку по вертикали ( середина )
+$activeSheet->getStyle("A{$line}:S{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+// Выравнивание по горизонтали - центр
+$activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_RIGHT);
+// Выравнивание по горизонтали - центр
+$activeSheet->getStyle("I{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+$activeSheet->setCellValue("A{$line}", "ИТОГО: ");
+$activeSheet->setCellValue("I{$line}", $_SUM_TOTAL);
+$activeSheet->getStyle("I{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+// Оформляем границы
+$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_INSIDE);
+$activeSheet->getStyle("A{$line}:S{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
+ */
 
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -476,7 +525,6 @@ $line = $line - 1;
 $activeSheet->getStyle("A{$start_table}:R{$start_table}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 // Добавляем рамку ко всей таблице
 $activeSheet->getStyle("A{$start_table}:S{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
-
 
 // $objPHPExcel->getActiveSheet()->setAutoFilter($objPHPExcel->getActiveSheet()->calculateWorksheetDimension());
 // $objPHPExcel->getActiveSheet()->setAutoFilter("A{$start_table}:I{$start_table}");

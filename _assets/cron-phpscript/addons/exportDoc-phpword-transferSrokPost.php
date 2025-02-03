@@ -6,17 +6,19 @@ date_default_timezone_set('Europe/Moscow');
 setlocale(LC_ALL, 'rus');
 #
 #
-require("/var/www/html/atgs-portal.local/www/dognet/_assets/_PHPOffice/vendor/autoload.php");
+require "/var/www/html/atgs-portal.local/www/dognet/_assets/_PHPOffice/vendor/autoload.php";
 #
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-function numberFormat($digit, $width) {
-	while (strlen($digit) < $width)
-		$digit = '0' . $digit;
-	return $digit;
+function firstZeroFormat($digit, $width) {
+    while (strlen($digit) < $width) {
+        $digit = '0' . $digit;
+    }
+
+    return $digit;
 }
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-$phpWord = new  \PhpOffice\PhpWord\PhpWord();
+$phpWord = new \PhpOffice\PhpWord\PhpWord();
 
 $phpWord->setDefaultFontName('Arial');
 $phpWord->setDefaultFontSize(10);
@@ -37,29 +39,29 @@ $properties->setKeywords('Портал, Договор, Письма');
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 $sectionStyle = array(
-	'orientation' => 'portrait',
-	'marginTop' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(40),
-	'marginBottom' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(40),
-	'marginLeft' => 800,
-	'marginRight' => 800,
-	'colsNum' => 1,
-	'pageNumberingStart' => 1
+    'orientation' => 'portrait',
+    'marginTop' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(40),
+    'marginBottom' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(40),
+    'marginLeft' => 800,
+    'marginRight' => 800,
+    'colsNum' => 1,
+    'pageNumberingStart' => 1,
 );
 $sectionStyle_col2 = array(
-	'orientation' => 'landscape',
-	'marginTop' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(90),
-	'marginBottom' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(100),
-	'marginLeft' => 600,
-	'marginRight' => 600,
-	'colsNum' => 2,
-	'breakType' => 'continuous'
+    'orientation' => 'landscape',
+    'marginTop' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(90),
+    'marginBottom' => \PhpOffice\PhpWord\Shared\Converter::pixelToTwip(100),
+    'marginLeft' => 600,
+    'marginRight' => 600,
+    'colsNum' => 2,
+    'breakType' => 'continuous',
 );
 $section = $phpWord->addSection($sectionStyle);
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 # ПОДКЛЮЧАЕМ СТИЛИ ОФОРМЛЕНИЯ
 #
-include("/var/www/html/atgs-portal.local/www/dognet/_assets/cron-phpscript/addons/exportDocStyles-phpword-transferSrokPost.php");
+include "/var/www/html/atgs-portal.local/www/dognet/_assets/cron-phpscript/addons/exportDocStyles-phpword-transferSrokPost.php";
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
@@ -116,44 +118,44 @@ $phpWord->addParagraphStyle($_PARAGRAF_3R, array('widowControl' => false, 'inden
 #
 #
 function printLineSeparator($section) {
-	$section->addTextBreak();
-	$lineStyle = array('weight' => 0.2, 'width' => 150, 'height' => 0, 'align' => 'center');
-	$section->addLine($lineStyle);
-	$section->addTextBreak(2);
+    $section->addTextBreak();
+    $lineStyle = array('weight' => 0.2, 'width' => 150, 'height' => 0, 'align' => 'center');
+    $section->addLine($lineStyle);
+    $section->addTextBreak(2);
 }
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 #
 function printParagraphSeparator($phpWord, $section, $pStyle) {
-	$_PARAGRAF_B = 'pStyleB';
-	$phpWord->addParagraphStyle($_PARAGRAF_B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 120, 'spaceBefore' => 420, 'spaceAfter' => 420));
-	$_PARAGRAF_1L = 'pStyle1L';
-	$phpWord->addParagraphStyle($_PARAGRAF_1L, array('widowControl' => false, 'indentation' => array('firstLine' => 360, 'left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
-	$_PARAGRAF_1B = 'pStyle1B';
-	$phpWord->addParagraphStyle($_PARAGRAF_1B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
-	$_PARAGRAF_2L = 'pStyle2L';
-	$phpWord->addParagraphStyle($_PARAGRAF_2L, array('widowControl' => false, 'indentation' => array('firstLine' => 360, 'left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
-	$_PARAGRAF_2B = 'pStyle2B';
-	$phpWord->addParagraphStyle($_PARAGRAF_2B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
-	$_PARAGRAF_3L = 'pStyle3L';
-	$phpWord->addParagraphStyle($_PARAGRAF_3L, array('widowControl' => false, 'indentation' => array('firstLine' => 360, 'left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, 'spacing' => 60, 'spaceBefore' => 150, 'spaceAfter' => 150));
-	$_PARAGRAF_3B = 'pStyle3B';
-	$phpWord->addParagraphStyle($_PARAGRAF_3B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 60, 'spaceBefore' => 150, 'spaceAfter' => 150));
-	$_PARAGRAF_3R = 'pStyle3R';
-	$phpWord->addParagraphStyle($_PARAGRAF_3R, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::RIGHT, 'spacing' => 60, 'spaceBefore' => 150, 'spaceAfter' => 150));
-	//
-	if ($pStyle == 0) {
-		$section->addTextRun($_PARAGRAF_B);
-	}
-	if ($pStyle == 1) {
-		$section->addTextRun($_PARAGRAF_1B);
-	}
-	if ($pStyle == 2) {
-		$section->addTextRun($_PARAGRAF_2B);
-	}
-	if ($pStyle == 3) {
-		$section->addTextRun($_PARAGRAF_3B);
-	}
+    $_PARAGRAF_B = 'pStyleB';
+    $phpWord->addParagraphStyle($_PARAGRAF_B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 120, 'spaceBefore' => 420, 'spaceAfter' => 420));
+    $_PARAGRAF_1L = 'pStyle1L';
+    $phpWord->addParagraphStyle($_PARAGRAF_1L, array('widowControl' => false, 'indentation' => array('firstLine' => 360, 'left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
+    $_PARAGRAF_1B = 'pStyle1B';
+    $phpWord->addParagraphStyle($_PARAGRAF_1B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
+    $_PARAGRAF_2L = 'pStyle2L';
+    $phpWord->addParagraphStyle($_PARAGRAF_2L, array('widowControl' => false, 'indentation' => array('firstLine' => 360, 'left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
+    $_PARAGRAF_2B = 'pStyle2B';
+    $phpWord->addParagraphStyle($_PARAGRAF_2B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 120, 'spaceBefore' => 240, 'spaceAfter' => 360));
+    $_PARAGRAF_3L = 'pStyle3L';
+    $phpWord->addParagraphStyle($_PARAGRAF_3L, array('widowControl' => false, 'indentation' => array('firstLine' => 360, 'left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::LEFT, 'spacing' => 60, 'spaceBefore' => 150, 'spaceAfter' => 150));
+    $_PARAGRAF_3B = 'pStyle3B';
+    $phpWord->addParagraphStyle($_PARAGRAF_3B, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::BOTH, 'spacing' => 60, 'spaceBefore' => 150, 'spaceAfter' => 150));
+    $_PARAGRAF_3R = 'pStyle3R';
+    $phpWord->addParagraphStyle($_PARAGRAF_3R, array('widowControl' => false, 'indentation' => array('left' => 0, 'right' => 0), 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::RIGHT, 'spacing' => 60, 'spaceBefore' => 150, 'spaceAfter' => 150));
+    //
+    if ($pStyle == 0) {
+        $section->addTextRun($_PARAGRAF_B);
+    }
+    if ($pStyle == 1) {
+        $section->addTextRun($_PARAGRAF_1B);
+    }
+    if ($pStyle == 2) {
+        $section->addTextRun($_PARAGRAF_2B);
+    }
+    if ($pStyle == 3) {
+        $section->addTextRun($_PARAGRAF_3B);
+    }
 }
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
@@ -237,9 +239,7 @@ $innerTable->addRow(250, $_TBL_Body_Row);
 $innerTable->addCell(11000, $_InnerTBL_Body_Cell)->addTextRun($_TXTRUN_Align_Right)->addText($_ZAK_FIO, $_FONT_P12_B);
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-
 printParagraphSeparator($phpWord, $section, 0);
-
 
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # ВЫВОДИМ ОБРАЩЕНИЕ
@@ -255,9 +255,9 @@ mb_internal_encoding("UTF-8");
 $_QRY_dened = mysqlQuery("SELECT * FROM dognet_spdened WHERE koddened='" . $_ROW_docbase['koddened'] . "'");
 $_ROW_dened = mysqli_fetch_assoc($_QRY_dened);
 if ($_QRY_dened) {
-	$_DENED = html_entity_decode($_ROW_dened['short_code']);
+    $_DENED = html_entity_decode($_ROW_dened['short_code']);
 } else {
-	$_DENED = " -.";
+    $_DENED = " -.";
 }
 #
 // Номер и дата договора
@@ -266,7 +266,7 @@ $doc_partnernumber = $_ROW_docbase['docpartnernumberSTR'] != "" ? $_ROW_docbase[
 $var1 = $_ROW_docbase['daynachdoc'];
 $var2 = $_ROW_docbase['monthnachdoc'];
 $var3 = $_ROW_docbase['yearnachdoc'];
-$doc_date = numberFormat($var1, 2) . "." . numberFormat($var2, 2) . "." . $var3;
+$doc_date = firstZeroFormat($var1, 2) . "." . firstZeroFormat($var2, 2) . "." . $var3;
 #
 #
 $textrun = $section->addTextRun($_PARAGRAF_3L);
@@ -281,7 +281,6 @@ $textrun->addText('Исходя из вышеизложенного прошу �
 $textrun->addText($_NEWSROK . '.', $_FONT_P12_B);
 
 printParagraphSeparator($phpWord, $section, 0);
-
 
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # ФУТЕР С ПОДПИСЯМИ

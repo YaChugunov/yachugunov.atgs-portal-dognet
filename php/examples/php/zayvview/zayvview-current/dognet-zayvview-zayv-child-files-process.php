@@ -170,28 +170,30 @@ function updateFields_doczayv_files ( $db, $action_doczayvchet, $id, $values, $v
 			if ($_dopFileID != "") {
 
 			// Переименовываем файл
-				$_QRY_paperfiles = $db->sql( "SELECT flag, file_truelocation, file_syspath, file_extension FROM dognet_doczayvdopspec_files WHERE id=".$_dopFileID )->fetchAll();
+				$_QRY_paperfiles = $db->sql( "SELECT flag, file_originalname, file_truelocation, file_syspath, file_extension FROM dognet_doczayvdopspec_files WHERE id=".$_dopFileID )->fetchAll();
 				if ($_QRY_paperfiles[0]['flag'] == "0") {
 					$__ext = $_QRY_paperfiles[0]['file_extension'];
-					$__newFileName = "DOPSPEC{$_kodzayv}";
+					$timestamp = date("YmdHis");
+					$__tmpFileName = "DOPFILE.{$_kodzayv}.{$timestamp}.{$__ext}";
+					$__newFileName = !empty($_QRY_paperfiles[0]['file_originalname']) ? $timestamp.".".$_QRY_paperfiles[0]['file_originalname'] : $__tmpFileName;
 				// Формируем новый симлинк
 					$md5 = md5(uniqid());
 					$__newFileSymName = "{$md5}.{$__ext}";
 				// Переименовываем реальный файл
-					rename($_QRY_paperfiles[0]['file_truelocation'], $varFileArray['docpath']."{$__newFileName}.{$__ext}");
+					rename($_QRY_paperfiles[0]['file_truelocation'], $varFileArray['docpath']."{$__newFileName}");
 				// Формируем новый симлинк
-					symlink( $varFileArray['docpath']."{$__newFileName}.{$__ext}", $varFileArray['syspath']."{$__newFileName}.{$__ext}" );
+					symlink( $varFileArray['docpath']."{$__newFileName}", $varFileArray['syspath']."{$__newFileName}" );
 				// Удаляем старый симлинк
 					unlink($_QRY_paperfiles[0]['file_syspath']);
 				// Формируем новый URL
-					$__NewURL = str_replace($_SERVER['DOCUMENT_ROOT'], 'http://'.$_SERVER['HTTP_HOST'], $varFileArray['syspath']."{$__newFileName}.{$__ext}");
+					$__NewURL = str_replace($_SERVER['DOCUMENT_ROOT'], 'http://'.$_SERVER['HTTP_HOST'], $varFileArray['syspath']."{$__newFileName}");
 				// Обновляем запись в таблице файлов
 					$db->update( 'dognet_doczayvdopspec_files', array(
 						"file_name" => $__newFileName,
 						"file_symname" => $__newFileName,
-						"file_truelocation" => $varFileArray['docpath']."{$__newFileName}.{$__ext}",
-						"file_syspath" => $varFileArray['syspath']."{$__newFileName}.{$__ext}", // Симлинк пока не используем!
-						"file_webpath" => $varFileArray['webpath']."{$__newFileName}.{$__ext}", // Симлинк пока не используем!
+						"file_truelocation" => $varFileArray['docpath']."{$__newFileName}",
+						"file_syspath" => $varFileArray['syspath']."{$__newFileName}", // Симлинк пока не используем!
+						"file_webpath" => $varFileArray['webpath']."{$__newFileName}", // Симлинк пока не используем!
 						"file_url" => $__NewURL,
 						"flag" => "1"
 					), array(
@@ -392,4 +394,3 @@ Editor::inst( $db, 'dognet_doczayvdopspec' )
 	->process( $_POST )
 	->json();
 }
-

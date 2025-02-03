@@ -1,0 +1,11 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Общие параметры для всех форм редактирования
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#docview-details-tab10_contzakaz > thead { display:none }
+#docview-details-tab10_contzakaz > tbody > tr:first-child { display:none }
+#docview-details-tab10_contzakaz > tbody > tr > td { border:none }
+/**/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/**/

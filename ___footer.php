@@ -102,6 +102,21 @@ require_once '../config.inc.php';
     text-transform: uppercase;
     letter-spacing: normal
 }
+
+#main-tabs-menu .tooltip-inner {
+    min-width: 300px;
+    max-width: 300px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    background-color: #000;
+    border-radius: .25rem;
+}
+
+#doc-details-tabs-menu li a:hover+span>span.badge.badge-count,
+#doc-details-tabs-menu li a:hover~span>span.badge.badge-count {
+    color: #111111 !important;
+}
 </style>
 
 <div id="service-version" class="container-fluid">
@@ -116,11 +131,11 @@ require_once '../config.inc.php';
                     <div class="media-body text-center">
                         <div class="footer-pics">
                             <img src="../../_assets/images/phone_icon.png" class="img"
-                                style="max-width:none; width:2.5em"><img src="../../_assets/images/w_icon.png"
-                                class="img" style="max-width:none; width:2.5em"><img
-                                src="../../_assets/images/v_icon.png" class="img"
-                                style="max-width:none; width:2.5em"><img src="../../_assets/images/t_icon.png"
-                                class="img" style="max-width:none; width:2.5em">
+                                 style="max-width:none; width:2.5em"><img src="../../_assets/images/w_icon.png"
+                                 class="img" style="max-width:none; width:2.5em"><img
+                                 src="../../_assets/images/v_icon.png" class="img"
+                                 style="max-width:none; width:2.5em"><img src="../../_assets/images/t_icon.png"
+                                 class="img" style="max-width:none; width:2.5em">
                         </div>
                         <div class="footer-text">
                             <div class="bigtext caption">926 1124469</div>
@@ -134,13 +149,13 @@ require_once '../config.inc.php';
                     <div class="media-body text-center">
                         <div class="footer-pics">
                             <img src="../../_assets/images/me_icon.png" class="img-circle"
-                                style="max-width:none; width:1.0em">
+                                 style="max-width:none; width:1.0em">
                         </div>
                         <div class="footer-text">
                             <span class="smalltext">Ярослав&nbsp;Чугунов</span>
                             <br>
                             <span class="smallsmalltext"><a href="#" title="Yaroslav Chugunov Corporate Web Services"
-                                    target="_blank">YСCWS</a>&nbsp;&copy;&nbsp;2017-<?php echo date("Y"); ?></span>
+                                   target="_blank">YСCWS</a>&nbsp;&copy;&nbsp;2017-<?php echo date("Y"); ?></span>
                         </div>
                     </div>
                 </div>
@@ -150,11 +165,11 @@ require_once '../config.inc.php';
                     <div class="media-body text-center">
                         <div class="footer-pics">
                             <a href="https://chat.whatsapp.com/EcqoZZ3cfwy5VgheL62EIq" target="_blank"><img
-                                    src="../../_assets/images/whatsapp_icon.png" class="img-circle"
-                                    style="max-width:none; width:2.5em"></a>
+                                     src="../../_assets/images/whatsapp_icon.png" class="img-circle"
+                                     style="max-width:none; width:2.5em"></a>
                             <a href="https://t.me/joinchat/AAAAAEO6mbs1OaXr2e-GEA" target="_blank"><img
-                                    src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/_assets/images/t_icon.png"
-                                    class="img-circle" style="max-width:none; width:2.5em"></a>
+                                     src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/_assets/images/t_icon.png"
+                                     class="img-circle" style="max-width:none; width:2.5em"></a>
                         </div>
                         <div class="footer-text">
                             <div class="bigtext caption">WA.Чат / ТГ.Канал</div>

@@ -1,0 +1,131 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #docview-zayv-child-dop
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#docview-zayv-child-dop-spec {	 }
+#docview-zayv-child-dop-msg .zayv-warning-message {	font-family:'Oswald', sans-serif; font-size:1.3em; letter-spacing:0.2em }
+#docview-zayv-child-dop-msg .zayv-warning-message-small {	font-family:'Oswald', sans-serif; font-size:1.1em; letter-spacing:0.1em }
+#docview-zayv-child-dop-msg > tbody > tr > td { border:none }
+
+/*
+/* Общее для таблицы */
+#docview-zayv-child-dop {  }
+#docview-zayv-child-dop { /* border:2px #951402 solid */ }
+#docview-zayv-child-dop .details-control:hover { cursor:pointer }
+#docview-zayv-child-dop .font-courier { font-family:courier,courier new,serif }
+
+#docview-zayv-child-dop td.highlight { background-color:#faeeaa }
+#docview-zayv-child-dop.dataTable tbody tr.selected td.highlight { color:#666 }
+
+#docview-zayv-child-dop.dataTable tbody tr.selected, #docview-zayv-child-dop.dataTable tbody th.selected, #docview-zayv-child-dop.dataTable tbody td.selected { color:white }
+/*
+/*
+/* Заголовок таблицы */
+#docview-zayv-child-dop > thead {	background-color:#f1f1f1;	color:#111; font-family:'Oswald', sans-serif; border-bottom:none;	border-top:none }
+#docview-zayv-child-dop > thead > tr > th { color:#333; border-bottom:none; font-weight:500; text-transform:uppercase }
+#docview-zayv-child-dop > thead > tr > th:first-child { text-align:center }
+#docview-zayv-child-dop > thead > tr > th:nth-child(2) { text-align:center }
+#docview-zayv-child-dop > thead > tr > th:nth-child(3) { text-align:left }
+#docview-zayv-child-dop > thead > tr > th:nth-child(4) { text-align:left }
+#docview-zayv-child-dop > thead > tr > th:nth-child(5) { text-align:center }
+/* Тело таблицы */
+#docview-zayv-child-dop > tbody { font-size:0.9em; color:#666; border-bottom:none;	border-top:none }
+#docview-zayv-child-dop > tbody > tr > td { padding:2px 5px; line-height: 1.42857143; vertical-align: middle }
+#docview-zayv-child-dop > tbody > tr > td {  }
+#docview-zayv-child-dop > tbody > tr > td:first-child { width:1%; text-align:center }
+#docview-zayv-child-dop > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+#docview-zayv-child-dop > tbody > tr > td:nth-child(3) { width:61%; text-align:left }
+#docview-zayv-child-dop > tbody > tr > td:nth-child(4) { width:32%; text-align:left }
+#docview-zayv-child-dop > tbody > tr > td:nth-child(5) { width:3%; text-align:center }
+#docview-zayv-child-dop > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#666; background-color:#fafafa }
+/* Подвал таблицы */
+#docview-zayv-child-dop > tfoot > tr > th:first-child { text-align:center }
+#docview-zayv-child-dop > tfoot > tr > th:nth-child(2) { text-align:center }
+#docview-zayv-child-dop > tfoot > tr > td:nth-child(3) { text-align:left }
+#docview-zayv-child-dop > tfoot > tr > td:nth-child(4) { text-align:left }
+#docview-zayv-child-dop > tfoot > tr > td:nth-child(5) { text-align:center }
+
+#docview-zayv-child-dop .sorting_asc:after, #docview-zayv-child-dop .sorting_desc:after, #docview-zayv-child-dop .sorting:after { display:none }
+#docview-zayv-child-dop > thead > tr > th.sorting_asc { padding-right:8px }
+/* Подвал таблицы */
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-zayv-child-dop-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#template-details-zayv-child-dop { border:2px #666 solid; border-radius:5px; background-color:#fff }
+
+	#row-details-docview-zayv-child-dop-tabs .nav > li > a { color:#fff }
+	#row-details-docview-zayv-child-dop-tabs .nav > li > a:focus, #row-details-docview-zayv-child-dop-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-zayv-child-dop-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-child-dop-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-child-dop-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-zayv-child-dop-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-zayv-child-dop-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-zayv-child-dop-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-zayv-child-dop-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-zayv-child-dop-tabs-menu > li.active > a::after,
+	#row-details-docview-zayv-child-dop-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#row-details-docview-zayv-child-dop-tabs .nav > li > a { color:#fff }
+	#row-details-docview-zayv-child-dop-tabs .nav > li > a:focus, #row-details-docview-zayv-child-dop-tabs .nav > li > a:hover { background-color:transparent; }
+	#row-details-docview-zayv-child-dop-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-child-dop-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#row-details-docview-zayv-child-dop-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#row-details-docview-zayv-child-dop-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#row-details-docview-zayv-child-dop-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#row-details-docview-zayv-child-dop-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#row-details-docview-zayv-child-dop-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#row-details-docview-zayv-child-dop-tabs-menu > li.active > a::after,
+	#row-details-docview-zayv-child-dop-tabs-menu > li:hover > a::after { transform: scale(1) }
+
+#row-details-docview-zayv-child-dop-table { margin-bottom:0; background-color:transparent }
+#row-details-docview-zayv-child-dop-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#row-details-docview-zayv-child-dop-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#row-details-docview-zayv-child-dop-table > tbody > tr > td:first-child { text-align:left }
+#row-details-docview-zayv-child-dop-table > tbody > tr > td:nth-child(2) { text-align:left }
+#row-details-docview-zayv-child-dop-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#row-details-docview-zayv-child-dop-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.row-details-docview-zayv-child-dop-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.row-details-docview-zayv-child-dop-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.row-details-docview-zayv-child-dop-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.row-details-docview-zayv-child-dop-table-title { color:#666; font-weight:700 }
+.row-details-docview-zayv-child-dop-table-txt { color:#666; font-weight:300 }
+.row-details-docview-zayv-child-dop-table-link { color:#666; font-weight:500; text-decoration:underline }
+.row-details-docview-zayv-child-dop-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+

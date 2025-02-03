@@ -4,15 +4,15 @@ date_default_timezone_set('Europe/Moscow');
 // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php";
 $db_handle = new DBController();
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Подключаем общие функции безопасности
 // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php");
+require $_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php";
 # Подключаем собственные функции сервиса Почта
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/functions/funcDognet.inc.php");
+require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/functions/funcDognet.inc.php";
 # Включаем режим сессии
 session_start();
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -36,41 +36,41 @@ $_KODSHAB = $_ROW_KODSHAB['kodshab'];
 # для таблицы этапов 'dognet_kalplanchf'
 # ----- ----- -----
 function nextKoddocsubpodr() {
-	$query = mysqlQuery("SELECT MAX(koddocsubpodr) as lastKod FROM dognet_docsubpodr ORDER BY id DESC");
-	$row = mysqli_fetch_assoc($query);
-	$lastKod = $row['lastKod'];
-	$nextKod = $lastKod + rand(3, 33);
-	return $nextKod;
+    $query = mysqlQuery("SELECT MAX(koddocsubpodr) as lastKod FROM dognet_docsubpodr ORDER BY id DESC");
+    $row = mysqli_fetch_assoc($query);
+    $lastKod = $row['lastKod'];
+    $nextKod = $lastKod + rand(3, 13);
+    return $nextKod;
 }
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#	ОПИСАНИЕ : Сумма всех авансов зачтенных в счет-фактуру $kodchfsubpodr
+#    ОПИСАНИЕ : Сумма всех авансов зачтенных в счет-фактуру $kodchfsubpodr
 #
 #
-function SUMMA_AVANSCHF_SUBPODR($kodchfsubpodr) {
-	$_QRY = mysqlQuery("SELECT SUM(sumchfavsubpodr) as SummaAvansChf FROM dognet_docavsubpodr WHERE kodchfsubpodr=" . $kodchfsubpodr);
-	$_ROW = mysqli_fetch_assoc($_QRY);
-	if ($_QRY) {
-		$__SummaAvansChf = $_ROW['SummaAvansChf'];
-	} else {
-		$__SummaAvansChf = "";
-	}
-	return $__SummaAvansChf;
+function summaAvanschfSubpodr($kodchfsubpodr) {
+    $_QRY = mysqlQuery("SELECT SUM(sumchfavsubpodr) as SummaAvansChf FROM dognet_docavsubpodr WHERE kodchfsubpodr=" . $kodchfsubpodr);
+    $_ROW = mysqli_fetch_assoc($_QRY);
+    if ($_QRY) {
+        $__SummaAvansChf = $_ROW['SummaAvansChf'];
+    } else {
+        $__SummaAvansChf = "";
+    }
+    return $__SummaAvansChf;
 }
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # ОПИСАНИЕ : Сумма всех оплат счета-фактуры $kodchfsubpodr
 #
 #
-function SUMMA_OPLATCHF_SUBPODR($kodchfsubpodr) {
-	$_QRY = mysqlQuery("SELECT SUM(sumoplchfsubpodr) as SummaOplatChf FROM dognet_docoplchfsubpodr WHERE kodchfsubpodr=" . $kodchfsubpodr);
-	$_ROW = mysqli_fetch_assoc($_QRY);
-	if ($_QRY) {
-		$__SummaOplatChf = $_ROW['SummaOplatChf'];
-	} else {
-		$__SummaOplatChf = "";
-	}
-	return $__SummaOplatChf;
+function summaOplatchfSubpodr($kodchfsubpodr) {
+    $_QRY = mysqlQuery("SELECT SUM(sumoplchfsubpodr) as SummaOplatChf FROM dognet_docoplchfsubpodr WHERE kodchfsubpodr=" . $kodchfsubpodr);
+    $_ROW = mysqli_fetch_assoc($_QRY);
+    if ($_QRY) {
+        $__SummaOplatChf = $_ROW['SummaOplatChf'];
+    } else {
+        $__SummaOplatChf = "";
+    }
+    return $__SummaOplatChf;
 }
 #
 #
@@ -78,13 +78,32 @@ function SUMMA_OPLATCHF_SUBPODR($kodchfsubpodr) {
 # Функция обновления нового номера этапа (numberstage)
 # для таблицы этапов 'dognet_dockalplan'
 # ----- ----- -----
-function updateFields_docsubpodr($db, $action, $id, $values) {
-	$__nextKoddocsubpodr = nextKoddocsubpodr();
-	if ($action == 'CRT') {
-		$db->update('dognet_docsubpodr', array(
-			'koddocsubpodr'			=>	$__nextKoddocsubpodr
-		), array('id' => $id));
-	}
+function mainProcess($db, $action, $id, $values, $row) {
+    $reqDB = $db->sql("SELECT * FROM dognet_docsubpodr WHERE id='{$id}'")->fetchAll();
+    $__nextKoddocsubpodr = nextKoddocsubpodr();
+    //
+    // $kodblankwork = !empty($reqDB[0]['kodblankwork']) ? $reqDB[0]['kodblankwork'] : "";
+    $kodblankwork = !empty($row['dognet_docsubpodr']['kodblankwork']) ? $row['dognet_docsubpodr']['kodblankwork'] : "";
+    $koddocsubpodr = $__nextKoddocsubpodr;
+    //
+    if ($action == 'CRT') {
+        $db->update('dognet_docsubpodr', array(
+            'koddocsubpodr' => $__nextKoddocsubpodr,
+        ), array('id' => $id));
+    }
+//* - - - - - - - - - -
+//* UPD 23.10.2024
+//* Пишем в таблицу бланков идентификатор договора субподряда
+//*
+
+    $reqUpdateDB = $db->sql("
+UPDATE dognet_docblankwork
+SET koddocsubpodr='{$koddocsubpodr}'
+WHERE kodblankwork='{$kodblankwork}' AND kodtipblank='SUB' AND kodstatusblank='DO'
+");
+
+//* - - - - - - - - - -
+
 }
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
@@ -101,228 +120,286 @@ $__dened = $row2['html_code'];
 #
 /*
  * Example PHP implementation used for the index.html example
-*/
+ */
 // DataTables PHP library
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_datatables-php-api-editor/DataTables.php");
+require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_datatables-php-api-editor/DataTables.php";
 // Alias Editor classes so they are easy to use
-use
-	DataTables\Editor,
-	DataTables\Editor\Field,
-	DataTables\Editor\Format,
-	DataTables\Editor\Mjoin,
-	DataTables\Editor\Options,
-	DataTables\Editor\Upload,
-	DataTables\Editor\Validate,
-	DataTables\Editor\ValidateOptions;
+use DataTables\Editor;
+use DataTables\Editor\Field;
+use DataTables\Editor\Format;
+use DataTables\Editor\Mjoin;
+use DataTables\Editor\Options;
+use DataTables\Editor\Validate;
+use DataTables\Editor\ValidateOptions;
 #
 #
 if ($_KODSHAB == "1" or $_KODSHAB == "3") {
-	#
-	#
-	// Build our Editor instance and process the data coming from _POST
-	Editor::inst($db, 'dognet_docsubpodr')
-		->fields(
-			Field::inst('dognet_dockalplan.koddoc'),
-			Field::inst('dognet_dockalplan.numberstage'),
-			Field::inst('dognet_dockalplan.nameshotstage'),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docsubpodr.koddoc')
-				->options(
-					Options::inst()
-						->table('dognet_dockalplan')
-						->value('kodkalplan')
-						->label(array('kodkalplan', 'numberstage', 'nameshotstage'))
-						->render(function ($row) {
-							return "Этап " . $row['numberstage'] . " : " . $row['nameshotstage'];
-						})
-						->where(function ($q) use ($_UNIQUEID) {
-							$q->where('koddoc', $_UNIQUEID, '=');
-							$q->and_where('koddel', '99', '!=');
-						})
-				)
-				->validator(Validate::notEmpty(
-					ValidateOptions::inst()
-						->message('Выберите этап договора')
-				)),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('sp_contragents.nameshort'),
-			Field::inst('dognet_docsubpodr.kodsubpodr')
-				->options(
-					Options::inst()
-						->table('sp_contragents')
-						->value('kodcontragent')
-						->label(array('kodcontragent', 'nameshort', 'namefull'))
-						->order('nameshort asc')
-						->render(function ($row) {
-							return $row['nameshort'];
-						})
-						->where(function ($q) {
-							$q->where('koddel', '99', '<>');
-							$q->where('useinsub', '1');
-							$q->where('nameshort', '', '<>');
-						})
-				)
-				->validator(Validate::notEmpty(
-					ValidateOptions::inst()
-						->message('Выберите организацию')
-				)),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docsubpodr.koddocsubpodr'),
-			Field::inst('dognet_docsubpodr.namedocsubpodr'),
-			Field::inst('dognet_docsubpodr.numberdocsubpodr'),
-			Field::inst('dognet_docsubpodr.sumdocsubpodr'),
-			Field::inst('dognet_docsubpodr.sumzadolsubpodr'),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docsubpodr.datedocsubpodr')
-				->validator(Validate::dateFormat(
-					'd.m.Y',
-					ValidateOptions::inst()
-						->allowEmpty(false)
-				))
-				->getFormatter(Format::datetime(
-					'Y-m-d',
-					'd.m.Y'
-				))
-				->setFormatter(Format::datetime(
-					'd.m.Y',
-					'Y-m-d'
-				)),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docbase.koddened'),
-			Field::inst('dognet_docbase.kodshab'),
-			Field::inst('dognet_docbase.docnumber'),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_spdened.koddened'),
-			Field::inst('dognet_spdened.html_code'),
-			Field::inst('dognet_spdened.short_code')
-		)
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		->on('postCreate', function ($editor, $id, $values, $row) {
-			updateFields_docsubpodr($editor->db(), 'CRT', $id, $values);
-		})
-		->on('preGet', function ($editor, $id) use ($_UNIQUEID) {
-			$editor->where(function ($q) use ($_UNIQUEID) {
-				$q->where('dognet_docsubpodr.koddel', '99', '!=');
-			});
-		})
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		->leftJoin('dognet_dockalplan', 'dognet_dockalplan.kodkalplan', '=', 'dognet_docsubpodr.koddoc')
-		->leftJoin('sp_contragents', 'sp_contragents.kodcontragent', '=', 'dognet_docsubpodr.kodsubpodr')
-		->leftJoin('dognet_docbase', 'dognet_docbase.koddoc', '=', 'dognet_dockalplan.koddoc')
-		->leftJoin('dognet_spdened', 'dognet_spdened.koddened', '=', 'dognet_docbase.koddened')
-		->join(
-			Mjoin::inst('dognet_docchfsubpodr')
-				->link('dognet_docchfsubpodr.koddocsubpodr', 'dognet_docsubpodr.koddocsubpodr')
-				->field(
-					Field::inst('koddocsubpodr')
-				)
-		)
-		->where('dognet_dockalplan.koddoc', $_UNIQUEID)
-		->process($_POST)
-		->json();
-	#
-	#
+    #
+    #
+    // Build our Editor instance and process the data coming from _POST
+    Editor::inst($db, 'dognet_docsubpodr')
+        ->fields(
+            Field::inst('dognet_dockalplan.koddoc'),
+            Field::inst('dognet_dockalplan.numberstage'),
+            Field::inst('dognet_dockalplan.nameshotstage'),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.koddoc')
+                ->options(
+                    Options::inst()
+                        ->table('dognet_dockalplan')
+                        ->value('kodkalplan')
+                        ->label(array('kodkalplan', 'numberstage', 'nameshotstage'))
+                        ->render(function ($row) {
+                            return "Этап " . $row['numberstage'] . " : " . $row['nameshotstage'];
+                        })
+                        ->where(function ($q) use ($_UNIQUEID) {
+                            $q->where('koddoc', $_UNIQUEID, '=');
+                            $q->and_where('koddel', '99', '!=');
+                        })
+                )
+                ->validator(Validate::notEmpty(
+                    ValidateOptions::inst()
+                        ->message('Выберите этап договора')
+                )),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('sp_contragents.nameshort'),
+            Field::inst('dognet_docsubpodr.kodsubpodr')
+                ->options(
+                    Options::inst()
+                        ->table('sp_contragents')
+                        ->value('kodcontragent')
+                        ->label(array('kodcontragent', 'nameshort', 'namefull'))
+                        ->order('nameshort asc')
+                        ->render(function ($row) {
+                            return $row['nameshort'];
+                        })
+                        ->where(function ($q) {
+                            $q->where('koddel', '99', '<>');
+                            $q->where('useinsub', '1');
+                            $q->where('nameshort', '', '<>');
+                        })
+                )
+                ->validator(Validate::notEmpty(
+                    ValidateOptions::inst()
+                        ->message('Выберите организацию')
+                )),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.kodblankwork')
+                ->options(
+                    Options::inst()
+                        ->table('dognet_docblankwork')
+                        ->value('kodblankwork')
+                        ->label(array('kodblankwork', 'dateblankdoc', 'numberblankwork', 'nameblankwork', 'nameorgblankwork', 'koddocsubpodr'))
+                        ->order('dateblankdoc desc')
+                        ->render(function ($row) {
+                            $result = "";
+                            $blankdate = !empty($row['dateblankdoc']) ? date("d.m.Y", strtotime($row['dateblankdoc'])) : "";
+                            $blanknum = !empty($row['numberblankwork']) ? $row['numberblankwork'] : "--";
+                            $blankname = !empty($row['nameblankwork']) ? mb_strimwidth($row['nameblankwork'], 0, 50, " ...") : "---";
+                            $blankorg = !empty($row['nameorgblankwork']) ? $row['nameorgblankwork'] : "---";
+                            $result .= !empty($blankdate) ? "Бланк № " . $blanknum . " от " . $blankdate : "---";
+                            $result .= !empty($blankname) ? " : " . $blankname : "";
+                            $result .= !empty($blankorg) ? " : " . $blankorg : "";
+                            return $result;
+                        })
+                        ->where(function ($q) use ($_UNIQUEID) {
+                            $q->where('koddoc', $_UNIQUEID, '=');
+                            $q->and_where('koddel', '99', '!=');
+                            $q->and_where('kodstatusblank', 'DO');
+                            $q->and_where('kodtipblank', 'SUB');
+                            // $q->and_where('koddocsubpodr', '');
+                        })
+                ),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.koddocsubpodr'),
+            Field::inst('dognet_docsubpodr.namedocsubpodr'),
+            Field::inst('dognet_docsubpodr.numberdocsubpodr'),
+            Field::inst('dognet_docsubpodr.sumdocsubpodr'),
+            Field::inst('dognet_docsubpodr.sumzadolsubpodr'),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.datedocsubpodr')
+                ->validator(Validate::dateFormat(
+                    'd.m.Y',
+                    ValidateOptions::inst()
+                        ->allowEmpty(false)
+                ))
+                ->getFormatter(Format::datetime(
+                    'Y-m-d',
+                    'd.m.Y'
+                ))
+                ->setFormatter(Format::datetime(
+                    'd.m.Y',
+                    'Y-m-d'
+                )),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docbase.koddened'),
+            Field::inst('dognet_docbase.kodshab'),
+            Field::inst('dognet_docbase.docnumber'),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_spdened.koddened'),
+            Field::inst('dognet_spdened.html_code'),
+            Field::inst('dognet_spdened.short_code')
+        )
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        ->on('postCreate', function ($editor, $id, $values, $row) {
+            mainProcess($editor->db(), 'CRT', $id, $values, $row);
+        })
+        ->on('postEdit', function ($editor, $id, $values, $row) {
+            mainProcess($editor->db(), 'UPD', $id, $values, $row);
+        })
+        ->on('preGet', function ($editor, $id) use ($_UNIQUEID) {
+            $editor->where(function ($q) use ($_UNIQUEID) {
+                $q->where('dognet_docsubpodr.koddel', '99', '!=');
+            });
+        })
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        ->leftJoin('dognet_dockalplan', 'dognet_dockalplan.kodkalplan', '=', 'dognet_docsubpodr.koddoc')
+        ->leftJoin('sp_contragents', 'sp_contragents.kodcontragent', '=', 'dognet_docsubpodr.kodsubpodr')
+        ->leftJoin('dognet_docbase', 'dognet_docbase.koddoc', '=', 'dognet_dockalplan.koddoc')
+        ->leftJoin('dognet_spdened', 'dognet_spdened.koddened', '=', 'dognet_docbase.koddened')
+        ->join(
+            Mjoin::inst('dognet_docchfsubpodr')
+                ->link('dognet_docchfsubpodr.koddocsubpodr', 'dognet_docsubpodr.koddocsubpodr')
+                ->field(
+                    Field::inst('koddocsubpodr')
+                )
+        )
+        ->where('dognet_dockalplan.koddoc', $_UNIQUEID)
+        ->process($_POST)
+        ->json();
+    #
+    #
 }
 #
 #
 if ($_KODSHAB == "2" or $_KODSHAB == "4") {
-	#
-	#
-	// Build our Editor instance and process the data coming from _POST
-	Editor::inst($db, 'dognet_docsubpodr')
-		->fields(
-			Field::inst('dognet_docsubpodr.koddoc')
-				->options(
-					Options::inst()
-						->table('dognet_docbase')
-						->value('koddoc')
-						->label(array('koddoc'))
-						->render(function ($row) {
-							return "Без календарного плана";
-						})
-						->where(function ($q) use ($_UNIQUEID) {
-							$q->where('koddoc', $_UNIQUEID, '=');
-						})
-				)
-				->validator(Validate::notEmpty(
-					ValidateOptions::inst()
-						->message('Объект обязателен')
-				)),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('sp_contragents.nameshort'),
-			Field::inst('dognet_docsubpodr.kodsubpodr')
-				->options(
-					Options::inst()
-						->table('sp_contragents')
-						->value('kodcontragent')
-						->label(array('kodcontragent', 'nameshort', 'namefull'))
-						->order('nameshort asc')
-						->render(function ($row) {
-							return $row['nameshort'];
-						})
-						->where(function ($q) {
-							$q->where('koddel', '99', '<>');
-							$q->where('useinsub', '1');
-							$q->where('nameshort', '', '<>');
-						})
-				)
-				->validator(Validate::notEmpty(
-					ValidateOptions::inst()
-						->message('Выберите организацию')
-				)),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docsubpodr.koddocsubpodr'),
-			Field::inst('dognet_docsubpodr.namedocsubpodr'),
-			Field::inst('dognet_docsubpodr.numberdocsubpodr'),
-			Field::inst('dognet_docsubpodr.sumdocsubpodr'),
-			Field::inst('dognet_docsubpodr.sumzadolsubpodr'),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docsubpodr.datedocsubpodr')
-				->validator(Validate::dateFormat(
-					'd.m.Y',
-					ValidateOptions::inst()
-						->allowEmpty(false)
-				))
-				->getFormatter(Format::datetime(
-					'Y-m-d',
-					'd.m.Y'
-				))
-				->setFormatter(Format::datetime(
-					'd.m.Y',
-					'Y-m-d'
-				)),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_docbase.koddened'),
-			Field::inst('dognet_docbase.kodshab'),
-			Field::inst('dognet_docbase.docnumber'),
-			// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-			Field::inst('dognet_spdened.koddened'),
-			Field::inst('dognet_spdened.html_code'),
-			Field::inst('dognet_spdened.short_code')
-		)
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		->on('postCreate', function ($editor, $id, $values, $row) {
-			updateFields_docsubpodr($editor->db(), 'CRT', $id, $values);
-		})
-		->on('preGet', function ($editor, $id) use ($_UNIQUEID) {
-			$editor->where(function ($q) use ($_UNIQUEID) {
-				$q->where('dognet_docsubpodr.koddel', '99', '!=');
-			});
-		})
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		->leftJoin('sp_contragents', 'sp_contragents.kodcontragent', '=', 'dognet_docsubpodr.kodsubpodr')
-		->leftJoin('dognet_docbase', 'dognet_docbase.koddoc', '=', 'dognet_docsubpodr.koddoc')
-		->leftJoin('dognet_spdened', 'dognet_spdened.koddened', '=', 'dognet_docbase.koddened')
-		->join(
-			Mjoin::inst('dognet_docchfsubpodr')
-				->link('dognet_docchfsubpodr.koddocsubpodr', 'dognet_docsubpodr.koddocsubpodr')
-				->field(
-					Field::inst('koddocsubpodr')
-				)
-		)
-		->where('dognet_docbase.koddoc', $_UNIQUEID)
-		->process($_POST)
-		->json();
-	#
-	#
+    #
+    #
+    // Build our Editor instance and process the data coming from _POST
+    Editor::inst($db, 'dognet_docsubpodr')
+        ->fields(
+            Field::inst('dognet_docsubpodr.koddoc')
+                ->options(
+                    Options::inst()
+                        ->table('dognet_docbase')
+                        ->value('koddoc')
+                        ->label(array('koddoc'))
+                        ->render(function ($row) {
+                            return "Без календарного плана";
+                        })
+                        ->where(function ($q) use ($_UNIQUEID) {
+                            $q->where('koddoc', $_UNIQUEID, '=');
+                        })
+                )
+                ->validator(Validate::notEmpty(
+                    ValidateOptions::inst()
+                        ->message('Объект обязателен')
+                )),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('sp_contragents.nameshort'),
+            Field::inst('dognet_docsubpodr.kodsubpodr')
+                ->options(
+                    Options::inst()
+                        ->table('sp_contragents')
+                        ->value('kodcontragent')
+                        ->label(array('kodcontragent', 'nameshort', 'namefull'))
+                        ->order('nameshort asc')
+                        ->render(function ($row) {
+                            return $row['nameshort'];
+                        })
+                        ->where(function ($q) {
+                            $q->where('koddel', '99', '<>');
+                            $q->where('useinsub', '1');
+                            $q->where('nameshort', '', '<>');
+                        })
+                )
+                ->validator(Validate::notEmpty(
+                    ValidateOptions::inst()
+                        ->message('Выберите организацию')
+                )),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.kodblankwork')
+                ->options(
+                    Options::inst()
+                        ->table('dognet_docblankwork')
+                        ->value('kodblankwork')
+                        ->label(array('kodblankwork', 'dateblankwork', 'dateblankdoc', 'numberblankwork', 'nameblankwork', 'nameorgblankwork', 'koddocsubpodr'))
+                        ->order('dateblankdoc desc')
+                        ->render(function ($row) {
+                            $result = "";
+                            $blankdate = !empty($row['dateblankwork']) ? date("d.m.Y", strtotime($row['dateblankwork'])) : "";
+                            $blanknum = !empty($row['numberblankwork']) ? $row['numberblankwork'] : "--";
+                            $blankname = !empty($row['nameblankwork']) ? mb_strimwidth($row['nameblankwork'], 0, 45, " ...") : "---";
+                            $blankorg = !empty($row['nameorgblankwork']) ? $row['nameorgblankwork'] : "---";
+                            $result .= !empty($blankdate) ? "Бланк № " . $blanknum . " от " . $blankdate : "---";
+                            $result .= !empty($blankorg) ? " : " . $blankorg : "";
+                            $result .= !empty($blankname) ? " : " . $blankname : "";
+                            return $result;
+                        })
+                        ->where(function ($q) use ($_UNIQUEID) {
+                            $q->where('koddoc', $_UNIQUEID, '=');
+                            $q->and_where('koddel', '99', '!=');
+                            $q->and_where('kodstatusblank', 'DO');
+                            $q->and_where('kodtipblank', 'SUB');
+                            // $q->and_where('koddocsubpodr', '');
+                        })
+                ),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.koddocsubpodr'),
+            Field::inst('dognet_docsubpodr.namedocsubpodr'),
+            Field::inst('dognet_docsubpodr.numberdocsubpodr'),
+            Field::inst('dognet_docsubpodr.sumdocsubpodr'),
+            Field::inst('dognet_docsubpodr.sumzadolsubpodr'),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docsubpodr.datedocsubpodr')
+                ->validator(Validate::dateFormat(
+                    'd.m.Y',
+                    ValidateOptions::inst()
+                        ->allowEmpty(false)
+                ))
+                ->getFormatter(Format::datetime(
+                    'Y-m-d',
+                    'd.m.Y'
+                ))
+                ->setFormatter(Format::datetime(
+                    'd.m.Y',
+                    'Y-m-d'
+                )),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_docbase.koddened'),
+            Field::inst('dognet_docbase.kodshab'),
+            Field::inst('dognet_docbase.docnumber'),
+            // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+            Field::inst('dognet_spdened.koddened'),
+            Field::inst('dognet_spdened.html_code'),
+            Field::inst('dognet_spdened.short_code')
+        )
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        ->on('postCreate', function ($editor, $id, $values, $row) {
+            mainProcess($editor->db(), 'CRT', $id, $values, $row);
+        })
+        ->on('postEdit', function ($editor, $id, $values, $row) {
+            mainProcess($editor->db(), 'UPD', $id, $values, $row);
+        })
+        ->on('preGet', function ($editor, $id) use ($_UNIQUEID) {
+            $editor->where(function ($q) use ($_UNIQUEID) {
+                $q->where('dognet_docsubpodr.koddel', '99', '!=');
+            });
+        })
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        ->leftJoin('sp_contragents', 'sp_contragents.kodcontragent', '=', 'dognet_docsubpodr.kodsubpodr')
+        ->leftJoin('dognet_docbase', 'dognet_docbase.koddoc', '=', 'dognet_docsubpodr.koddoc')
+        ->leftJoin('dognet_spdened', 'dognet_spdened.koddened', '=', 'dognet_docbase.koddened')
+        ->join(
+            Mjoin::inst('dognet_docchfsubpodr')
+                ->link('dognet_docchfsubpodr.koddocsubpodr', 'dognet_docsubpodr.koddocsubpodr')
+                ->field(
+                    Field::inst('koddocsubpodr')
+                )
+        )
+        ->where('dognet_docbase.koddoc', $_UNIQUEID)
+        ->process($_POST)
+        ->json();
+    #
+    #
 }

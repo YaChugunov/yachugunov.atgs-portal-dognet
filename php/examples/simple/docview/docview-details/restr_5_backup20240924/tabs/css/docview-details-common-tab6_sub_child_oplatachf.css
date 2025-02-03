@@ -1,0 +1,346 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица счетов-фактур: #docview-sub-child-oplatachf
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#docview-sub-child-oplatachf {}
+
+#docview-sub-child-oplatachf {
+  /* border:2px #951402 solid */
+}
+
+#docview-sub-child-oplatachf .details-control:hover {
+  cursor: pointer
+}
+
+#docview-sub-child-oplatachf .font-courier {
+  font-family: courier, courier new, serif
+}
+
+#docview-sub-child-oplatachf.dataTable tbody>tr.selected,
+#docview-sub-child-oplatachf.dataTable tbody>tr>.selected {}
+
+#docview-sub-child-oplatachf.dataTable tbody tr.selected,
+#docview-sub-child-oplatachf.dataTable tbody th.selected,
+#docview-sub-child-oplatachf.dataTable tbody td.selected {
+  color: white
+}
+
+/*
+/*
+/* Заголовок таблицы */
+#docview-sub-child-oplatachf>thead {
+  background-color: #f1f1f1;
+  color: #111;
+  font-family: 'Oswald', sans-serif;
+  border-bottom: none;
+  border-top: none
+}
+
+#docview-sub-child-oplatachf>thead>tr>th {
+  font-size: 1.1em;
+  color: #333;
+  border-bottom: none;
+  font-weight: 500;
+  text-transform: uppercase
+}
+
+#docview-sub-child-oplatachf>tbody {
+  font-family: 'Play', sans-serif;
+  font-size: 0.85em;
+  color: #666;
+  border-bottom: none;
+  border-top: none
+}
+
+#docview-sub-child-oplatachf>tbody>tr>td {
+  padding: 2px 5px;
+  line-height: 1.42857143;
+  vertical-align: middle
+}
+
+#docview-sub-child-oplatachf>tbody>tr>td {
+  padding: 2px 5px;
+  line-height: 1.42857143;
+  vertical-align: middle;
+}
+
+#docview-sub-child-oplatachf>thead>tr>th:first-child {
+  width: 24px;
+  min-width: 24px;
+  text-align: center;
+}
+
+#docview-sub-child-oplatachf>tbody>tr>td:first-child {
+  width: 24px;
+  min-width: 24px;
+  text-align: center;
+  color: #0085c7;
+  line-height: normal;
+  padding: 2px 2px;
+}
+
+#docview-sub-child-oplatachf>thead>tr>th:nth-child(2),
+#docview-sub-child-oplatachf>tbody>tr>td:nth-child(2) {
+  width: 82px;
+  min-width: 82px;
+  text-align: left
+}
+
+
+#docview-sub-child-oplatachf>thead>tr>th:nth-child(3),
+#docview-sub-child-oplatachf>tbody>tr>td:nth-child(3) {
+  width: 75%;
+  text-align: right
+}
+
+#docview-sub-child-oplatachf>tbody>tr>td.dataTables_empty {
+  text-align: center;
+  text-transform: none;
+  color: #CB1010;
+  background-color: #FFF;
+  padding: 8px 0;
+  font-size: 14px;
+  font-family: 'Oswald', sans-serif;
+  /* font-style: italic; */
+}
+
+/* Подвал таблицы */
+
+#docview-sub-child-oplatachf .sorting_asc:after,
+#docview-sub-child-oplatachf .sorting_desc:after,
+#docview-sub-child-oplatachf .sorting:after {
+  display: none
+}
+
+#docview-sub-child-oplatachf>thead>tr>th.sorting_asc,
+#docview-sub-child-oplatachf>thead>tr>th.sorting_desc {
+  padding-right: 8px
+}
+
+/* Подвал таблицы */
+
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/* 	ШАБЛОН CHILD-ТАБЛИЦЫ : row-details-docview-sub-child-oplatachf-table
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#template-details-sub-child-oplatachf {
+  border: 2px #666 solid;
+  border-radius: 5px;
+  background-color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav>li>a {
+  color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav>li>a:focus,
+#row-details-docview-sub-child-oplatachf-tabs .nav>li>a:hover {
+  background-color: transparent;
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav-tabs>li.active>a {
+  color: #111 !important;
+  background-color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav-tabs>li>a:hover {
+  color: #111 !important;
+  background-color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav-tabs>li>a::after {
+  background: #f1f1f1
+}
+
+#row-details-docview-sub-child-oplatachf-tabs>div.row>div>ul>li>a {
+  font-family: 'Play', sans-serif
+}
+
+/* Изменено 20.06.2019 --- */
+#row-details-docview-sub-child-oplatachf-tabs-menu {
+  background: #666;
+  padding: 0;
+  border-bottom: none;
+  margin-bottom: 20px
+}
+
+#row-details-docview-sub-child-oplatachf-tabs-menu>li>a:hover {
+  background-color: #f1f1f1
+}
+
+#row-details-docview-sub-child-oplatachf-tabs-menu>li>a::after {
+  content: "";
+  background: #f1f1f1;
+  height: 40px;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  transition: all 250ms ease 0s;
+  transform: scale(0);
+}
+
+#row-details-docview-sub-child-oplatachf-tabs-menu>li.active>a::after,
+#row-details-docview-sub-child-oplatachf-tabs-menu>li:hover>a::after {
+  transform: scale(1)
+}
+
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#row-details-docview-sub-child-oplatachf-tabs .nav>li>a {
+  color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav>li>a:focus,
+#row-details-docview-sub-child-oplatachf-tabs .nav>li>a:hover {
+  background-color: transparent;
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav-tabs>li.active>a {
+  color: #111 !important;
+  background-color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav-tabs>li>a:hover {
+  color: #111 !important;
+  background-color: #fff
+}
+
+#row-details-docview-sub-child-oplatachf-tabs .nav-tabs>li>a::after {
+  background: #f1f1f1
+}
+
+#row-details-docview-sub-child-oplatachf-tabs>div.row>div>ul>li>a {
+  font-family: 'Play', sans-serif
+}
+
+/* Изменено 20.06.2019 --- */
+#row-details-docview-sub-child-oplatachf-tabs-menu {
+  background: #666;
+  padding: 0;
+  border-bottom: none;
+  margin-bottom: 20px
+}
+
+#row-details-docview-sub-child-oplatachf-tabs-menu>li>a:hover {
+  background-color: #f1f1f1
+}
+
+#row-details-docview-sub-child-oplatachf-tabs-menu>li>a::after {
+  content: "";
+  background: #f1f1f1;
+  height: 40px;
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  bottom: -1px;
+  transition: all 250ms ease 0s;
+  transform: scale(0);
+}
+
+#row-details-docview-sub-child-oplatachf-tabs-menu>li.active>a::after,
+#row-details-docview-sub-child-oplatachf-tabs-menu>li:hover>a::after {
+  transform: scale(1)
+}
+
+#row-details-docview-sub-child-oplatachf-table {
+  margin-bottom: 0;
+  background-color: transparent
+}
+
+#row-details-docview-sub-child-oplatachf-table>tbody {
+  color: #333;
+  font-family: 'Play', sans-serif;
+  font-weight: 300;
+  font-size: 1.0em
+}
+
+#row-details-docview-sub-child-oplatachf-table>tbody>tr>td {
+  border-top: none;
+  padding: 3px 5px;
+}
+
+#row-details-docview-sub-child-oplatachf-table>tbody>tr>td:first-child {
+  text-align: left
+}
+
+#row-details-docview-sub-child-oplatachf-table>tbody>tr>td:nth-child(2) {
+  text-align: left
+}
+
+#row-details-docview-sub-child-oplatachf-table>tbody>tr>td:nth-child(3) {
+  text-align: left;
+  vertical-align: bottom
+}
+
+#row-details-docview-sub-child-oplatachf-table>tbody>tr>td:nth-child(4) {
+  text-align: left;
+  vertical-align: bottom
+}
+
+.row-details-docview-sub-child-oplatachf-table-title_blank {
+  color: #336a86;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5em;
+  text-transform: none;
+  font-weight: 500;
+  text-align: left;
+  padding: 0 25px;
+  line-height: 1.5em
+}
+
+.row-details-docview-sub-child-oplatachf-table-blankstatus {
+  color: #336a86;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  text-transform: none;
+  font-weight: 200;
+  text-align: left;
+  padding: 0 25px
+}
+
+.row-details-docview-sub-child-oplatachf-table-title_topic {
+  color: #000;
+  text-transform: uppercase;
+  font-weight: 700
+}
+
+.row-details-docview-sub-child-oplatachf-table-title {
+  color: #666;
+  font-weight: 700
+}
+
+.row-details-docview-sub-child-oplatachf-table-txt {
+  color: #666;
+  font-weight: 300
+}
+
+.row-details-docview-sub-child-oplatachf-table-link {
+  color: #666;
+  font-weight: 500;
+  text-decoration: underline
+}
+
+.row-details-docview-sub-child-oplatachf-table-link:hover {
+  color: #666;
+  text-decoration: none
+}
+
+.txt-parameter {
+  margin: 0 10px;
+  padding: 0 30px;
+  border-bottom: 1px #ccc solid;
+  font-family: 'Courier New'
+}
+
+.tr-title {
+  background: #f1f1f1
+}
+
+.td-title {
+  background: #f1f1f1
+}

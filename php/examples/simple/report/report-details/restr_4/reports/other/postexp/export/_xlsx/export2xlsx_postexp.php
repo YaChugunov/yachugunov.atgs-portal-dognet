@@ -30,9 +30,9 @@ $objDrawing->setName('АТГС.Договор');
 #
 // Ориентация страницы и  размер листа
 $activeSheet->getPageSetup()
-	->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+    ->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
 $activeSheet->getPageSetup()
-	->SetPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
+    ->SetPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
 #
 // $activeSheet->getSheetView()->setView(PHPExcel_Worksheet_SheetView::SHEETVIEW_PAGE_LAYOUT);
 // Задаем повторяющиеся строки листа
@@ -79,7 +79,7 @@ $_BORDER_BOTTOM_THICK = array('borders' => array('bottom' => array('style' => PH
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 #
-$on_date = date("Y-m-d", strtotime($_GET['on_date']));
+$on_date = date("Y-m-d", strtotime($_GET['ondate']));
 $shtraf = $_GET['shtraf'];
 #
 #
@@ -223,102 +223,102 @@ $line++;
 #
 #
 // Делаем выборку этапов по идентификатору этапа (kodkalplan)
-$_QRY_MAIN = mysqlQuery("SELECT koddoc as koddoc, kodkalplan as kodkalplan, summastage as summastage, srokstage_date as srokstage_date, '1' as kodshab 
-FROM dognet_dockalplan_progress WHERE srokstage_date <= '{$on_date}' AND srokstage_date != '0000-00-00' AND srokstage_date != 'NULL' AND srokstage_date != '' AND zadolsum_stage > 0 AND koddoc IN (SELECT koddoc FROM dognet_docbase WHERE (kodstatus='245381842747296' OR kodstatus='245597345680479' OR kodstatus='245267756667430' OR kodstatus='245381842145343') AND (kodtip='245287841608965' OR kodtip='245287841599652') AND koddel<>'99') 
-UNION 
-SELECT koddoc as koddoc, koddoc as kodkalplan, docsumma as summastage, STR_TO_DATE(CONCAT(yearenddoc,'-',monthenddoc,'-',dayenddoc), '%Y-%m-%d') as srokstage_date, kodshab as kodshab FROM dognet_docbase WHERE STR_TO_DATE(CONCAT(yearenddoc,'-',monthenddoc,'-',dayenddoc), '%Y-%m-%d') <= '{$on_date}' AND (kodstatus='') AND (yearenddoc<>'0' AND monthenddoc<>'0' AND dayenddoc<>'0') AND (kodtip='245287841608965' OR kodtip='245287841599652') AND numberchet<>'' AND kodshab='0' AND koddel<>'99' 
+$_QRY_MAIN = mysqlQuery("SELECT koddoc as koddoc, kodkalplan as kodkalplan, summastage as summastage, srokstage_date as srokstage_date, '1' as kodshab
+FROM dognet_dockalplan_progress WHERE srokstage_date <= '{$on_date}' AND srokstage_date != '0000-00-00' AND srokstage_date != 'NULL' AND srokstage_date != '' AND zadolsum_stage > 0 AND koddoc IN (SELECT koddoc FROM dognet_docbase WHERE (kodstatus='245381842747296' OR kodstatus='245597345680479' OR kodstatus='245267756667430' OR kodstatus='245381842145343') AND (kodtip='245287841608965' OR kodtip='245287841599652') AND koddel<>'99')
+UNION
+SELECT koddoc as koddoc, koddoc as kodkalplan, docsumma as summastage, STR_TO_DATE(CONCAT(yearenddoc,'-',monthenddoc,'-',dayenddoc), '%Y-%m-%d') as srokstage_date, kodshab as kodshab FROM dognet_docbase WHERE STR_TO_DATE(CONCAT(yearenddoc,'-',monthenddoc,'-',dayenddoc), '%Y-%m-%d') <= '{$on_date}' AND (kodstatus='') AND (yearenddoc<>'0' AND monthenddoc<>'0' AND dayenddoc<>'0') AND (kodtip='245287841608965' OR kodtip='245287841599652') AND numberchet<>'' AND kodshab='0' AND koddel<>'99'
 ORDER BY koddoc DESC");
 $_SUM_SHTRAF = 0.0;
 $_SUM_ONSTAGE = 0.0;
 //
 while ($_ROW_MAIN = mysqli_fetch_assoc($_QRY_MAIN)) {
-	$_DOCSHAB = $_ROW_MAIN['kodshab'];
-	$DOCBASE = $db_handle->runQuery("SELECT * FROM dognet_docbase WHERE koddoc = '" . $_ROW_MAIN['koddoc'] . "'");
-	if ($_DOCSHAB <> '0') {
-		$STAGE = $db_handle->runQuery("SELECT numberstage, nameshotstage FROM dognet_dockalplan WHERE kodkalplan = '" . $_ROW_MAIN['kodkalplan'] . "'");
-		$DOCSTS = $db_handle->runQuery("SELECT statusnameshot FROM dognet_spstatus WHERE kodstatus = '" . $DOCBASE[0]['kodstatus'] . "'");
-		$DOCZAK = $db_handle->runQuery("SELECT nameshort FROM sp_contragents WHERE kodcontragent = '" . $DOCBASE[0]['kodzakaz'] . "'");
+    $_DOCSHAB = $_ROW_MAIN['kodshab'];
+    $DOCBASE = $db_handle->runQuery("SELECT * FROM dognet_docbase WHERE koddoc = '" . $_ROW_MAIN['koddoc'] . "'");
+    if ($_DOCSHAB != '0') {
+        $STAGE = $db_handle->runQuery("SELECT numberstage, nameshotstage FROM dognet_dockalplan WHERE kodkalplan = '" . $_ROW_MAIN['kodkalplan'] . "'");
+        $DOCSTS = $db_handle->runQuery("SELECT statusnameshot FROM dognet_spstatus WHERE kodstatus = '" . $DOCBASE[0]['kodstatus'] . "'");
+        $DOCZAK = $db_handle->runQuery("SELECT nameshort FROM sp_contragents WHERE kodcontragent = '" . $DOCBASE[0]['kodzakaz'] . "'");
 
-		$SUMCHFONDATE = $db_handle->runQuery("SELECT SUM(chetfsumma) as sumchfondate FROM dognet_kalplanchf WHERE kodkalplan = '" . $_ROW_MAIN['kodkalplan'] . "' AND chetfdate <= '" . $on_date . "'");
+        $SUMCHFONDATE = $db_handle->runQuery("SELECT SUM(chetfsumma) as sumchfondate FROM dognet_kalplanchf WHERE kodkalplan = '" . $_ROW_MAIN['kodkalplan'] . "' AND chetfdate <= '" . $on_date . "'");
 
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		$_DOCSTS = $DOCSTS[0]['statusnameshot'];
-		$_DOCZAK = $DOCZAK[0]['nameshort'];
-		$_DOCNAME = $DOCBASE[0]['docnameshot'];
-		$_DOCNUM = "3-4/" . $DOCBASE[0]['docnumber'];
-		$_STAGENAME = " / " . $STAGE[0]['nameshotstage'];
-		$_STAGENUM = $STAGE[0]['numberstage'];
-		$_SUMSTAGE = $_ROW_MAIN['summastage'];
-		$_SROKSTAGE = $_ROW_MAIN['srokstage_date'];
+        // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        $_DOCSTS = $DOCSTS[0]['statusnameshot'];
+        $_DOCZAK = $DOCZAK[0]['nameshort'];
+        $_DOCNAME = $DOCBASE[0]['docnameshot'];
+        $_DOCNUM = "3-4/" . $DOCBASE[0]['docnumber'];
+        $_STAGENAME = " / " . $STAGE[0]['nameshotstage'];
+        $_STAGENUM = $STAGE[0]['numberstage'];
+        $_SUMSTAGE = $_ROW_MAIN['summastage'];
+        $_SROKSTAGE = $_ROW_MAIN['srokstage_date'];
 
-		$_SUMCHFONDATE = $SUMCHFONDATE[0]['sumchfondate'];
+        $_SUMCHFONDATE = $SUMCHFONDATE[0]['sumchfondate'];
 
-		$datesrok = new DateTime($_ROW_MAIN['srokstage_date']);
-		$datenow = new DateTime($on_date);
-		$diff = $datesrok->diff($datenow)->format('%a');
+        $datesrok = new DateTime($_ROW_MAIN['srokstage_date']);
+        $datenow = new DateTime($on_date);
+        $diff = $datesrok->diff($datenow)->format('%a');
 
-		$_PROSRO4KA = $diff;
-		$_SUMSHTRAF = $_SUMSTAGE * $_PROSRO4KA * $shtraf / 100;
-	} else {
-		$DOCZAK = $db_handle->runQuery("SELECT nameshort FROM sp_contragents WHERE kodcontragent = '" . $DOCBASE[0]['kodzakaz'] . "'");
+        $_PROSRO4KA = $diff;
+        $_SUMSHTRAF = $_SUMSTAGE * $_PROSRO4KA * $shtraf / 100;
+    } else {
+        $DOCZAK = $db_handle->runQuery("SELECT nameshort FROM sp_contragents WHERE kodcontragent = '" . $DOCBASE[0]['kodzakaz'] . "'");
 
-		$SUMCHFONDATE = $db_handle->runQuery("SELECT SUM(chetfsumma) as sumchfondate FROM dognet_kalplanchf WHERE kodkalplan = '" . $_ROW_MAIN['koddoc'] . "' AND chetfdate <= '" . $on_date . "'");
+        $SUMCHFONDATE = $db_handle->runQuery("SELECT SUM(chetfsumma) as sumchfondate FROM dognet_kalplanchf WHERE kodkalplan = '" . $_ROW_MAIN['koddoc'] . "' AND chetfdate <= '" . $on_date . "'");
 
-		$_DOCSTS = "Без статуса";
-		$_DOCZAK = $DOCZAK[0]['nameshort'];
-		$_DOCNAME = $DOCBASE[0]['docnameshot'];
-		$_DOCNUM = $DOCBASE[0]['numberchet'];
-		$_STAGENAME = "";
-		$_STAGENUM = "Счёт";
-		$_SUMSTAGE = $DOCBASE[0]['docsumma'];
-		$_SROKSTAGE = $DOCBASE[0]['yearenddoc'] . "-" . $DOCBASE[0]['monthenddoc'] . "-" . $DOCBASE[0]['dayenddoc'];
+        $_DOCSTS = "Без статуса";
+        $_DOCZAK = $DOCZAK[0]['nameshort'];
+        $_DOCNAME = $DOCBASE[0]['docnameshot'];
+        $_DOCNUM = $DOCBASE[0]['numberchet'];
+        $_STAGENAME = "";
+        $_STAGENUM = "Счёт";
+        $_SUMSTAGE = $DOCBASE[0]['docsumma'];
+        $_SROKSTAGE = $DOCBASE[0]['yearenddoc'] . "-" . $DOCBASE[0]['monthenddoc'] . "-" . $DOCBASE[0]['dayenddoc'];
 
-		$_SUMCHFONDATE = $SUMCHFONDATE[0]['sumchfondate'];
+        $_SUMCHFONDATE = $SUMCHFONDATE[0]['sumchfondate'];
 
-		// $datesrok = new DateTime($_SROKSTAGE);
-		$datesrok = new DateTime($_ROW_MAIN['srokstage_date']);
-		$datenow = new DateTime($on_date);
-		$diff = $datesrok->diff($datenow)->format('%a');
+        // $datesrok = new DateTime($_SROKSTAGE);
+        $datesrok = new DateTime($_ROW_MAIN['srokstage_date']);
+        $datenow = new DateTime($on_date);
+        $diff = $datesrok->diff($datenow)->format('%a');
 
-		$_PROSRO4KA = $diff;
-		$_SUMSHTRAF = $_SUMSTAGE * $_PROSRO4KA * $shtraf / 100;
-	}
-	# UPD 11.03.2024 >>>
-	# Если разница  суммы этапа (договора) и суммы счетов-фактур по нему не равна нулю, то выводим строки
-	if ($_DOCSHAB != 0 || ($_DOCSHAB == 0 && ($_SUMSTAGE - $_SUMCHFONDATE > 0))) {
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		// Задаем высоту строки и шрифт
-		$activeSheet->getRowDimension($line)->setRowHeight(-1);
-		$activeSheet->getStyle("A{$line}:I{$line}")->getFont()->setSize(10);
-		$activeSheet->getStyle("A{$line}:I{$line}")->getFont()->setBold(false);
-		// Задаем цвет текста строки
-		$activeSheet->getStyle("A{$line}:I{$line}")->getFont()->getColor()->setRGB('111111');
-		// Выравниваем строку по вертикали ( середина )
-		$activeSheet->getStyle("A{$line}:I{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-		// Выравнивание по горизонтали
-		$activeSheet->getStyle("A{$line}:B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-		$activeSheet->getStyle("C{$line}")->getAlignment()->setWrapText(true)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
-		$activeSheet->getStyle("D{$line}:I{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-		$activeSheet->setCellValue("A{$line}", $_DOCNUM);
-		$activeSheet->setCellValue("B{$line}", $_STAGENUM);
-		$activeSheet->setCellValue("C{$line}", $_DOCNAME . $_STAGENAME);
-		$activeSheet->setCellValue("D{$line}", $_DOCZAK);
-		$activeSheet->setCellValue("E{$line}", $_DOCSTS);
-		$activeSheet->setCellValue("F{$line}", $_SUMSTAGE - $_SUMCHFONDATE);
-		$activeSheet->getStyle("F{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
-		$activeSheet->setCellValue("G{$line}", date("d.m.Y", strtotime($_SROKSTAGE)));
-		$activeSheet->setCellValue("H{$line}", $_PROSRO4KA);
-		$activeSheet->setCellValue("I{$line}", $_SUMSHTRAF);
-		$activeSheet->getStyle("I{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
-		// Оформляем границы
-		$activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_INSIDE);
-		$activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
-		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		// Суммируем счета по этапу
-		$_SUM_ONSTAGE += $_SUMSHTRAF;
-		// Следующая строка
-		$line++;
-	}
+        $_PROSRO4KA = $diff;
+        $_SUMSHTRAF = $_SUMSTAGE * $_PROSRO4KA * $shtraf / 100;
+    }
+    # UPD 11.03.2024 >>>
+    # Если разница  суммы этапа (договора) и суммы счетов-фактур по нему не равна нулю, то выводим строки
+    if ($_DOCSHAB != 0 || ($_DOCSHAB == 0 && ($_SUMSTAGE - $_SUMCHFONDATE > 0))) {
+        // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        // Задаем высоту строки и шрифт
+        $activeSheet->getRowDimension($line)->setRowHeight(-1);
+        $activeSheet->getStyle("A{$line}:I{$line}")->getFont()->setSize(10);
+        $activeSheet->getStyle("A{$line}:I{$line}")->getFont()->setBold(false);
+        // Задаем цвет текста строки
+        $activeSheet->getStyle("A{$line}:I{$line}")->getFont()->getColor()->setRGB('111111');
+        // Выравниваем строку по вертикали ( середина )
+        $activeSheet->getStyle("A{$line}:I{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+        // Выравнивание по горизонтали
+        $activeSheet->getStyle("A{$line}:B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $activeSheet->getStyle("C{$line}")->getAlignment()->setWrapText(true)->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
+        $activeSheet->getStyle("D{$line}:I{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+        $activeSheet->setCellValue("A{$line}", $_DOCNUM);
+        $activeSheet->setCellValue("B{$line}", $_STAGENUM);
+        $activeSheet->setCellValue("C{$line}", $_DOCNAME . $_STAGENAME);
+        $activeSheet->setCellValue("D{$line}", $_DOCZAK);
+        $activeSheet->setCellValue("E{$line}", $_DOCSTS);
+        $activeSheet->setCellValue("F{$line}", $_SUMSTAGE - $_SUMCHFONDATE);
+        $activeSheet->getStyle("F{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+        $activeSheet->setCellValue("G{$line}", date("d.m.Y", strtotime($_SROKSTAGE)));
+        $activeSheet->setCellValue("H{$line}", $_PROSRO4KA);
+        $activeSheet->setCellValue("I{$line}", $_SUMSHTRAF);
+        $activeSheet->getStyle("I{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
+        // Оформляем границы
+        $activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_INSIDE);
+        $activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
+        // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+        // Суммируем счета по этапу
+        $_SUM_ONSTAGE += $_SUMSHTRAF;
+        // Следующая строка
+        $line++;
+    }
 }
 // Суммируем всего
 $_SUM_SHTRAF += $_SUM_ONSTAGE;
@@ -343,12 +343,12 @@ $activeSheet->setCellValue("A{$line}", "ИТОГО");
 $activeSheet->setCellValue("I{$line}", $_SUM_SHTRAF);
 $activeSheet->getStyle("I{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 // Оформляем границы
-// 	$activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_INSIDE);
+//     $activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_INSIDE);
 $activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
 #
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Возвращаемся на 1 строку
-// 	$line = $line - 1;
+//     $line = $line - 1;
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 #
@@ -356,7 +356,6 @@ $activeSheet->getStyle("A{$line}:I{$line}")->applyFromArray($_BORDER_BOTTOM_THIN
 $activeSheet->getStyle("A{$start_table}:I{$start_table}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 // Добавляем рамку ко всей таблице
 $activeSheet->getStyle("A{$start_table}:I{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
-
 
 // $objPHPExcel->getActiveSheet()->setAutoFilter($objPHPExcel->getActiveSheet()->calculateWorksheetDimension());
 // $objPHPExcel->getActiveSheet()->setAutoFilter("A{$start_table}:I{$start_table}");

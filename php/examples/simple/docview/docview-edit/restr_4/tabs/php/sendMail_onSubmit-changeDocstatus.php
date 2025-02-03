@@ -69,9 +69,9 @@ if ($_docnumber != "") {
 // Решил не тащить идентификатор заказчика через ajax запрос, а снять уже здесь по месту через SQL
 // Использовал запрос из предыдущего UPDATE / 14.06.2022
 if ($_kozakaz != "") {
-	$_QRY = mysqli_fetch_assoc(mysqlQuery("SELECT shortname, fullname FROM sp_contragents WHERE kodcontragent = {$_kozakaz}"));
-	$_contragentNameS = $_QRY['shortname'];
-	$_contragentNameF = $_QRY['fullname'];
+	$_QRY = mysqli_fetch_assoc(mysqlQuery("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent = {$_kozakaz}"));
+	$_contragentNameS = $_QRY['nameshort'];
+	$_contragentNameF = $_QRY['namefull'];
 }
 // END UPDATE
 

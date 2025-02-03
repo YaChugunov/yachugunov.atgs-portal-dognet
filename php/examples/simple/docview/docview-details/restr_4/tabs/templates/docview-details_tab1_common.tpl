@@ -57,6 +57,10 @@
 						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Специальные отметки</span></td>'+
 						'<td width="70%"><span class="row-details-docview-details-table-txt">'+specialcomm+'</span></td>'+
 					'</tr>'+
+					'<tr>'+
+						'<td width="30%"><span class="row-details-docview-details-table-title_topic">Комментарий к договору</span></td>'+
+						'<td width="70%"><span class="row-details-docview-details-table-txt">'+comments+'</span></td>'+
+					'</tr>'+
 				'</tbody>'+
 			'</table>'+
 

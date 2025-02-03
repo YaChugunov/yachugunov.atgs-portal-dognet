@@ -139,7 +139,7 @@ $cell = $tableCmn->addRow(350, $_TBL_BODYStyle_Row)->addCell();
 $innerTable = $cell->addTable($innerTable_styleName);
 #
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
-$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('АО "АтлантикТрансгазСистема"', $_FontStyle_Doc_P9);
+$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('АО "АТГС"', $_FontStyle_Doc_P9);
 #
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('ИНН 7723011060', $_FontStyle_Doc_P9);
@@ -366,7 +366,7 @@ $cell = $tableCmn->addRow(350, $_TBL_BODYStyle_Row)->addCell();
 $innerTable = $cell->addTable($innerTable_styleName);
 // Должность
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
-$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('Генеральный директор АО "АтлантикТрансгазСистема"', $_FontStyle_Doc_P9);
+$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('Генеральный директор АО "АТГС"', $_FontStyle_Doc_P9);
 $innerTable->addRow(750, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('_______________' . ' Л.И. Бернер', $_FontStyle_Doc_P9);
 #

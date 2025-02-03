@@ -288,7 +288,7 @@ if ($_QRY_dened) {
 $textrun = $section->addTextRun($_PARAGRAF_3L);
 $textrun->addText('Прошу Вас погасить имеющуюся у ', $_FONT_P12);
 $textrun->addText($_ZAK_ORG . ' ', $_FONT_P12);
-$textrun->addText('кредиторскую задолженность перед АО "АтлантикТрансгазСистема":', $_FONT_P12);
+$textrun->addText('кредиторскую задолженность перед АО "АТГС":', $_FONT_P12);
 #
 # Выводим таблицу счетов-фактур с задолженностями
 # ----- ----- -----

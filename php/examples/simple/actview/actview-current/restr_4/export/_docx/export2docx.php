@@ -139,7 +139,7 @@ $cell = $tableCmn->addRow(350, $_TBL_BODYStyle_Row)->addCell();
 $innerTable = $cell->addTable($innerTable_styleName);
 #
 $innerTable->addRow(100, $_TBL_BODYStyle_Row);
-$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('АО "АтлантикТрансгазСистема"', $_FontStyle_Doc_P10);
+$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('АО "АТГС"', $_FontStyle_Doc_P10);
 #
 $innerTable->addRow(100, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('ИНН 7723011060', $_FontStyle_Doc_P10);
@@ -189,7 +189,7 @@ $cell = $tableCmn->addCell();
 $innerTable = $cell->addTable($innerTable_styleName);
 #
 $innerTable->addRow(100, $_TBL_BODYStyle_Row);
-$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText($opfabbr . " " . $_ROW_ORG2_KONTR['namefull'], $_FontStyle_Doc_P10);
+$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText($opfabbr . ' "' . $_ROW_ORG2_KONTR['namefull'] . '"', $_FontStyle_Doc_P10);
 #
 $innerTable->addRow(100, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText("ИНН " . $_ROW_ORG2_KONTR['inn'], $_FontStyle_Doc_P10);
@@ -232,7 +232,7 @@ if ($_ROW_docbase['kodshab'] == 0) {
 	$section->addTitle("АКТ № " . $_ROW_docbase['docnumber'] . " / " . $_ROW_dockalplan['numberstage'], 1);
 	$section->addTitle('от " ____ " _________________ 202 ___ г.', 2);
 	$section->addTitle("сдачи-приемки выполненных работ", 3);
-	$section->addTitle("по договору № " . $_ROW_docbase['docpartnernumberSTR'] . " / 3-4/" . $_ROW_docbase['docnumber'] . " от " . numberFormat($_ROW_docbase['daynachdoc'], 2) . "." . numberFormat($_ROW_docbase['monthnachdoc'], 2) . "." . numberFormat($_ROW_docbase['yearnachdoc'], 4), 3);
+	$section->addTitle("по договору № " . $_ROW_docbase['docpartnernumberSTR'] . "3-4/" . $_ROW_docbase['docnumber'] . " от " . numberFormat($_ROW_docbase['daynachdoc'], 2) . "." . numberFormat($_ROW_docbase['monthnachdoc'], 2) . "." . numberFormat($_ROW_docbase['yearnachdoc'], 4), 3);
 } elseif (($_ROW_docbase['kodshab'] == 2) or ($_ROW_docbase['kodshab'] == 4)) {
 	$section->addTitle("АКТ № " . $_ROW_docbase['docnumber'] . " / ___", 1);
 	$section->addTitle('от " ____ " _________________ 202 ___ г.', 2);
@@ -258,7 +258,7 @@ mb_internal_encoding("UTF-8");
 $_QRY_dened = mysqlQuery("SELECT * FROM dognet_spdened WHERE koddened='" . $_ROW_docbase['koddened'] . "'");
 $_ROW_dened = mysqli_fetch_assoc($_QRY_dened);
 if ($_QRY_dened) {
-	$_DENED = html_entity_decode($_ROW_dened['short_code']);
+	$_DENED = html_entity_decode($_ROW_dened['short_code2']);
 } else {
 	$_DENED = " -.";
 }
@@ -287,7 +287,7 @@ $textrun->addText("Бернер Л.И.", $_FontStyle_Doc_P11_U);
 $textrun->addText(" и с другой стороны представитель ", $_FontStyle_Doc_P11);
 $textrun->addText($_ROW_ORG2_STATUS['nameshabact_r'] . " ", $_FontStyle_Doc_P11);
 $textrun->addText($_ROW_ORG2_KONTR['director_lastname'] . " " . mb_substr($_ROW_ORG2_KONTR['director_firstname'], 0, 1) . "." . mb_substr($_ROW_ORG2_KONTR['director_middlename'], 0, 1) . ".", $_FontStyle_Doc_P11_U);
-$textrun->addText(" составили АКТ о том, что согласно договору № " . $_ROW_docbase['docpartnernumberSTR'] . " / 3-4/", $_FontStyle_Doc_P11);
+$textrun->addText(" составили АКТ о том, что согласно договору № " . $_ROW_docbase['docpartnernumberSTR'] . "3-4/", $_FontStyle_Doc_P11);
 $textrun->addText($_ROW_docbase['docnumber'] . " от " . numberFormat($_ROW_docbase['daynachdoc'], 2) . "." . numberFormat($_ROW_docbase['monthnachdoc'], 2) . "." . numberFormat($_ROW_docbase['yearnachdoc'] . " ", 4), $_FontStyle_Doc_P11);
 $textrun->addText($_ROW_ORG1_STATUS['nameshabact_t'] . " ", $_FontStyle_Doc_P11);
 $textrun->addText("выполнена работа стоимостью ", $_FontStyle_Doc_P11);
@@ -468,7 +468,7 @@ $innerTable = $cell->addTable($innerTable_styleName);
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('Генеральный директор', $_FontStyle_Doc_P11);
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
-$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('АО "АтлантикТрансгазСистема"', $_FontStyle_Doc_P11);
+$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('АО "АТГС"', $_FontStyle_Doc_P11);
 $innerTable->addRow(750, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('_______________' . ' Л.И. Бернер', $_FontStyle_Doc_P11);
 #
@@ -480,7 +480,7 @@ $innerTable = $cell->addTable($innerTable_styleName);
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText($_ROW_ORG2_KONTR['director_post'], $_FontStyle_Doc_P11);
 $innerTable->addRow(250, $_TBL_BODYStyle_Row);
-$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText($opfabbr . " " . $_ROW_ORG2_KONTR['namefull'], $_FontStyle_Doc_P11);
+$innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText($opfabbr . ' "' . $_ROW_ORG2_KONTR['namefull'] . '"', $_FontStyle_Doc_P11);
 $innerTable->addRow(750, $_TBL_BODYStyle_Row);
 $innerTable->addCell(10000, $_TBL_BODYStyle_Cell_Inner)->addTextRun($_TBL_CELLAlign_H_Center)->addText('_______________' . ' ' . mb_substr($_ROW_ORG2_KONTR['director_firstname'], 0, 1) . '.' . mb_substr($_ROW_ORG2_KONTR['director_middlename'], 0, 1) . '. ' . $_ROW_ORG2_KONTR['director_lastname'], $_FontStyle_Doc_P11);
 #

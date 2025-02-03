@@ -1,3 +1,8 @@
 {
-  "recommendations": ["kokororin.vscode-phpfmt"]
+  "recommendations": [
+    "kokororin.vscode-phpfmt",
+    "natizyskunk.sftp",
+    "github.github-vscode-theme",
+    "github.vscode-pull-request-github"
+  ]
 }

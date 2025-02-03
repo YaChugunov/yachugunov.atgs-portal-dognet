@@ -6,13 +6,13 @@ date_default_timezone_set('Europe/Moscow');
 # require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php";
 $db_handle = new DBController();
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Подключаем общие функции безопасности
 # require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php");
+require $_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php";
 # Подключаем собственные функции сервиса Почта
 // require($_SERVER['DOCUMENT_ROOT']."/btrips/_assets/functions/funcDognet.inc.php");
 # Включаем режим сессии
@@ -22,7 +22,6 @@ session_start();
 # These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 #
 # Подключаем библиотеки
 require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/src/Exception.php";
@@ -47,39 +46,39 @@ $_namedoc = $_QRY_DOC['docnameshot'];
 
 if ($_summaavans != "" && $_docnumber != "") {
 
-	// 28.05.2022
-	// Определяем какой это аванс - первый или очередной
-	$avanstype = 'новый аванс';
-	$avansdate = date("Y-m-d", strtotime($_dateavans));
-	$_QRY = mysqlQuery("SELECT id FROM dognet_docavans WHERE koddoc='" . $_koddoc . "' AND dateavans <= '" . $avansdate . "'");
-	if (mysqli_num_rows($_QRY) > 1) {
-		$avanstype = 'очередной аванс';
-		$avansstr = '<span style="">очередной аванс</span>';
-	} else {
-		$avanstype = 'первый аванс';
-		$avansstr = '<span style="color:#e20613">первый аванс</span>';
-	}
+    // 28.05.2022
+    // Определяем какой это аванс - первый или очередной
+    $avanstype = 'новый аванс';
+    $avansdate = date("Y-m-d", strtotime($_dateavans));
+    $_QRY = mysqlQuery("SELECT id FROM dognet_docavans WHERE koddoc='" . $_koddoc . "' AND dateavans <= '" . $avansdate . "'");
+    if (mysqli_num_rows($_QRY) > 1) {
+        $avanstype = 'очередной аванс';
+        $avansstr = '<span style="">очередной аванс</span>';
+    } else {
+        $avanstype = 'первый аванс';
+        $avansstr = '<span style="color:#e20613">первый аванс</span>';
+    }
 
-	$_QRY1 = mysqli_fetch_assoc(mysqlQuery("SELECT namefull FROM sp_contragents WHERE kodcontragent='" . $_kodzakaz . "'"));
-	$_QRY2 = mysqli_fetch_assoc(mysqlQuery("SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject='" . $_kodobject . "'"));
+    $_QRY1 = mysqli_fetch_assoc(mysqlQuery("SELECT namefull FROM sp_contragents WHERE kodcontragent='" . $_kodzakaz . "'"));
+    $_QRY2 = mysqli_fetch_assoc(mysqlQuery("SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject='" . $_kodobject . "'"));
 
-	$_zakazNameStr = !empty($_QRY1['namefull']) ? $_QRY1['namefull'] : "---";
-	$_objectNameStr = !empty($_QRY2['nameobjectlong']) ? $_QRY2['nameobjectlong'] : "---";
+    $_zakazNameStr = !empty($_QRY1['namefull']) ? $_QRY1['namefull'] : "---";
+    $_objectNameStr = !empty($_QRY2['nameobjectlong']) ? $_QRY2['nameobjectlong'] : "---";
 
-	// Instantiation and passing `true` enables exceptions
-	$mail3 = new PHPMailer(true);
-	$message3 = "";
-	//
-	//
-	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	//
-	//
-	$subjectTxt = "Счёт [Авансы] : Получен " . $avanstype . " по счёту № " . $_docnumber . "";
-	$subject = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
-	//
-	// Текст сообщения
+    // Instantiation and passing `true` enables exceptions
+    $mail3 = new PHPMailer(true);
+    $message3 = "";
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
+    //
+    $subjectTxt = "Счёт [Авансы] : Получен " . $avanstype . " по счёту № " . $_docnumber . "";
+    $subject = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+    //
+    // Текст сообщения
 
-	$message3 = '
+    $message3 = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -523,112 +522,114 @@ if ($_summaavans != "" && $_docnumber != "") {
 </body>
 </html>
 ';
-	//
-	//
-	# ----- ----- ----- ----- -----
-	#
-	# SERVER SETTINGS
-	#
-	#
-	// Enable verbose debug output
-	$mail3->SMTPDebug = SMTP::DEBUG_SERVER;
-	// Disable verbose debug output
-	$mail3->SMTPDebug = 0;
-	// Send using SMTP
-	$mail3->isSMTP();
-	// Set the SMTP server to send through
-	$mail3->Host = 'mail.atgs.ru';
-	// Enable SMTP authentication
-	$mail3->SMTPAuth = true;
-	// SMTP connection will not close after each email sent, reduces SMTP overhead
-	$mail3->SMTPKeepAlive = true;
-	// SMTP username
-	$mail3->Username = 'portal@atgs.ru';
-	// SMTP password
-	$mail3->Password = 'iu3Li,quohch';
-	// Enable TLS encryption, `PHPMailer::ENCRYPTION_SMTPS` also accepted
-	$mail3->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-	// TCP port
-	$mail3->Port = 587;
-	#
-	#
-	# ----- ----- ----- ----- -----
-	#
-	#
-	$mail3->setLanguage('ru', $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/language/");
-	$mail3->CharSet = "utf-8";
-	#
-	# From
-	$from_name = "АТГС.Портал / Корпоративные сервисы";
-	$from_email = "portal@atgs.ru";
-	$from_name = "=?utf-8?B?" . base64_encode($from_name) . "?=";
-	$mail3->setFrom($from_email, $from_name);
-	# ----- ----- ----- ----- -----
+    //
+    //
+    # ----- ----- ----- ----- -----
+    #
+    # SERVER SETTINGS
+    #
+    #
+    // Enable verbose debug output
+    $mail3->SMTPDebug = SMTP::DEBUG_SERVER;
+    // Disable verbose debug output
+    $mail3->SMTPDebug = 0;
+    // Send using SMTP
+    $mail3->isSMTP();
+    // Set the SMTP server to send through
+    $mail3->Host = 'mail.atgs.ru';
+    // Enable SMTP authentication
+    $mail3->SMTPAuth = true;
+    // SMTP connection will not close after each email sent, reduces SMTP overhead
+    $mail3->SMTPKeepAlive = true;
+    // SMTP username
+    $mail3->Username = 'portal@atgs.ru';
+    // SMTP password
+    $mail3->Password = 'iu3Li,quohch';
+    // Enable TLS encryption, `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail3->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    // TCP port
+    $mail3->Port = 587;
+    #
+    #
+    # ----- ----- ----- ----- -----
+    #
+    #
+    $mail3->setLanguage('ru', $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/language/");
+    $mail3->CharSet = "utf-8";
+    #
+    # From
+    $from_name = "АТГС.Портал / Корпоративные сервисы";
+    $from_email = "portal@atgs.ru";
+    $from_name = "=?utf-8?B?" . base64_encode($from_name) . "?=";
+    $mail3->setFrom($from_email, $from_name);
+    # ----- ----- ----- ----- -----
 
-	#
-	# ПОЛУЧАТЕЛИ
-	# $mail3->addReplyTo('email', 'name')
-	# Email is an recipient address, Name is optional
-	#
-	// 	$email_to = 'office-all@atgs.ru';
-	//   $mail3->addAddress($email_to, 'ATGS Office');
+    #
+    # ПОЛУЧАТЕЛИ
+    # $mail3->addReplyTo('email', 'name')
+    # Email is an recipient address, Name is optional
+    #
+    //     $email_to = 'office-all@atgs.ru';
+    //   $mail3->addAddress($email_to, 'ATGS Office');
 
-	// $mail3->addAddress("chugunov@atgs.ru", "Y. Chugunov");
-	$mail3->addAddress("roschin@atgs.ru", "A. Roschin");
-	$mail3->addAddress("lukiynov@atgs.ru", "R. Lukiyanov");
-	$mail3->addAddress("tim@atgs.ru", "R. Timofeev");
-	$mail3->addAddress("sga@atgs.ru", "G. Sundukova");
-	$mail3->addAddress("zholobova@atgs.ru", "J. Zholobova");
-	$mail3->addCC("chugunov@atgs.ru", "Y. Chugunov");
-	$mail3->addReplyTo('notreply@atgs.ru', 'Do not reply');
-	#
-	#
-	// Content
-	$mail3->isHTML(true);                                  // Set email format to HTML
-	$mail3->Subject = $subject;
-	$mail3->Body    = $message3;
-	$mail3->AltBody = 'Ваш почтовый клиент не принимает сообщений в формате HTML. Вариант рассылки в формате PLAIN TEXT будет реализован позже.';
-	#
-	# ::: Send the message, check for errors
-	#
-	# Открыли файл для записи данных в конец файла
-	$filename = $_SERVER['DOCUMENT_ROOT'] . "/dognet/PHPMailer_errors.log";
-	if (is_writable($filename)) {
+    // $mail3->addAddress("chugunov@atgs.ru", "Y. Chugunov");
+    $mail3->addAddress("roschin@atgs.ru", "A. Roschin");
+    $mail3->addAddress("lukiynov@atgs.ru", "R. Lukiyanov");
+    $mail3->addAddress("tim@atgs.ru", "R. Timofeev");
+    $mail3->addAddress("sga@atgs.ru", "G. Sundukova");
+    $mail3->addAddress("zholobova@atgs.ru", "J. Zholobova");
+    $mail3->addAddress("kve@atgs.ru", "V. Kocheshkov");
+    $mail3->addAddress("fsd@atgs.ru", "S. Fainerman");
+    $mail3->addCC("chugunov@atgs.ru", "Y. Chugunov");
+    $mail3->addReplyTo('notreply@atgs.ru', 'Do not reply');
+    #
+    #
+    // Content
+    $mail3->isHTML(true); // Set email format to HTML
+    $mail3->Subject = $subject;
+    $mail3->Body = $message3;
+    $mail3->AltBody = 'Ваш почтовый клиент не принимает сообщений в формате HTML. Вариант рассылки в формате PLAIN TEXT будет реализован позже.';
+    #
+    # ::: Send the message, check for errors
+    #
+    # Открыли файл для записи данных в конец файла
+    $filename = $_SERVER['DOCUMENT_ROOT'] . "/dognet/PHPMailer_errors.log";
+    if (is_writable($filename)) {
 
-		if (!$handle = fopen($filename, 'a')) {
-			// echo "<span style='color:red; text-align:center'><i>Не могу открыть лог-файл для записи отчета об отправке.</i></span>";
-			echo "-2";
-			exit;
-		}
+        if (!$handle = fopen($filename, 'a')) {
+            // echo "<span style='color:red; text-align:center'><i>Не могу открыть лог-файл для записи отчета об отправке.</i></span>";
+            echo "-2";
+            exit;
+        }
 
-		if (!$mail3->send()) {
-			$err = $mail3->ErrorInfo . PHP_EOL;
-			$text = date('Y-m-d h:i:s') . " : ошибка рассылки : " . $err;
-			// Записываем $somecontent в наш открытый файл.
-			if (fwrite($handle, $text) === FALSE) {
-				// echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог файл.</i></span>";
-				echo "-1";
-				exit;
-			}
-			// echo "<span style='color:red; text-align:center'><i>Ошибка при отправке сообщения : $err.</i></span>";
-			echo "2";
-			fclose($handle);
-		} else {
-			$text = date('Y-m-d h:i:s') . " : сообщение успешно отправлено" . PHP_EOL;
-			// Записываем $somecontent в наш открытый файл.
-			if (fwrite($handle, $text) === FALSE) {
-				// echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог-файл.</i></span>";
-				echo "-1";
-				exit;
-			}
-			// echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
-			echo "0";
-			fclose($handle);
-		}
-	} else {
-		// echo "<span style='color:red; text-align:center'><i>Лог-файл недоступен для записи.</i></span>";
-		echo "-1";
-	}
-	// Clear all addresses and attachments for next loop
-	$mail3->ClearAddresses();
+        if (!$mail3->send()) {
+            $err = $mail3->ErrorInfo . PHP_EOL;
+            $text = date('Y-m-d h:i:s') . " : ошибка рассылки : " . $err;
+            // Записываем $somecontent в наш открытый файл.
+            if (fwrite($handle, $text) === FALSE) {
+                // echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог файл.</i></span>";
+                echo "-1";
+                exit;
+            }
+            // echo "<span style='color:red; text-align:center'><i>Ошибка при отправке сообщения : $err.</i></span>";
+            echo "2";
+            fclose($handle);
+        } else {
+            $text = date('Y-m-d h:i:s') . " : сообщение успешно отправлено" . PHP_EOL;
+            // Записываем $somecontent в наш открытый файл.
+            if (fwrite($handle, $text) === FALSE) {
+                // echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог-файл.</i></span>";
+                echo "-1";
+                exit;
+            }
+            // echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
+            echo "0";
+            fclose($handle);
+        }
+    } else {
+        // echo "<span style='color:red; text-align:center'><i>Лог-файл недоступен для записи.</i></span>";
+        echo "-1";
+    }
+    // Clear all addresses and attachments for next loop
+    $mail3->ClearAddresses();
 }

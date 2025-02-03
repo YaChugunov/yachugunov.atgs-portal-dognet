@@ -56,6 +56,13 @@ $(document).ready(function() {
                 "<span style='background-color: rgb(255, 242, 204)'>Договор подписан на электронной площадке</span>" :
                 "---";
 
+            var comments = (d.dognet_docbase.comments !== '') ?
+                "<span style='background-color: rgb(255, 216, 207); color:black'><b>" + d
+                .dognet_docbase
+                .comments +
+                "</b></span>" :
+                "---";
+
             rowData = table_tab1_common.row(row);
             d.agent = checkVal(d.sp_contragents_agent.nameshort) === 1 ? d.sp_contragents_agent
                 .nameshort : "---";
@@ -67,7 +74,7 @@ $(document).ready(function() {
                 d.dognet_docbase.dayenddoc;
             d.ME = (d.dognet_docbase.monthenddoc < 10) ? d.dognet_docbase.monthenddoc.padStart(2,
                 '0') : d.dognet_docbase.monthenddoc;
-            rowData.child(<?php include('templates/docview-details_tab1_common.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/docview-details_tab1_common.tpl'; ?>).show();
         }
     });
 });
@@ -76,7 +83,7 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Подключаем стили для таблицы
 // :::
-?>
+; ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-details/restr_4/tabs/css/docview-details-common-tab1_common.css">
 <section>
