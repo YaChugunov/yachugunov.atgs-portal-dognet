@@ -1,5 +1,5 @@
 <?php
-$_SESSION['docviewCurrent'][] = "";
+    $_SESSION['docviewCurrent'][] = "";
 ?>
 <script type="text/javascript"
         src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/_assets/js/my/moment-with-locales.js"></script>
@@ -1246,12 +1246,12 @@ $(document).ready(function() {
 });
 </script>
 <?php
-// ----- ----- ----- ----- -----
-// Подключаем форму редактирования, форму поиска и выводим таблицу договора
-// :::
-include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-customForm.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-filters.php";
-// ----- ----- ----- ----- -----
+    // ----- ----- ----- ----- -----
+    // Подключаем форму редактирования, форму поиска и выводим таблицу договора
+    // :::
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-customForm.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-filters.php";
+    // ----- ----- ----- ----- -----
 ?>
 
 <link rel="stylesheet"

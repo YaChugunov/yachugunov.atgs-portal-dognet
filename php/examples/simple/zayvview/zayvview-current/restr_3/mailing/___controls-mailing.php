@@ -1,14 +1,14 @@
 <?php
 
-date_default_timezone_set('Europe/Moscow');
+    date_default_timezone_set('Europe/Moscow');
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
 
-$__title = 'Договор';
-$__subtitle = "Экспорт отчетных данных";
-$__subsubtitle = "Экспорт отчетных данных";
+    $__title       = 'Договор';
+    $__subtitle    = "Экспорт отчетных данных";
+    $__subsubtitle = "Экспорт отчетных данных";
 
 ?>
 
@@ -141,8 +141,8 @@ label#select-format-pdf input[type="radio"]:checked + span {
 <div class="container">
 	<div class="space50"></div>
 <?php
-if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
-?>
+    if (empty($_GET['done']) || ! isset($_GET['done']) || $_GET['done'] != "ok") {
+    ?>
 	<div class="row space20">
 		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 space20">
@@ -187,36 +187,35 @@ if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
 		</div>
 	</div>
 <?php
-}
+    }
 ?>
 	<div class="row space50">
 		<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div class="text-center">
 <?php
-				if (isset($_GET['msgRecipient'])) {
-					switch ($_GET['msgRecipient']) {
-						case "0":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType0.php");
-							break;
-						case "1":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType1.php");
-							break;
-						case "2":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType2.php");
-							break;
-						case "3":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType3.php");
-							break;
-						case "4":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/message_section-underconstruction.php");
-							break;
-						default:
-							echo "<div class='format-not-selected'></div>";
-					}
-				}
-				else {
-				 echo "<div class='format-not-selected'></div>";
-				}
+    if (isset($_GET['msgRecipient'])) {
+        switch ($_GET['msgRecipient']) {
+            case "0":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType0.php";
+                break;
+            case "1":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType1.php";
+                break;
+            case "2":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType2.php";
+                break;
+            case "3":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/mailing_msgType3.php";
+                break;
+            case "4":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/mailing/msgtypes/message_section-underconstruction.php";
+                break;
+            default:
+                echo "<div class='format-not-selected'></div>";
+        }
+    } else {
+        echo "<div class='format-not-selected'></div>";
+    }
 ?>
 			</div>
 		</div>

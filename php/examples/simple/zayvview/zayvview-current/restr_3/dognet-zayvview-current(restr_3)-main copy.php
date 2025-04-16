@@ -646,7 +646,7 @@
 				} else {
 					d.doczayv_tipuse = "";
 				}
-				rowData.child(<?php include('templates/zayvview-zayv-details.tpl'); ?>).show();
+				rowData.child(<?php include 'templates/zayvview-zayv-details.tpl'; ?>).show();
 
 				// Add to the 'open' array
 				if (idx === -1) {
@@ -895,7 +895,7 @@
 				tr.addClass('details');
 				rowData = table_zayv_child_dop.row(row);
 				d = row.data();
-				rowData.child(<?php include('templates/zayvview-dop-details.tpl'); ?>).show();
+				rowData.child(<?php include 'templates/zayvview-dop-details.tpl'; ?>).show();
 
 				// Add to the 'open' array
 				if (idx === -1) {
@@ -1163,7 +1163,7 @@
 				tr.addClass('details');
 				rowData = table_zayv_child_files.row(row);
 				d = row.data();
-				rowData.child(<?php include('templates/zayvview-dop-details.tpl'); ?>).show();
+				rowData.child(<?php include 'templates/zayvview-dop-details.tpl'; ?>).show();
 
 				// Add to the 'open' array
 				if (idx === -1) {
@@ -1665,7 +1665,7 @@
 				tr.addClass('details');
 				rowData = table_zayv_child_chet.row(row);
 				d = row.data();
-				rowData.child(<?php include('templates/zayvview-chet-details.tpl'); ?>).show();
+				rowData.child(<?php include 'templates/zayvview-chet-details.tpl'; ?>).show();
 
 				// Add to the 'open' array
 				if (idx === -1) {
@@ -2026,7 +2026,7 @@
 				tr.addClass('details');
 				rowData = table_chet_child_chetf.row(row);
 				d = row.data();
-				rowData.child(<?php include('templates/zayvview-chetf-details.tpl'); ?>).show();
+				rowData.child(<?php include 'templates/zayvview-chetf-details.tpl'; ?>).show();
 
 				// Add to the 'open' array
 				if (idx === -1) {
@@ -2261,11 +2261,11 @@
 </script>
 
 <?php
-// ----- ----- ----- ----- -----
-// Форма редактирования заявки
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма редактирования заявки
+    // :::
 ?>
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-main-customform.css">
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-main-customform.css">
 <div id="customForm-zayv-main">
 	<div id="customForm-zayv-main-editor-tabs" style="width:100%">
 		<ul id="customForm-zayv-main-editor-tabs-menu" class="nav nav-tabs">
@@ -2404,11 +2404,11 @@
 	</div>
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования позиций спецификации (список)
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования позиций спецификации (список)
+    // :::
 ?>
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-dop-customform.css">
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-dop-customform.css">
 <div id="customForm-zayv-child-dop">
 	<div id="customForm-zayv-child-dop-editor-tabs" style="width:100%">
 		<ul id="customForm-zayv-child-dop-editor-tabs-menu" class="nav nav-tabs">
@@ -2446,11 +2446,11 @@
 	</div>
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования позиций спецификации (файл)
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования позиций спецификации (файл)
+    // :::
 ?>
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-files-customform.css">
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-files-customform.css">
 <div id="customForm-zayv-child-files">
 	<div id="customForm-zayv-child-files-editor-tabs" style="width:100%">
 		<ul id="customForm-zayv-child-files-editor-tabs-menu" class="nav nav-tabs">
@@ -2477,11 +2477,11 @@
 	</div>
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования счета
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования счета
+    // :::
 ?>
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-chet-customform.css">
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-chet-customform.css">
 <div id="customForm-zayv-child-chet">
 	<div id="customForm-zayv-child-chet-editor-tabs" style="width:100%">
 		<ul id="customForm-zayv-child-chet-editor-tabs-menu" class="nav nav-tabs">
@@ -2557,11 +2557,11 @@
 
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования счета-фактуры
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования счета-фактуры
+    // :::
 ?>
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-chet-child-chetf-customform.css">
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-chet-child-chetf-customform.css">
 <div id="customForm-chet-child-chetf">
 	<div id="customForm-chet-child-chetf-editor-tabs" style="width:100%">
 		<ul id="customForm-chet-child-chetf-editor-tabs-menu" class="nav nav-tabs">
@@ -2641,9 +2641,9 @@
 
 </div>
 <?php
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
 ?>
 <div id="tab-1" class="tab-pane fade in active">
 	<div class="space30"></div>
@@ -2663,14 +2663,14 @@
 							<select name="zayvYearSearch_text" id="zayvYearSearch_text" class="form-control">
 								<option value='---'>---</option>
 								<?php
-								$_QRY = mysqlQuery("SELECT MIN(datezayv) as minzayvdate, MAX(datezayv) as maxzayvdate FROM dognet_doczayv WHERE koddel<>'99'");
-								$_ROW = mysqli_fetch_assoc($_QRY);
-								for ($y = 2005; $y <= date("Y"); $y++) {
-								?>
+                                    $_QRY = mysqlQuery("SELECT MIN(datezayv) as minzayvdate, MAX(datezayv) as maxzayvdate FROM dognet_doczayv WHERE koddel<>'99'");
+                                    $_ROW = mysqli_fetch_assoc($_QRY);
+                                    for ($y = 2005; $y <= date("Y"); $y++) {
+                                    ?>
 									<option value='<?php echo $y; ?>'><?php echo $y; ?></option>
 								<?php
-								}
-								?>
+                                    }
+                                ?>
 							</select>
 						</div>
 					</div>
@@ -2686,13 +2686,13 @@
 							<select name="zayvTipSearch_text" id="zayvTipSearch_text" class="form-control">
 								<option value="">Все типы</option>
 								<?php
-								$_QRY3 = mysqlQuery("SELECT kodtipzayvall, nametipzayvshotall FROM dognet_sptipzayvall WHERE nametipzayvshotall<>'' AND koddel<>'99'");
-								while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
-								?>
+                                    $_QRY3 = mysqlQuery("SELECT kodtipzayvall, nametipzayvshotall FROM dognet_sptipzayvall WHERE nametipzayvshotall<>'' AND koddel<>'99'");
+                                    while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
+                                    ?>
 									<option value='<?php echo $_ROW3["nametipzayvshotall"]; ?>'><?php echo $_ROW3["nametipzayvshotall"]; ?></option>
 								<?php
-								}
-								?>
+                                    }
+                                ?>
 							</select>
 						</div>
 					</div>
@@ -2708,13 +2708,13 @@
 							<select name="zayvTelSearch_text" id="zayvTelSearch_text" class="form-control">
 								<option value="">Все заявители</option>
 								<?php
-								$_QRY3 = mysqlQuery(" SELECT kodzayvtel, namezayvtel, namezayvtelshot FROM dognet_spzayvtel WHERE namezayvtelshot<>'' AND koddel<>'99' AND kodzayvtel<>'0000000000000000'");
-								while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
-								?>
+                                    $_QRY3 = mysqlQuery(" SELECT kodzayvtel, namezayvtel, namezayvtelshot FROM dognet_spzayvtel WHERE namezayvtelshot<>'' AND koddel<>'99' AND kodzayvtel<>'0000000000000000'");
+                                    while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
+                                    ?>
 									<option value='<?php echo $_ROW3["kodzayvtel"]; ?>'><?php echo $_ROW3["namezayvtelshot"]; ?></option>
 								<?php
-								}
-								?>
+                                    }
+                                ?>
 							</select>
 						</div>
 					</div>
@@ -2728,8 +2728,8 @@
 							</select>
 						</div>
 					</div>
-					<?php // ----- ----- ----- ----- ----- 
-					?>
+					<?php // ----- ----- ----- ----- -----
+                    ?>
 					<div class="col-xs-12 col-sm-3 col-md-6 col-lg-4">
 						<div class="input-group space10" style="width:100%">
 							<label for="zayvNameSearch_text"><b>Текст из названия договора :</b></label>
@@ -2766,16 +2766,16 @@
 							<button id="columnSearch_btnClear" class="btn btn-default" type="button"><i class="glyphicon glyphicon-remove"></i></button>
 						</div>
 					</div>
-					<?php // ----- ----- ----- ----- ----- 
-					?>
+					<?php // ----- ----- ----- ----- -----
+                    ?>
 				</div>
 
 			</div>
 		</div>
 	</div>
-	<?php // ----- ----- ----- ----- ----- 
-	?>
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-main.css">
+	<?php // ----- ----- ----- ----- -----
+    ?>
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-main.css">
 	<div class="demo-html"></div>
 	<table id="zayvview-zayv-main" class="table table-responsive table-bordered display compact" cellspacing="0" width="100%">
 		<thead>
@@ -2797,11 +2797,11 @@
 	</table>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-2" class="tab-pane fade">
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-dop.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-dop.css">
 	<div class="space30"></div>
 	<div id="zayvview-zayv-child-dop-spec" style="display:none">
 		<div class="col-xs-12 space30" style="padding:10px; background-color:#fafafa">
@@ -2848,11 +2848,11 @@
 	</div>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-3" class="tab-pane fade">
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-files.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-files.css">
 	<div class="space30"></div>
 	<div id="zayvview-zayv-child-files-spec" style="display:none">
 		<div class="col-xs-12 space30" style="padding:10px; background-color:#fafafa">
@@ -2898,11 +2898,11 @@
 	</div>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-4" class="tab-pane fade">
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-chet.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-chet.css">
 	<div class="space30"></div>
 	<div id="zayvview-zayv-child-chet-block" style="display:none">
 		<div class="col-xs-12 space30" style="padding:10px; background-color:#fafafa">
@@ -2924,9 +2924,9 @@
 				</tr>
 			</thead>
 		</table>
-		<?php // ----- ----- ----- ----- ----- 
-		?>
-		<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-chet-child-chetf.css">
+		<?php // ----- ----- ----- ----- -----
+        ?>
+		<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-chet-child-chetf.css">
 		<div class="space30"></div>
 		<div class="col-xs-12 space30" style="padding:10px; background-color:#fafafa">
 			<h4 class="text-uppercase" style="color:#31708f; font-family:'Oswald', sans-serif; font-weight:400; letter-spacing:0.4em">Счета-фактуры</h4>
@@ -2958,11 +2958,11 @@
 	</div>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-5" class="tab-pane fade">
-	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/css/zayvview-zayv-child-dop-docspec.css">
+	<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-dop-docspec.css">
 	<div class="space30"></div>
 	<div class="col-xs-12 space30" style="padding:10px; background-color:#fafafa">
 		<h4 class="text-uppercase" style="color:#31708f; font-family:'Oswald', sans-serif; font-weight:400; letter-spacing:0.4em">Спецификации из договора</h4>

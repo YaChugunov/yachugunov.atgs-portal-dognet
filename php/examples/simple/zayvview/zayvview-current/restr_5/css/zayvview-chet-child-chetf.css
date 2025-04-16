@@ -128,3 +128,19 @@
 
 .tr-title { background:#f1f1f1 }
 .td-title { background:#f1f1f1 }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#zayvview-chet-child-chetf > tbody > tr > td.dataTables_empty {
+    padding: 15px 5px 15px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top:none;
+    border-bottom:none;
+    background-color:#fff2f2;
+    font-family: 'Play', sans-serif;
+    font-size: 12px;
+    text-align: center;
+}

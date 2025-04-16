@@ -32,9 +32,10 @@
 #zayvview-zayv-child-chet > thead > tr > th:nth-child(4) { text-align:left }
 #zayvview-zayv-child-chet > thead > tr > th:nth-child(5) { text-align:left }
 #zayvview-zayv-child-chet > thead > tr > th:nth-child(6) { text-align:left }
-#zayvview-zayv-child-chet > thead > tr > th:nth-child(7) { text-align:center }
-#zayvview-zayv-child-chet > thead > tr > th:nth-child(8) { text-align:left }
-#zayvview-zayv-child-chet > thead > tr > th:nth-child(9) { text-align:center }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(7) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(8) { text-align:center }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(9) { text-align:left }
+#zayvview-zayv-child-chet > thead > tr > th:nth-child(10) { text-align:center }
 /* Тело таблицы */
 #zayvview-zayv-child-chet > tbody { font-size:0.9em; color:#666; border-bottom:none;	border-top:none }
 #zayvview-zayv-child-chet > tbody > tr > td { padding:2px 5px; line-height: 1.42857143; vertical-align: middle }
@@ -43,11 +44,12 @@
 #zayvview-zayv-child-chet > tbody > tr > td:nth-child(2) { width:7%; text-align:left }
 #zayvview-zayv-child-chet > tbody > tr > td:nth-child(3) { width:12%; text-align:left }
 #zayvview-zayv-child-chet > tbody > tr > td:nth-child(4) { width:7%; text-align:left }
-#zayvview-zayv-child-chet > tbody > tr > td:nth-child(5) { width:43%; text-align:left }
-#zayvview-zayv-child-chet > tbody > tr > td:nth-child(6) { width:12%; text-align:left }
-#zayvview-zayv-child-chet > tbody > tr > td:nth-child(7) { width:3%; text-align:center }
-#zayvview-zayv-child-chet > tbody > tr > td:nth-child(8) { width:12%; text-align:left }
-#zayvview-zayv-child-chet > tbody > tr > td:nth-child(9) { width:3%; text-align:center }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(5) { width:25%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(6) { width:18%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(7) { width:12%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(8) { width:3%; text-align:center }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(9) { width:12%; text-align:left }
+#zayvview-zayv-child-chet > tbody > tr > td:nth-child(10) { width:3%; text-align:center }
 #zayvview-zayv-child-chet > tbody > tr > td.dataTables_empty { text-align:left; text-transform:none; color:#666; background-color:#fafafa }
 /* Подвал таблицы */
 #zayvview-zayv-child-chet > tfoot > tr > th:first-child { text-align:center }
@@ -226,3 +228,19 @@ div.modal-dialog { margin:1.0em auto; width:80% }
 
 .tr-title { background:#f1f1f1 }
 .td-title { background:#f1f1f1 }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+
+#zayvview-zayv-child-chet > tbody > tr > td.dataTables_empty {
+    padding: 15px 5px 15px 5px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top:none;
+    border-bottom:none;
+    background-color:#fff2f2;
+    font-family: 'Play', sans-serif;
+    font-size: 12px;
+    text-align: center;
+}

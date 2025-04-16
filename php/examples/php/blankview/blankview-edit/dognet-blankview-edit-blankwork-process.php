@@ -16,8 +16,8 @@ require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/functions/funcDognet.inc.ph
 # Включаем режим сессии
 session_start();
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-$_QRY = mysqlQuery("SELECT * FROM dognet_users_kods WHERE id=" . $_SESSION['id']);
-$_ROW = mysqli_fetch_assoc($_QRY);
+$_QRY     = mysqlQuery("SELECT * FROM dognet_users_kods WHERE id=" . $_SESSION['id']);
+$_ROW     = mysqli_fetch_assoc($_QRY);
 $KODISPOL = $_ROW['kodispol'];
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
@@ -25,7 +25,8 @@ $KODISPOL = $_ROW['kodispol'];
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 # Функция обновления полей основной таблицы (dognet_kalplanchf)
 #
-function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values) {
+function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values)
+{
     # :::
     # ::: Если была нажата кнопка "ИЗМЕНИТЬ"
     # :::
@@ -37,42 +38,42 @@ function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values) {
             // Номер договора
             $_numberdoccr = $_QRY_DocNumber[0]['docnumber'];
             // Определяем статус бланка
-            $_kodstatusblank = 'DO';
+            $_kodstatusblank  = 'DO';
             $_QRY_StatusBlank = $db->sql("SELECT status_name FROM dognet_sysdefs_blankstatus WHERE status_kod='" . $_kodstatusblank . "'")->fetchAll();
             $_statusblankwork = $_QRY_StatusBlank[0]['status_name'];
             // Дата привязки к договору
             $_dateblankdoc = $_QRY[0]['dateblankdoc'];
-            if ($_QRY[0]['dateblankdoc'] == '' or $_QRY[0]['dateblankdoc'] == NULL) {
+            if ($_QRY[0]['dateblankdoc'] == '' or $_QRY[0]['dateblankdoc'] == null) {
                 $_dateblankdoc = date('Y-m-d');
             }
             // Обновляем заказчика
-            $_kodzakaz = $_QRY[0]['kodzakaz'];
+            $_kodzakaz  = $_QRY[0]['kodzakaz'];
             $_zakazName = "";
             if ($_kodzakaz != "") {
                 $_QRY_ZakazName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodzakaz . "'")->fetchAll();
-                $_zakazName = $_QRY_ZakazName[0]['nameshort'];
+                $_zakazName     = $_QRY_ZakazName[0]['nameshort'];
             }
             // Обновляем подрядчика
-            $_kodsubpodr = $_QRY[0]['kodsubpodr'];
+            $_kodsubpodr  = $_QRY[0]['kodsubpodr'];
             $_subpodrName = "";
             if ($_kodsubpodr != "") {
                 $_QRY_SubpodrName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodsubpodr . "'")->fetchAll();
-                $_subpodrName = $_QRY_SubpodrName[0]['nameshort'];
+                $_subpodrName     = $_QRY_SubpodrName[0]['nameshort'];
             }
-            $db->update('dognet_docblankwork', array(
-                'numberdoccr' => $_numberdoccr,
-                'kodstatusblank' => $_kodstatusblank,
+            $db->update('dognet_docblankwork', [
+                'numberdoccr'     => $_numberdoccr,
+                'kodstatusblank'  => $_kodstatusblank,
                 'statusblankwork' => $_statusblankwork,
-                'dateblankdoc' => $_dateblankdoc,
-            ), array('id' => $id));
+                'dateblankdoc'    => $_dateblankdoc,
+            ], ['id' => $id]);
             if ($_QRY[0]['kodtipblank'] == "SUB") {
-                $db->update('dognet_docblankwork', array(
+                $db->update('dognet_docblankwork', [
                     'nameorgblankwork' => $_subpodrName,
-                ), array('id' => $id));
+                ], ['id' => $id]);
             } else {
-                $db->update('dognet_docblankwork', array(
+                $db->update('dognet_docblankwork', [
                     'nameorgblankwork' => $_zakazName,
-                ), array('id' => $id));
+                ], ['id' => $id]);
             }
             // UDP20200724 :: BEGIN
             // Переводим бланк ГИПа в состояние ОФОРМЛЕН
@@ -81,35 +82,35 @@ function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values) {
             //                 ), array( 'kodblankwork' => $_QRY[0]['kodblankwork'], 'kodstatusblank' => "CR" ));
             // END :: UPD20200724
         } else {
-            $_kodstatusblank = 'RD';
+            $_kodstatusblank  = 'RD';
             $_QRY_StatusBlank = $db->sql("SELECT status_name FROM dognet_sysdefs_blankstatus WHERE status_kod='" . $_kodstatusblank . "'")->fetchAll();
             $_statusblankwork = $_QRY_StatusBlank[0]['status_name'];
             // Обновляем заказчика
             if ($_QRY[0]['kodzakaz'] != "") {
-                $_kodzakaz = $_QRY[0]['kodzakaz'];
+                $_kodzakaz      = $_QRY[0]['kodzakaz'];
                 $_QRY_ZakazName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodzakaz . "'")->fetchAll();
-                $_zakazName = $_QRY_ZakazName[0]['nameshort'];
+                $_zakazName     = $_QRY_ZakazName[0]['nameshort'];
             }
             // Обновляем подрядчика
             if ($_QRY[0]['kodsubpodr'] != "") {
-                $_kodsubpodr = $_QRY[0]['kodsubpodr'];
+                $_kodsubpodr      = $_QRY[0]['kodsubpodr'];
                 $_QRY_SubpodrName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodsubpodr . "'")->fetchAll();
-                $_subpodrName = $_QRY_SubpodrName[0]['nameshort'];
+                $_subpodrName     = $_QRY_SubpodrName[0]['nameshort'];
             }
-            $db->update('dognet_docblankwork', array(
-                'numberdoccr' => "",
-                'kodstatusblank' => $_kodstatusblank,
+            $db->update('dognet_docblankwork', [
+                'numberdoccr'     => "",
+                'kodstatusblank'  => $_kodstatusblank,
                 'statusblankwork' => $_statusblankwork,
-                'dateblankdoc' => NULL,
-            ), array('id' => $id));
+                'dateblankdoc'    => null,
+            ], ['id' => $id]);
             if ($_QRY[0]['kodtipblank'] == "SUB") {
-                $db->update('dognet_docblankwork', array(
+                $db->update('dognet_docblankwork', [
                     'nameorgblankwork' => $_subpodrName,
-                ), array('id' => $id));
+                ], ['id' => $id]);
             } else {
-                $db->update('dognet_docblankwork', array(
+                $db->update('dognet_docblankwork', [
                     'nameorgblankwork' => $_zakazName,
-                ), array('id' => $id));
+                ], ['id' => $id]);
             }
             // UDP20200724 :: BEGIN
             // Переводим бланк ГИПа в состояние ОФОРМЛЕН
@@ -197,9 +198,9 @@ Editor::inst($db, 'dognet_docblankwork')
                 Options::inst()
                     ->table('dognet_docbase')
                     ->value('koddoc')
-                    ->label(array('koddoc', 'docnumber', 'docnameshot'))
+                    ->label(['koddoc', 'docnumber', 'docnameshot'])
                     ->where(function ($q) {
-                        $q->where('yearnachdoc', date('Y') - 2, '>=');
+                        $q->where('yearnachdoc', date('Y') - 5, '>=');
                         $q->and_where('numberchet', '', '=');
                     })
                     ->render(function ($row) {
@@ -213,7 +214,7 @@ Editor::inst($db, 'dognet_docblankwork')
                 Options::inst()
                     ->table('sp_contragents')
                     ->value('kodcontragent')
-                    ->label(array('kodcontragent', 'nameshort', 'namefull'))
+                    ->label(['kodcontragent', 'nameshort', 'namefull'])
                     ->order('nameshort asc')
                     ->render(function ($row) {
                         return $row['nameshort'];
@@ -229,7 +230,7 @@ Editor::inst($db, 'dognet_docblankwork')
                 Options::inst()
                     ->table('sp_contragents')
                     ->value('kodcontragent')
-                    ->label(array('kodcontragent', 'nameshort', 'namefull'))
+                    ->label(['kodcontragent', 'nameshort', 'namefull'])
                     ->order('nameshort asc')
                     ->render(function ($row) {
                         return $row['nameshort'];
@@ -245,10 +246,10 @@ Editor::inst($db, 'dognet_docblankwork')
                 Options::inst()
                     ->table('dognet_docsubpodr')
                     ->value('koddocsubpodr')
-                    ->label(array('datedocsubpodr', 'namedocsubpodr', 'numberdocsubpodr'))
+                    ->label(['datedocsubpodr', 'namedocsubpodr', 'numberdocsubpodr'])
                     ->order('datedocsubpodr desc')
                     ->render(function ($row) {
-                        return date("d.m.Y", strtotime($row['datedocsubpodr'])) . " : " . $row['numberdocsubpodr'] . " : " . (!empty($row['namedocsubpodr']) ? $row['namedocsubpodr'] : "---");
+                        return date("d.m.Y", strtotime($row['datedocsubpodr'])) . " : " . $row['numberdocsubpodr'] . " : " . (! empty($row['namedocsubpodr']) ? $row['namedocsubpodr'] : "---");
                     })
                     ->where(function ($q) {
                         $q->where('koddel', '99', '<>');

@@ -1,7 +1,7 @@
 <script type="text/javascript" language="javascript" class="init">
     var editor_tab2_kalplans; // use a global for the submit and return data rendering in the examples
     var table_tab2_kalplans; // use a global for the submit and return data rendering in the examples
-    var uniqueID = <?php echo $_SESSION['uniqueID']; ?>;
+    var uniqueID =                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <?php echo $_SESSION['uniqueID']; ?>;
     //
     var reqField1 = {
         kodtip: function(response1) {
@@ -641,8 +641,9 @@
                 //
                 // Массив с типами договора, для которых нужен котроль готовности объекта
                 // ПНР+ШМР, ШМР, ПНР, Поставка+Работы, Техобслуживание
+                // UPD20240202 >> Добавлен тип договора "Разработка и корректировка ПО" (245538555152781)
                 const tips = ['245773055697212', '245773052282168', '245287843809309', '245287841599652',
-                    '245267756588371', '245538555152781, 245461560078473'
+                    '245267756588371', '245538555152781, 245461560078473', '245538555152781'
                 ];
                 if (tips.includes(tipdoc)) {
                     editor_tab2_kalplans.field('dognet_dockalplan.idobjectready').show(false);
@@ -807,7 +808,7 @@
         });
         // ----- -- ----- -- -----
         // Если вводим дату планируемого аванса - пересчитываем дни от первого аванса, и наоборот - если вводим дни - персчитываем дату
-        // 
+        //
         // ДЛЯ АВАНСА 2
         editor_tab2_kalplans.dependent('dognet_dockalplan.dateplanav2stage', function(val) {
             editor_tab2_kalplans.field('dognet_dockalplan.dateplanav2stage').processing(false);
@@ -891,7 +892,7 @@
         //
         //
         /*
-            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav1plan', function ( val ) { 
+            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav1plan', function ( val ) {
         	    if ( val == 0 ) {
         			editor_tab2_kalplans.field('dognet_dockalplan.pravplan1stage').disable();
         			editor_tab2_kalplans.field('dognet_dockalplan.dateplanav1stage').disable();
@@ -903,7 +904,7 @@
         			editor_tab2_kalplans.field('dognet_dockalplan.daysplanav1stage').enable();
         	    }
             }, { event: 'change' } );
-            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav2plan', function ( val ) { 
+            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav2plan', function ( val ) {
         	    if ( val == 0 ) {
         			editor_tab2_kalplans.field('dognet_dockalplan.pravplan2stage').disable();
         			editor_tab2_kalplans.field('dognet_dockalplan.dateplanav2stage').disable();
@@ -915,7 +916,7 @@
         			editor_tab2_kalplans.field('dognet_dockalplan.daysplanav2stage').enable();
         	    }
             }, { event: 'change' } );
-            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav3plan', function ( val ) { 
+            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav3plan', function ( val ) {
         	    if ( val == 0 ) {
         			editor_tab2_kalplans.field('dognet_dockalplan.pravplan3stage').disable();
         			editor_tab2_kalplans.field('dognet_dockalplan.dateplanav3stage').disable();
@@ -927,7 +928,7 @@
         			editor_tab2_kalplans.field('dognet_dockalplan.daysplanav3stage').enable();
         	    }
             }, { event: 'change' } );
-            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav4plan', function ( val ) { 
+            editor_tab2_kalplans.dependent( 'dognet_dockalplan.useav4plan', function ( val ) {
         	    if ( val == 0 ) {
         			editor_tab2_kalplans.field('dognet_dockalplan.pravplan4stage').disable();
         			editor_tab2_kalplans.field('dognet_dockalplan.dateplanav4stage').disable();
@@ -948,7 +949,7 @@
         //
         // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
         table_tab2_kalplans = $('#docview-edit-tab2_kalplans').DataTable({
-            dom: "<'row'<'col-sm-5'B><'col-sm-4'><'col-sm-3'>>" + "<'row'<'col-sm-12'tr>>" +
+            dom: "<'row'<'col-sm-7'B><'col-sm-2'><'col-sm-3'>>" + "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-6'i><'col-sm-6'p>>",
             /* 		dom: "<'row'<'col-md-8 col-sm-12'B><'col-md-4 col-sm-12'>r>t<'row'<'col-md-12 col-sm-12 footer'>>", */
             // 		dom: "t",
@@ -1077,9 +1078,35 @@
                     ]
                 },
                 {
+                    extend: 'selected',
+                    text: 'ДУБЛИРОВАТЬ',
+                    action: function (e, dt, node, config) {
+                        // Start in edit mode, and then change to create
+                        editor_tab2_kalplans
+                        .edit(table_tab2_kalplans.rows({ selected: true }).indexes(), {
+                            title: 'Дублировать запись',
+                            buttons: ['Создать дубликат', {
+                                text: 'Отмена',
+                                action: function () {
+                                    this.close();
+                                }
+                            }]
+                        })
+                        .mode('create');
+                    }
+                },
+                {
                     extend: "remove",
                     editor: editor_tab2_kalplans,
-                    text: "УДАЛИТЬ"
+                    text: "УДАЛИТЬ",
+                    formButtons: ['Удалить',
+                        {
+                            text: 'Отмена',
+                            action: function() {
+                                this.close();
+                            }
+                        }
+                    ]
                 }
             ],
             initComplete: function() {
@@ -1110,7 +1137,7 @@
                 tr.addClass('edit');
                 rowData = table_tab2_kalplans.row(row);
                 d = row.data();
-                rowData.child(<?php include('templates/docview-edit_tab2_kalplans.tpl'); ?>).show();
+                rowData.child(<?php include 'templates/docview-edit_tab2_kalplans.tpl'; ?>).show();
 
                 // Add to the 'open' array
                 if (idx === -1) {
@@ -1258,10 +1285,10 @@
     });
 </script>
 <?php
-// ----- ----- ----- ----- -----
-// Подключаем форму и выводим таблицу этапов
-// :::
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_5/tabs/forms/docview-edit_tab2_kalplans-customForm.php");
+    // ----- ----- ----- ----- -----
+    // Подключаем форму и выводим таблицу этапов
+    // :::
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_5/tabs/forms/docview-edit_tab2_kalplans-customForm.php";
 ?>
 <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_5/tabs/css/docview-edit-tab2_kalplans.css">
 <section>

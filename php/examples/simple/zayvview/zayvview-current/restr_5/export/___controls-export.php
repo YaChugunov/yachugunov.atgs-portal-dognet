@@ -173,15 +173,3 @@ label#select-format-pdf input[type="radio"]:checked + span {
 
 </div>
 
-<script type="text/javascript">
-
-	$('input[name="sum_type"]').click(function(){
-		if ($(this).val() == "1") {
-			$('input[id="sum-user-value"]').prop('disabled', false);
-		}
-		else {
-			$('input[id="sum-user-value"]').prop('disabled', true);
-		}
-	});
-
-</script>

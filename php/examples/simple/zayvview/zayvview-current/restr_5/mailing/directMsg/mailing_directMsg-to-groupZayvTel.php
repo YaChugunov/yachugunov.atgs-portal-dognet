@@ -1,119 +1,120 @@
 <?php
-# ----- ----- -----
-if (isset($_GET['uniqueID'])) {
-	$_QRY_ZAYV = mysqlQuery("SELECT * FROM dognet_doczayv WHERE kodzayv = ".$_GET['uniqueID']);
-	$_ROW_ZAYV = mysqli_fetch_assoc($_QRY_ZAYV);
+    # ----- ----- -----
+    if (isset($_GET['uniqueID'])) {
+        $_QRY_ZAYV = mysqlQuery("SELECT * FROM dognet_doczayv WHERE kodzayv = " . $_GET['uniqueID']);
+        $_ROW_ZAYV = mysqli_fetch_assoc($_QRY_ZAYV);
 
-	$_QRY_TIPZAYV = mysqlQuery("SELECT * FROM dognet_sptipzayvall WHERE kodtipzayvall = ".$_ROW_ZAYV['kodtipzayvall']);
-	$_ROW_TIPZAYV = mysqli_fetch_assoc($_QRY_TIPZAYV);
-}
-# ----- ----- -----
-// Определяем код Заявителя по справочнику Заявителей
-	if (isset($_ROW_ZAYV['kodzayvtel'])&&!empty($_ROW_ZAYV['kodzayvtel'])) {
-		$_QRY_ZAYVTEL = mysqlQuery("SELECT * FROM dognet_spzayvtel WHERE kodzayvtel = ".$_ROW_ZAYV['kodzayvtel']);
-		$_ROW_ZAYVTEL = mysqli_fetch_assoc($_QRY_ZAYVTEL);
-	}
-// Определяем email Заявителя по таблице пользователей Портала
-	if (isset($_ROW_ZAYVTEL['kodzayvtel'])&&!empty($_ROW_ZAYVTEL['kodzayvtel'])) {
-		$_QRY_ZAYVTEL_EMAIL = mysqlQuery("SELECT * FROM users WHERE kodzayvtel = ".$_ROW_ZAYVTEL['kodzayvtel']);
-		$_ROW_ZAYVTEL_EMAIL = mysqli_fetch_assoc($_QRY_ZAYVTEL_EMAIL);
-	}
-# ----- ----- -----
+        $_QRY_TIPZAYV = mysqlQuery("SELECT * FROM dognet_sptipzayvall WHERE kodtipzayvall = " . $_ROW_ZAYV['kodtipzayvall']);
+        $_ROW_TIPZAYV = mysqli_fetch_assoc($_QRY_TIPZAYV);
+    }
+    # ----- ----- -----
+    // Определяем код Заявителя по справочнику Заявителей
+    if (isset($_ROW_ZAYV['kodzayvtel']) && ! empty($_ROW_ZAYV['kodzayvtel'])) {
+        $_QRY_ZAYVTEL = mysqlQuery("SELECT * FROM dognet_spzayvtel WHERE kodzayvtel = " . $_ROW_ZAYV['kodzayvtel']);
+        $_ROW_ZAYVTEL = mysqli_fetch_assoc($_QRY_ZAYVTEL);
+    }
+    // Определяем email Заявителя по таблице пользователей Портала
+    if (isset($_ROW_ZAYVTEL['kodzayvtel']) && ! empty($_ROW_ZAYVTEL['kodzayvtel'])) {
+        $_QRY_ZAYVTEL_EMAIL = mysqlQuery("SELECT * FROM users WHERE kodzayvtel = " . $_ROW_ZAYVTEL['kodzayvtel']);
+        $_ROW_ZAYVTEL_EMAIL = mysqli_fetch_assoc($_QRY_ZAYVTEL_EMAIL);
+    }
+    # ----- ----- -----
 
-switch ($_ROW_ZAYV["tipusezayv"]) {
-	case 0:
-		$_ZAYV_STATUS = "Заявка сформирована";
-	break;
-	case 1:
-		$_ZAYV_STATUS = "Выставлены все счета";
-	break;
-	case 2:
-		$_ZAYV_STATUS = "Заявка закрыта";
-	break;
-	case 3:
-		$_ZAYV_STATUS = "Заявка аннулирована";
-	break;
-	case 4:
-		$_ZAYV_STATUS = "Выставлена часть счетов";
-	break;
-	default:
-		$_ZAYV_STATUS = "---";
-}
+    switch ($_ROW_ZAYV["tipusezayv"]) {
+        case 0:
+            $_ZAYV_STATUS = "Заявка сформирована";
+            break;
+        case 1:
+            $_ZAYV_STATUS = "Выставлены все счета";
+            break;
+        case 2:
+            $_ZAYV_STATUS = "Заявка закрыта";
+            break;
+        case 3:
+            $_ZAYV_STATUS = "Заявка аннулирована";
+            break;
+        case 4:
+            $_ZAYV_STATUS = "Выставлена часть счетов";
+            break;
+        default:
+            $_ZAYV_STATUS = "---";
+    }
 
+    # Import PHPMailer classes into the global namespace
+    # These must be at the top of your script, not inside a function
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    #
+    # Подключаем библиотеки
+    // require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/Exception.php";
+    // require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/PHPMailer.php";
+    // require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/SMTP.php";
 
-# Import PHPMailer classes into the global namespace
-# These must be at the top of your script, not inside a function
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
-#
-# Подключаем библиотеки
-// require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/Exception.php";
-// require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/PHPMailer.php";
-// require $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/src/SMTP.php";
+    #
+    # Instantiation and passing `true` enables exceptions
+    $mail3    = new PHPMailer;
+    $message3 = "";
+    #
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
 
-#
-# Instantiation and passing `true` enables exceptions
-$mail3 = new PHPMailer;
-$message3 = "";
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
+    // Номер заявки
+    $_zayvnum = $_ROW_TIPZAYV['nametipzayvshotall'] . "-" . $_ROW_ZAYV['numberzayv'];
+    // Дата заявки
+    $_zayvdate = date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
+    // Имя файла
+    $_zayvdesc = $_ROW_ZAYV['namerabfilespec'];
+    // Имя заявителя
+    $_zayvuser = $_ROW_ZAYVTEL['namezayvtelshot'];
+    // Статус заявки
+    $_zayvstatus = $_ZAYV_STATUS;
 
-// Номер заявки
-$_zayvnum = $_ROW_TIPZAYV['nametipzayvshotall']."-".$_ROW_ZAYV['numberzayv'];
-// Дата заявки
-$_zayvdate = date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
-// Имя файла
-$_zayvdesc = $_ROW_ZAYV['namerabfilespec'];
-// Имя заявителя
-$_zayvuser = $_ROW_ZAYVTEL['namezayvtelshot'];
-// Статус заявки
-$_zayvstatus = $_ZAYV_STATUS;
-
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-#
-$subjectTxt = "Договор [Заявки] : Заявка № ".$_ROW_TIPZAYV['nametipzayvshotall']."-".$_ROW_ZAYV['numberzayv']." от ".date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
-$subject = "=?utf-8?B?".base64_encode($subjectTxt)."?=";
-//
-if (isset($_GET['msgSubject'])) {
-	switch ($_GET['msgSubject']) {
-		case 0:
-			$_zayvtitle = "Заявка";
-			$_zayvmsg = "Тестовое сообщение. Идет проверка работы алгоритма.";
-		break;
-		case 1:
-			$_zayvtitle = "Новая заявка";
-			$_zayvmsg = "Новая заявка";
-			$subjectTxt = "Договор [Заявки] : Новая заявка № ".$_ROW_TIPZAYV['nametipzayvshotall']."-".$_ROW_ZAYV['numberzayv']." от ".date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
-			$subject = "=?utf-8?B?".base64_encode($subjectTxt)."?=";
-		break;
-		case 2:
-			$_zayvtitle = "Заявка";
-			$_zayvmsg = "Изменен статус заявки";
-			$subjectTxt = "Договор [Заявки] : Изменен статус заявки № ".$_ROW_TIPZAYV['nametipzayvshotall']."-".$_ROW_ZAYV['numberzayv']." от ".date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
-			$subject = "=?utf-8?B?".base64_encode($subjectTxt)."?=";
-		break;
-		case 3:
-			$_zayvtitle = "Заявка";
-			$_zayvmsg = "Изменены параметры заявки";
-			$subjectTxt = "Договор [Заявки] : Изменены параметры заявки № ".$_ROW_TIPZAYV['nametipzayvshotall']."-".$_ROW_ZAYV['numberzayv']." от ".date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
-			$subject = "=?utf-8?B?".base64_encode($subjectTxt)."?=";
-		break;
-		default:
-			$_zayvtitle = "Заявка";
-			$_zayvmsg = "О заявке";
-			$subjectTxt = "Договор [Заявки] : Заявка № ".$_ROW_TIPZAYV['nametipzayvshotall']."-".$_ROW_ZAYV['numberzayv']." от ".date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
-			$subject = "=?utf-8?B?".base64_encode($subjectTxt)."?=";
-	}
-}
-#
-# Текст сообщения
-	$message3 = '
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
+    #
+    #
+    $subjectTxt = "Договор [Заявки] : Заявка № " . $_ROW_TIPZAYV['nametipzayvshotall'] . "-" . $_ROW_ZAYV['numberzayv'] . " от " . date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
+    $subject    = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+    //
+    if (isset($_GET['msgSubject'])) {
+        switch ($_GET['msgSubject']) {
+            case 0:
+                $_zayvtitle = "Заявка";
+                $_zayvmsg   = "Тестовое сообщение. Идет проверка работы алгоритма.";
+                break;
+            case 1:
+                $_zayvtitle = "Новая заявка";
+                $_zayvmsg   = "Новая заявка";
+                $subjectTxt = "Договор [Заявки] : Новая заявка № " . $_ROW_TIPZAYV['nametipzayvshotall'] . "-" . $_ROW_ZAYV['numberzayv'] . " от " . date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
+                $subject    = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+                break;
+            case 2:
+                $_zayvtitle = "Заявка";
+                $_zayvmsg   = "Изменен статус заявки";
+                $subjectTxt = "Договор [Заявки] : Изменен статус заявки № " . $_ROW_TIPZAYV['nametipzayvshotall'] . "-" . $_ROW_ZAYV['numberzayv'] . " от " . date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
+                $subject    = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+                break;
+            case 3:
+                $_zayvtitle = "Заявка";
+                $_zayvmsg   = "Изменены параметры заявки";
+                $subjectTxt = "Договор [Заявки] : Изменены параметры заявки № " . $_ROW_TIPZAYV['nametipzayvshotall'] . "-" . $_ROW_ZAYV['numberzayv'] . " от " . date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
+                $subject    = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+                break;
+            default:
+                $_zayvtitle = "Заявка";
+                $_zayvmsg   = "О заявке";
+                $subjectTxt = "Договор [Заявки] : Заявка № " . $_ROW_TIPZAYV['nametipzayvshotall'] . "-" . $_ROW_ZAYV['numberzayv'] . " от " . date('d.m.Y', strtotime($_ROW_ZAYV['datezayv']));
+                $subject    = "=?utf-8?B?" . base64_encode($subjectTxt) . "?=";
+        }
+    }
+    //
+    $comment    = isset($_GET['comment']) ? urldecode($_GET['comment']) : "";
+    $commentTxt = (! empty($comment) && $_GET['savetolog'] == 'yes') ? $comment . '<br><br><span style="color:red"><i>*Комментарий будет сохранен в чате заявки</i></span>' : "";
+    #
+    # Текст сообщения
+    $message3 = '
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:v="urn:schemas-microsoft-com:vml">
@@ -279,8 +280,8 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 25px; padding-bottom: 15px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:25px;padding-right:10px;padding-bottom:15px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 28px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 34px; margin: 0;"><span style="color: #ffb400; font-size: 28px; text-transform: uppercase"><span style=""><strong>'.$_zayvtitle.'</strong></span></span></p>
-<p style="font-size: 20px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 24px; margin: 0;"><span style="color: #ffffff; font-size: 20px; background-color: #000000;"><span style=""><strong>'.$_zayvuser.'</strong></span></span><span style="color: #000000; font-size: 20px;"><span style=""><strong> / </strong></span></span><span style="color: #ffffff; font-size: 20px; background-color: #000000;"><span style=""><strong>'.$_zayvnum.'</strong></span></span></p>
+<p style="font-size: 28px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 34px; margin: 0;"><span style="color: #ffb400; font-size: 28px; text-transform: uppercase"><span style=""><strong>' . $_zayvtitle . '</strong></span></span></p>
+<p style="font-size: 20px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 24px; margin: 0;"><span style="color: #ffffff; font-size: 20px; background-color: #000000;"><span style=""><strong>' . $_zayvuser . '</strong></span></span><span style="color: #000000; font-size: 20px;"><span style=""><strong> / </strong></span></span><span style="color: #ffffff; font-size: 20px; background-color: #000000;"><span style=""><strong>' . $_zayvnum . '</strong></span></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -307,7 +308,7 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="color: #000000; font-size: 18px;"><span style="">'.$_zayvmsg.'</span></span></strong></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><strong><span style="color: #000000; font-size: 18px;"><span style="">' . $_zayvmsg . '</span></span></strong></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -353,7 +354,7 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">'.$_zayvdate.'</span></strong></span></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">' . $_zayvdate . '</span></strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -399,7 +400,7 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">'.$_zayvnum.'</span></strong></span></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">' . $_zayvnum . '</span></strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -445,7 +446,7 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">'.$_zayvuser.'</span></strong></span></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 17px; margin: 0;"><span style="color: #000000;"><strong><span style="font-size: 12px;">' . $_zayvuser . '</span></strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -491,7 +492,7 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 14px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 17px; margin: 0;"><strong><span style="color: #000000; font-size: 12px;">'.$_zayvdesc.'</span></strong></p>
+<p style="font-size: 14px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 17px; margin: 0;"><strong><span style="color: #000000; font-size: 12px;">' . $_zayvdesc . '</span></strong></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -537,7 +538,7 @@ if (isset($_GET['msgSubject'])) {
 <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
 <div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
 <div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
-<p style="font-size: 12px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px; background-color: #ffb400;"><strong><span style="color: #000000;">'.$_zayvstatus.'</span></strong></span></p>
+<p style="font-size: 12px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px; background-color: #ffb400;"><strong><span style="color: #000000;">' . $_zayvstatus . '</span></strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -551,6 +552,56 @@ if (isset($_GET['msgSubject'])) {
 </div>
 </div>
 </div>
+
+
+<div style="background-color:transparent;">
+<div class="block-grid mixed-two-up" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
+<div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
+<!--[if (mso)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:transparent;"><tr><td align="center"><table cellpadding="0" cellspacing="0" border="0" style="width:600px"><tr class="layout-full-width" style="background-color:transparent"><![endif]-->
+<!--[if (mso)|(IE)]><td align="center" width="200" style="background-color:transparent;width:200px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+<div class="col num4" style="display: table-cell; vertical-align: top; max-width: 320px; min-width: 200px; width: 200px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
+<div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
+<div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
+<p style="font-size: 12px; line-height: 1.2; word-break: break-word; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px; color: #333333;">КОММЕНТАРИЙ</span></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td><td align="center" width="400" style="background-color:transparent;width:400px; border-top: 0px solid transparent; border-left: 0px solid transparent; border-bottom: 0px solid transparent; border-right: 0px solid transparent;" valign="top"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 0px; padding-left: 0px; padding-top:0px; padding-bottom:0px;"><![endif]-->
+<div class="col num8" style="display: table-cell; vertical-align: top; min-width: 320px; max-width: 400px; width: 400px;">
+<div class="col_cont" style="width:100% !important;">
+<!--[if (!mso)&(!IE)]><!-->
+<div style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
+<!--<![endif]-->
+<!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td style="padding-right: 10px; padding-left: 10px; padding-top: 5px; padding-bottom: 5px; font-family: Arial, sans-serif"><![endif]-->
+<div style="color:#555555;font-family:Arial, Helvetica Neue, Helvetica, sans-serif;line-height:1.2;padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:10px;">
+<div style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Arial, Helvetica Neue, Helvetica, sans-serif; mso-line-height-alt: 14px;">
+<p style="font-size: 12px; line-height: 1.2; word-break: break-word; text-align: left; mso-line-height-alt: 14px; margin: 0;"><span style="font-size: 12px;"><strong><span style="color: #000000;">' . $commentTxt . '</span></strong></span></p>
+</div>
+</div>
+<!--[if mso]></td></tr></table><![endif]-->
+<!--[if (!mso)&(!IE)]><!-->
+</div>
+<!--<![endif]-->
+</div>
+</div>
+<!--[if (mso)|(IE)]></td></tr></table><![endif]-->
+<!--[if (mso)|(IE)]></td></tr></table></td></tr></table><![endif]-->
+</div>
+</div>
+</div>
+
+
 <div style="background-color:transparent;">
 <div class="block-grid" style="min-width: 320px; max-width: 600px; overflow-wrap: break-word; word-wrap: break-word; word-break: break-word; Margin: 0 auto; background-color: transparent;">
 <div style="border-collapse: collapse;display: table;width: 100%;background-color:transparent;">
@@ -639,118 +690,119 @@ if (isset($_GET['msgSubject'])) {
 		</div>
 	</form>
 <?php
-# ----- ----- ----- ----- -----
-#
-# SERVER SETTINGS
-#
-#
-// Enable verbose debug output
-  $mail3->SMTPDebug = SMTP::DEBUG_SERVER;
-// Disable verbose debug output
-  $mail3->SMTPDebug = 0;
-// Send using SMTP
-	$mail3->isSMTP();
-// Set the SMTP server to send through
-  $mail3->Host = 'mail.atgs.ru';
-// Enable SMTP authentication
-  $mail3->SMTPAuth = true;
-// SMTP connection will not close after each email sent, reduces SMTP overhead
-  $mail3->SMTPKeepAlive = true;
-// SMTP username
-  $mail3->Username = 'portal@atgs.ru';
-//   $mail3->Username = 'dinner@atgs.ru';
-// SMTP password
-  $mail3->Password = 'iu3Li,quohch'; // portal@atgs.ru
-//   $mail3->Password = 'gai3ir+o4Ui4'; //dinner@atgs.ru
-// Enable TLS encryption, `PHPMailer::ENCRYPTION_SMTPS` also accepted
-  $mail3->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-// TCP port
-  $mail3->Port = 587;
-#
-#
-# ----- ----- ----- ----- -----
-#
-#
-  $mail3->setLanguage('ru', $_SERVER['DOCUMENT_ROOT']."/dognet/_assets/_PHPMailer/language/");
-  $mail3->CharSet = "utf-8";
-#
-# From
-	$from_name = "АТГС.Портал / Корпоративные сервисы";
-	$from_email = "portal@atgs.ru";
-// 	$from_email = "dinner@atgs.ru";
-	$from_name = "=?utf-8?B?".base64_encode($from_name)."?=";
-	$mail3->setFrom($from_email, $from_name);
-# ----- ----- ----- ----- -----
-#
-#
-if ( isset($_POST['sendMsg']) ) {
-#
-#
-// Определяем email Заявителя по таблице пользователей Портала
-	$_QRY_ZAYVTEL_EMAIL = mysqlQuery("SELECT * FROM dognet_spzayvtel WHERE mailing_enbl='1' AND koddel<>'99' AND email<>''");
-	while ($_ROW_ZAYVTEL_EMAIL = mysqli_fetch_assoc($_QRY_ZAYVTEL_EMAIL)) {
-#
-# ПОЛУЧАТЕЛИ
-# $mail3->addReplyTo('email', 'name')
-# Email is an recipient address, Name is optional
-#
-# ----- ----- ----- ----- -----
-		$email_to = $_ROW_ZAYVTEL_EMAIL['email'];
-# ----- ----- ----- ----- -----
-	 	$mail3->addAddress($email_to);
-		$mail3->addReplyTo('notreply@atgs.ru', 'Do not reply');
-# ----- ----- ----- ----- -----
-#
-// Content
-	  $mail3->isHTML(true);                                  // Set email format to HTML
-	  $mail3->Subject = $subject." / ".$email_to;
-	  $mail3->Body    = $message3;
-	  $mail3->AltBody = 'Ваш почтовый клиент не принимает сообщений в формате HTML. Вариант рассылки в формате PLAIN TEXT будет реализован позже.';
-#
-# ::: Send the message, check for errors
-#
-# Открыли файл для записи данных в конец файла
-	    $filename = $_SERVER['DOCUMENT_ROOT']."/dognet/PHPMailer_errors.log";
-	    if (is_writable($filename)) {
+    # ----- ----- ----- ----- -----
+    #
+    # SERVER SETTINGS
+    #
+    #
+    // Enable verbose debug output
+    $mail3->SMTPDebug = SMTP::DEBUG_SERVER;
+    // Disable verbose debug output
+    $mail3->SMTPDebug = 0;
+    // Send using SMTP
+    $mail3->isSMTP();
+    // Set the SMTP server to send through
+    $mail3->Host = 'mail.atgs.ru';
+    // Enable SMTP authentication
+    $mail3->SMTPAuth = true;
+    // SMTP connection will not close after each email sent, reduces SMTP overhead
+    $mail3->SMTPKeepAlive = true;
+    // SMTP username
+    $mail3->Username = 'portal@atgs.ru';
+                                       //   $mail3->Username = 'dinner@atgs.ru';
+                                       // SMTP password
+    $mail3->Password = 'iu3Li,quohch'; // portal@atgs.ru
+                                       //   $mail3->Password = 'gai3ir+o4Ui4'; //dinner@atgs.ru
+                                       // Enable TLS encryption, `PHPMailer::ENCRYPTION_SMTPS` also accepted
+    $mail3->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    // TCP port
+    $mail3->Port = 587;
+    #
+    #
+    # ----- ----- ----- ----- -----
+    #
+    #
+    $mail3->setLanguage('ru', $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPMailer/language/");
+    $mail3->CharSet = "utf-8";
+    #
+    # From
+    $from_name  = "АТГС.Портал / Корпоративные сервисы";
+    $from_email = "portal@atgs.ru";
+    // 	$from_email = "dinner@atgs.ru";
+    $from_name = "=?utf-8?B?" . base64_encode($from_name) . "?=";
+    $mail3->setFrom($from_email, $from_name);
+    # ----- ----- ----- ----- -----
+    #
+    #
+    if (isset($_POST['sendMsg'])) {
+        #
+        #
+        // Определяем email Заявителя по таблице пользователей Портала
+        $_QRY_ZAYVTEL_EMAIL = mysqlQuery("SELECT * FROM dognet_spzayvtel WHERE mailing_enbl='1' AND koddel<>'99' AND email<>''");
+        while ($_ROW_ZAYVTEL_EMAIL = mysqli_fetch_assoc($_QRY_ZAYVTEL_EMAIL)) {
+            #
+            # ПОЛУЧАТЕЛИ
+            # $mail3->addReplyTo('email', 'name')
+            # Email is an recipient address, Name is optional
+            #
+            # ----- ----- ----- ----- -----
+            $email_to = $_ROW_ZAYVTEL_EMAIL['email'];
+            # ----- ----- ----- ----- -----
+            $mail3->addAddress($email_to);
+            $mail3->addReplyTo('notreply@atgs.ru', 'Do not reply');
+                                  # ----- ----- ----- ----- -----
+                                  #
+                                  // Content
+            $mail3->isHTML(true); // Set email format to HTML
+            $mail3->Subject = $subject . " / " . $email_to;
+            $mail3->Body    = $message3;
+            $mail3->AltBody = 'Ваш почтовый клиент не принимает сообщений в формате HTML. Вариант рассылки в формате PLAIN TEXT будет реализован позже.';
+            #
+            # ::: Send the message, check for errors
+            #
+            # Открыли файл для записи данных в конец файла
+            $filename = $_SERVER['DOCUMENT_ROOT'] . "/dognet/PHPMailer_errors.log";
+            if (is_writable($filename)) {
 
-	      if (!$handle = fopen($filename, 'a')) {
-	        echo "<span style='color:red; text-align:center'><i>Не могу открыть лог-файл для записи отчета об отправке.</i></span>";
-	        exit;
-	      }
+                if (! $handle = fopen($filename, 'a')) {
+                    echo "<span style='color:red; text-align:center'><i>Не могу открыть лог-файл для записи отчета об отправке.</i></span>";
+                    exit;
+                }
 
-	      if (!$mail3->send()) {
-		      $err = $mail3->ErrorInfo.PHP_EOL;
-	        $text = date('Y-m-d h:i:s')." : ошибка рассылки на ( $email_to ) : ".$err;
-	      // Записываем $somecontent в наш открытый файл.
-	        if (fwrite($handle, $text) === FALSE) {
-          echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог файл.</i></span>";
-	          exit;
-	        }
-	        echo "<span style='color:red; text-align:center'><i>Ошибка при отправке сообщения : $err.</i></span>";
-	        fclose($handle);
-	      }
-	      else {
-	        $text = date('Y-m-d h:i:s')." : сообщение на ( $email_to ) успешно отправлено".PHP_EOL;
-	      // Записываем $somecontent в наш открытый файл.
-	        if (fwrite($handle, $text) === FALSE) {
-	        echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог-файл.</i></span>";
-	          exit;
-	        }
-        echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
-	        fclose($handle);
-	      }
-	    }
-	    else {
-      echo "<span style='color:red; text-align:center'><i>Лог-файл недоступен для записи.</i></span>";
-	    }
-#
-# :::
-// Clear all addresses and attachments for next loop
-  $mail3->ClearAddresses();
-}
-	unset($_POST['sendMsg']);
-#
-#
-}
+                if (! $mail3->send()) {
+                    $err  = $mail3->ErrorInfo . PHP_EOL;
+                    $text = date('Y-m-d h:i:s') . " : ошибка рассылки на ( $email_to ) : " . $err;
+                    // Записываем $somecontent в наш открытый файл.
+                    if (fwrite($handle, $text) === false) {
+                        echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог файл.</i></span>";
+                        exit;
+                    }
+                    echo "<span style='color:red; text-align:center'><i>Ошибка при отправке сообщения : $err.</i></span>";
+                    fclose($handle);
+                } else {
+                    $text = date('Y-m-d h:i:s') . " : сообщение на ( $email_to ) успешно отправлено" . PHP_EOL;
+                    // Записываем $somecontent в наш открытый файл.
+                    if (fwrite($handle, $text) === false) {
+                        echo "<span style='color:red; text-align:center'><i>Не могу произвести запись в лог-файл.</i></span>";
+                        exit;
+                    }
+                    echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
+                    fclose($handle);
+                    if ($_GET['savetolog'] = 'yes') {
+                        doczayv_saveToCommentLog(! empty($_GET['uniqueID']) ? $_GET['uniqueID'] : null, "EMAIL", $comment, null);
+                    }
+                }
+            } else {
+                echo "<span style='color:red; text-align:center'><i>Лог-файл недоступен для записи.</i></span>";
+            }
+            #
+            # :::
+            // Clear all addresses and attachments for next loop
+            $mail3->ClearAddresses();
+        }
+        unset($_POST['sendMsg']);
+        #
+        #
+    }
 ?>
 

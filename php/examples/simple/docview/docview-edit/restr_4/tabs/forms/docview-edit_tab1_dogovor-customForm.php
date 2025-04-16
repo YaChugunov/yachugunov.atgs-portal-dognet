@@ -1,7 +1,7 @@
 <?php
-// ----- ----- ----- ----- -----
-// Форма редактирования договора
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма редактирования договора
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_5/tabs/css/docview-edit-tab1_dogovor-customForm.css">
@@ -124,6 +124,9 @@
                         </fieldset>
                         <fieldset class="field15">
                             <editor-field name="docDateEnd"></editor-field>
+                        </fieldset>
+                        <fieldset class="field20">
+                            <editor-field name="dognet_docbase.warranty_period"></editor-field>
                         </fieldset>
                         <fieldset class="field100">
                             <editor-field name="dognet_docbase.docnameshot"></editor-field>

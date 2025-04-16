@@ -57,44 +57,6 @@ function ajaxRequest_getLastZayvNumber(data, responseHandler) {
 }
 
 // --- - --- - --- - --- - --- - --- - --- - --- - --- - ---
-var reqField_getFullMsg = {
-    getFullMsg: function(response) {}
-};
-
-function ajaxRequest_getFullMsg(zayvKOD, responseHandler) {
-    var response = false;
-
-    // Fire off the request to /form.php
-    request = $.ajax({
-        url: "php/examples/simple/zayvview/zayvview-current/restr_3/php/req_getComments(zayvview).php",
-        type: "post",
-        cache: false,
-        data: {
-            kodzayv: zayvKOD
-        },
-        success: reqField_getFullMsg[responseHandler]
-    });
-    // Callback handler that will be called on success
-    request.done(function(response, textStatus, jqXHR) {
-        res = response.replace(new RegExp("\\r?\\n", "g"), "");
-        console.log("zayvKOD: " + zayvKOD);
-        $("#zayvComments-text").html(response);
-        $("#zayvComments-modal").modal("show");
-    });
-    // Callback handler that will be called on failure
-    request.fail(function(jqXHR, textStatus, errorThrown) {
-        console.error(
-            "The following error occurred: " +
-            textStatus, errorThrown
-        );
-    });
-    // Callback handler that will be called regardless
-    // if the request failed or succeeded
-    request.always(function() {
-
-    });
-}
-// --- - --- - --- - --- - --- - --- - --- - --- - --- - ---
 var table_zayv_main;
 var editor_zayv_main;
 var table_zayv_child_dop;
@@ -329,17 +291,14 @@ $(document).ready(function() {
     // ----- ----- -----
     // Управление размером диалогового окна редактирования заявки
     editor_zayv_main.on('open', function() {
-        $(".modal-dialog").css({
-            "width": "60%",
-            "min-width": "800px",
-            "max-width": "1024px"
-        });
+        $(editor_zayv_main.displayNode()).find('.modal-dialog').removeClass('comments-modal');
+        $(editor_zayv_main.displayNode()).find('.modal-dialog').addClass('main-modal');
     });
     editor_zayv_main.off('close', function() {
         $(".modal-dialog").css({
-            "width": "80%",
-            "min-width": "none",
-            "max-width": "none"
+            // "width": "60%",
+            // "min-width": "800px",
+            // "max-width": "800px"
         });
     });
     // ----- ----- -----
@@ -462,6 +421,13 @@ $(document).ready(function() {
 
         console.log('Событие close произошло!' + '(' + form_in_create_mode + ', ' + form_in_edit_mode +
             ')');
+
+        $("#editorform-logComments").closest(".modal-dialog").css({
+//            "width": "800px",
+//            "min-width": "800px",
+//            "max-width": "800px"
+        });
+
     });
     //
     editor_zayv_main.on('initCreate', function(e) {
@@ -515,7 +481,7 @@ $(document).ready(function() {
             } else {
                 $('td', row).eq(6).addClass('highlight_td');
             }
-            // 
+            //
             if (data.dognet_doczayv.tipusezayv == "2") {
                 $('td', row).eq(1).addClass('zayvtip_2');
             } else {
@@ -638,12 +604,14 @@ $(document).ready(function() {
                 orderable: false,
                 searchable: true,
                 render: function(data, type, row, meta) {
-                    if (row.dognet_doczayv.zayvchetcom != "") {
-                        return data +
-                            '<a class="comments-click" href="#" title="Комментарии к заявке"><span class="glyphicon glyphicon-comment" style="float:right"></span></a>';
+                    if (row.dognet_doczayv.cntComments != null && row.dognet_doczayv.cntComments != 0) {
+                        comm = '<span id="link-logComments" data-toggle="modal" data-type="logComments" data-id="' + row.dognet_doczayv.kodzayv +
+                            '" data-target="#modal-logComments" style="float:right"><span data-toggle="tooltip" title="В заявке и в чате по документу нет ни сообщений ни комментариев, открыть чат по документу" class=""><span class="glyphicon glyphicon-comment"></span></span></span>';
                     } else {
-                        return data;
+                        comm = '<span id="link-logComments" data-toggle="modal" data-type="logComments" data-id="' + row.dognet_doczayv.kodzayv +
+                            '" data-target="#modal-logComments" style="float:right; color: #E9E9E9 !important"><span data-toggle="tooltip" title="В заявке и в чате по документу нет ни сообщений ни комментариев, открыть чат по документу" class=""><span class="glyphicon glyphicon-comment"></span></span></span>';
                     }
+                    return data + comm;
                 },
                 targets: 5
             },
@@ -816,7 +784,7 @@ $(document).ready(function() {
             } else {
                 d.doczayv_tipuse = "";
             }
-            rowData.child(<?php include('templates/zayvview-zayv-details.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/zayvview-zayv-details.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -910,16 +878,16 @@ $(document).ready(function() {
     // Управление размером диалогового окна редактирования счета
     editor_zayv_child_dop.on('open', function() {
         $(".modal-dialog").css({
-            "width": "60%",
+            "width": "1024px",
             "min-width": "800px",
             "max-width": "1024px"
         });
     });
     editor_zayv_child_dop.off('close', function() {
         $(".modal-dialog").css({
-            "width": "80%",
-            "min-width": "none",
-            "max-width": "none"
+            "width": "1024px",
+            "min-width": "800px",
+            "max-width": "1024px"
         });
     });
     // ----- ----- -----
@@ -1073,7 +1041,7 @@ $(document).ready(function() {
             tr.addClass('details');
             rowData = table_zayv_child_dop.row(row);
             d = row.data();
-            rowData.child(<?php include('templates/zayvview-dop-details.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/zayvview-dop-details.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -1172,16 +1140,16 @@ $(document).ready(function() {
     // Управление размером диалогового окна редактирования доп спецификаций
     editor_zayv_child_files.on('open', function() {
         $(".modal-dialog").css({
-            "width": "60%",
+            "width": "1024px",
             "min-width": "800px",
             "max-width": "1024px"
         });
     });
     editor_zayv_child_files.off('close', function() {
         $(".modal-dialog").css({
-            "width": "80%",
-            "min-width": "none",
-            "max-width": "none"
+            "width": "1024px",
+            "min-width": "800px",
+            "max-width": "1024px"
         });
     });
     // ----- ----- -----
@@ -1362,7 +1330,7 @@ $(document).ready(function() {
             tr.addClass('details');
             rowData = table_zayv_child_files.row(row);
             d = row.data();
-            rowData.child(<?php include('templates/zayvview-dopspec-details.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/zayvview-dopspec-details.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -1609,16 +1577,16 @@ $(document).ready(function() {
     // Управление размером диалогового окна редактирования счета
     editor_zayv_child_chet.on('open', function() {
         $(".modal-dialog").css({
-            "width": "50%",
+            "width": "1024px",
             "min-width": "640px",
             "max-width": "800px"
         });
     });
     editor_zayv_child_chet.off('close', function() {
         $(".modal-dialog").css({
-            "width": "80%",
-            "min-width": "none",
-            "max-width": "none"
+            "width": "1024px",
+            "min-width": "640px",
+            "max-width": "800px"
         });
     });
     // ----- ----- -----
@@ -1910,7 +1878,7 @@ $(document).ready(function() {
             tr.addClass('details');
             rowData = table_zayv_child_chet.row(row);
             d = row.data();
-            rowData.child(<?php include('templates/zayvview-chet-details.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/zayvview-chet-details.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -2057,16 +2025,16 @@ $(document).ready(function() {
     // Управление размером диалогового окна редактирования счета-фактуры
     editor_chet_child_chetf.on('open', function() {
         $(".modal-dialog").css({
-            "width": "50%",
+            "width": "1024px",
             "min-width": "640px",
             "max-width": "800px"
         });
     });
     editor_chet_child_chetf.off('close', function() {
         $(".modal-dialog").css({
-            "width": "80%",
-            "min-width": "none",
-            "max-width": "none"
+            "width": "1024px",
+            "min-width": "640px",
+            "max-width": "800px"
         });
     });
     // ----- ----- -----
@@ -2280,7 +2248,7 @@ $(document).ready(function() {
             tr.addClass('details');
             rowData = table_chet_child_chetf.row(row);
             d = row.data();
-            rowData.child(<?php include('templates/zayvview-chetf-details.tpl'); ?>).show();
+            rowData.child(<?php include 'templates/zayvview-chetf-details.tpl'; ?>).show();
 
             // Add to the 'open' array
             if (idx === -1) {
@@ -2534,13 +2502,337 @@ $(document).ready(function() {
     });
 
 
+
+//
+// ----- -- ----- -- ----- -- ----- -- ----- -- ----- -- ----- -- ----- -- ----- -- ----- --
+//
+var reqField_countDocComments = {
+    countDocComments: function(response) {}
+};
+
+function ajaxRequest_countDocComments(kodzayv, responseHandler) {
+    // Fire off the request_addItem to /form.php
+    request_countDocComments = $.ajax({
+        type: "post",
+        url: 'php/examples/simple/zayvview/zayvview-current/restr_3/process/ajaxrequests/ajaxReq-doczayv-countDocComments.php',
+        cache: false,
+        data: {
+            kodzayv: kodzayv
+        },
+        success: reqField_countDocComments[responseHandler]
+    });
+    // Callback handler that will be called on success
+    request_countDocComments.done(function(response, textStatus, jqXHR) {
+        res_reqField_countDocComments = '';
+        if (response != "-1" && response != "-2" && response != "-3") {
+            res_reqField_countDocComments = response.replace(new RegExp("\\r?\\n", "g"), "");
+        }
+        console.log('DocComments has counted!', res_reqField_countDocComments)
+    });
+    // Callback handler that will be called on failure
+    request_countDocComments.fail(function(jqXHR, textStatus, errorThrown) {
+        console.error(
+            "The following error occurred: " +
+            textStatus, errorThrown
+        );
+    });
+    // Callback handler that will be called regardless
+    // if the request_addItem failed or succeeded
+    request_countDocComments.always(function() {});
+}
+
+
+
+    $(document).on("click", "span#link-logComments", function() {
+        var kodzayv = $(this).attr('data-id');
+        console.log('#div.link modal-logComments clicked', kodzayv);
+        //
+        //
+        $('#modal-logComments > div.modal-dialog').on('shown.bs.modal', function(e) {
+            console.log('#modal-logComments > div.modal-dialog shown!');
+            $("#modal-logComments > div.modal-dialog").css({
+                // "width": "60%",
+                // "min-width": "800px",
+                // "max-width": "1024px"
+            });
+            $("#editorform-logComments").closest(".modal-dialog").css({
+                // "width": "800px",
+                // "min-width": "800px",
+                // "max-width": "800px"
+            });
+            //
+            $.fn.dataTable.tables({
+                visible: true,
+                api: true
+            });
+            //
+        });
+        editor_logComments = new $.fn.dataTable.Editor({
+            display: "bootstrap",
+            ajax: {
+                url: "php/examples/simple/zayvview/zayvview-current/restr_3/process/dognet-doczayv-process-showLogComments.php",
+                type: "POST",
+                data: {
+                    kodzayv: kodzayv
+                }
+            },
+            i18n: {
+                create: {
+                    title: 'Новый комментарий'
+                },
+                edit: {
+                    title: 'Изменить комментарий'
+                },
+                remove: {
+                    button: "Удалить",
+                    title: 'Удалить комментарий',
+                    submit: "Удалить",
+                    confirm: {
+                        _: "Вы действительно хотите удалить %d записей?",
+                        1: "Вы действительно хотите удалить эту запись?"
+                    }
+                },
+                error: {
+                    system: "Ошибка в работе сервиса! Свяжитесь с администратором."
+                },
+                multi: {
+                    title: "Несколько значений",
+                    info: "",
+                    restore: "Отменить изменения"
+                },
+                datetime: {
+                    previous: '<',
+                    next: '>',
+                    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
+                        'Июль',
+                        'Август',
+                        'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'
+                    ],
+                    weekdays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+                }
+            },
+            template: '#editorform-logComments',
+            table: "#table-logComments",
+            // destroy: true,
+            fields: [{
+                label: "Текст комментария",
+                type: "textarea",
+                name: "dognet_doczayv_logComments.commentText",
+                attr: {
+                    placeholder: 'Комментарий к заявке'
+                },
+                className: "block"
+            }, {
+                label: "",
+                type: "hidden",
+                name: "dognet_doczayv_logComments.kodzayv"
+            }]
+        });
+        table_logComments = $('#table-logComments').dataTable({
+                dom: "<'row'<'col-sm-5'B><'col-sm-4'><'col-sm-3'>>" +
+                    "<'row'<'col-sm-12't>>" + "<'row'<'col-sm-12'p>>",
+                language: {
+                    url: "php/examples/simple/zayvview/zayvview-current/dt_russian-zayv-logcomments.json"
+                },
+                ajax: {
+                    url: "php/examples/simple/zayvview/zayvview-current/restr_3/process/dognet-doczayv-process-showLogComments.php",
+                    type: "POST",
+                    data: {
+                        kodzayv: kodzayv
+                    }
+                },
+                serverSide: true,
+                columns: [{
+                    data: "dognet_doczayv_logComments.username"
+                }, {
+                    data: "dognet_doczayv_logComments.commentText"
+                }, {
+                    data: "dognet_doczayv_logComments.timestamp"
+                }],
+                columnDefs: [{
+                        orderable: false,
+                        searchable: true,
+                        width: '25%',
+                        targets: 0,
+                        render: function(data, type, row, meta) {
+                            var controls =
+                                '<div class="commentControls"><a href="" class="commentControls-edit">Изменить</a> / <a href="" class="commentControls-remove">Удалить</a></div>';
+                            if (data != "" && data != null) {
+                                return '<div class="commentUser">' + data +
+                                    '</div>' +
+                                    controls;
+                            } else {
+                                return '---';
+                            }
+                        }
+                    },
+                    {
+                        orderable: false,
+                        searchable: true,
+                        width: 'auto',
+                        targets: 1,
+                        render: function(data, type, row, meta) {
+                            if (data != "" && data != null) {
+                                var update_timestamp = row
+                                    .dognet_doczayv_logComments
+                                    .update_timestamp;
+                                var update_username = row
+                                    .dognet_doczayv_logComments
+                                    .update_username;
+                                var updateStr = (update_timestamp != null &&
+                                        update_timestamp != "") ?
+                                    '<br>Изменено: ' +
+                                    update_timestamp + ', ' + update_username : '';
+                                if (row.dognet_doczayv_logComments.action == "FORM" && row.dognet_doczayv_logComments.commentAdd !== '' && row.dognet_doczayv_logComments.commentAdd !== null) {
+                                    commAdd = '<div class="commentAdd text-info">' + row.dognet_doczayv_logComments.commentAdd + '</div>';
+                                } else if (row.dognet_doczayv_logComments.action == "EMAIL" && row.dognet_doczayv_logComments.commentAdd !== '' && row.dognet_doczayv_logComments.commentAdd !== null) {
+                                    commAdd = '<div class="commentAdd text-warning">' + row.dognet_doczayv_logComments.commentAdd + '</div>';
+                                } else {
+                                    var commAdd = '';
+                                }
+                                return '<div class="commentBlock shadow px-3 py-2"><div class="commentText">' +
+                                    data +
+                                    '</div><div class="commentDate">Создано: ' + row
+                                    .dognet_doczayv_logComments
+                                    .timestamp +
+                                    updateStr + commAdd + '</div></div>';
+                            } else {
+                                return '';
+                            }
+                        }
+                    },
+                    {
+                        orderable: true,
+                        visible: false,
+                        targets: 2
+                    }
+                ],
+                order: [
+                    [2, 'desc']
+                ],
+                select: false,
+                processing: false,
+                destroy: true,
+                paging: true,
+                pagingType: "numbers",
+                searching: true,
+                pageLength: 5,
+                lengthChange: false,
+                lengthMenu: [
+                    [30, 50, 100, -1],
+                    [30, 50, 100, "Все"]
+                ],
+                buttons: [{
+                    extend: "create",
+                    editor: editor_logComments,
+                    text: 'Новый комментарий',
+                    formButtons: ['Сохранить',
+                        {
+                            text: 'Отмена',
+                            action: function() {
+                                this.close();
+                            },
+                            className: 'btn-primary'
+                        }
+                    ],
+                    className: 'btn-primary'
+                }]
+            });
+        //
+        editor_logComments
+            .on('open', function(e, mode, action) {
+                this.field('dognet_doczayv_logComments.kodzayv').val(
+                    kodzayv);
+            });
+        editor_logComments
+            .on('close', function(e, mode, action) {});
+        editor_logComments
+            .on('submitSuccess', function(e, json, data, action) {
+                console.log('submitSuccess');
+                ajaxRequest_countDocComments(kodzayv, 'countDocComments');
+            });
+
+        // Edit record
+        $('#table-logComments').on('click', 'a.commentControls-edit', function(e) {
+            console.log('logComments_wrapper >> edit button is clicked');
+            $("#editorform-logComments").closest(".modal-dialog").css({
+                // "width": "800px",
+                // "min-width": "800px",
+                // "max-width": "800px"
+            });
+            e.preventDefault();
+            editor_logComments
+                .title('Изменить комментарий')
+                .buttons({
+                    "label": "Сохранить",
+                    "fn": function() {
+                        editor_logComments.submit()
+                    },
+                    className: 'btn-primary'
+                })
+                .edit($(this).closest('tr'));
+        });
+
+        // Delete a record
+        $('#table-logComments').on('click', 'a.commentControls-remove', function(e) {
+            $("#editorform-logComments").closest(".modal-dialog").css({
+                // "width": "800px",
+                // "min-width": "800px",
+                // "max-width": "800px"
+            });
+            e.preventDefault();
+
+            editor_logComments
+                .title('Удалить комментарий')
+                .message("Вы уверены, что хотите удалить эту запись?")
+                .buttons({
+                    "label": "Удалить",
+                    "fn": function() {
+                        editor_logComments.submit()
+                    },
+                    className: 'btn-danger'
+                })
+                .remove($(this).closest('tr'));
+        });
+
+    });
+
+    // Create record #table-logComments_wrapper > div:nth-child(1) > div.col-sm-5 > div > button
+    $('button.btn.btn-default.buttons-create.btn-primary').click(function() {
+        console.log('logComments_wrapper >> create button is clicked');
+        // $(".modal-dialog").css({
+        //     "width": "800px",
+        //     "min-width": "800px",
+        //     "max-width": "800px"
+        // });
+    });
+    $('#modal-logComments').on('shown.bs.modal', function(e) {
+        $(editor_logComments.displayNode()).find('.modal-dialog').removeClass('main-modal');
+        $(editor_logComments.displayNode()).find('.modal-dialog').addClass('comments-modal');
+    });
+    $('#modal-logComments').on('hidden.bs.modal', function(e) {
+        table_zayv_main.ajax.reload(null, false);
+        console.log('#modal-logComments hidden!');
+        editor_logComments.destroy();
+        $("#editorform-logComments").closest(".modal-dialog").css({
+//            "width": "800px",
+//            "min-width": "800px",
+//            "max-width": "800px"
+        });
+    });
+
+
+
+
+
+
 });
 </script>
 
 <?php
-// ----- ----- ----- ----- -----
-// Форма редактирования заявки
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма редактирования заявки
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-main-customform.css">
@@ -2711,9 +3003,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования позиций спецификации (список)
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования позиций спецификации (список)
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-dop-customform.css">
@@ -2755,9 +3047,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования позиций спецификации (файл)
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования позиций спецификации (файл)
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-files-customform.css">
@@ -2788,9 +3080,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования счета
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования счета
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-child-chet-customform.css">
@@ -2875,9 +3167,9 @@ $(document).ready(function() {
 
 </div>
 <?php
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-// Форма редактирования счета-фактуры
-// :::
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    // Форма редактирования счета-фактуры
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-chet-child-chetf-customform.css">
@@ -2963,9 +3255,9 @@ $(document).ready(function() {
 
 </div>
 <?php
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
 ?>
 <div id="tab-1" class="tab-pane fade in active">
     <div class="space30"></div>
@@ -2986,14 +3278,14 @@ $(document).ready(function() {
                             <select name="zayvYearSearch_text" id="zayvYearSearch_text" class="form-control">
                                 <option value="">Все года</option>
                                 <?php
-								$_QRY = mysqlQuery("SELECT MIN(datezayv) as minzayvdate, MAX(datezayv) as maxzayvdate FROM dognet_doczayv WHERE koddel<>'99'");
-								$_ROW = mysqli_fetch_assoc($_QRY);
-								for ($y = date("Y"); $y >= 2005; $y--) {
-								?>
+                                    $_QRY = mysqlQuery("SELECT MIN(datezayv) as minzayvdate, MAX(datezayv) as maxzayvdate FROM dognet_doczayv WHERE koddel<>'99'");
+                                    $_ROW = mysqli_fetch_assoc($_QRY);
+                                    for ($y = date("Y"); $y >= 2005; $y--) {
+                                    ?>
                                 <option value='<?php echo $y; ?>'><?php echo $y; ?></option>
                                 <?php
-								}
-								?>
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -3010,14 +3302,14 @@ $(document).ready(function() {
                             <select name="zayvTipSearch_text" id="zayvTipSearch_text" class="form-control">
                                 <option value="">Все типы</option>
                                 <?php
-								$_QRY3 = mysqlQuery("SELECT kodtipzayvall, nametipzayvshotall FROM dognet_sptipzayvall WHERE nametipzayvshotall<>'' AND koddel<>'99' ORDER BY nametipzayvshotall ASC");
-								while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
-								?>
+                                    $_QRY3 = mysqlQuery("SELECT kodtipzayvall, nametipzayvshotall FROM dognet_sptipzayvall WHERE nametipzayvshotall<>'' AND koddel<>'99' ORDER BY nametipzayvshotall ASC");
+                                    while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
+                                    ?>
                                 <option value='<?php echo $_ROW3["nametipzayvshotall"]; ?>'>
                                     <?php echo $_ROW3["nametipzayvshotall"]; ?></option>
                                 <?php
-								}
-								?>
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -3034,14 +3326,14 @@ $(document).ready(function() {
                             <select name="zayvTelSearch_text" id="zayvTelSearch_text" class="form-control">
                                 <option value="">Все заявители</option>
                                 <?php
-								$_QRY3 = mysqlQuery(" SELECT kodzayvtel, namezayvtel, namezayvtelshot FROM dognet_spzayvtel WHERE namezayvtelshot<>'' AND koddel<>'99' AND kodzayvtel<>'0000000000000000'");
-								while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
-								?>
+                                    $_QRY3 = mysqlQuery(" SELECT kodzayvtel, namezayvtel, namezayvtelshot FROM dognet_spzayvtel WHERE namezayvtelshot<>'' AND koddel<>'99' AND kodzayvtel<>'0000000000000000'");
+                                    while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
+                                    ?>
                                 <option value='<?php echo $_ROW3["kodzayvtel"]; ?>'>
                                     <?php echo $_ROW3["namezayvtelshot"]; ?></option>
                                 <?php
-								}
-								?>
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -3055,8 +3347,8 @@ $(document).ready(function() {
                             </select>
                         </div>
                     </div>
-                    <?php // ----- ----- ----- ----- ----- 
-					?>
+                    <?php // ----- ----- ----- ----- -----
+                    ?>
                     <div class="col-xs-12 col-sm-3 col-md-6 col-lg-4">
                         <div class="input-group space10" style="width:100%">
                             <label for="zayvNameSearch_text"><b>Текст из описания заявки :</b></label>
@@ -3095,15 +3387,19 @@ $(document).ready(function() {
                                    class="glyphicon glyphicon-remove"></i></button>
                         </div>
                     </div>
-                    <?php // ----- ----- ----- ----- ----- 
-					?>
+                    <?php // ----- ----- ----- ----- -----
+                    ?>
                 </div>
 
             </div>
         </div>
     </div>
-    <?php // ----- ----- ----- ----- ----- 
-	?>
+    <?php // ----- ----- ----- ----- -----
+    ?>
+
+
+
+
     <link rel="stylesheet"
           href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-main.css">
     <div class="demo-html"></div>
@@ -3210,7 +3506,7 @@ $(document).ready(function() {
 
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-2" class="tab-pane fade">
@@ -3243,7 +3539,7 @@ $(document).ready(function() {
         параметрах заявки выбрать "Спецификация в виде списка".</div>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-3" class="tab-pane fade">
@@ -3276,7 +3572,7 @@ $(document).ready(function() {
         была ли основная спецификация выбрана в виде файла или списка.</div>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-4" class="tab-pane fade">
@@ -3305,8 +3601,8 @@ $(document).ready(function() {
             </tr>
         </thead>
     </table>
-    <?php // ----- ----- ----- ----- ----- 
-	?>
+    <?php // ----- ----- ----- ----- -----
+    ?>
     <link rel="stylesheet"
           href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-chet-child-chetf.css">
     <div class="space30"></div>
@@ -3333,7 +3629,7 @@ $(document).ready(function() {
     </table>
 </div>
 
-<?php // ----- ----- ----- ----- ----- 
+<?php // ----- ----- ----- ----- -----
 ?>
 
 <div id="tab-5" class="tab-pane fade">
@@ -3359,20 +3655,49 @@ $(document).ready(function() {
     </table>
 </div>
 
-<!-- Modal -->
-<div id="zayvComments-modal" class="modal fade" role="dialog">
-    <div class="modal-dialog" style="width:60%; min-width:640px; max-width:800px">
+<?php
+    ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+    ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+    # МОДАЛЬНОЕ ОКНО
+    # Комментарии по документу + форма редактирования
+?>
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/zayvview/zayvview-current/restr_3/css/zayvview-zayv-modal-logComments.css">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header" style="padding:5px 15px; border-bottom:none">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 id="" class="modal-title">Комментарии к заявке</h4>
+<div class="modal fade" data-backdrop="true" id="modal-logComments" tabindex="-1" role="dialog" aria-labelledby="modal-logComments-label">
+    <div class="modal-dialog modal-lg custom-modal" role="document">
+        <div class="modal-content shadow">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-logComments-label">Комментарии по заявке</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="modal-body">
-                <div id="zayvComments-text"></div>
+            <div class="modal-body" style="margin-top: 1em">
+                <div class="container-fluid">
+                    <table id="table-logComments" class="table table-borderless" cellspacing="0" width="100%">
+                        <thead class="thead-dark" style="display:none">
+                            <tr>
+                                <th>Время</th>
+                                <th>Пользователь</th>
+                                <th>Комментарий</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
+        </div> <!-- end of modal content -->
+    </div>
+</div> <!-- end of modal -->
+
+<div id="editorform-logComments" class="editorform simple">
+    <div class="section d-flex flex-column">
+        <div class="block w-100">
+            <fieldset class="field">
+                <editor-field name="dognet_doczayv_logComments.commentText"></editor-field>
+            </fieldset>
+            <fieldset class="field">
+                <editor-field name="dognet_doczayv_logComments.kodzayv"></editor-field>
+            </fieldset>
         </div>
-
     </div>
 </div>

@@ -1,102 +1,85 @@
 <?php
 
-date_default_timezone_set('Europe/Moscow');
+    date_default_timezone_set('Europe/Moscow');
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
 
-$__title = 'Договор';
-$__subtitle = "Экспорт отчетных данных";
-$__subsubtitle = "Экспорт отчетных данных";
+    $__title       = 'Договор';
+    $__subtitle    = "Работа с заявками";
+    $__subsubtitle = "Рассылка уведомлений на email";
 
 ?>
 
 <style>
-	#report-settings {  }
-	#report-settings h3 { color:#111; font-family:'Play', sans-serif; font-size:1.5em; font-weight:700; text-transform:uppercase }
-	#report-settings h4 { color:#999; font-family:'Oswald', sans-serif; font-size:1.3em; font-weight:300; text-transform:uppercase }
+div.report-settings { font-family: 'Stolzl Book', sans-serif; }
 	#export-format-block a > img { opacity:0.5; height:100px; width:100px; margin:0 2px }
 	#export-format-block { text-align:center }
 	#export-format-block a > img:hover { opacity:1.0; transition:0.5s	}
 	#export-format-block a > img:not(hover) { opacity:0.5; transition:0.5s	}
 
+	#export-format-block textarea {
+		resize: block;
+	}
+
+div.report-settings h3 {
+    color: #fff;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.7em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: none;
+    background-color: #337AB7;
+    padding: 20px 10px;
+}
+div.report-settings h4 {
+    font-size: 1.5em;
+    font-weight: 400;
+	color:#111;
+    text-transform: none;
+}
+
+#report-info {
+    font-family: "Stolzl Book", Arial, Helvetica Neue, Helvetica, sans-serif;
+    color: #111;
+    text-align: left;
+    font-size: 0.9em;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    line-height: 1.3em;
+    background-color: #fafafa;
+}
+
+#report-info * li {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+#export-format-block .btn-export {
+    font-family: "Stolzl Book", Arial, Helvetica Neue, Helvetica, sans-serif;
+    color: #FFFFFF;
+    background-color: #FF7707;
+    border: 1px solid #FF7707;
+}
+#export-format-block .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    background-image: none;
+    border-radius: 4px;
+}
+
+#export-format-block .btn:not(.disabled) .btn-export:hover {
+    box-shadow: 0 0 0 2px #FF7707 inset, 0 0 0 4px white inset;
+}
+
 	.format-not-selected { font-family:'Oswald', sans-serif; font-size:1.0em; font-weight:300; text-transform:uppercase }
 	.format-not-selected { color:#999 }
 
 
-label#select-format-doc, label#select-format-xls, label#select-format-pdf {
- width: 50px; /* Ширина рисунка */
- height: 50px; /* Высота рисунка */
- position: relative; /* Относительное позиционирование */
-}
-label#select-format-doc input[type="radio"], label#select-format-xls input[type="radio"], label#select-format-pdf input[type="radio"] { top:30px }
-label#select-format-doc input[type="radio"] + span {
- position: absolute; /* Абсолютное позиционирование */
- left:0px;
- width: 100%; height: 100%;
- background: url(<?php $_SERVER['HTTP_HOST']; ?>/dognet/_assets/images/export-to-doc-inactive.png) no-repeat; /* Фоновый рисунок */
- cursor: pointer; /* Курсор в виде руки */
- background-position: center center;
- background-size: cover;
-/*  border-radius:10px; */
-}
-label#select-format-doc input[type="radio"]:checked + span {
- position: absolute; /* Абсолютное позиционирование */
- left:0px;
- width: 100%; height: 100%;
- background: url(<?php $_SERVER['HTTP_HOST']; ?>/dognet/_assets/images/export-to-doc.png) no-repeat; /* Фоновый рисунок */
- cursor: pointer; /* Курсор в виде руки */
- background-position: center center;
- background-size: cover;
- border:5px #33333 solid;
-/*  border-radius:10px; */
-}
-
-
-label#select-format-xls input[type="radio"] + span {
- position: absolute; /* Абсолютное позиционирование */
- width: 100%; height: 100%;
- left:0px;
- background: url(<?php $_SERVER['HTTP_HOST']; ?>/dognet/_assets/images/export-to-xls-inactive.png) no-repeat; /* Фоновый рисунок */
- cursor: pointer; /* Курсор в виде руки */
- background-position: center center;
- background-size: cover;
-/*  border-radius:10px; */
-}
-label#select-format-xls input[type="radio"]:checked + span {
- position: absolute; /* Абсолютное позиционирование */
- left:0px;
- width: 100%; height: 100%;
- background: url(<?php $_SERVER['HTTP_HOST']; ?>/dognet/_assets/images/export-to-xls.png) no-repeat; /* Фоновый рисунок */
- cursor: pointer; /* Курсор в виде руки */
- background-position: center center;
- background-size: cover;
- border:5px #33333 solid;
-/*  border-radius:10px; */
-}
-
-label#select-format-pdf input[type="radio"] + span {
- position: absolute; /* Абсолютное позиционирование */
- left:0px;
- width: 100%; height: 100%;
- background: url(<?php $_SERVER['HTTP_HOST']; ?>/dognet/_assets/images/export-to-pdf-inactive.png) no-repeat; /* Фоновый рисунок */
- cursor: pointer; /* Курсор в виде руки */
- background-position: center center;
- background-size: cover;
-/*  border-radius:10px; */
-}
-label#select-format-pdf input[type="radio"]:checked + span {
- position: absolute; /* Абсолютное позиционирование */
- left:0px;
- width: 100%; height: 100%;
- background: url(<?php $_SERVER['HTTP_HOST']; ?>/dognet/_assets/images/export-to-pdf.png) no-repeat; /* Фоновый рисунок */
- cursor: pointer; /* Курсор в виде руки */
- background-position: center center;
- background-size: cover;
- border:5px #33333 solid;
-/*  border-radius:10px; */
-}
 #section-quicklink > div.media > div.media-body > div > h3 {
 	color:#666;
 	line-height: 1.3em;
@@ -107,18 +90,11 @@ label#select-format-pdf input[type="radio"]:checked + span {
 	letter-spacing: -0.05em;
 	text-transform:uppercase;
 }
-#section-quicklink > div.media > div.media-body > div > h4 {
-	color:#666;
-	line-height: 1.2em;
-	font-family:'Oswald', sans-serif;
+#section-quicklink h4 {
 	margin-bottom: 0.5em;
-	font-size: 1.0em;
-	font-weight: 300;
-	letter-spacing: -0.05em;
 }
 #section-quicklink > div.media > div.media-body > div > p {
 	color:#111;
-	font-family:'Oswald', sans-serif;
 	font-weight: 500;
 }
 #section-quicklink > div.media > div.media-body > div > p > span > a {
@@ -127,7 +103,6 @@ label#select-format-pdf input[type="radio"]:checked + span {
 #section-quicklink > div.media > div.media-body > div > p > span > a:hover {
 	text-decoration:none;
 }
-
 
 .block-text {
 	display: none;
@@ -145,20 +120,31 @@ label#select-format-pdf input[type="radio"]:checked + span {
 .msg-maintext { font-family:'Play', sans-serif }
 .display-none { display:none }
 .display-block { display:block }
+
+
+
+
 </style>
 
 
 <div class="container">
 	<div class="space50"></div>
 <?php
-if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
-?>
+    if (empty($_GET['done']) || ! isset($_GET['done']) || $_GET['done'] != "ok") {
+    ?>
 	<div class="row space20">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 space20">
-				<div id="report-settings" class="text-center">
+				<div id="report-settings" class="text-center space50 report-settings">
 					<h3 class="space10">Рассылка email-уведомлений</h3>
 					<h4 class="space10">Обновление информации по заявке</h4>
+				</div>
+				<div id="report-info" class="">
+					<p><b>Обновление #2025.04-01 (2025, апрель)</b></p>
+					<ul>
+						<li>По просьбе Сергея Скубаева добавлено поле комментария к рассылке по заявке.</li>
+						<li>Содержимое поля комментария будет содержаться в тексте письма рассылки, а также сохранится в базе данных в виде прикрепленного сообщения к заявке с автором и датой рассылки. Все комментарии, прикрепленные к заявке, можно будет также посмотреть из списка заявок, а также добавить новый. Это по сути аналог "чата" к записи в сервисе Почта.</li>
+					</ul>
 				</div>
 			</div>
 			<div class="col-xs-hidden col-sm-12 col-md-12 col-lg-12">
@@ -182,11 +168,13 @@ if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
 								<label for="msgTo"><b>Получатель сообщения :</b></label>
 							  <select class="form-control" id="msgTo" name="msgTo">
 										<option value="">---</option>
+										<option value="5">На snab@atgs.ru</option>
 										<option value="0">Тест (chugunov@atgs.ru)</option>
 										<option value="1">Только Заявитель</option>
 										<option value="2">Весь список Заявителей</option>
 										<option value="3">Выбрать получателя</option>
 										<option value="4">>> Список Скубаева #1</option>
+										<option value="6">>> Список Мартина</option>
 							  </select>
 							</div>
 							<div class="space10"></div>
@@ -195,18 +183,26 @@ if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
 								<select name="recipient" id="msgToZayvtel" class="form-control">
 									<option value="">---</option>
 									<?php
-										$_QRY3 = mysqlQuery( " SELECT kodzayvtel, namezayvtel, namezayvtelshot, email FROM dognet_spzayvtel WHERE namezayvtelshot<>'' AND koddel<>'99' AND kodzayvtel<>'0000000000000000' ORDER BY namezayvtelshot ASC" );
-										while($_ROW3 = mysqli_fetch_assoc($_QRY3)){
-										?>
-												<option value = '<?php echo $_ROW3["kodzayvtel"]; ?>'><?php echo $_ROW3["namezayvtelshot"]." / ".$_ROW3["email"]; ?></option>
+                                        $_QRY3 = mysqlQuery(" SELECT kodzayvtel, namezayvtel, namezayvtelshot, email FROM dognet_spzayvtel WHERE namezayvtelshot<>'' AND koddel<>'99' AND kodzayvtel<>'0000000000000000' ORDER BY namezayvtelshot ASC");
+                                            while ($_ROW3 = mysqli_fetch_assoc($_QRY3)) {
+                                            ?>
+												<option value = '<?php echo $_ROW3["kodzayvtel"]; ?>'><?php echo $_ROW3["namezayvtelshot"] . " / " . $_ROW3["email"]; ?></option>
 									<?php
-										}
-										?>
+                                        }
+                                        ?>
 								</select>
 							</div>
 							<div class="space10"></div>
+							<div id="zayvtel-comment" class="form-group text-left" style="width:100%; text-align:left">
+								<label for="msgToComment"><b>Комментарий к рассылке :</b></label>
+								<textarea name="comment" id="msgToComment" class="form-control" rows="5"></textarea>
+							</div>
+							<div id="zayvtel-savetolog" class="form-group checkbox text-left">
+								<label><input id="saveToLog" type="checkbox" name="savetolog" value="yes"><b>Сохранить комментарий в чате по заявке</b></label>
+							</div>
+							<div class="space30"></div>
 							<div class="">
-								<button id="btn_msgPreview" class="btn btn-default" type="submit" name="done" value="ok">Предварительный просмотр</button>
+								<button id="btn_msgPreview" class="btn btn-export" type="submit" name="done" value="ok">Предварительный просмотр</button>
 							</div>
 						</div>
 					</form>
@@ -215,36 +211,41 @@ if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
 		</div>
 	</div>
 <?php
-}
+    }
 ?>
 	<div class="row space50">
 		<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 			<div class="text-center">
 <?php
-				if (isset($_GET['msgTo'])) {
-					switch ($_GET['msgTo']) {
-						case "0":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-Chugunov.php");
-							break;
-						case "1":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-ZayvTel.php");
-							break;
-						case "2":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-groupZayvTel.php");
-							break;
-						case "3":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-selectedZayvTel.php");
-							break;
-						case "4":
-							include($_SERVER['DOCUMENT_ROOT']."/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-groupSKUBAEV1.php");
-							break;
-						default:
-							echo "<div class='format-not-selected'></div>";
-					}
-				}
-				else {
-				 echo "<div class='format-not-selected'></div>";
-				}
+    if (isset($_GET['msgTo'])) {
+        switch ($_GET['msgTo']) {
+            case "0":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-Chugunov.php";
+                break;
+            case "1":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-ZayvTel.php";
+                break;
+            case "2":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-groupZayvTel.php";
+                break;
+            case "3":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-selectedZayvTel.php";
+                break;
+            case "4":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-groupSKUBAEV1.php";
+                break;
+            case "5":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-snab.php";
+                break;
+            case "6":
+                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/zayvview/zayvview-current/restr_5/mailing/directMsg/mailing_directMsg-to-groupMARTIN.php";
+                break;
+            default:
+                echo "<div class='format-not-selected'></div>";
+        }
+    } else {
+        echo "<div class='format-not-selected'></div>";
+    }
 ?>
 			</div>
 		</div>
@@ -252,8 +253,8 @@ if (empty($_GET['done']) || !isset($_GET['done']) || $_GET['done']!="ok") {
 
 
 	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
-			<div id="section-quicklink">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+			<div id="section-quicklink" class="report-settings">
 				<div class="media">
 					<div class="media-body text-center">
 						<div style="background-color:#fafafa; padding:10px">
