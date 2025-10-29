@@ -1,7 +1,7 @@
 {
     "[php]": {
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "kokororin.vscode-phpfmt"
+        "editor.defaultFormatter": "lkrms.pretty-php"
     },
     "editor.fontFamily": "Fira Code Light",
     "editor.fontLigatures": "'calt', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",

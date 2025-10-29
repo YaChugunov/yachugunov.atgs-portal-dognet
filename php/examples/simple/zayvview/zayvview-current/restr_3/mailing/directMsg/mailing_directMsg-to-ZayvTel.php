@@ -792,7 +792,7 @@
                 }
                 echo "<span style='color:green; text-align:center'><i>Сообщение успешно отправлено. Запись в лог-файл произведена.</i></span>";
                 fclose($handle);
-                if ($_GET['savetolog'] = 'yes') {
+                if ($_GET['savetolog'] == 'yes' && ! empty($comment)) {
                     doczayv_saveToCommentLog(! empty($_GET['uniqueID']) ? $_GET['uniqueID'] : null, "EMAIL", $comment, null);
                 }
             }

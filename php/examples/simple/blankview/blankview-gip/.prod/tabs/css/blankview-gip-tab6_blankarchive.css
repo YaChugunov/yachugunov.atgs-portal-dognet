@@ -1,0 +1,366 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+Таблица этапов: #blankview-gip-blankarchive-table
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/*
+/* Общее для таблицы */
+#blankview-gip-blankarchive-table {  }
+#blankview-gip-blankarchive-table .details-control-docblank:hover, #blankview-gip-blankarchive-table .details-control-blankarchive:hover { cursor:pointer }
+#blankview-gip-blankarchive-table > tbody > tr.selected {  }
+/*
+/*
+/* Заголовок таблицы */
+#blankview-gip-blankarchive-table > thead { background-color:#333333; color:#fafafa; font-family:'Oswald', sans-serif }
+#blankview-gip-blankarchive-table > thead > tr > th { font-weight:400; font-size:1.0em; text-transform:uppercase }
+#blankview-gip-blankarchive-table .sorting:after, #blankview-gip-blankarchive-table .sorting_asc:after, #blankview-gip-blankarchive-table .sorting_desc:after { display:none }
+#blankview-gip-blankarchive-table > thead > tr > th.sorting_asc { padding-right:5px }
+#blankview-gip-blankarchive-table > thead > tr > th.sorting_desc { padding-right:5px }
+
+#blankview-gip-blankarchive-table > thead > tr > th { padding:8px 5px; font-size:0.9em; font-family:'Oswald', sans-serif; font-weight:500; text-transform:uppercase; border-bottom:none }
+/*
+/*
+/* Тело таблицы */
+#blankview-gip-blankarchive-table {  }
+#blankview-gip-blankarchive-table > tbody {  }
+#blankview-gip-blankarchive-table > tbody > tr > td { font-size:0.9em; line-height:1.42857143; vertical-align:middle }
+#blankview-gip-blankarchive-table > tbody > tr > td:last-child { text-align:right }
+
+#blankview-gip-blankarchive-table > tbody > tr > td { font-family: 'Play', sans-serif; padding:2px 5px; line-height:1.42857143; vertical-align: middle }
+#blankview-gip-blankarchive-table > tbody > tr:first-child > td { border-top:none }
+
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+	#blankview-gip-blankarchive-table > thead > tr > th:first-child, #blankview-gip-blankarchive-table > tbody > tr > td:first-child { width:1%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(2), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(2) { width:3%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(3), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(3) { width:4%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(4), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(4) { width:3%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(5), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(5) { width:39%; text-align:left }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(6), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(6) { width:22%; text-align:left }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(7), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(7) { width:6%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(8), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(8) { width:7%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(9), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(9) { width:7%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(10), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(10) { width:7%; text-align:center }
+	#blankview-gip-blankarchive-table > thead > tr > th:nth-child(11), #blankview-gip-blankarchive-table > tbody > tr > td:nth-child(11) { width:1%; text-align:center }
+	#blankview-gip-blankarchive-table .details-control:hover { cursor:pointer }
+/*
+/*
+/* Подвал таблицы */
+#blankview-gip-blankarchive-table > tfoot > tr > td { padding:5px 4px }
+#blankview-gip-blankarchive-table > tfoot > tr > td:last-child { text-align:right }
+#blankview-gip-blankarchive-table > tfoot { background-color:#999 }
+/*
+/*
+/* Разное */
+	#blankview-gip-blankarchive-table .sorting_asc:after { display:none }
+	#blankview-gip-blankarchive-table > thead > tr > th.sorting_asc { padding-right:8px }
+	#blankview-gip-blankarchive-table > tbody > tr > td > a.docview-details-link { color:#000; font-weight:700; text-decoration:underline }
+	#blankview-gip-blankarchive-table > tbody > tr > td > a.docview-details-link:hover { text-decoration:none }
+/**/
+/* ----- ----- ----- ----- ----- */
+/**/
+	#row-details { padding:0 35px }
+	#row-details-subpodr { font-family:'Oswald', sans-serif; font-size:1.0em; color:#333 }
+	#row-details-subpodr > tbody >tr > td { text-align:left }
+
+	#row-details-subpodr .title-column { font-family:'Oswald', sans-serif; font-weight:400 }
+	#row-details-subpodr .data-column { font-family: Courier, Courier new, Serif; font-weight:300 }
+
+	#blankview-gip-blankarchive-table > tfoot > tr > td { padding:5px 4px }
+	#blankview-gip-blankarchive-table > tfoot {
+		background-color:#999;
+	}
+
+	#blankarchive-gip-filters { padding:15px 0; background-color:#f1f1f1 }
+	#columnSearchArchive_btnApply .focus, #columnSearchArchive_btnApply .active:focus, #columnSearchArchive_btnApply:active.focus, #columnSearchArchive_btnApply:active:focus, #columnSearchArchive_btnApply:focus { outline:none; border-color:#ccc }
+	#columnSearchArchive_btnClear .focus, #columnSearchArchive_btnClear .active:focus, #columnSearchArchive_btnClear:active.focus, #columnSearchArchive_btnClear:active:focus, #columnSearchArchive_btnClear:focus { outline:none; border-color:#ccc }
+
+	#column1_search_docwork, #column2_search_docwork, #column3_search_docwork, #column4_search_docwork {
+		width: 100%;
+		padding: 5px 5px;
+		font-weight: 400;
+		font-size: 0.9em;
+		color: #333;
+		max-height:31px;
+	}
+	#column1_search_docwork { text-align:center }
+	#column2_search_docwork { text-align:center }
+	#column3_search_docwork { text-align:left }
+	#column4_search_docwork { text-align:left }
+
+	#filters_clear_docwork, #filters_apply_docwork { min-width:50px; max-width:50px; padding:6px; font-weight:400; font-size:0.9em }
+
+#blankarchive-gip-search-filters-block .panel-title { font-family: 'HeliosCond', sans-serif; font-size: 1.5em; font-weight: 500; padding-top: 5px; text-transform:none }
+#blankarchive-gip-search-filters-block .panel { border:transparent }
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ШАБЛОН CHILD-ТАБЛИЦЫ : template-details-tab1-table
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+#template-details { border:2px #666 solid; border-radius:5px; background-color:#fff }
+#template-details-tab1-table { margin-bottom:0; background-color:transparent }
+#template-details-tab1-table > tbody { color:#333; font-family:'Play', sans-serif; font-weight:300; font-size:1.0em }
+#template-details-tab1-table > tbody > tr > td { border-top:none; padding:3px 5px; }
+#template-details-tab1-table > tbody > tr > td:first-child { text-align:left }
+#template-details-tab1-table > tbody > tr > td:nth-child(2) { text-align:left }
+#template-details-tab1-table > tbody > tr > td:nth-child(3) { text-align:left; vertical-align:bottom }
+#template-details-tab1-table > tbody > tr > td:nth-child(4) { text-align:left; vertical-align:bottom }
+
+.template-details-tab1-table-title_blank { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.5em; text-transform:none; font-weight:500; text-align:left; padding:0 25px; line-height:1.5em }
+.template-details-tab1-table-blankstatus { color:#336a86; font-family:'Oswald', sans-serif; font-size:1.2em; text-transform:none; font-weight:200; text-align:left; padding:0 25px }
+
+.template-details-tab1-table-title_topic { color:#000; text-transform:uppercase; font-weight:700 }
+.template-details-tab1-table-title { color:#666; font-weight:700 }
+.template-details-tab1-table-txt { color:#666; font-weight:300 }
+.template-details-tab1-table-link { color:#666; font-weight:500; text-decoration:underline }
+.template-details-tab1-table-link:hover { color:#666; text-decoration:none }
+.txt-parameter { margin:0 10px; padding:0 30px; border-bottom:1px #ccc solid; font-family:'Courier New' }
+
+.tr-title { background:#f1f1f1 }
+.td-title { background:#f1f1f1 }
+
+#blankview-gip-blankarchive-table .group { font-family:'Oswald', sans-serif; font-size:1.3em; font-weight:400; color:#000 }
+#blankview-gip-blankarchive-table > tbody > tr.dtrg-start.dtrg-level-0 > td { font-family:'Oswald', sans-serif; font-size:1.3em; font-weight:400; text-align:left; background-color:#d9d9d9; color:#111; padding:5px }
+#blankview-gip-blankarchive-table > tbody > tr.dtrg-end.dtrg-level-0 > td { font-family:'Oswald', sans-serif; font-size:1.4em; font-weight:500; color:#000; background-color:#f1f1f1 }
+#blankview-gip-blankarchive-table > tbody > tr.dtrg-end.dtrg-level-0 > td { font-family:'Oswald', sans-serif; font-size:1.4em; font-weight:500; color:#000; background-color:#f1f1f1 }
+.itogo-lvl0 {  }
+.itogo-lvl0-title { text-transform:uppercase; text-align:left }
+.itogo-lvl0-text { float:right }
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+	#blankview-details-doc-tabs .nav > li > a { color:#fff }
+	#blankview-details-doc-tabs .nav > li > a:focus, #blankview-details-doc-tabs .nav > li > a:hover { background-color:transparent; }
+	#blankview-details-doc-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#blankview-details-doc-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#blankview-details-doc-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#blankview-details-doc-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#blankview-details-doc-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#blankview-details-doc-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#blankview-details-doc-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#blankview-details-blank-tabs-menu > li.active > a::after,
+	#blankview-details-blank-tabs-menu > li:hover > a::after { transform: scale(1) }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+	#blankview-details-blank-tabs .nav > li > a { color:#fff }
+	#blankview-details-blank-tabs .nav > li > a:focus, #blankview-details-blank-tabs .nav > li > a:hover { background-color:transparent; }
+	#blankview-details-blank-tabs .nav-tabs > li.active > a { color: #111 !important; background-color:#fff }
+	#blankview-details-blank-tabs .nav-tabs > li > a:hover { color: #111 !important; background-color:#fff }
+	#blankview-details-blank-tabs .nav-tabs > li > a::after { background:#f1f1f1 }
+	#blankview-details-blank-tabs > div.row > div > ul > li > a { font-family: 'Play', sans-serif }
+
+/* Изменено 20.06.2019 --- */
+	#blankview-details-blank-tabs-menu { background:#666; padding:0; border-bottom:none; margin-bottom:20px }
+	#blankview-details-blank-tabs-menu > li > a:hover { background-color:#f1f1f1 }
+	#blankview-details-blank-tabs-menu > li > a::after {
+		content: "";
+		background: #f1f1f1;
+		height: 40px;
+		z-index: -1;
+		position: absolute;
+		width: 100%;
+		left: 0px;
+		bottom: -1px;
+		transition: all 250ms ease 0s;
+		transform: scale(0);
+	}
+	#blankview-details-blank-tabs-menu > li.active > a::after,
+	#blankview-details-blank-tabs-menu > li:hover > a::after { transform: scale(1) }
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+Пользовательская форма создания/редактирования записи
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#customForm_gip_blankarchive { display: flex; flex-flow: row wrap; }
+#customForm_gip_blankarchive fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm_gip_blankarchive fieldset.name { flex: 1 50%; }
+#customForm_gip_blankarchive fieldset.name legend {}
+#customForm_gip_blankarchive fieldset.office legend {}
+#customForm_gip_blankarchive fieldset.hr legend { background: #ffbfbf; }
+#customForm_gip_blankarchive div.DTE_Field { padding:0; text-align: left; }
+#customForm_gip_blankarchive div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+div.modal-dialog { margin:1.0em auto; width:80% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_gip_blankarchive {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_gip_blankarchive div.Section {
+	justify-content:flex-start;
+	padding:0;
+	background-color:#fafafa;
+	display:flex;
+	flex-flow:row wrap;
+	flex-grow:1;
+	flex-shrink:2;
+	flex-basis:70%;
+	align-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_gip_blankarchive div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+#customForm_gip_blankarchive div.Block95 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:95%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block90 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:90%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block85 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:85%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block80 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:80%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block65 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:65%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block55 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:55%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block45 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:45%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block35 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:35%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block15 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:15%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block10 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:10%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_gip_blankarchive div.Block5 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:5%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+
+#customForm_gip_blankarchive > div.Section > div > fieldset > div > label.control-label { width: 100% }
+#customForm_gip_blankarchive > div.Section > div.Block100 > fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm_gip_blankarchive fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+		#customForm_gip_blankarchive fieldset.field10 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+		#customForm_gip_blankarchive fieldset.field15 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+		#customForm_gip_blankarchive fieldset.field20 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+		#customForm_gip_blankarchive fieldset.field25 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+		#customForm_gip_blankarchive fieldset.field30 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field35 {	flex-grow:0; flex-shrink:0; flex-basis:35% }
+		#customForm_gip_blankarchive fieldset.field35 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+		#customForm_gip_blankarchive fieldset.field40 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field45 {	flex-grow:0; flex-shrink:0; flex-basis:45% }
+		#customForm_gip_blankarchive fieldset.field45 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+		#customForm_gip_blankarchive fieldset.field50 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+		#customForm_gip_blankarchive fieldset.field60 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+		#customForm_gip_blankarchive fieldset.field70 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+		#customForm_gip_blankarchive fieldset.field80 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+		#customForm_gip_blankarchive fieldset.field90 > div > div { width:100% }
+		#customForm_gip_blankarchive fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm_gip_blankarchive fieldset.field100 > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_gip_blankarchive div.DTE_Field_InputControl { text-align:center }
+
+#customForm_gip_blankarchive > div.Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label,
+#customForm_gip_blankarchive > div.Section > div > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+
+#customForm_gip_blankarchive div.DTE_Field_InputControl > div > div > label { display:none }
+#customForm_gip_blankarchive fieldset > div > label.control-label { width:100% }
+
+
+#customForm_gip_blankarchive > div.Section > div > legend,
+#customForm_gip_blankarchive > div.Section > div > div > legend { padding:5px 0 5px 15px; font-family:'HeliosCond', sans-serif; font-size:1.3em; font-weight:normal; border:none; border-left:10px #b95959 solid; text-transform:none; color:#111; background-color:#ddd }
+
+#customForm_gip_blankarchive > div.Section > div > fieldset.kodzakazFilter > input, #customForm_gip_blankarchive > div.Section > div > div > fieldset.kodzakazFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+#customForm_gip_blankarchive > div.Section > div > fieldset.koddocFilter > input, #customForm_gip_blankarchive > div.Section > div > div > fieldset.koddocFilter > input { height:34px; padding: 6px 12px; width:100%; border:1px solid #ccc; border-radius:4px }
+
+#customForm_gip_blankarchive > div.Section > div > div > fieldset > div.fieldset-info,
+#customForm_gip_blankarchive > div.Section > div > fieldset > div.fieldset-info { min-height:34px; font-style:italic; padding:2px }
+
+
+textarea[id=DTE_Field_dognet_blankdocpost-ctextoplotherusl],
+textarea[id=DTE_Field_dognet_blankdocpost-transplaceobor] { resize:none }
+
+#customForm_gip_blankarchive > div.Section > div > fieldset.fieldset-table-row,
+#customForm_gip_blankarchive > div.Section > div > fieldset.fieldset-table-row,
+#customForm_gip_blankarchive > div.Section > div > div > fieldset.fieldset-table-row,
+#customForm_gip_blankarchive > div.Section > fieldset.fieldset-table-row { display:table-row; padding:0 10px }
+
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-cell,
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-cell,
+#customForm_gip_blankarchive > div.Section > div > div > div > div.fieldset-table-cell,
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-cell { display:table-cell; vertical-align:middle }
+
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-cell > fieldset > div.chekbox-inline-text,
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-cell > fieldset > div.chekbox-inline-text,
+#customForm_gip_blankarchive > div.Section > div > div > div > div.fieldset-table-cell > fieldset > div.chekbox-inline-text { font-family:'HeliosCond', sans-serif; text-align:left; font-size:1.3em; font-weight:700 }
+
+#customForm_gip_blankarchive > div.Section > div > div > div > fieldset > div > div.controls,
+#customForm_gip_blankarchive > div.Section > div > div > div > div > fieldset > div > div.controls { width:100% }
+
+
+
+
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-row,
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-row,
+#customForm_gip_blankarchive > div.Section > div.fieldset-table-row { display:table-row }
+
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-cell-text,
+#customForm_gip_blankarchive > div.Section > div > div > div > div.fieldset-table-cell-text,
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-cell-text { display:table-cell; vertical-align:middle }
+
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-cell-field,
+#customForm_gip_blankarchive > div.Section > div > div > div > div.fieldset-table-cell-field,
+#customForm_gip_blankarchive > div.Section > div > div.fieldset-table-cell-field { display:table-cell; vertical-align:middle }
+
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+#customForm_gip_blankarchive > div.Section > div > div > div > div.fieldset-table-cell > div > div.chekbox-inline-text,
+#customForm_gip_blankarchive > div.Section > div > div > div.fieldset-table-cell-text > div > div.chekbox-inline-text,
+#customForm_gip_blankarchive > div.Section > div > div > div > div.fieldset-table-cell-text > div > div.chekbox-inline-text { font-family:'HeliosCond', sans-serif; text-align:left; font-size:1.3em; font-weight:700 }
+/**/
+/**/
+/**/
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+/**/
+/**/
+/**/
+div.modal-dialog { margin:1.0em 95% }

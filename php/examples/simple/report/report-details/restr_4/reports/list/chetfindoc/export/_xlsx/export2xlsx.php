@@ -1,63 +1,63 @@
 <?php
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-date_default_timezone_set('Europe/Moscow');
-setlocale(LC_ALL, 'rus');
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Включаем режим сессии
-// session_start();
-# Подключаем конфигурационный файл
-// require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
-$db_handle = new DBController();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаем общие функции безопасности
-// require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-// require($_SERVER['DOCUMENT_ROOT']."/_assets/functions/funcSecure.inc.php");
-# Подключаем собственные функции сервиса Почта
-// require($_SERVER['DOCUMENT_ROOT']."/dognet/_assets/functions/funcDognet.inc.php");
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPOffice/vendor/autoload.php");
-require($_SERVER['DOCUMENT_ROOT'] . "/_assets/php/isdayoff/vendor/autoload.php");
-//
-//
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
-// СОЗДАЕМ И НАСТРАИВАЕМ ОБЪЕКТ PHPExcel
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-#
-// Создаем новый объект PHPExcel
-$objPHPExcel = new PHPExcel;
-#
-// Устанавливаем свойства документа
-$properties = $objPHPExcel->getProperties();
-#
-$properties->setCreator("АТГС.Портал");
-$properties->setCompany('АТГС');
-$properties->setTitle('Список счетов-фактур по договору');
-$properties->setDescription('Список счетов-фактур по договору');
-$properties->setCategory('Отчеты');
-$properties->setLastModifiedBy('АТГС.Портал');
-$properties->setCreated(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
-$properties->setModified(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
-$properties->setSubject('Список счетов-фактур по договору');
-$properties->setKeywords('Портал, Договор, Отчеты');
-#
-#
-include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/list/chetfindoc/export/_xlsx/export2xlsx_chetfindoc.php");
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-/*
+    ini_set('error_reporting', E_ALL);
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    date_default_timezone_set('Europe/Moscow');
+    setlocale(LC_ALL, 'rus');
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Включаем режим сессии
+    // session_start();
+    # Подключаем конфигурационный файл
+    // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Подключаемся к базе
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php";
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php";
+    $db_handle = new DBController();
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # Подключаем общие функции безопасности
+    // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
+    // require($_SERVER['DOCUMENT_ROOT']."/_assets/functions/funcSecure.inc.php");
+    # Подключаем собственные функции сервиса Почта
+    // require($_SERVER['DOCUMENT_ROOT']."/dognet/_assets/functions/funcDognet.inc.php");
+    #
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPOffice/vendor/autoload.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/_assets/php/devmakis/vendor/autoload.php";
+    //
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
+    // СОЗДАЕМ И НАСТРАИВАЕМ ОБЪЕКТ PHPExcel
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
+    #
+    #
+    // Создаем новый объект PHPExcel
+    $objPHPExcel = new PHPExcel;
+    #
+    // Устанавливаем свойства документа
+    $properties = $objPHPExcel->getProperties();
+    #
+    $properties->setCreator("АТГС.Портал");
+    $properties->setCompany('АТГС');
+    $properties->setTitle('Список счетов-фактур по договору');
+    $properties->setDescription('Список счетов-фактур по договору');
+    $properties->setCategory('Отчеты');
+    $properties->setLastModifiedBy('АТГС.Портал');
+    $properties->setCreated(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
+    $properties->setModified(mktime(Date('H'), Date('i'), Date('s'), Date('m'), Date('d'), Date('Y')));
+    $properties->setSubject('Список счетов-фактур по договору');
+    $properties->setKeywords('Портал, Договор, Отчеты');
+    #
+    #
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/list/chetfindoc/export/_xlsx/export2xlsx_chetfindoc.php";
+    #
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    /*
 	СОЗДАЕМ И СВОЙ ФОРМАТ ДЛЯ ЯЧЕЕК : ХХХ.ХХ р.
 	Данный формат позволяет вести дальнейшие расчеты в Excel с ячейками как с денежными единицами
 
@@ -65,48 +65,48 @@ include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-d
 	$sheet->setCellValue("C" . $cnt, floatval($item["price"]));
 	$sheet->getStyle("C" . $cnt)->getNumberFormat()->setFormatCode(PRICE_FORMAT);
 */
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-// Задаем свой формат
-define("PRICE_FORMAT", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
-#
-#
-#
-#
-#
-// Устанавливаем индекс активного листа
-// 		$objPHPExcel->setActiveSheetIndex(0);
-$objPHPExcel->setActiveSheetIndexByName('Worksheet');
-$sheetIndex = $objPHPExcel->getActiveSheetIndex();
-$objPHPExcel->removeSheetByIndex($sheetIndex);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
-//
-//
-//
-// ФАЙЛ ГОТОВ
-//
-// Отдаем его браузеру на скачивание
-//
-//
-//
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    #
+    // Задаем свой формат
+    define("PRICE_FORMAT", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
+    #
+    #
+    #
+    #
+    #
+    // Устанавливаем индекс активного листа
+    // 		$objPHPExcel->setActiveSheetIndex(0);
+    $objPHPExcel->setActiveSheetIndexByName('Worksheet');
+    $sheetIndex = $objPHPExcel->getActiveSheetIndex();
+    $objPHPExcel->removeSheetByIndex($sheetIndex);
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
+    //
+    //
+    //
+    // ФАЙЛ ГОТОВ
+    //
+    // Отдаем его браузеру на скачивание
+    //
+    //
+    //
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-$xmlWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-// $xmlWriter->save('php://output');
-$filepath = $_SERVER['DOCUMENT_ROOT'] . "/dognet/tmp/";
-$filename = "List-ChfInDoc_" . $_SESSION['id'] . "_" . date('YmdHis') . ".xlsx";
-$xmlWriter->save($filepath . $filename);
+    $xmlWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+    // $xmlWriter->save('php://output');
+    $filepath = $_SERVER['DOCUMENT_ROOT'] . "/dognet/tmp/";
+    $filename = "List-ChfInDoc_" . $_SESSION['id'] . "_" . date('YmdHis') . ".xlsx";
+    $xmlWriter->save($filepath . $filename);
 ?>
 
 <style>

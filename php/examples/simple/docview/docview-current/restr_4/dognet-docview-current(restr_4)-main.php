@@ -1,5 +1,5 @@
 <?php
-    $_SESSION['docviewCurrent'][] = "";
+$_SESSION['docviewCurrent'][] = '';
 ?>
 <script type="text/javascript"
         src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/_assets/js/my/moment-with-locales.js"></script>
@@ -820,6 +820,9 @@ $(document).ready(function() {
             },
             {
                 data: "dognet_docbase.usecreatekcp"
+            },
+            {
+                data: "dognet_docbase.kodusetender"
             }
         ],
         select: 'single',
@@ -851,6 +854,10 @@ $(document).ready(function() {
             {
                 orderable: false,
                 searchable: true,
+                render: function(data, type, row, meta) {
+                    return row.dognet_docbase.kodusetender == '1' ? data +
+                        '<br><span class="label label-primary">Тендер</span>' : data;
+                },
                 targets: 5
             },
             {
@@ -913,6 +920,12 @@ $(document).ready(function() {
                 visible: false,
                 searchable: true,
                 targets: 13
+            },
+            {
+                orderable: false,
+                visible: false,
+                searchable: true,
+                targets: 14
             }
         ],
         order: [
@@ -941,6 +954,7 @@ $(document).ready(function() {
                     $('#docIspolSearch_text').val('');
                     $('#docShablonSearch_text').val('');
                     $('#docCreateKcpSearch_text').val('');
+                    $('#docUseTenderSearch_text').val('');
                     table_doc_main.columns().search('');
                     table_doc_main.order([2, "desc"], [1, "desc"]).draw();
                 }
@@ -1100,6 +1114,8 @@ $(document).ready(function() {
             d = row.data();
             d.agent = checkVal(d.sp_contragents_agent.nameshort) === 1 ? d.sp_contragents_agent
                 .nameshort : "---";
+            d.usetender = d.dognet_docbase.kodusetender == '1' ?
+                'Заключен на основе выигранного тендера' : 'Без конкурса';
             rowData.child(<?php include 'templates/docview-current-details.tpl'; ?>).show();
 
             // Add to the 'open' array
@@ -1183,6 +1199,11 @@ $(document).ready(function() {
             .columns(13)
             .search($("#docCreateKcpSearch_text").val())
             .draw();
+
+        table_doc_main
+            .columns(14)
+            .search($("#docUseTenderSearch_text").val())
+            .draw();
     });
 
     $('#columnSearch_btnClear').click(function(e) {
@@ -1197,6 +1218,7 @@ $(document).ready(function() {
         $('#docIspolSearch_text').val('');
         $('#docShablonSearch_text').val('');
         $('#docCreateKcpSearch_text').val('');
+        $('#docUseTenderSearch_text').val('');
         table_doc_main
             .columns()
             .search('')
@@ -1246,12 +1268,12 @@ $(document).ready(function() {
 });
 </script>
 <?php
-    // ----- ----- ----- ----- -----
-    // Подключаем форму редактирования, форму поиска и выводим таблицу договора
-    // :::
-    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-customForm.php";
-    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-filters.php";
-    // ----- ----- ----- ----- -----
+// ----- ----- ----- ----- -----
+// Подключаем форму редактирования, форму поиска и выводим таблицу договора
+// :::
+include $_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-customForm.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/docview/docview-current/restr_4/forms/docview-current-filters.php';
+// ----- ----- ----- ----- -----
 ?>
 
 <link rel="stylesheet"

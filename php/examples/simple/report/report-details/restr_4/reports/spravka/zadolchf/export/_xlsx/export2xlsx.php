@@ -28,7 +28,8 @@
     #
     # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     require $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_PHPOffice/vendor/autoload.php";
-    require $_SERVER['DOCUMENT_ROOT'] . "/_assets/php/isdayoff/vendor/autoload.php";
+    require $_SERVER['DOCUMENT_ROOT'] . "/_assets/php/devmakis/vendor/autoload.php";
+    # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     //
     //
     //
@@ -67,15 +68,15 @@
     $B2 = (! empty($_GET['cht']) && isset($_GET['cht']) && $_GET['cht'] == 'yes');
     #
     #
-    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/spravka/zadolchf/export/_xlsx/export2xlsx_zdl_common.php";
+    include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolchf/export/_xlsx/export2xlsx_zdl_common.php";
     if ($A1) {
-        include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/spravka/zadolchf/export/_xlsx/export2xlsx_kodstatuszdl_1.php";
+        include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolchf/export/_xlsx/export2xlsx_kodstatuszdl_1.php";
     }
     if ($A2) {
-        include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/spravka/zadolchf/export/_xlsx/export2xlsx_kodstatuszdl_2.php";
+        include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolchf/export/_xlsx/export2xlsx_kodstatuszdl_2.php";
     }
     if ($A3) {
-        include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/spravka/zadolchf/export/_xlsx/export2xlsx_kodstatuszdl_3.php";
+        include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_5/reports/spravka/zadolchf/export/_xlsx/export2xlsx_kodstatuszdl_3.php";
     }
 
     #

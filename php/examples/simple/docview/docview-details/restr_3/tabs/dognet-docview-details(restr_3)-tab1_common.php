@@ -55,9 +55,18 @@ $(document).ready(function() {
                 var specialcomm =
                     "<span style='background-color: rgb(255, 242, 204)'>Договор подписан на электронной площадке</span>";
             }
+            var comments = (d.dognet_docbase.comments !== '') ?
+                "<span style='background-color: rgb(255, 216, 207); color:black'><b>" + d
+                .dognet_docbase
+                .comments +
+                "</b></span>" :
+                "---";
             rowData = table_tab1_common.row(row);
             d.agent = checkVal(d.sp_contragents_agent.nameshort) == 1 ? d.sp_contragents_agent
                 .nameshort : "---";
+            usetender = d.dognet_docbase.kodusetender == '1' ?
+                '<span style="background-color: rgb(255, 242, 204)">Заключен на основе выигранного тендера</span>' :
+                '<span style="background-color: rgb(255, 242, 204)">Без конкурса</span>';
             d.DN = (d.dognet_docbase.daynachdoc < 10) ? d.dognet_docbase.daynachdoc.padStart(2,
                 '0') : d.dognet_docbase.daynachdoc;
             d.MN = (d.dognet_docbase.monthnachdoc < 10) ? d.dognet_docbase.monthnachdoc.padStart(2,
@@ -66,7 +75,7 @@ $(document).ready(function() {
                 d.dognet_docbase.dayenddoc;
             d.ME = (d.dognet_docbase.monthenddoc < 10) ? d.dognet_docbase.monthenddoc.padStart(2,
                 '0') : d.dognet_docbase.monthenddoc;
-            rowData.child(<?php include('templates/docview-details_tab1_common.tpl'); ?>).show();
+            rowData.child(<?php include ('templates/docview-details_tab1_common.tpl'); ?>).show();
         }
     });
 });

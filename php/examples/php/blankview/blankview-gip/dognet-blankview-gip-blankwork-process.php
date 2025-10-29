@@ -1,45 +1,46 @@
 <?php
 date_default_timezone_set('Europe/Moscow');
-# Подключаем конфигурационный файл
+// Подключаем конфигурационный файл
 // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Подключаемся к базе
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_controller.php');
 $db_handle = new DBController();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаем общие функции безопасности
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Подключаем общие функции безопасности
 // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php");
-# Подключаем собственные функции сервиса Почта
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/functions/funcDognet.inc.php");
-# Включаем режим сессии
+require ($_SERVER['DOCUMENT_ROOT'] . '/_assets/functions/funcSecure.inc.php');
+// Подключаем собственные функции сервиса Почта
+require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/functions/funcDognet.inc.php');
+// Включаем режим сессии
 session_start();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 $KODISPOL = '';
-$_QRY = mysqlQuery("SELECT * FROM dognet_users_kods WHERE id=" . $_SESSION['id']);
-$_ROW = mysqli_fetch_assoc($_QRY);
+$_QRY     = mysqlQuery('SELECT * FROM dognet_users_kods WHERE id=' . $_SESSION['id']);
+$_ROW     = mysqli_fetch_assoc($_QRY);
 $KODISPOL = $_ROW['kodispol'];
 //
-$DEPTNUM = '';
-$_QRY1 = mysqlQuery("SELECT dept_num FROM users_positions WHERE id=" . $_SESSION['id']);
-$_ROW1 = mysqli_fetch_assoc($_QRY1);
-$DEPTNUM = $_ROW1['dept_num'];
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
+$DEPTNUM  = '';
+$_QRY1    = mysqlQuery('SELECT dept_num FROM users_positions WHERE id=' . $_SESSION['id']);
+$_ROW1    = mysqli_fetch_assoc($_QRY1);
+$DEPTNUM  = $_ROW1['dept_num'];
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+
 /*
  * Example PHP implementation used for the index.html example
-*/
+ */
 // DataTables PHP library
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_datatables-php-api-editor/DataTables.php");
+require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/_datatables-php-api-editor/DataTables.php');
+
 // Alias Editor classes so they are easy to use
-use
-	DataTables\Editor,
+use DataTables\Editor,
 	DataTables\Editor\Field,
 	DataTables\Editor\Format,
 	DataTables\Editor\Mjoin,
@@ -47,6 +48,7 @@ use
 	DataTables\Editor\Upload,
 	DataTables\Editor\Validate,
 	DataTables\Editor\ValidateOptions;
+
 // Build our Editor instance and process the data coming from _POST
 Editor::inst($db, 'dognet_docblankwork')
 	->fields(
@@ -210,6 +212,7 @@ Editor::inst($db, 'dognet_docblankwork')
 		Field::inst('dognet_blankdocpost.kodpaperstr'),
 		Field::inst('dognet_blankdocpost.kodblankinprocess'),
 		Field::inst('dognet_blankdocpost.kodblankdone'),
+		Field::inst('dognet_blankdocpost.kodusetender'),
 		//
 		// ::: Включаем в запрос данные из таблицы бланков на ПНР (dognet_blankdocpnr)
 		//
@@ -283,6 +286,7 @@ Editor::inst($db, 'dognet_docblankwork')
 		Field::inst('dognet_blankdocpnr.kodobject'),
 		Field::inst('dognet_blankdocpnr.kodblankinprocess'),
 		Field::inst('dognet_blankdocpnr.kodblankdone'),
+		Field::inst('dognet_blankdocpnr.kodusetender'),
 		//
 		// ::: Включаем в запрос данные из таблицы бланков на ПНР (dognet_blankdocpnr)
 		//
@@ -353,6 +357,7 @@ Editor::inst($db, 'dognet_docblankwork')
 		Field::inst('dognet_blankdocsub.kodpaperstr'),
 		Field::inst('dognet_blankdocsub.kodblankinprocess'),
 		Field::inst('dognet_blankdocsub.kodblankdone'),
+		Field::inst('dognet_blankdocsub.kodusetender'),
 		//
 		// ::: Включаем в запрос данные из таблицы бланков на ПИР (dognet_blankdocpir)
 		//
@@ -422,20 +427,20 @@ Editor::inst($db, 'dognet_docblankwork')
 		Field::inst('dognet_blankdocpir.dopcontact2'),
 		Field::inst('dognet_blankdocpir.kodpaperstr'),
 		Field::inst('dognet_blankdocpir.kodblankinprocess'),
-		Field::inst('dognet_blankdocpir.kodblankdone')
-
+		Field::inst('dognet_blankdocpir.kodblankdone'),
+		Field::inst('dognet_blankdocpir.kodusetender')
 	)
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	/*
-	->on( 'preGet', function ( $editor, $id ) {
-		$editor->where( function ( $q ) {
-			$q->where( function ( $q1 ) {
-				$q1->where( 'dognet_docblankwork.kodblankwork', '( SELECT kodblankwork FROM dognet_docblankwork WHERE kodblankdone="1" AND kodstatusblank="DO" AND koddoc<>"" )', 'IN', false );
-			} );
-			// $q->order( 'dognet_docblankwork.dateblankorder desc' );
-		} );
-	} )
-*/
+	 * ->on( 'preGet', function ( $editor, $id ) {
+	 * 	$editor->where( function ( $q ) {
+	 * 		$q->where( function ( $q1 ) {
+	 * 			$q1->where( 'dognet_docblankwork.kodblankwork', '( SELECT kodblankwork FROM dognet_docblankwork WHERE kodblankdone="1" AND kodstatusblank="DO" AND koddoc<>"" )', 'IN', false );
+	 * 		} );
+	 * 		// $q->order( 'dognet_docblankwork.dateblankorder desc' );
+	 * 	} );
+	 * } )
+	 */
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	->leftJoin('dognet_sysdefs_blankstatus', 'dognet_sysdefs_blankstatus.status_kod', '=', 'dognet_docblankwork.kodstatusblank')
 	->leftJoin('dognet_sysdefs_blanktype', 'dognet_sysdefs_blanktype.type_kod', '=', 'dognet_docblankwork.kodtipblank')
@@ -451,9 +456,9 @@ Editor::inst($db, 'dognet_docblankwork')
 	// 	->where( 'dognet_docblankwork.kodispol', $KODISPOL )
 	// 	->where( 'dognet_docblankwork.userid_blankcreator', $_SESSION['id'] )
 	->where('dognet_docblankwork.userdept_blankcreator', $DEPTNUM)
-	->where('dognet_docblankwork.yearblankwork', date('Y') - 1, ">=")
+	->where('dognet_docblankwork.yearblankwork', date('Y') - 1, '>=')
 	// 	->where( 'dognet_docblankwork.kodstatusblank', "RD" )
 	// 	->where( 'dognet_docblankwork.kodblankdone', "1" )
-	->where('dognet_docblankwork.dateblankwork', "", "!=")
+	->where('dognet_docblankwork.dateblankwork', '', '!=')
 	->process($_POST)
 	->json();

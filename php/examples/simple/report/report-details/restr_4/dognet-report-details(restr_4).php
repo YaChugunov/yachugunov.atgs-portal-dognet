@@ -129,6 +129,22 @@ div.list-group>li>p {
                                       class="label label-primary">Экспорт</span></a>
                         </div>
                     </li>
+                    <li class="list-group-item">
+                        <h4>Контроль авансирования работ <span class="label label-danger" style="float:right">Новый
+                                отчет, 04.09.2025</span></h4>
+                        <?php if (checkIsItSuperadmin($_SESSION['id']) == '1') { ?>
+                        <div class="labels">
+                            <a href="dognet-report.php?reportview=uncomplstages2" class=""><span
+                                      class="label label-default">Онлайн</span></a>
+                            <a href="dognet-report.php?reportview=uncomplstages2&export=yes&format=" class=""><span
+                                      class="label label-primary">Экспорт</span></a>
+                        </div>
+                        <?php } else { ?>
+                        <!-- <p class="text-danger">Идет работа над отчетом...</p> -->
+                        <a href="dognet-report.php?reportview=uncomplstages2&export=yes&format=" class=""><span
+                                  class="label label-primary">Экспорт</span></a>
+                        <?php } ?>
+                    </li>
                     <li class="list-group-item disabled">
                         <h4>Перечень не подписанных договоров</h4>
                     </li>
@@ -137,17 +153,33 @@ div.list-group>li>p {
                 <div class="list-group">
                     <li class="list-group-item">
                         <h4>Справка о задолженности по счетам-фактурам</h4>
+                        <?php if (checkIsItSuperadmin($_SESSION['id']) == '1') { ?>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=zadolchf" class=""><span
                                       class="label label-default">Онлайн</span></a>
                         </div>
+                        <?php } else { ?>
+                        <!-- <p class="text-danger">На профилактике...</p> -->
+                        <div class="labels">
+                            <a href="dognet-report.php?reportview=zadolchf" class=""><span
+                                      class="label label-default">Онлайн</span></a>
+                        </div>
+                        <?php } ?>
                     </li>
                     <li class="list-group-item">
                         <h4>Справка о задолженности по счетам-фактурам (на любую дату)</h4>
+                        <?php if (checkIsItSuperadmin($_SESSION['id']) == '1') { ?>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=zadolchf_ondate" class=""><span
                                       class="label label-default">Онлайн</span></a>
                         </div>
+                        <?php } else { ?>
+                        <!-- <p class="text-danger">На профилактике...</p> -->
+                        <div class="labels">
+                            <a href="dognet-report.php?reportview=zadolchf_ondate" class=""><span
+                                      class="label label-default">Онлайн</span></a>
+                        </div>
+                        <?php } ?>
                     </li>
                     <li class="list-group-item">
                         <h4>Справка о задолженности по субподрядчикам (на любую дату)</h4>
@@ -203,8 +235,7 @@ div.list-group>li>p {
                         </div>
                     </li>
                     <li class="list-group-item">
-                        <h4>Договора (все) с истёкшими сроками выполнения <span class="label label-danger"
-                                  style="float:right">Обновлено 24.09.2024</span></h4>
+                        <h4>Договора (все) с истёкшими сроками выполнения</h4>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=alldocsexp" class=""><span
                                       class="label label-default">Онлайн</span></a>
@@ -215,9 +246,7 @@ div.list-group>li>p {
                         </div>
                     </li>
                     <li class="list-group-item updated">
-                        <h4>Договора (поставки) с истёкшими сроками выполнения и расчетом штрафа <span
-                                  class="label label-danger" style="float:right">Обновлено 16.12.2024</span>
-                        </h4>
+                        <h4>Договора (поставки) с истёкшими сроками выполнения и расчетом штрафа</h4>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=postexp" class=""><span
                                       class="label label-default">Онлайн</span></a>
@@ -287,8 +316,7 @@ div.list-group>li>p {
                 <h4 class="reports-list space20">Формы Газпрома</h4>
                 <div class="list-group">
                     <li class="list-group-item updated">
-                        <h4>Газпром мониторинг <span class="label label-danger" style="float:right">Обновлено
-                                02.10.2024</span></h4>
+                        <h4>Газпром мониторинг</h4>
                         <div class="labels">
                             <a href="dognet-report.php?reportview=gazpromform1&export=yes" class=""><span
                                       class="label label-primary">Экспорт</span></a>

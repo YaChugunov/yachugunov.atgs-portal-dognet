@@ -11,7 +11,7 @@ function ajaxRequest_calcDateOpl(idsrokopl, chetfdate, kodchfact, srokopl, respo
 
     // Fire off the request to /form.php
     request1 = $.ajax({
-        url: "php/examples/simple/report/report-details/restr_4/reports/spravka/zadolchf/php/ajaxRequest-report-details(restr_4)-isdaysoff_calc_opldate-fetch.php",
+        url: "php/examples/simple/report/report-details/restr_4/reports/spravka/zadolchf_ondate/php/ajaxRequest-report-details(restr_4)-isdaysoff_calc_opldate-fetch.php",
         type: "post",
         cache: false,
         data: {

@@ -103,7 +103,7 @@ $line = 1;
 # СТРОКА 1
 # ----- ----- ----- ----- -----
 // Выводим название отчета
-$activeSheet->setCellValue("A{$line}", 'Справка о задолженности');
+$activeSheet->setCellValue("A{$line}", 'Справка о задолженности на '.$_SPRAVKA_ONDATE);
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(32);
 // Объединяем ячейки по горизонтали

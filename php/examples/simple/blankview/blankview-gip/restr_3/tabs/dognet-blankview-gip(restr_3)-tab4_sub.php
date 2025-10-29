@@ -1379,7 +1379,7 @@ $(document).ready(function() {
                 tr.addClass('edit');
                 rowData = table_blankview_gip_sub.row(row);
                 d = row.data();
-                rowData.child(<?php include('templates/blankview-gip-sub-blanktemplate-table.tpl'); ?>)
+                rowData.child(<?php include 'templates/blankview-gip-sub-blanktemplate-table.tpl'; ?>)
                     .show();
                 // Add to the 'open' array
                 if (idx === -1) {
@@ -1785,13 +1785,12 @@ $(document).ready(function() {
                     text_link = ((data !== "") ? data : "Файл без имени");
                     if (row.dognet_blankworkpril_files.file_url == null) {
                         return text_link;
-                    } else {
-                        return '<a class="blank_link" href="' + row
-                            .dognet_blankworkpril_files
-                            .file_url + '" target="_blank">' + text_link + '</a>';
+                        } else {
+                            return '<a class="blank_link" href="' + row.dognet_blankworkpril_files
+                                .file_url + '" target="_blank">' + text_link + '</a>';
                     }
                 },
-                targets: 1
+                targets: 2
             },
             {
                 orderable: false,
@@ -1799,7 +1798,7 @@ $(document).ready(function() {
                 render: function(data, type, row, meta) {
                     return '<span class="label label-primary">' + data + '</span>';
                 },
-                targets: 2
+                targets: 3
             }
         ],
         select: true,
@@ -2226,9 +2225,9 @@ $(document).ready(function() {
 });
 </script>
 <?php
-// ----- ----- ----- ----- -----
-// Подключаем стили для форм и таблиц
-// :::
+    // ----- ----- ----- ----- -----
+    // Подключаем стили для форм и таблиц
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/blankview/blankview-gip/restr_3/tabs/css/blankview-gip-tab4_sub.css">
@@ -2239,9 +2238,9 @@ $(document).ready(function() {
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/blankview/blankview-gip/restr_3/tabs/css/blankview-gip-tab4_pril_files.css">
 <?php
-// ----- ----- ----- ----- -----
-// Форма редактирования заявки/бланка
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма редактирования заявки/бланка
+    // :::
 ?>
 <div id="customForm_newblank_sub">
     <div id="newblank-sub-tabs" style="width:100%">
@@ -2935,9 +2934,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-// ----- ----- ----- ----- -----
-// Форма разбиения сумм договора
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма разбиения сумм договора
+    // :::
 ?>
 <div id="customForm_blanksummadop_sub">
     <div class="Section">
@@ -2959,9 +2958,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-// ----- ----- ----- ----- -----
-// Форма добавления файла-вложения
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма добавления файла-вложения
+    // :::
 ?>
 <div id="customForm_docfiles_sub">
     <div class="Section">
@@ -2989,9 +2988,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-// ----- ----- ----- ----- -----
-// Форма добавления файла-вложения
-// :::
+    // ----- ----- ----- ----- -----
+    // Форма добавления файла-вложения
+    // :::
 ?>
 <div id="customForm_blankworkpril_sub">
     <div class="Section">
@@ -3014,9 +3013,9 @@ $(document).ready(function() {
     </div>
 </div>
 <?php
-//
-// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-//
+    //
+    // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+    //
 ?>
 <section>
     <div class="space30"></div>
@@ -3048,9 +3047,9 @@ $(document).ready(function() {
             невозможно. Но это временно.</b></span>
 </p>
 <?php
-//
-// ----- ----- -----
-//
+    //
+    // ----- ----- -----
+    //
 ?>
 <section>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -3070,7 +3069,7 @@ $(document).ready(function() {
             </table>
         </div>
     </div>
-    <?php // ----- ----- ----- 
+    <?php // ----- ----- -----
     ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="space10"></div>
@@ -3088,7 +3087,7 @@ $(document).ready(function() {
             </table>
         </div>
     </div>
-    <?php // ----- ----- ----- 
+    <?php // ----- ----- -----
     ?>
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
         <div class="space10"></div>

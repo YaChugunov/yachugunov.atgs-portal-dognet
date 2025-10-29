@@ -1,11 +1,11 @@
 <?php
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-# Создаем страницу
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
+// Создаем страницу
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 // Создаем новый лист
 $objPHPExcel->createSheet();
 // Устанавливаем индекс активного листа
@@ -13,99 +13,101 @@ $cntsheets = $objPHPExcel->getSheetCount();
 $objPHPExcel->setActiveSheetIndex($cntsheets - 1);
 // Получаем активный лист
 $activeSheet = $objPHPExcel->getActiveSheet();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-# Подготавляваем страницу
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
+// Подготавляваем страницу
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
 // Вставляем лого в колонтитул
-$objDrawing = new PHPExcel_Worksheet_HeaderFooterDrawing();
+$objDrawing  = new PHPExcel_Worksheet_HeaderFooterDrawing();
 $objDrawing->setName('АТГС.Договор');
 // $objDrawing->setPath('logo_dognet.png');
 // $objDrawing->setHeight(36);
 // $objPHPExcel->getActiveSheet()->getHeaderFooter()->addImage($objDrawing, PHPExcel_Worksheet_HeaderFooter::IMAGE_HEADER_LEFT);
-#
+//
 // Ориентация страницы и  размер листа
-$activeSheet->getPageSetup()
+$activeSheet
+	->getPageSetup()
 	->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-$activeSheet->getPageSetup()
+$activeSheet
+	->getPageSetup()
 	->SetPaperSize(PHPExcel_Worksheet_PageSetup::PAPERSIZE_A4);
-#
+//
 // $activeSheet->getSheetView()->setView(PHPExcel_Worksheet_SheetView::SHEETVIEW_PAGE_LAYOUT);
 // Задаем повторяющиеся строки листа
 $activeSheet->getPageSetup()->setRowsToRepeatAtTopByStartAndEnd(1, 3);
-#
+//
 // Задаем область печати
 $activeSheet->getPageSetup()->setFitToWidth(1);
 $activeSheet->getPageSetup()->setFitToHeight(0);
 // $activeSheet->getPageSetup()->setPrintArea('A1:E100');
-#
+//
 // Поля документа
 $activeSheet->getPageMargins()->setTop(1);
 $activeSheet->getPageMargins()->setRight(0.75);
 $activeSheet->getPageMargins()->setLeft(0.75);
 $activeSheet->getPageMargins()->setBottom(1);
-#
+//
 // Название листа
 $activeSheet->setTitle('Незакрытые авансы на дату');
-#
+//
 // Колонтитулы
 $activeSheet->getHeaderFooter()->setOddHeader('&L&G&B&НЕЗАКРЫТЫЕ АВАНСЫ ПО ВСЕМ ДОГОВОРАМ&R&G&B&12На дату');
-$activeSheet->getHeaderFooter()->setOddFooter('&11&L&B' . $_SESSION["current_user_firstname"] . ' ' . $_SESSION["current_user_lastname"] . ' / ' . date('d.m.Y H:i:s') . '&R&11Страница &P из &N');
-#
+$activeSheet->getHeaderFooter()->setOddFooter('&11&L&B' . $_SESSION['current_user_firstname'] . ' ' . $_SESSION['current_user_lastname'] . ' / ' . date('d.m.Y H:i:s') . '&R&11Страница &P из &N');
+//
 // Настройки шрифта
 $objPHPExcel->getDefaultStyle()->getFont()->setName('Arial');
 $objPHPExcel->getDefaultStyle()->getFont()->setSize(10);
 // Задаем свой формат
-define("PRICE_FORMAT_1", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
+define('PRICE_FORMAT_1', PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . '[$ р.-419]');
 // Предопределим массивы оформления границы ячеек
-$_BORDER_RIGHT = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_RIGHT_NONE = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
-$_BORDER_LEFT = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_LEFT_NONE = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
+$_BORDER_RIGHT         = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_RIGHT_NONE    = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
+$_BORDER_LEFT          = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_LEFT_NONE     = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
 // Внешняя рамка, тонкая
-$_BORDER_OUTSIDE_THIN = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_OUTSIDE_THIN  = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
 // Внешняя рамка, толстая
 $_BORDER_OUTSIDE_THICK = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
 // Внутренние разделители
-$_BORDER_INSIDE = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_INSIDE_NONE = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
-$_BORDER_TOP = array('borders' => array('top' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_TOP_THIN = array('borders' => array('top' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_BOTTOM_THIN = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_BOTTOM_THICK = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-$_ONDATE = date("Y-m-d", strtotime($_GET['ondate']));
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-# ФОРМАТИРУЕМ ВЫХОДНУЮ ТАБЛИЦУ EXCEL
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
+$_BORDER_INSIDE        = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_INSIDE_NONE   = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
+$_BORDER_TOP           = array('borders' => array('top' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_TOP_THIN      = array('borders' => array('top' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_BOTTOM_THIN   = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_BOTTOM_THICK  = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
+$_ONDATE               = date('Y-m-d', strtotime($_GET['ondate']));
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+// ФОРМАТИРУЕМ ВЫХОДНУЮ ТАБЛИЦУ EXCEL
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
 // Задаем ширины столбцов
-$activeSheet->getColumnDimension('A')->setWidth(7); // Номер этапа
-$activeSheet->getColumnDimension('B')->setWidth(90); // Название этапа
-$activeSheet->getColumnDimension('C')->setWidth(25); // Аванс
-$activeSheet->getColumnDimension('D')->setWidth(18); // Дата аванса
-$activeSheet->getColumnDimension('E')->setWidth(18); // Дата закрытия (план)
-$activeSheet->getColumnDimension('F')->setWidth(20); // Сумма СФ
-$activeSheet->getColumnDimension('G')->setWidth(20); // Остаток аванса
-#
+$activeSheet->getColumnDimension('A')->setWidth(7);                              // Номер этапа
+$activeSheet->getColumnDimension('B')->setWidth(90);                             // Название этапа
+$activeSheet->getColumnDimension('C')->setWidth(25);                             // Аванс
+$activeSheet->getColumnDimension('D')->setWidth(18);                             // Дата аванса
+$activeSheet->getColumnDimension('E')->setWidth(18);                             // Дата закрытия (план)
+$activeSheet->getColumnDimension('F')->setWidth(20);                             // Сумма СФ
+$activeSheet->getColumnDimension('G')->setWidth(20);                             // Остаток аванса
+//
 // Для удобства заводим переменную $line, в ней будем считать номер строки
 $line = 1;
-#
-# ----- ----- ----- ----- -----
-# СТРОКА 1
-# ----- ----- ----- ----- -----
+//
+// ----- ----- ----- ----- -----
+// СТРОКА 1
+// ----- ----- ----- ----- -----
 // Выводим название отчета
-$activeSheet->setCellValue("A{$line}", 'СПРАВКА ОБ АВАНСАХ, НЕ ЗАКРЫТЫХ СЧЕТАМИ-ФАКТУРАМИ НА ' . date("d.m.Y", strtotime($_ONDATE)));
+$activeSheet->setCellValue("A{$line}", 'СПРАВКА ОБ АВАНСАХ, НЕ ЗАКРЫТЫХ СЧЕТАМИ-ФАКТУРАМИ НА ' . date('d.m.Y', strtotime($_ONDATE)));
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(32);
 // Объединяем ячейки по горизонтали
@@ -116,13 +118,13 @@ $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_A
 // Делаем текст жирным и увеличиваем шрифт.
 $activeSheet->getStyle("A{$line}")->getFont()->setBold(true);
 $activeSheet->getStyle("A{$line}")->getFont()->setSize(14);
-#
-# ----- ----- ----- ----- -----
-# СТРОКА 2
-# ----- ----- ----- ----- -----
+//
+// ----- ----- ----- ----- -----
+// СТРОКА 2
+// ----- ----- ----- ----- -----
 $line++;
 // Выводим название отчета
-$activeSheet->setCellValue("A{$line}", 'Дата отчета: ' . date("d.m.Y H:i:s"));
+$activeSheet->setCellValue("A{$line}", 'Дата отчета: ' . date('d.m.Y H:i:s'));
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(20);
 // Объединяем ячейки по горизонтали
@@ -133,13 +135,13 @@ $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_A
 // Делаем текст жирным и увеличиваем шрифт.
 $activeSheet->getStyle("A{$line}")->getFont()->setBold(true);
 $activeSheet->getStyle("A{$line}")->getFont()->setSize(13);
-#
-# ----- ----- ----- ----- -----
-# СТРОКА 3
-# ----- ----- ----- ----- -----
+//
+// ----- ----- ----- ----- -----
+// СТРОКА 3
+// ----- ----- ----- ----- -----
 $line++;
 // Выводим название отчета
-$activeSheet->setCellValue("A{$line}", "Отчет составлен: " . $_SESSION['lastname'] . " " . $_SESSION['firstname'] . " " . $_SESSION['middlename']);
+$activeSheet->setCellValue("A{$line}", 'Отчет составлен: ' . $_SESSION['lastname'] . ' ' . $_SESSION['firstname'] . ' ' . $_SESSION['middlename']);
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(20);
 // Объединяем ячейки по горизонтали
@@ -150,13 +152,13 @@ $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_A
 // Делаем текст жирным и увеличиваем шрифт.
 $activeSheet->getStyle("A{$line}")->getFont()->setBold(true);
 $activeSheet->getStyle("A{$line}")->getFont()->setSize(13);
-#
-# ----- ----- ----- ----- -----
-# СТРОКА 4
-# ----- ----- ----- ----- -----
+//
+// ----- ----- ----- ----- -----
+// СТРОКА 4
+// ----- ----- ----- ----- -----
 $line++;
 // Выводим название отчета
-$activeSheet->setCellValue("A{$line}", "Валюта - только рубли / Авансы с нулевыми остатками не отображаются");
+$activeSheet->setCellValue("A{$line}", 'Валюта - только рубли / Авансы с нулевыми остатками не отображаются');
 // Задаем высоту строки
 $activeSheet->getRowDimension($line)->setRowHeight(20);
 // Объединяем ячейки по горизонтали
@@ -167,10 +169,10 @@ $activeSheet->getStyle("A{$line}")->getAlignment()->setVertical(PHPExcel_Style_A
 // Делаем текст жирным и увеличиваем шрифт.
 $activeSheet->getStyle("A{$line}")->getFont()->setBold(false);
 $activeSheet->getStyle("A{$line}")->getFont()->setSize(11);
-#
-# ----- ----- ----- ----- -----
-# СТРОКА 5
-# ----- ----- ----- ----- -----
+//
+// ----- ----- ----- ----- -----
+// СТРОКА 5
+// ----- ----- ----- ----- -----
 // Пропускаем строку
 $line++;
 $activeSheet->setCellValue("A{$line}", '');
@@ -182,14 +184,14 @@ $activeSheet->setCellValue("A{$line}", 'Этап');
 $activeSheet->setCellValue("B{$line}", 'Наименование договора/этапа');
 $activeSheet->setCellValue("C{$line}", 'Аванс' . "\n" . '(вкл. НДС)');
 $activeSheet->setCellValue("D{$line}", 'Дата' . "\n" . 'аванса');
-$activeSheet->setCellValue("E{$line}", "Дата договора" . "\n" . "Конец этапа");
+$activeSheet->setCellValue("E{$line}", 'Дата договора' . "\n" . 'Конец этапа');
 $activeSheet->setCellValue("F{$line}", 'Зачтено' . "\n" . '(вкл. НДС)');
 $activeSheet->setCellValue("G{$line}", 'Остаток ' . "\n" . '(вкл. НДС)');
 // Стили для текста в шапки таблицы.
-$activeSheet->getRowDimension($line)->setRowHeight(36); // высота строки
-$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setSize(12); // размер шрифта
-$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true); // делаем шрифт жирным
-$activeSheet->getStyle("A{$line}:G{$line}")->getAlignment()->setWrapText(true); // разрешаем перенос строк в ячейке
+$activeSheet->getRowDimension($line)->setRowHeight(36);                          // высота строки
+$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setSize(12);             // размер шрифта
+$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);           // делаем шрифт жирным
+$activeSheet->getStyle("A{$line}:G{$line}")->getAlignment()->setWrapText(true);  // разрешаем перенос строк в ячейке
 
 // Вырванивание по вертикали - середина
 $activeSheet->getStyle("A{$line}:G{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -201,20 +203,20 @@ $activeSheet->getStyle("B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style
 $activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 // Делаем заливку области ячеек
 $activeSheet->getStyle("A{$line}:G{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB("31708F");
+$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB('31708F');
 // Задаем цвет текста строки
 $activeSheet->getStyle("A{$line}:G{$line}")->getFont()->getColor()->setRGB('FFFFFF');
 // Оформляем границы
 $activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_INSIDE);
 $activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_OUTSIDE_THICK);
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Следующая строка
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Следующая строка
 $line++;
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
 // Делаем выборку заказчиков, по чьим авансам остается задолженность
 $strQuery_spzakaz = "SELECT * FROM sp_contragents
 WHERE koddel<>'99' 
@@ -229,8 +231,8 @@ OR
 
 $_QRY_spzakaz = mysqlQuery($strQuery_spzakaz);
 
-$_SUM_ALL_AV = 0.0;
-$_SUM_ALL_OST = 0.0;
+$_SUM_ALL_AV    = 0.0;
+$_SUM_ALL_OST   = 0.0;
 $_SUM_ALL_OPLAV = 0.0;
 //
 while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
@@ -243,7 +245,7 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 	$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
 	// Делаем заливку области ячеек
 	$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-	$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB("111111");
+	$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB('111111');
 	// Задаем цвет текста строки
 	$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->getColor()->setRGB('F1F1F1');
 	// Объединяем ячейки по горизонтали
@@ -261,22 +263,22 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 	$line++;
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	// Делаем выборку договоров
-	$strQuery_docbase = "SELECT *	FROM dognet_docbase 
+	$strQuery_docbase = "SELECT *\tFROM dognet_docbase 
 	WHERE koddened='245296558950375' 
 	AND koddel<>'99' 
 	AND (koddoc IN (SELECT koddoc FROM dognet_dockalplan WHERE kodkalplan IN (SELECT koddoc FROM dognet_docavans a WHERE a.dateavans<='{$_ONDATE}' AND a.summaavans>(SELECT coalesce(SUM(summaoplav), 0) FROM dognet_chfavans b WHERE b.dateoplav<='{$_ONDATE}' AND b.kodavans=a.kodavans)) AND kodzakaz='{$_kodzakaz}' AND koddel<>'99') OR koddoc IN (SELECT koddoc FROM dognet_docavans a WHERE a.dateavans<='{$_ONDATE}' AND a.summaavans>(SELECT coalesce(SUM(summaoplav), 0) FROM dognet_chfavans b WHERE b.dateoplav<='{$_ONDATE}' AND b.kodavans=a.kodavans) AND kodzakaz='{$_kodzakaz}' AND koddel<>'99'))";
 
 	$_QRY_docbase = mysqlQuery($strQuery_docbase);
 
-	$_SUM_ZAKAZ_AV = 0.0;
-	$_SUM_ZAKAZ_OST = 0.0;
+	$_SUM_ZAKAZ_AV    = 0.0;
+	$_SUM_ZAKAZ_OST   = 0.0;
 	$_SUM_ZAKAZ_OPLAV = 0.0;
 	//
 	while ($_ROW_docbase = mysqli_fetch_assoc($_QRY_docbase)) {
 		$_kodshab = $_ROW_docbase['kodshab'];
-		$_koddoc = $_ROW_docbase['koddoc'];
+		$_koddoc  = $_ROW_docbase['koddoc'];
 
-		$_DOCNUMBER = $_ROW_docbase['docnumber'];
+		$_DOCNUMBER   = $_ROW_docbase['docnumber'];
 		$_DOCNAMESHOT = $_ROW_docbase['docnameshot'];
 		$_DOCNAMEFULL = $_ROW_docbase['docnamefullm'];
 
@@ -297,7 +299,7 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 		$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
 		// Задаем цвет заливки строки
 		$activeSheet->getStyle("C{$line}:G{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-		$activeSheet->getStyle("C{$line}:G{$line}")->getFill()->getStartColor()->setRGB("E0E0E0");
+		$activeSheet->getStyle("C{$line}:G{$line}")->getFill()->getStartColor()->setRGB('E0E0E0');
 		// Задаем цвет текста строки
 		$activeSheet->getStyle("A{$line}:B{$line}")->getFont()->getColor()->setRGB('111111');
 		$activeSheet->getStyle("C{$line}:G{$line}")->getFont()->getColor()->setRGB('111111');
@@ -313,15 +315,15 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 		$activeSheet->getStyle("A{$line}:G{$line}")->getAlignment()->setWrapText(true);
 		// Вывод данных
 		if ($_ROW_docbase['kodshab'] == 0) {
-			$activeSheet->setCellValue("A{$line}", "Счет № " . $_ROW_docbase['numberchet'] . " : " . trim($_ROW_docbase['docnameshot'], " \n\r\t\v\x00"));
+			$activeSheet->setCellValue("A{$line}", 'Счет № ' . $_ROW_docbase['numberchet'] . ' : ' . trim($_ROW_docbase['docnameshot'], " \n\r\t\v\0"));
 		} else {
-			$activeSheet->setCellValue("A{$line}", "Договор № 3-4/" . $_ROW_docbase['docnumber'] . " : " . trim($_ROW_docbase['docnameshot'], " \n\r\t\v\x00"));
+			$activeSheet->setCellValue("A{$line}", 'Договор № 3-4/' . $_ROW_docbase['docnumber'] . ' : ' . trim($_ROW_docbase['docnameshot'], " \n\r\t\v\0"));
 		}
-		$activeSheet->setCellValue("C{$line}", "Аванс" . "\n" . "(вкл. НДС)");
-		$activeSheet->setCellValue("D{$line}", "Дата аванса");
-		$activeSheet->setCellValue("E{$line}", "Дата договора" . "\n" . "Конец этапа");
-		$activeSheet->setCellValue("F{$line}", "Зачтено");
-		$activeSheet->setCellValue("G{$line}", "Остаток");
+		$activeSheet->setCellValue("C{$line}", 'Аванс' . "\n" . '(вкл. НДС)');
+		$activeSheet->setCellValue("D{$line}", 'Дата аванса');
+		$activeSheet->setCellValue("E{$line}", 'Дата договора' . "\n" . 'Конец этапа');
+		$activeSheet->setCellValue("F{$line}", 'Зачтено');
+		$activeSheet->setCellValue("G{$line}", 'Остаток');
 		// Оформляем границы
 		$activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_INSIDE);
 		$activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
@@ -330,29 +332,34 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 		$line++;
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 
-		$_SUM_TOTAL_AV = 0.0;
-		$_SUM_TOTAL_OST = 0.0;
+		$_SUM_TOTAL_AV    = 0.0;
+		$_SUM_TOTAL_OST   = 0.0;
 		$_SUM_TOTAL_OPLAV = 0.0;
 
 		if ($_kodshab == 1 || $_kodshab == 3) {
-
 			// Делаем выборку этапов по идентификатору этапа (kodkalplan)
 			$_strQuery_dockalplan = "SELECT * FROM dognet_dockalplan 
 			WHERE koddel<>'99' 
 			AND kodkalplan IN (SELECT koddoc FROM dognet_docavans a WHERE a.dateavans<='{$_ONDATE}' AND a.summaavans>(SELECT coalesce(SUM(summaoplav), 0) FROM dognet_chfavans b WHERE b.dateoplav<='{$_ONDATE}' AND b.kodavans=a.kodavans)) AND koddoc='{$_koddoc}'";
-			$_QRY_dockalplan = mysqlQuery($_strQuery_dockalplan);
+			$_QRY_dockalplan      = mysqlQuery($_strQuery_dockalplan);
 
 			while ($_ROW_dockalplan = mysqli_fetch_assoc($_QRY_dockalplan)) {
 				$_kodkalplan = $_ROW_dockalplan['kodkalplan'];
 
 				$_STAGENAME = $_ROW_dockalplan['nameshotstage'];
-				$_STAGENUM = $_ROW_dockalplan['numberstage'];
-				$_DATEPLAN = ($_ROW_dockalplan['dateplan'] != "") ? date("d.m.Y", strtotime($_ROW_dockalplan['dateplan'])) : "---";
+				$_STAGENUM  = $_ROW_dockalplan['numberstage'];
 
-				$_SUM_STAGE_AV = 0.0;
-				$_SUM_STAGE_OST = 0.0;
+				// !! - - - - - - - - - - - - - - - - - - - - - - - - -
+				// !! UPDATE 28.10.2025
+				// !! - вместо вывода планируемой даты окончания этапа необходимо вывести рассчитываемую дату в днях от 1-го аванса либо введенную напрямую в соответствующем поле
+				$_DATEPLAN        = !empty($_ROW_dockalplan['dateplan']) ? date('d.m.Y', strtotime($_ROW_dockalplan['dateplan'])) : '';
+				$_DATESROK        = !empty($_ROW_dockalplan['srokstage_date']) ? date('d.m.Y', strtotime($_ROW_dockalplan['srokstage_date'])) : '';
+				$endDate          = !empty($_DATESROK) ? $_DATESROK : (!empty($_DATEPLAN) ? $_DATEPLAN . ' (план)' : 'нет данных');
+				// !! - - - - - - - - - - - - - - - - - - - - - - - - -
+				$_SUM_STAGE_AV    = 0.0;
+				$_SUM_STAGE_OST   = 0.0;
 				$_SUM_STAGE_OPLAV = 0.0;
-				$_SUM_STAGE_CHF = F_REP_MAIN_SUM_STAGE_CHF($_kodkalplan, $_ONDATE);
+				$_SUM_STAGE_CHF   = F_REP_MAIN_SUM_STAGE_CHF($_kodkalplan, $_ONDATE);
 
 				if (mb_strlen($_ROW_dockalplan['nameshotstage']) > 210) {
 					$rowHeight = 60;
@@ -379,11 +386,11 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 				$activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 				$activeSheet->setCellValue("A{$line}", $_STAGENUM);
 				$activeSheet->setCellValue("B{$line}", $_STAGENAME);
-				$activeSheet->setCellValue("C{$line}", "");
-				$activeSheet->setCellValue("D{$line}", "");
-				$activeSheet->setCellValue("E{$line}", $_DATEPLAN);
-				$activeSheet->setCellValue("F{$line}", "");
-				$activeSheet->setCellValue("G{$line}", "");
+				$activeSheet->setCellValue("C{$line}", '');
+				$activeSheet->setCellValue("D{$line}", '');
+				$activeSheet->setCellValue("E{$line}", $endDate);
+				$activeSheet->setCellValue("F{$line}", '');
+				$activeSheet->setCellValue("G{$line}", '');
 				// Разрешаем перенос строк в ячейке
 				$activeSheet->getStyle("B{$line}")->getAlignment()->setWrapText(true);
 				// Оформляем границы
@@ -395,16 +402,16 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 
 				$_strQuery_docavans = "SELECT * FROM dognet_docavans a
 				WHERE a.koddel<>'99' AND a.koddoc='{$_kodkalplan}' AND a.dateavans<='{$_ONDATE}' AND a.summaavans>(SELECT coalesce(SUM(summaoplav), 0) FROM dognet_chfavans b WHERE b.dateoplav<='{$_ONDATE}' AND b.kodavans=a.kodavans)";
-				$_QRY_docavans = mysqlQuery($_strQuery_docavans);
+				$_QRY_docavans      = mysqlQuery($_strQuery_docavans);
 
 				while ($_ROW_docavans = mysqli_fetch_assoc($_QRY_docavans)) {
 					// Сумма зачтенных авансов
 					$_SUMOPLAV = F_REP_MAIN_SUM_AV_OPLAV($_ROW_docavans['kodavans'], $_ONDATE);
-					$_AVDATE = ($_ROW_docavans['dateavans'] != "") ? date("d.m.Y", strtotime($_ROW_docavans['dateavans'])) : "---";
-					$_AVSUMMA = $_ROW_docavans['summaavans'];
-					$_AVOST = F_REP_MAIN_CALC_AV_AVOST($_ROW_docavans['kodavans'], $_ONDATE);
-					$_AVCOMM = $_ROW_docavans['comment'];
-					$_AVOPL = ($_SUMOPLAV != 0) ? $_SUMOPLAV : 0.0;
+					$_AVDATE   = ($_ROW_docavans['dateavans'] != '') ? date('d.m.Y', strtotime($_ROW_docavans['dateavans'])) : '---';
+					$_AVSUMMA  = $_ROW_docavans['summaavans'];
+					$_AVOST    = F_REP_MAIN_CALC_AV_AVOST($_ROW_docavans['kodavans'], $_ONDATE);
+					$_AVCOMM   = $_ROW_docavans['comment'];
+					$_AVOPL    = ($_SUMOPLAV != 0) ? $_SUMOPLAV : 0.0;
 					// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 					// Задаем высоту строки и шрифт
 					$activeSheet->getRowDimension($line)->setRowHeight(16);
@@ -419,11 +426,11 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 					// Выравнивание по горизонтали - середина
 					$activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 					// Вывод данных
-					$activeSheet->setCellValue("B{$line}", "Аванс");
+					$activeSheet->setCellValue("B{$line}", 'Аванс');
 					$activeSheet->setCellValue("C{$line}", $_AVSUMMA);
 					$activeSheet->getStyle("C{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 					$activeSheet->setCellValue("D{$line}", $_AVDATE);
-					$activeSheet->setCellValue("E{$line}", "");
+					$activeSheet->setCellValue("E{$line}", '');
 					$activeSheet->setCellValue("F{$line}", $_AVOPL);
 					$activeSheet->getStyle("F{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 					$activeSheet->setCellValue("G{$line}", $_AVOST);
@@ -436,20 +443,29 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 					$line++;
 					// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 					// Суммируем счета по этапу
-					$_SUM_STAGE_AV += $_AVSUMMA;
+					$_SUM_STAGE_AV    += $_AVSUMMA;
 					$_SUM_STAGE_OPLAV += $_AVOPL;
-					$_SUM_STAGE_OST += $_AVOST;
+					$_SUM_STAGE_OST   += $_AVOST;
 				}
 				// Суммируем всего
-				$_SUM_TOTAL_AV += $_SUM_STAGE_AV;
+				$_SUM_TOTAL_AV    += $_SUM_STAGE_AV;
 				$_SUM_TOTAL_OPLAV += $_SUM_STAGE_OPLAV;
-				$_SUM_TOTAL_OST += $_SUM_STAGE_OST;
+				$_SUM_TOTAL_OST   += $_SUM_STAGE_OST;
 			}
 		} else {
-
-			$rowHeight = 18;
-			$_DATEPLAN = str_pad($_ROW_docbase['daynachdoc'], 2, '0', STR_PAD_LEFT) . "." . str_pad($_ROW_docbase['monthnachdoc'], 2, '0', STR_PAD_LEFT) . "." . str_pad($_ROW_docbase['yearnachdoc'], 4, '20', STR_PAD_LEFT);
-
+			$rowHeight  = 18;
+			// !! - - - - - - - - - - - - - - - - - - - - - - - - -
+			// !! UPDATE 28.10.2025
+			// !! - для договора беэ этапов (анахронизм, но тем не менее) выводим дату окончания договора
+			$beginDoc_D = !empty($_ROW_docbase['daynachdoc']) ? $_ROW_docbase['daynachdoc'] : '';
+			$beginDoc_M = !empty($_ROW_docbase['monthnachdoc']) ? $_ROW_docbase['monthnachdoc'] : '';
+			$beginDoc_Y = !empty($_ROW_docbase['yearnachdoc']) ? $_ROW_docbase['yearnachdoc'] : '';
+			if (!empty($beginDoc_D) && !empty($beginDoc_M) && !empty($beginDoc_Y)) {
+				$endDate = str_pad($beginDoc_D, 2, '0', STR_PAD_LEFT) . '.' . str_pad($beginDoc_M, 2, '0', STR_PAD_LEFT) . '.' . str_pad($beginDoc_Y, 4, '20', STR_PAD_LEFT);
+			} else {
+				$endDate = 'нет данных';
+			}
+			// !! - - - - - - - - - - - - - - - - - - - - - - - - -
 			// Задаем высоту строки и шрифт
 			$activeSheet->getRowDimension($line)->setRowHeight($rowHeight);
 			$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setSize(10);
@@ -467,8 +483,8 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 			// Объединяем ячейки по горизонтали
 			$activeSheet->mergeCells("A{$line}:B{$line}");
 			// Вывод данных
-			$activeSheet->setCellValue("A{$line}", "Без этапа");
-			$activeSheet->setCellValue("E{$line}", $_DATEPLAN);
+			$activeSheet->setCellValue("A{$line}", 'Без этапа');
+			$activeSheet->setCellValue("E{$line}", $endDate);
 			// Разрешаем перенос строк в ячейке
 			$activeSheet->getStyle("A{$line}")->getAlignment()->setWrapText(true);
 			// Оформляем границы
@@ -484,20 +500,20 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 			AND a.dateavans<='{$_ONDATE}' 
 			AND a.summaavans>(SELECT coalesce(SUM(summaoplav), 0) FROM dognet_chfavans b WHERE b.dateoplav<='{$_ONDATE}' AND b.kodavans=a.kodavans)";
 
-			$_SUM_STAGE_AV = 0.0;
-			$_SUM_STAGE_OST = 0.0;
+			$_SUM_STAGE_AV    = 0.0;
+			$_SUM_STAGE_OST   = 0.0;
 			$_SUM_STAGE_OPLAV = 0.0;
-			$_SUM_STAGE_CHF = F_REP_MAIN_SUM_STAGE_CHF($_koddoc, $_ONDATE);
+			$_SUM_STAGE_CHF   = F_REP_MAIN_SUM_STAGE_CHF($_koddoc, $_ONDATE);
 
 			$_QRY_docavans = mysqlQuery($_strQuery_docavans);
 			while ($_ROW_docavans = mysqli_fetch_assoc($_QRY_docavans)) {
 				// Сумма зачтенных авансов
 				$_SUMOPLAV = F_REP_MAIN_SUM_AV_OPLAV($_ROW_docavans['kodavans'], $_ONDATE);
-				$_AVDATE = ($_ROW_docavans['dateavans'] != "") ? date("d.m.Y", strtotime($_ROW_docavans['dateavans'])) : "---";
-				$_AVSUMMA = $_ROW_docavans['summaavans'];
-				$_AVOST = F_REP_MAIN_CALC_AV_AVOST($_ROW_docavans['kodavans'], $_ONDATE);
-				$_AVCOMM = $_ROW_docavans['comment'];
-				$_AVOPL = ($_SUMOPLAV != 0) ? $_SUMOPLAV : 0.0;
+				$_AVDATE   = ($_ROW_docavans['dateavans'] != '') ? date('d.m.Y', strtotime($_ROW_docavans['dateavans'])) : '---';
+				$_AVSUMMA  = $_ROW_docavans['summaavans'];
+				$_AVOST    = F_REP_MAIN_CALC_AV_AVOST($_ROW_docavans['kodavans'], $_ONDATE);
+				$_AVCOMM   = $_ROW_docavans['comment'];
+				$_AVOPL    = ($_SUMOPLAV != 0) ? $_SUMOPLAV : 0.0;
 				// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 				// Задаем высоту строки и шрифт
 				$activeSheet->getRowDimension($line)->setRowHeight(16);
@@ -513,12 +529,12 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 				$activeSheet->getStyle("B{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 				// Выравнивание по горизонтали - середина
 				$activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-				$activeSheet->setCellValue("A{$line}", "");
-				$activeSheet->setCellValue("B{$line}", "Аванс");
+				$activeSheet->setCellValue("A{$line}", '');
+				$activeSheet->setCellValue("B{$line}", 'Аванс');
 				$activeSheet->setCellValue("C{$line}", $_AVSUMMA);
 				$activeSheet->getStyle("C{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 				$activeSheet->setCellValue("D{$line}", $_AVDATE);
-				$activeSheet->setCellValue("E{$line}", "");
+				$activeSheet->setCellValue("E{$line}", $endDate);
 				$activeSheet->setCellValue("F{$line}", $_AVOPL);
 				$activeSheet->getStyle("F{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 				$activeSheet->setCellValue("G{$line}", $_AVOST);
@@ -531,19 +547,19 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 				$line++;
 				// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 				// Суммируем счета по этапу
-				$_SUM_STAGE_AV += $_AVSUMMA;
+				$_SUM_STAGE_AV    += $_AVSUMMA;
 				$_SUM_STAGE_OPLAV += $_AVOPL;
-				$_SUM_STAGE_OST += $_AVOST;
+				$_SUM_STAGE_OST   += $_AVOST;
 			}
 			// Суммируем всего
-			$_SUM_TOTAL_AV += $_SUM_STAGE_AV;
+			$_SUM_TOTAL_AV    += $_SUM_STAGE_AV;
 			$_SUM_TOTAL_OPLAV += $_SUM_STAGE_OPLAV;
-			$_SUM_TOTAL_OST += $_SUM_STAGE_OST;
+			$_SUM_TOTAL_OST   += $_SUM_STAGE_OST;
 		}
 		// Суммируем всего
-		$_SUM_ZAKAZ_AV += $_SUM_TOTAL_AV;
+		$_SUM_ZAKAZ_AV    += $_SUM_TOTAL_AV;
 		$_SUM_ZAKAZ_OPLAV += $_SUM_TOTAL_OPLAV;
-		$_SUM_ZAKAZ_OST += $_SUM_TOTAL_OST;
+		$_SUM_ZAKAZ_OST   += $_SUM_TOTAL_OST;
 		// Задаем высоту строки и шрифт
 		$activeSheet->getRowDimension($line)->setRowHeight(26);
 		$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setSize(11);
@@ -561,9 +577,9 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 		// Выравнивание по горизонтали - центр
 		$activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 		if ($_ROW_docbase['kodshab'] == 0) {
-			$activeSheet->setCellValue("A{$line}", "Итого по счету");
+			$activeSheet->setCellValue("A{$line}", 'Итого по счету');
 		} else {
-			$activeSheet->setCellValue("A{$line}", "Итого по договору");
+			$activeSheet->setCellValue("A{$line}", 'Итого по договору');
 		}
 		$activeSheet->setCellValue("C{$line}", $_SUM_TOTAL_AV);
 		$activeSheet->getStyle("C{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
@@ -574,10 +590,10 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 		// Оформляем границы
 		$activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_INSIDE);
 		$activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
-		# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		// Следующая строка
 		$line++;
-		# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	}
 	// Задаем высоту строки и шрифт
 	$activeSheet->getRowDimension($line)->setRowHeight(26);
@@ -585,7 +601,7 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 	$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
 	// Делаем заливку области ячеек
 	$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-	$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB("F1F1F1");
+	$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB('F1F1F1');
 	// Задаем цвет текста строки
 	$activeSheet->getStyle("A{$line}:G{$line}")->getFont()->getColor()->setRGB('111111');
 	// Объединяем ячейки по горизонтали
@@ -598,7 +614,7 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 	$activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 	// Выравнивание по горизонтали - центр
 	$activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-	$activeSheet->setCellValue("A{$line}", "ИТОГО ПО ЗАКАЗЧИКУ");
+	$activeSheet->setCellValue("A{$line}", 'ИТОГО ПО ЗАКАЗЧИКУ');
 	$activeSheet->setCellValue("C{$line}", $_SUM_ZAKAZ_AV);
 	$activeSheet->getStyle("C{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 	$activeSheet->setCellValue("F{$line}", $_SUM_ZAKAZ_OPLAV);
@@ -608,14 +624,14 @@ while ($_ROW_spzakaz = mysqli_fetch_assoc($_QRY_spzakaz)) {
 	// Оформляем границы
 	$activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_INSIDE);
 	$activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	// Следующая строка
 	$line++;
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	// Общий итог
-	$_SUM_ALL_AV += $_SUM_ZAKAZ_AV;
+	$_SUM_ALL_AV    += $_SUM_ZAKAZ_AV;
 	$_SUM_ALL_OPLAV += $_SUM_ZAKAZ_OPLAV;
-	$_SUM_ALL_OST += $_SUM_ZAKAZ_OST;
+	$_SUM_ALL_OST   += $_SUM_ZAKAZ_OST;
 }
 // Задаем высоту строки и шрифт
 $activeSheet->getRowDimension($line)->setRowHeight(32);
@@ -623,7 +639,7 @@ $activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setSize(13);
 $activeSheet->getStyle("A{$line}:G{$line}")->getFont()->setBold(true);
 // Делаем заливку области ячеек
 $activeSheet->getStyle("A{$line}:G{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB("31708F");
+$activeSheet->getStyle("A{$line}:G{$line}")->getFill()->getStartColor()->setRGB('31708F');
 // Задаем цвет текста строки
 $activeSheet->getStyle("A{$line}:G{$line}")->getFont()->getColor()->setRGB('F1F1F1');
 // Объединяем ячейки по горизонтали
@@ -636,7 +652,7 @@ $activeSheet->getStyle("A{$line}:G{$line}")->getAlignment()->setVertical(PHPExce
 $activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);
 // Выравнивание по горизонтали - центр
 $activeSheet->getStyle("C{$line}:G{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-$activeSheet->setCellValue("A{$line}", "ВСЕГО");
+$activeSheet->setCellValue("A{$line}", 'ВСЕГО');
 $activeSheet->setCellValue("C{$line}", $_SUM_ALL_AV);
 $activeSheet->getStyle("C{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMAT_1);
 $activeSheet->setCellValue("F{$line}", $_SUM_ALL_OPLAV);
@@ -646,13 +662,12 @@ $activeSheet->getStyle("G{$line}")->getNumberFormat()->setFormatCode(PRICE_FORMA
 // Оформляем границы
 $activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_INSIDE);
 $activeSheet->getStyle("A{$line}:G{$line}")->applyFromArray($_BORDER_BOTTOM_THIN);
-#
-#
+//
+//
 // Добавляем рамку к шапке таблицы
 $activeSheet->getStyle("A{$start_table}:G{$start_table}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 // Добавляем рамку ко всей таблице
 $activeSheet->getStyle("A{$start_table}:G{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
-
 
 // $objPHPExcel->getActiveSheet()->setAutoFilter($objPHPExcel->getActiveSheet()->calculateWorksheetDimension());
 // $objPHPExcel->getActiveSheet()->setAutoFilter("A{$start_table}:G{$start_table}");

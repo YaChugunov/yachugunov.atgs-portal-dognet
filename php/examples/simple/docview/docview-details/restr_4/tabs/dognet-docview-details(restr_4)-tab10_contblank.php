@@ -30,6 +30,7 @@ $(document).ready(function() {
         createdRow: function(row, d, dataIndex) {
 
             rowData = table_tab10_contblank.row(row);
+            d.title = "";
 
             if (d.dognet_docblankwork.kodtipblank == "POS") {
                 d.lastname = d.dognet_blankdocpost.nameendcontact;
@@ -68,6 +69,7 @@ $(document).ready(function() {
                 d.dop2 = d.dognet_blankdocpir.dopcontact2;
             }
             if (d.dognet_docblankwork.kodtipblank == "SUB") {
+                d.title = "Ниже контакты из бланков на субподрядные договора, где данный договор является основным";
                 d.lastname = d.dognet_blankdocsub.nameendcontact;
                 d.firstname = d.dognet_blankdocsub.namefistcontact;
                 d.midname = d.dognet_blankdocsub.namesecondcontact;
@@ -80,16 +82,16 @@ $(document).ready(function() {
                 d.dop2 = "";
             }
 
-            rowData.child(<?php include('templates/docview-details_tab10_contblank.tpl'); ?>)
+            rowData.child(<?php include 'templates/docview-details_tab10_contblank.tpl'; ?>)
                 .show();
         }
     });
 });
 </script>
 <?php
-// ----- ----- ----- ----- -----
-// Подключаем стили для таблицы
-// :::
+    // ----- ----- ----- ----- -----
+    // Подключаем стили для таблицы
+    // :::
 ?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-details/restr_4/tabs/css/docview-details-common-tab10_contblank.css">

@@ -36,12 +36,16 @@
 											'<td width="70%"><span class="row-details-docview-doc-main-table-txt">'+d.sp_objects.nameobjectlong+'</span></td>'+
 										'</tr>'+
 										'<tr>'+
-											'<td width="30%"><span class="row-details-docview-doc-main-table-title_topic">Организация-плательщик</span></td>'+
-											'<td width="70%"><span class="row-details-docview-doc-main-table-txt">'+d.sp_contragents.namefull+'</span></td>'+
+											'<td width="30%"><span class="row-details-docview-doc-main-table-title_topic">Организация-плательщик (агент)</span></td>'+
+											'<td width="70%"><span class="row-details-docview-doc-main-table-txt">'+d.sp_contragents.namefull+' ( '+d.agent+' )</span></td>'+
 										'</tr>'+
 										'<tr>'+
 											'<td width="30%"><span class="row-details-docview-doc-main-table-title_topic">Исполнитель</span></td>'+
 											'<td width="70%"><span class="row-details-docview-doc-main-table-txt">'+d.dognet_spispol.ispolnamefull+'</span></td>'+
+										'</tr>'+
+										'<tr>'+
+											'<td width="30%"><span class="row-details-docview-doc-main-table-title_topic">Конкурсная основа</span></td>'+
+											'<td width="70%"><span class="row-details-docview-doc-main-table-txt">'+d.usetender+'</span></td>'+
 										'</tr>'+
 										'<tr>'+
 											'<td width="30%"><span class="row-details-docview-doc-main-table-title_topic">Комментарии</span></td>'+

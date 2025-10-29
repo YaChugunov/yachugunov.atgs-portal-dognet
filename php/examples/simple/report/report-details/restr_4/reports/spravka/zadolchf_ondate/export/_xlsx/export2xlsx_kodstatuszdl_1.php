@@ -1,10 +1,13 @@
 <?php
 
-use isDayOff\Client\IsDayOff;
-// Countries
-use isDayOff\Filters\CovidFilter;
-// Additional
-use isDayOff\Filters\UkraineFilter;
+use Devmakis\ProdCalendar\Cache\FileJsonCache;
+use Devmakis\ProdCalendar\Calendar;
+use Devmakis\ProdCalendar\Clients\XmlCalendarClient;
+use Devmakis\ProdCalendar\Country;
+
+$cache    = new FileJsonCache($_SERVER['DOCUMENT_ROOT'] . "/_assets/xml/prodcalendar/prodcalendar.russia.json", 3600);
+$client   = new XmlCalendarClient(Country::RUSSIA, $cache);
+$calendar = new Calendar($client);
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 #
@@ -68,20 +71,20 @@ $objPHPExcel->getDefaultStyle()->getFont()->setSize(10);
 // Задаем свой формат
 define("PRICE_FORMAT_1", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
 // Предопределим массивы оформления границы ячеек
-$_BORDER_RIGHT = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_RIGHT_NONE = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
-$_BORDER_LEFT = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_LEFT_NONE = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
+$_BORDER_RIGHT      = ['borders' => ['right' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_RIGHT_NONE = ['borders' => ['right' => ['style' => PHPExcel_Style_Border::BORDER_NONE]]];
+$_BORDER_LEFT       = ['borders' => ['left' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_LEFT_NONE  = ['borders' => ['left' => ['style' => PHPExcel_Style_Border::BORDER_NONE]]];
 // Внешняя рамка, тонкая
-$_BORDER_OUTSIDE_THIN = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_OUTSIDE_THIN = ['borders' => ['outline' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
 // Внешняя рамка, толстая
-$_BORDER_OUTSIDE_THICK = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
+$_BORDER_OUTSIDE_THICK = ['borders' => ['outline' => ['style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => ['rgb' => '000000']]]];
 // Внутренние разделители
-$_BORDER_INSIDE = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_INSIDE_NONE = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
-$_BORDER_TOP = array('borders' => array('top' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_BOTTOM_THIN = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_BOTTOM_THICK = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
+$_BORDER_INSIDE       = ['borders' => ['inside' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_INSIDE_NONE  = ['borders' => ['inside' => ['style' => PHPExcel_Style_Border::BORDER_NONE]]];
+$_BORDER_TOP          = ['borders' => ['top' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_BOTTOM_THIN  = ['borders' => ['bottom' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_BOTTOM_THICK = ['borders' => ['bottom' => ['style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => ['rgb' => '000000']]]];
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 # ФОРМАТИРУЕМ ВЫХОДНУЮ ТАБЛИЦУ EXCEL
@@ -135,13 +138,13 @@ $activeSheet->setCellValue("F{$line}", 'ОПЛАТЫ');
 $activeSheet->setCellValue("G{$line}", 'ЗАДОЛЖЕННОСТЬ');
 $activeSheet->setCellValue("H{$line}", 'СРОК ОПЛАТЫ');
 // Стили для текста в шапки таблицы.
-$activeSheet->getRowDimension($line)->setRowHeight(32); // высота строки
-$activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setSize(12); // размер шрифта
-$activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setBold(true); // делаем шрифт жирным
-$activeSheet->getStyle("A{$line}:H{$line}")->getAlignment()->setWrapText(true); // разрешаем перенос строк в ячейке
-$activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // выравнивание по горизонтали - лево
+$activeSheet->getRowDimension($line)->setRowHeight(32);                                                                  // высота строки
+$activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setSize(12);                                                     // размер шрифта
+$activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setBold(true);                                                   // делаем шрифт жирным
+$activeSheet->getStyle("A{$line}:H{$line}")->getAlignment()->setWrapText(true);                                          // разрешаем перенос строк в ячейке
+$activeSheet->getStyle("A{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT);            // выравнивание по горизонтали - лево
 $activeSheet->getStyle("B{$line}:H{$line}")->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER); // выравнивание по горизонтали - центр
-$activeSheet->getStyle("A{$line}:H{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER); // вырванивание по вертикали - середина
+$activeSheet->getStyle("A{$line}:H{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);     // вырванивание по вертикали - середина
 // Делаем заливку области ячеек
 $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->getStartColor()->setRGB("F1F1F1");
@@ -158,8 +161,8 @@ $line++;
 #
 $_queryStr = "SELECT * FROM sp_contragents WHERE kodcontragent IN (SELECT kodzakaz FROM dognet_docbase WHERE ";
 //
-$B1 = (!empty($_GET['doc']) && isset($_GET['doc']) && $_GET['doc'] == 'yes') ? "1" : "0";
-$B2 = (!empty($_GET['cht']) && isset($_GET['cht']) && $_GET['cht'] == 'yes') ? "1" : "0";
+$B1 = (! empty($_GET['doc']) && isset($_GET['doc']) && $_GET['doc'] == 'yes') ? "1" : "0";
+$B2 = (! empty($_GET['cht']) && isset($_GET['cht']) && $_GET['cht'] == 'yes') ? "1" : "0";
 $BB = $B1 . $B2;
 if (checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1) {
     echo "Выборка документов: ";
@@ -167,20 +170,20 @@ if (checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1) {
     echo "<br>";
 }
 switch ($BB) {
-case "00":
-    $_queryStr .= "numberchet='-999' AND ";
-    break;
-case "01":
-    $_queryStr .= "(kodshab=0 AND numberchet<>'') AND ";
-    break;
-case "10":
-    $_queryStr .= "numberchet='' AND ";
-    break;
-case "11":
-    $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
-    break;
-default:
-    $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
+    case "00":
+        $_queryStr .= "numberchet='-999' AND ";
+        break;
+    case "01":
+        $_queryStr .= "(kodshab=0 AND numberchet<>'') AND ";
+        break;
+    case "10":
+        $_queryStr .= "numberchet='' AND ";
+        break;
+    case "11":
+        $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
+        break;
+    default:
+        $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
 }
 //
 $_queryStr .= "koddoc IN (SELECT koddoc FROM dognet_reports_zadolchf_ondate WHERE kodstatuszdl='1')) ORDER BY nameshort ASC";
@@ -220,29 +223,29 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
     #
     $_queryStr = "SELECT * FROM dognet_docbase WHERE kodzakaz='" . $_ROW['kodcontragent'] . "' AND ";
     //
-    $B1 = (!empty($_GET['doc']) && isset($_GET['doc']) && $_GET['doc'] == 'yes') ? "1" : "0";
-    $B2 = (!empty($_GET['cht']) && isset($_GET['cht']) && $_GET['cht'] == 'yes') ? "1" : "0";
+    $B1 = (! empty($_GET['doc']) && isset($_GET['doc']) && $_GET['doc'] == 'yes') ? "1" : "0";
+    $B2 = (! empty($_GET['cht']) && isset($_GET['cht']) && $_GET['cht'] == 'yes') ? "1" : "0";
     $BB = $B1 . $B2;
     switch ($BB) {
-    case "00":
-        $_queryStr .= "numberchet='-999' AND ";
-        break;
-    case "01":
-        $_queryStr .= "(kodshab=0 AND numberchet<>'') AND ";
-        break;
-    case "10":
-        $_queryStr .= "numberchet='' AND ";
-        break;
-    case "11":
-        $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
-        break;
-    default:
-        $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
+        case "00":
+            $_queryStr .= "numberchet='-999' AND ";
+            break;
+        case "01":
+            $_queryStr .= "(kodshab=0 AND numberchet<>'') AND ";
+            break;
+        case "10":
+            $_queryStr .= "numberchet='' AND ";
+            break;
+        case "11":
+            $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
+            break;
+        default:
+            $_queryStr .= "(numberchet='' OR numberchet<>'') AND ";
     }
     //
     $_queryStr .= "koddoc IN (SELECT koddoc FROM dognet_reports_zadolchf_ondate WHERE kodstatuszdl='1')";
     //
-    $_QRY_docbase = mysqlQuery($_queryStr);
+    $_QRY_docbase          = mysqlQuery($_queryStr);
     $_SUM_summazadol_zakaz = 0.00;
     #
     #
@@ -254,9 +257,9 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
         } else {
             $_DENED = " -.";
         }
-        $_SUM_chetfsumma = 0.00;
-        $_SUM_summaoplav = 0.00;
-        $_SUM_summaopl = 0.00;
+        $_SUM_chetfsumma     = 0.00;
+        $_SUM_summaoplav     = 0.00;
+        $_SUM_summaopl       = 0.00;
         $_SUM_summazadol_doc = 0.00;
         #
         #
@@ -264,10 +267,10 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
         $activeSheet->getRowDimension($line)->setRowHeight(28);
         $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setSize(12);
         $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setBold(true); // делаем шрифт жирным
-        // Задаем цвет заливки строки
-        //     $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-        //     $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->getStartColor()->setRGB("F1F1F1");
-        // Задаем цвет текста строки
+                                                                               // Задаем цвет заливки строки
+                                                                               //     $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+                                                                               //     $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->getStartColor()->setRGB("F1F1F1");
+                                                                               // Задаем цвет текста строки
         $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->getColor()->setRGB('111111');
         // Выравниваем строку по вертикали ( середина )
         $activeSheet->getStyle("A{$line}:H{$line}")->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
@@ -353,13 +356,13 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
                 //
                 $chetfsumma = $_ROW_kalplanchf['chetfsumma'];
                 $summaoplav = $_ROW_kalplanchf['summaoplav'];
-                $summaopl = $_ROW_kalplanchf['summaopl'];
+                $summaopl   = $_ROW_kalplanchf['summaopl'];
                 $summazadol = $_ROW_kalplanchf['summazadol'];
-                $tmp = $chetfsumma + $summaoplav + $summaopl + $summazadol;
-                //
-                $string = $_ROW_kalplanchf['chetfdate']; // Наша дата в string
-                $format = 'd.m.Y'; // формат даты (все: https://www.php.net/manual/ru/function.date.php)
-                $date = new DateTime($string);
+                $tmp        = $chetfsumma + $summaoplav + $summaopl + $summazadol;
+                                                          //
+                $string  = $_ROW_kalplanchf['chetfdate']; // Наша дата в string
+                $format  = 'd.m.Y';                       // формат даты (все: https://www.php.net/manual/ru/function.date.php)
+                $date    = new DateTime($string);
                 $chfdate = $date->format($format);
                 // Прибавить дни или оставить ПКЗ
                 if (($_ROW_docbase['kodshab'] == 1) or ($_ROW_docbase['kodshab'] == 3)) {
@@ -370,14 +373,12 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
                         } elseif ($_ROW_dockalplan['idsrokopl'] == 2) {
                             $srokopl = str_replace('/', '.', $_SROKOPL);
                         } elseif ($_ROW_dockalplan['idsrokopl'] == 3) {
-                            $client = new IsDayOff();
                             $nextDate = new DateTime($_CHFDATE);
-
-                            $i = 0;
+                            $i        = 0;
                             do {
                                 $nextDate->modify('+1 day');
-                                $result = $client->date()->isDayOff($nextDate);
-                                if ($result == 0) {
+                                $result = $calendar->isNonWorking($nextDate);
+                                if (! $result) {
                                     $i++;
                                 }
                             } while ($i < ($_SROKOPL));
@@ -460,7 +461,7 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
         $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setName('Arial');
         $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setSize(12);
         $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setBold(true); // делаем шрифт жирным
-        // Задаем цвет заливки строки ( ФИО пользователя )
+                                                                               // Задаем цвет заливки строки ( ФИО пользователя )
         $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
         $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->getStartColor()->setRGB("E0E0E0");
         // Задаем цвет текста строки ( ФИО пользователя )
@@ -494,7 +495,7 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
     $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setName('Arial');
     $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setSize(13);
     $activeSheet->getStyle("A{$line}:H{$line}")->getFont()->setBold(true); // делаем шрифт жирным
-    // Задаем цвет заливки строки ( ФИО пользователя )
+                                                                           // Задаем цвет заливки строки ( ФИО пользователя )
     $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
     $activeSheet->getStyle("A{$line}:H{$line}")->getFill()->getStartColor()->setRGB("D0D0D0");
     // Задаем цвет текста строки ( ФИО пользователя )

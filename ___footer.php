@@ -121,7 +121,9 @@ require_once '../config.inc.php';
 
 <div id="service-version" class="container-fluid">
     <div class="text-right"><span class="smallsmalltext">Сервис Договор&nbsp;<span style="color:#666">Версия 201912-05
-                build 2007</span></span></div>
+                build
+                2007</span><?php echo ($testMode && checkIsItSuperadmin($_SESSION['id']) == 1) ? '&nbsp;|&nbsp;<span class="text-danger"><b>Тестовый режим</b></span>' : ''; ?></span>
+    </div>
 </div>
 <div id="footer">
     <div class="container">
@@ -155,7 +157,7 @@ require_once '../config.inc.php';
                             <span class="smalltext">Ярослав&nbsp;Чугунов</span>
                             <br>
                             <span class="smallsmalltext"><a href="#" title="Yaroslav Chugunov Corporate Web Services"
-                                   target="_blank">YСCWS</a>&nbsp;&copy;&nbsp;2017-<?php echo date("Y"); ?></span>
+                                   target="_blank">YСCWS</a>&nbsp;&copy;&nbsp;2017-<?php echo date('Y'); ?></span>
                         </div>
                     </div>
                 </div>

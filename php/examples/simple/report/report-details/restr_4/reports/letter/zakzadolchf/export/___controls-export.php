@@ -611,7 +611,7 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
                                                     <option value="">---</option>
                                                     <option value="isp1">Желобова</option>
                                                     <option value="isp2">Кочешков</option>
-                                                    <option value="isp3">Шепотько</option>
+                                                    <option value="isp3">Иванова</option>
                                                     <option value="isp4">Царев</option>
                                                     <option value="isp5">Широких</option>
                                                 </select>
@@ -732,7 +732,7 @@ $('#isp-selector').change(function() {
     } else if ($(this).val() == 'isp3') {
         $('input[name="isp_name"]').val('Иванова В. О.');
         $('input[name="isp_tel"]').val('8 (495) 660-0802 доб. 304');
-        $('input[name="isp_email"]').val('нет email');
+        $('input[name="isp_email"]').val('ivanova@atgs.ru');
     } else if ($(this).val() == 'isp4') {
         $('input[name="isp_name"]').val('Царев В. А.');
         $('input[name="isp_tel"]').val('8 (495) 660-0802 доб. 306');

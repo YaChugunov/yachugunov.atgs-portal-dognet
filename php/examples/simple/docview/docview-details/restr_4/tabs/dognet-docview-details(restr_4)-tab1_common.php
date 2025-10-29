@@ -66,6 +66,9 @@ $(document).ready(function() {
             rowData = table_tab1_common.row(row);
             d.agent = checkVal(d.sp_contragents_agent.nameshort) === 1 ? d.sp_contragents_agent
                 .nameshort : "---";
+            usetender = d.dognet_docbase.kodusetender == '1' ?
+                '<span style="background-color: rgb(255, 242, 204)">Заключен на основе выигранного тендера</span>' :
+                '<span style="background-color: rgb(255, 242, 204)">Без конкурса</span>';
             d.DN = (d.dognet_docbase.daynachdoc < 10) ? d.dognet_docbase.daynachdoc.padStart(2,
                 '0') : d.dognet_docbase.daynachdoc;
             d.MN = (d.dognet_docbase.monthnachdoc < 10) ? d.dognet_docbase.monthnachdoc.padStart(2,
@@ -80,10 +83,10 @@ $(document).ready(function() {
 });
 </script>
 <?php
-// ----- ----- ----- ----- -----
+;  // ----- ----- ----- ----- -----
 // Подключаем стили для таблицы
 // :::
-; ?>
+?>
 <link rel="stylesheet"
       href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-details/restr_4/tabs/css/docview-details-common-tab1_common.css">
 <section>

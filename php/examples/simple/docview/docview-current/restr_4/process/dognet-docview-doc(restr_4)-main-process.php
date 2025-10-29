@@ -1,133 +1,138 @@
 <?php
 date_default_timezone_set('Europe/Moscow');
-# Подключаем конфигурационный файл
+// Подключаем конфигурационный файл
 // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Подключаемся к базе
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_controller.php');
 $db_handle = new DBController();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаем общие функции безопасности
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Подключаем общие функции безопасности
 // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php");
-# Подключаем собственные функции сервиса Почта
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/functions/funcDognet.inc.php");
-# Включаем режим сессии
+require ($_SERVER['DOCUMENT_ROOT'] . '/_assets/functions/funcSecure.inc.php');
+// Подключаем собственные функции сервиса Почта
+require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/functions/funcDognet.inc.php');
+// Включаем режим сессии
 session_start();
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Функция определения нового ID договора ( koddoc)
-# для таблицы этапов 'dognet_docbase'
-# ----- ----- -----
-function nextKoddoc() {
-	$query = mysqlQuery("SELECT MAX(koddoc) as lastKod FROM dognet_docbase ORDER BY id DESC");
-	$row = mysqli_fetch_assoc($query);
+
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Функция определения нового ID договора ( koddoc)
+// для таблицы этапов 'dognet_docbase'
+// ----- ----- -----
+function nextKoddoc()
+{
+	$query   = mysqlQuery('SELECT MAX(koddoc) as lastKod FROM dognet_docbase ORDER BY id DESC');
+	$row     = mysqli_fetch_assoc($query);
 	$lastKod = $row['lastKod'];
 	$nextKod = $lastKod + rand(3, 33);
 	return $nextKod;
 }
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Функция обновления полей основной таблицы (dognet_kalplanchf)
-#
-function updateFields_docbase($db, $action_docbase, $id, $values) {
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	#
-	# :::
-	# ::: Если была нажата кнопка "НОВЫЙ ДОГОВОР"
-	# :::
-	#
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Функция обновления полей основной таблицы (dognet_kalplanchf)
+//
+function updateFields_docbase($db, $action_docbase, $id, $values)
+{
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	//
+	// :::
+	// ::: Если была нажата кнопка "НОВЫЙ ДОГОВОР"
+	// :::
+	//
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	if ($action_docbase == 'CRT') {
-		#
-		#
+		//
+		//
 		// Формируем новый идентификатор договора (koddoc)
 		$__nextKoddoc = nextKoddoc();
-		#
-		#
-		$_QRY = $db->sql("SELECT koddoc, kodshab, docnumber, usedoczayv, kodblankwork, daynachdoc, monthnachdoc, yearnachdoc, kodobject, kodzakaz, kodagent FROM dognet_docbase WHERE id=" . $id)->fetchAll();  // CorrectionID#20240318-01
-		#
-		# >>>>> CorrectionID#20230520-01
-		# Правка от 20.05.2023 
-		# 1. Добавляем сохранение названий объектов (nameobjectshort, nameobjectfull) для реализации полнотекстового поиска
-		# 2. Добавляем сохранение названий объектов (namecontrshort, namecontrfull) для реализации полнотекстового поиска
-		# >>>>> CorrectionID#20240318-01
-		# Правка от 18.03.2024 
-		# 1. Добавляем сохранение названий агентов (namecontrshort, namecontrfull) для реализации полнотекстового поиска
-		$_QRY_OBJ = $db->sql("SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject=" . $_QRY[0]['kodobject'])->fetchAll();
-		$_QRY_ZAK = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=" . $_QRY[0]['kodzakaz'])->fetchAll();
+		//
+		//
+		$_QRY         = $db->sql('SELECT koddoc, kodshab, docnumber, usedoczayv, kodblankwork, daynachdoc, monthnachdoc, yearnachdoc, kodobject, kodzakaz, kodagent FROM dognet_docbase WHERE id=' . $id)->fetchAll();  // CorrectionID#20240318-01
+		//
+		// >>>>> CorrectionID#20230520-01
+		// Правка от 20.05.2023
+		// 1. Добавляем сохранение названий объектов (nameobjectshort, nameobjectfull) для реализации полнотекстового поиска
+		// 2. Добавляем сохранение названий объектов (namecontrshort, namecontrfull) для реализации полнотекстового поиска
+		// >>>>> CorrectionID#20240318-01
+		// Правка от 18.03.2024
+		// 1. Добавляем сохранение названий агентов (namecontrshort, namecontrfull) для реализации полнотекстового поиска
+		$_QRY_OBJ     = $db->sql('SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject=' . $_QRY[0]['kodobject'])->fetchAll();
+		$_QRY_ZAK     = $db->sql('SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=' . $_QRY[0]['kodzakaz'])->fetchAll();
 		if (!empty($_QRY[0]['kodagent'])) {
-			$_QRY_AGN = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=" . $_QRY[0]['kodagent'])->fetchAll();
+			$_QRY_AGN = $db->sql('SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=' . $_QRY[0]['kodagent'])->fetchAll();
 			$db->update('dognet_docbase', array(
-				'nameagentshort'	=>	$_QRY_AGN[0]['nameshort'],
-				'nameagentfull'		=>	$_QRY_AGN[0]['namefull'],
+				'nameagentshort' => $_QRY_AGN[0]['nameshort'],
+				'nameagentfull'  => $_QRY_AGN[0]['namefull'],
 			), array('id' => $id));
 		}
 		$db->update('dognet_docbase', array(
-			'koddoc'			=>	$__nextKoddoc,
-			'docnumberSTR'		=>	$_QRY[0]['docnumber'],
-			'nameobjectshort'	=>	$_QRY_OBJ[0]['nameobjectshot'], // CorrectionID#20230520-01
-			'nameobjectfull'	=>	$_QRY_OBJ[0]['nameobjectlong'], // CorrectionID#20230520-01
-			'namezakshort'		=>	$_QRY_ZAK[0]['nameshort'], // CorrectionID#20230520-01
-			'namezakfull'		=>	$_QRY_ZAK[0]['namefull'], // CorrectionID#20230520-01
+			'koddoc'          => $__nextKoddoc,
+			'docnumberSTR'    => $_QRY[0]['docnumber'],
+			'nameobjectshort' => $_QRY_OBJ[0]['nameobjectshot'],                                                                                                                                                        // CorrectionID#20230520-01
+			'nameobjectfull'  => $_QRY_OBJ[0]['nameobjectlong'],                                                                                                                                                        // CorrectionID#20230520-01
+			'namezakshort'    => $_QRY_ZAK[0]['nameshort'],                                                                                                                                                             // CorrectionID#20230520-01
+			'namezakfull'     => $_QRY_ZAK[0]['namefull'],                                                                                                                                                              // CorrectionID#20230520-01
 		), array('id' => $id));
-		# <<<<< CorrectionID#20230520-01
-		# <<<<< CorrectionID#20240318-01
-		#
+		// <<<<< CorrectionID#20230520-01
+		// <<<<< CorrectionID#20240318-01
+		//
 		if ($_QRY[0]['kodshab'] == 1 || $_QRY[0]['kodshab'] == 3) {
-			DOCKALPLAN_PR_CREATE_DEFPLAN($db, "docbase", $id, $action_docbase);
+			DOCKALPLAN_PR_CREATE_DEFPLAN($db, 'docbase', $id, $action_docbase);
 		}
 		if ($_QRY[0]['usedoczayv'] == 1) {
-			$_QRY1 = $db->sql("SELECT * FROM dognet_docblankwork WHERE kodblankwork=" . $_QRY[0]['kodblankwork'])->fetchAll();
+			$_QRY1 = $db->sql('SELECT * FROM dognet_docblankwork WHERE kodblankwork=' . $_QRY[0]['kodblankwork'])->fetchAll();
 
 			// *Убрал "подтягивание суммы из бланка заявки на договор
-			/*
-			$csummadocopl = "";
-			if ($_QRY1[0]['kodtipblank'] == "POS") {
-				$_QRY2 = $db->sql( "SELECT csummadocopl FROM dognet_blankdocpost WHERE kodblankwork=".$_QRY[0]['kodblankwork']." AND kodtipblank='DO'" )->fetchAll();
-				$csummadocopl = $_QRY2[0]['csummadocopl'];
-			}
-			if ($_QRY1[0]['kodtipblank'] == "PNR") {
-				$_QRY2 = $db->sql( "SELECT csummadocopl FROM dognet_blankdocpnr WHERE kodblankwork=".$_QRY[0]['kodblankwork']." AND kodtipblank='DO'" )->fetchAll();
-				$csummadocopl = $_QRY2[0]['csummadocopl'];
-			}
-			if ($_QRY1[0]['kodtipblank'] == "SUB") {
-				$_QRY2 = $db->sql( "SELECT csummadocopl FROM dognet_blankdocsub WHERE kodblankwork=".$_QRY[0]['kodblankwork']." AND kodtipblank='DO'" )->fetchAll();
-				$csummadocopl = $_QRY2[0]['csummadocopl'];
-			}
 
-			$docsumma = ($csummadocopl!="Рамочно" && $csummadocopl!="") ? str_replace(",", ".", $csummadocopl) : "0.00";
-*/
+			/*
+			 * $csummadocopl = "";
+			 * if ($_QRY1[0]['kodtipblank'] == "POS") {
+			 * 	$_QRY2 = $db->sql( "SELECT csummadocopl FROM dognet_blankdocpost WHERE kodblankwork=".$_QRY[0]['kodblankwork']." AND kodtipblank='DO'" )->fetchAll();
+			 * 	$csummadocopl = $_QRY2[0]['csummadocopl'];
+			 * }
+			 * if ($_QRY1[0]['kodtipblank'] == "PNR") {
+			 * 	$_QRY2 = $db->sql( "SELECT csummadocopl FROM dognet_blankdocpnr WHERE kodblankwork=".$_QRY[0]['kodblankwork']." AND kodtipblank='DO'" )->fetchAll();
+			 * 	$csummadocopl = $_QRY2[0]['csummadocopl'];
+			 * }
+			 * if ($_QRY1[0]['kodtipblank'] == "SUB") {
+			 * 	$_QRY2 = $db->sql( "SELECT csummadocopl FROM dognet_blankdocsub WHERE kodblankwork=".$_QRY[0]['kodblankwork']." AND kodtipblank='DO'" )->fetchAll();
+			 * 	$csummadocopl = $_QRY2[0]['csummadocopl'];
+			 * }
+			 *
+			 * $docsumma = ($csummadocopl!="Рамочно" && $csummadocopl!="") ? str_replace(",", ".", $csummadocopl) : "0.00";
+			 */
 
 			$db->update('dognet_docbase', array(
-				'kodzakaz'			=>	$_QRY1[0]['kodzakaz'],
-				'kodispol'			=>	$_QRY1[0]['kodispol'],
-				'kodispolruk'		=>	$_QRY1[0]['kodispolruk'],
-				'docnamefullm'		=>	$_QRY1[0]['nameblankwork']
+				'kodzakaz'     => $_QRY1[0]['kodzakaz'],
+				'kodispol'     => $_QRY1[0]['kodispol'],
+				'kodispolruk'  => $_QRY1[0]['kodispolruk'],
+				'docnamefullm' => $_QRY1[0]['nameblankwork']
 				// *Убрал "подтягивание суммы из бланка заявки на договор
 				// 				'docsumma'			=>	$docsumma
 			), array('id' => $id));
 
-			/* 
-ПРИВЯЗЫВАЕМ БЛАНК К СОЗДАВАЕМОМУ ДОГОВОРУ
-	Обновляем в таблице dognet_docblankwork
-	- dateblankdoc формируем из dognet_docbase.daynachdoc, dognet_docbase.monthnachdoc, dognet_docbase.yearnachdoc
-	- numberdoccr формируем из dognet_docbase.docnumber
-*/
-			$koddoc = $__nextKoddoc;
+			/*
+			 * ПРИВЯЗЫВАЕМ БЛАНК К СОЗДАВАЕМОМУ ДОГОВОРУ
+			 * 	Обновляем в таблице dognet_docblankwork
+			 * 	- dateblankdoc формируем из dognet_docbase.daynachdoc, dognet_docbase.monthnachdoc, dognet_docbase.yearnachdoc
+			 * 	- numberdoccr формируем из dognet_docbase.docnumber
+			 */
+			$koddoc       = $__nextKoddoc;
 			$kodblankwork = $_QRY[0]['kodblankwork'];
 
-			$yearnachdoc = $_QRY[0]['yearnachdoc'];
-			$day0 = $_QRY[0]['daynachdoc'];
-			$daynachdoc = str_pad($day0, 2, "0", STR_PAD_LEFT);
-			$month0 = $_QRY[0]['monthnachdoc'];
-			$monthnachdoc = str_pad($month0, 2, "0", STR_PAD_LEFT);
+			$yearnachdoc  = $_QRY[0]['yearnachdoc'];
+			$day0         = $_QRY[0]['daynachdoc'];
+			$daynachdoc   = str_pad($day0, 2, '0', STR_PAD_LEFT);
+			$month0       = $_QRY[0]['monthnachdoc'];
+			$monthnachdoc = str_pad($month0, 2, '0', STR_PAD_LEFT);
 
-			$_date = $yearnachdoc . "-" . $monthnachdoc . "-" . $daynachdoc;
-			$_date1 = date("Y-m-d", strtotime($_date));
-			$_date2 = new DateTime($_date1);
+			$_date        = $yearnachdoc . '-' . $monthnachdoc . '-' . $daynachdoc;
+			$_date1       = date('Y-m-d', strtotime($_date));
+			$_date2       = new DateTime($_date1);
 			$dateblancdoc = $_date2->format('Y-m-d');
 
 			$numberdoccr = $_QRY[0]['docnumber'];
@@ -137,105 +142,108 @@ function updateFields_docbase($db, $action_docbase, $id, $values) {
 		// Делаем запись в системный лог
 		// Все параметры в таблице portal_log_messages
 		PORTAL_SYSLOG('99941000', '0000001', $id, $__nextKoddoc, null, $_SERVER['PHP_SELF']);
-		#
-		#
+		//
+		//
 	}
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	#
-	# :::
-	# ::: Если была нажата кнопка "ИЗМЕНИТЬ"
-	# :::
-	#
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	//
+	// :::
+	// ::: Если была нажата кнопка "ИЗМЕНИТЬ"
+	// :::
+	//
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	if ($action_docbase == 'UPD') {
-		#
-		#
-		$_QRY = $db->sql("SELECT kodshab, docnumber, usedoczayv, kodblankwork, kodobject, kodzakaz, kodagent FROM dognet_docbase WHERE id=" . $id)->fetchAll();
+		//
+		//
+		$_QRY = $db->sql('SELECT kodshab, docnumber, usedoczayv, kodblankwork, kodobject, kodzakaz, kodagent FROM dognet_docbase WHERE id=' . $id)->fetchAll();
 		// Делаем запись в системный лог
 		// Все параметры в таблице portal_log_messages
 		PORTAL_SYSLOG('99941000', '0000002', $id, null, null, $_SERVER['PHP_SELF']);
-		#
-		#
-		# >>>>> CorrectionID#20230520-01
-		# Правка от 20.05.2023 
-		# 1. Добавляем сохранение названий объектов (nameobjectshort, nameobjectfull) для реализации полнотекстового поиска
-		# 2. Добавляем сохранение названий объектов (namecontrshort, namecontrfull) для реализации полнотекстового поиска
-		$_QRY_OBJ = $db->sql("SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject=" . $_QRY[0]['kodobject'])->fetchAll();
-		$_QRY_ZAK = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=" . $_QRY[0]['kodzakaz'])->fetchAll();
+		//
+		//
+		// >>>>> CorrectionID#20230520-01
+		// Правка от 20.05.2023
+		// 1. Добавляем сохранение названий объектов (nameobjectshort, nameobjectfull) для реализации полнотекстового поиска
+		// 2. Добавляем сохранение названий объектов (namecontrshort, namecontrfull) для реализации полнотекстового поиска
+		$_QRY_OBJ = $db->sql('SELECT nameobjectshot, nameobjectlong FROM sp_objects WHERE kodobject=' . $_QRY[0]['kodobject'])->fetchAll();
+		$_QRY_ZAK = $db->sql('SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=' . $_QRY[0]['kodzakaz'])->fetchAll();
 		if (!empty($_QRY[0]['kodagent'])) {
-			$_QRY_AGN = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=" . $_QRY[0]['kodagent'])->fetchAll();
+			$_QRY_AGN = $db->sql('SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent=' . $_QRY[0]['kodagent'])->fetchAll();
 			$db->update('dognet_docbase', array(
-				'nameagentshort'	=>	$_QRY_AGN[0]['nameshort'],
-				'nameagentfull'		=>	$_QRY_AGN[0]['namefull'],
+				'nameagentshort' => $_QRY_AGN[0]['nameshort'],
+				'nameagentfull'  => $_QRY_AGN[0]['namefull'],
 			), array('id' => $id));
 		}
 		$db->update('dognet_docbase', array(
-			'nameobjectshort'	=>	$_QRY_OBJ[0]['nameobjectshot'],
-			'nameobjectfull'	=>	$_QRY_OBJ[0]['nameobjectlong'],
-			'namezakshort'		=>	$_QRY_ZAK[0]['nameshort'],
-			'namezakfull'		=>	$_QRY_ZAK[0]['namefull'],
+			'nameobjectshort' => $_QRY_OBJ[0]['nameobjectshot'],
+			'nameobjectfull'  => $_QRY_OBJ[0]['nameobjectlong'],
+			'namezakshort'    => $_QRY_ZAK[0]['nameshort'],
+			'namezakfull'     => $_QRY_ZAK[0]['namefull'],
 		), array('id' => $id));
-		# <<<<< CorrectionID#20230520-01
-
+		// <<<<< CorrectionID#20230520-01
 	}
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	#
-	# :::
-	# ::: Если была нажата кнопка "УДАЛИТЬ"
-	# :::
-	#
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	//
+	// :::
+	// ::: Если была нажата кнопка "УДАЛИТЬ"
+	// :::
+	//
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	if ($action_docbase == 'DEL') {
-		#
-		#
-		$_QRY = $db->sql("SELECT kodshab, docnumber, usedoczayv, kodblankwork FROM dognet_docbase WHERE id=" . $id)->fetchAll();
+		//
+		//
+		$_QRY = $db->sql('SELECT kodshab, docnumber, usedoczayv, kodblankwork FROM dognet_docbase WHERE id=' . $id)->fetchAll();
 		// Делаем запись в системный лог
 		// Все параметры в таблице portal_log_messages
 		PORTAL_SYSLOG('99941000', '0000003', $id, null, null, $_SERVER['PHP_SELF']);
 
 		DOCBASE_PR_FULLREMOVE_DOC($db, $id);
-		#
-		#
+		//
+		//
 	}
-	#
-	#
+	//
+	//
 }
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Функция обновления полей основной таблицы (dognet_kalplanchf)
-#
-function doc_block_for_edit($db, $action_docbase, $id, $values) {
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	#
-	# :::
-	# ::: Если была нажата кнопка "ИЗМЕНИТЬ"
-	# :::
-	#
-	# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Функция обновления полей основной таблицы (dognet_kalplanchf)
+//
+function doc_block_for_edit($db, $action_docbase, $id, $values)
+{
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+	//
+	// :::
+	// ::: Если была нажата кнопка "ИЗМЕНИТЬ"
+	// :::
+	//
+	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	if ($action_docbase == 'UPD') {
-		#
-		#
-		DOCBASE_PR_DOC_BLOCK_FOR_EDIT($db, "docbase", $id, $action_docbase);
-		#
-		#
+		//
+		//
+		DOCBASE_PR_DOC_BLOCK_FOR_EDIT($db, 'docbase', $id, $action_docbase);
+		//
+		//
 	}
 }
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-#
-#
+
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
+//
+//
+
 /*
  * Example PHP implementation used for the index.html example
-*/
+ */
 // DataTables PHP library
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_datatables-php-api-editor/DataTables.php");
+require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/_datatables-php-api-editor/DataTables.php');
+
 // Alias Editor classes so they are easy to use
-use
-	DataTables\Editor,
+use DataTables\Editor,
 	DataTables\Editor\Field,
 	DataTables\Editor\Format,
 	DataTables\Editor\Mjoin,
@@ -243,6 +251,7 @@ use
 	DataTables\Editor\Upload,
 	DataTables\Editor\Validate,
 	DataTables\Editor\ValidateOptions;
+
 // Build our Editor instance and process the data coming from _POST
 Editor::inst($db, 'dognet_docbase')
 	->fields(
@@ -267,10 +276,10 @@ Editor::inst($db, 'dognet_docbase')
 					->value('kodblankwork')
 					->label(array('yearblankwork', 'numberblankwork', 'nameorgblankwork', 'kodstatusblank', 'nameblankwork', 'kodblankdone'))
 					->render(function ($row) {
-						if ($row['kodstatusblank'] == "RD") {
-							return (strlen($row['nameblankwork']) > 50) ? " *** " . $row['yearblankwork'] . " / " . $row['numberblankwork'] . " / " . $row['nameorgblankwork'] . " / " . mb_substr($row['nameblankwork'], 0, 50, 'utf8') . " ..." : " *** " . $row['yearblankwork'] . " / " . $row['numberblankwork'] . " / " . $row['nameorgblankwork'] . " / " . $row['nameblankwork'];
+						if ($row['kodstatusblank'] == 'RD') {
+							return (strlen($row['nameblankwork']) > 50) ? ' *** ' . $row['yearblankwork'] . ' / ' . $row['numberblankwork'] . ' / ' . $row['nameorgblankwork'] . ' / ' . mb_substr($row['nameblankwork'], 0, 50, 'utf8') . ' ...' : ' *** ' . $row['yearblankwork'] . ' / ' . $row['numberblankwork'] . ' / ' . $row['nameorgblankwork'] . ' / ' . $row['nameblankwork'];
 						} else {
-							return (strlen($row['nameblankwork']) > 50) ? $row['yearblankwork'] . " / " . $row['numberblankwork'] . " / " . $row['nameorgblankwork'] . " / " . mb_substr($row['nameblankwork'], 0, 50, 'utf8') . " ..." : $row['yearblankwork'] . " / " . $row['numberblankwork'] . " / " . $row['nameorgblankwork'] . " / " . $row['nameblankwork'];
+							return (strlen($row['nameblankwork']) > 50) ? $row['yearblankwork'] . ' / ' . $row['numberblankwork'] . ' / ' . $row['nameorgblankwork'] . ' / ' . mb_substr($row['nameblankwork'], 0, 50, 'utf8') . ' ...' : $row['yearblankwork'] . ' / ' . $row['numberblankwork'] . ' / ' . $row['nameorgblankwork'] . ' / ' . $row['nameblankwork'];
 						}
 					})
 					->where(function ($q1) {
@@ -321,8 +330,7 @@ Editor::inst($db, 'dognet_docbase')
 						$q->where('useindog', '1', '=');
 					})
 			)
-			->setFormatter(Format::ifEmpty("")),
-
+			->setFormatter(Format::ifEmpty('')),
 		Field::inst('sp_contragents_agent.nameshort'),
 		Field::inst('sp_contragents_agent.namefull'),
 		Field::inst('dognet_docbase.kodagent')
@@ -339,7 +347,7 @@ Editor::inst($db, 'dognet_docbase')
 						$q->where('useindog', '1', '=');
 					})
 			)
-			->setFormatter(Format::ifEmpty("")),
+			->setFormatter(Format::ifEmpty('')),
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('sp_objects.nameobjectshot'),
 		Field::inst('sp_objects.nameobjectlong'),
@@ -358,9 +366,8 @@ Editor::inst($db, 'dognet_docbase')
 						$q->where('useindog', '1');
 						$q->where('nameobjectshot', '', '<>');
 					})
-
 			)
-			->setFormatter(Format::ifEmpty("")),
+			->setFormatter(Format::ifEmpty('')),
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('dognet_sptipdog.nametip'),
 		Field::inst('dognet_docbase.kodtip')
@@ -413,7 +420,7 @@ Editor::inst($db, 'dognet_docbase')
 						$q->where('koddel', '99', '!=');
 					})
 			)
-			->setFormatter(Format::ifEmpty("")),
+			->setFormatter(Format::ifEmpty('')),
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('dognet_spispolruk.ispolrukname'),
 		Field::inst('dognet_docbase.kodispolruk')
@@ -426,7 +433,7 @@ Editor::inst($db, 'dognet_docbase')
 						return $row['ispolrukname'];
 					})
 			)
-			->setFormatter(Format::ifEmpty("")),
+			->setFormatter(Format::ifEmpty('')),
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('dognet_spdened.namedenedfull'),
 		Field::inst('dognet_docbase.koddened')
@@ -458,22 +465,24 @@ Editor::inst($db, 'dognet_docbase')
 		Field::inst('dognet_docbase.comments'),
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('dognet_docbase.usecreatekcp'),
-		Field::inst('dognet_docbase.warranty_period'), // Добавлено 2023-08-28
+		Field::inst('dognet_docbase.warranty_period'),  // Добавлено 2023-08-28
+		Field::inst('dognet_docbase.kodusetender'),     // Добавлено 2025-10-28
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
 		/*
-		Field::inst( 'dognet_docblankwork.numberblankwork' ),
-		Field::inst( 'dognet_docblankwork.nameblankwork' ),
-*/
+		 * Field::inst( 'dognet_docblankwork.numberblankwork' ),
+		 * Field::inst( 'dognet_docblankwork.nameblankwork' ),
+		 */
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('dognet_spdened.koddened'),
 		Field::inst('dognet_spdened.html_code'),
 		Field::inst('dognet_spdened.short_code')
-		# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-		#
-		#
+		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+		//
+		//
 	)
-	#
-	#
+	//
+	//
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	->on('preGet', function ($editor_docbase, $id) {
 		$editor_docbase->where(function ($q) {
@@ -490,15 +499,15 @@ Editor::inst($db, 'dognet_docbase')
 		updateFields_docbase($editor_docbase->db(), 'UPD', $id, $values);
 	})
 	/*
-	->on( 'preEdit', function ( $editor_docbase, $id, $values ) {
-		doc_block_for_edit( $editor_docbase->db(), 'UPD', $id, $values );
-	} )
-*/
+	 * ->on( 'preEdit', function ( $editor_docbase, $id, $values ) {
+	 * 	doc_block_for_edit( $editor_docbase->db(), 'UPD', $id, $values );
+	 * } )
+	 */
 	->on('preRemove', function ($editor_docbase, $id, $values) {
 		updateFields_docbase($editor_docbase->db(), 'DEL', $id, $values);
 	})
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-	/* 	->leftJoin( 'dognet_docblankwork', 'dognet_docblankwork.kodblankwork', '=', 'dognet_docbase.kodblankwork' ) */
+	/* ->leftJoin( 'dognet_docblankwork', 'dognet_docblankwork.kodblankwork', '=', 'dognet_docbase.kodblankwork' ) */
 	->leftJoin('dognet_spdened', 'dognet_spdened.koddened', '=', 'dognet_docbase.koddened')
 	->leftJoin('dognet_spstatus', 'dognet_spstatus.kodstatus', '=', 'dognet_docbase.kodstatus')
 	->leftJoin('dognet_sptipdog', 'dognet_sptipdog.kodtip', '=', 'dognet_docbase.kodtip')

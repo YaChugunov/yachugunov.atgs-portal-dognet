@@ -62,20 +62,20 @@ $objPHPExcel->getDefaultStyle()->getFont()->setSize(10);
 // Задаем свой формат
 define("PRICE_FORMAT_1", PHPExcel_Style_NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1 . "[\$ р.-419]");
 // Предопределим массивы оформления границы ячеек
-$_BORDER_RIGHT = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_RIGHT_NONE = array('borders' => array('right' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
-$_BORDER_LEFT = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_LEFT_NONE = array('borders' => array('left' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
+$_BORDER_RIGHT      = ['borders' => ['right' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_RIGHT_NONE = ['borders' => ['right' => ['style' => PHPExcel_Style_Border::BORDER_NONE]]];
+$_BORDER_LEFT       = ['borders' => ['left' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_LEFT_NONE  = ['borders' => ['left' => ['style' => PHPExcel_Style_Border::BORDER_NONE]]];
 // Внешняя рамка, тонкая
-$_BORDER_OUTSIDE_THIN = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
+$_BORDER_OUTSIDE_THIN = ['borders' => ['outline' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
 // Внешняя рамка, толстая
-$_BORDER_OUTSIDE_THICK = array('borders' => array('outline' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
+$_BORDER_OUTSIDE_THICK = ['borders' => ['outline' => ['style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => ['rgb' => '000000']]]];
 // Внутренние разделители
-$_BORDER_INSIDE = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_INSIDE_NONE = array('borders' => array('inside' => array('style' => PHPExcel_Style_Border::BORDER_NONE)));
-$_BORDER_TOP = array('borders' => array('top' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_BOTTOM_THIN = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => array('rgb' => '000000'))));
-$_BORDER_BOTTOM_THICK = array('borders' => array('bottom' => array('style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => array('rgb' => '000000'))));
+$_BORDER_INSIDE       = ['borders' => ['inside' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_INSIDE_NONE  = ['borders' => ['inside' => ['style' => PHPExcel_Style_Border::BORDER_NONE]]];
+$_BORDER_TOP          = ['borders' => ['top' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_BOTTOM_THIN  = ['borders' => ['bottom' => ['style' => PHPExcel_Style_Border::BORDER_THIN, 'color' => ['rgb' => '000000']]]];
+$_BORDER_BOTTOM_THICK = ['borders' => ['bottom' => ['style' => PHPExcel_Style_Border::BORDER_THICK, 'color' => ['rgb' => '000000']]]];
 # ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 #
 #
@@ -92,7 +92,7 @@ $_BORDER_BOTTOM_THICK = array('borders' => array('bottom' => array('style' => PH
 // Задаем ширины столбцов
 $activeSheet->getColumnDimension('A')->setWidth(15); // Номер договора
 $activeSheet->getColumnDimension('B')->setWidth(20); // Тип договора
-$activeSheet->getColumnDimension('C')->setWidth(8); // Номер этапа
+$activeSheet->getColumnDimension('C')->setWidth(8);  // Номер этапа
 $activeSheet->getColumnDimension('D')->setWidth(60); // Название договора
 $activeSheet->getColumnDimension('E')->setWidth(60); // Название этапа
 $activeSheet->getColumnDimension('F')->setWidth(25); // Заказчик
@@ -179,9 +179,9 @@ $activeSheet->setCellValue("J{$line}", 'Сумма этапа');
 $activeSheet->setCellValue("K{$line}", 'Сумма СФ');
 $activeSheet->setCellValue("L{$line}", 'Не закрыто');
 // Стили для текста в шапки таблицы.
-$activeSheet->getRowDimension($line)->setRowHeight(18); // высота строки
-$activeSheet->getStyle("A{$line}:L{$line}")->getFont()->setSize(11); // размер шрифта
-$activeSheet->getStyle("A{$line}:L{$line}")->getFont()->setBold(true); // делаем шрифт жирным
+$activeSheet->getRowDimension($line)->setRowHeight(18);                         // высота строки
+$activeSheet->getStyle("A{$line}:L{$line}")->getFont()->setSize(11);            // размер шрифта
+$activeSheet->getStyle("A{$line}:L{$line}")->getFont()->setBold(true);          // делаем шрифт жирным
 $activeSheet->getStyle("A{$line}:L{$line}")->getAlignment()->setWrapText(true); // разрешаем перенос строк в ячейке
 
 // Выравнивание по вертикали - середина
@@ -207,38 +207,43 @@ $line++;
 #
 #
 // Делаем выборку этапов по идентификатору этапа (kodkalplan)
-$_QRY_dockalplan = mysqlQuery("SELECT
-	dognet_dockalplan.koddoc, dognet_dockalplan.nameshotstage, dognet_dockalplan.numberstage, dognet_dockalplan.numberstage, dognet_dockalplan.srokstage, dognet_dockalplan.idobjectready, dognet_dockalplan_progress.srokstage_date, dognet_dockalplan_progress.summastage, dognet_dockalplan_progress.sumchfstage, dognet_dockalplan_progress.zadolsum_stage, dognet_dockalplan_progress.firstdateavans, dognet_dockalplan_progress.dateplan, dognet_dockalplan_progress.idsrokstage
+// kodstatus:
+// 245381842747296 - Текущий
+// 245381842145343 - Проект
+// 245267756667430 - Подписание
+// 245597345680479 - Есть скан
+$_QRY_dockalplan = mysqlQuery("SELECT dognet_dockalplan.koddoc, dognet_dockalplan.nameshotstage, dognet_dockalplan.numberstage, dognet_dockalplan.numberstage, dognet_dockalplan.srokstage, dognet_dockalplan.idobjectready, dognet_dockalplan_progress.srokstage_date, dognet_dockalplan_progress.summastage, dognet_dockalplan_progress.sumchfstage, dognet_dockalplan_progress.zadolsum_stage, dognet_dockalplan_progress.firstdateavans, dognet_dockalplan_progress.dateplan, dognet_dockalplan_progress.idsrokstage
 	FROM dognet_dockalplan INNER JOIN dognet_dockalplan_progress ON dognet_dockalplan.kodkalplan = dognet_dockalplan_progress.kodkalplan
-	WHERE dognet_dockalplan.koddel<>'99' AND dognet_dockalplan.kodkalplan IN (SELECT kodkalplan FROM dognet_dockalplan_progress WHERE summastage > sumchfstage) AND dognet_dockalplan.koddoc IN (SELECT koddoc FROM dognet_docbase WHERE kodstatus='245381842747296' OR kodstatus='245381842145343' OR kodstatus='245267756667430' OR kodstatus='245597345680479') AND dognet_dockalplan.kodkalplan NOT IN (SELECT kodkalplan FROM dognet_kalplanchf WHERE chetfsumma>0 AND kodkalplan=dognet_dockalplan.kodkalplan)");
-$_SUM_TOTAL = 0.0;
-$_SUM_TOTAL_CHF = 0.0;
+	WHERE dognet_dockalplan.koddel<>'99' AND dognet_dockalplan.kodkalplan IN (SELECT kodkalplan FROM dognet_dockalplan_progress WHERE (summastage > sumchfstage) OR (summastage > 0 AND sumchfstage IS NULL))
+    AND dognet_dockalplan.koddoc IN (SELECT koddoc FROM dognet_docbase WHERE kodstatus='245381842747296' OR kodstatus='245381842145343' OR kodstatus='245267756667430' OR kodstatus='245597345680479')");
+$_SUM_TOTAL       = 0.0;
+$_SUM_TOTAL_CHF   = 0.0;
 $_SUM_TOTAL_ZADOL = 0.0;
 //
 while ($_ROW_dockalplan = mysqli_fetch_assoc($_QRY_dockalplan)) {
-    $DOCBASE = $db_handle->runQuery("SELECT * FROM dognet_docbase WHERE koddoc = '" . $_ROW_dockalplan['koddoc'] . "'");
-    $DOCTIP = $db_handle->runQuery("SELECT nametip FROM dognet_sptipdog WHERE kodtip = '" . $DOCBASE[0]['kodtip'] . "'");
+    $DOCBASE   = $db_handle->runQuery("SELECT * FROM dognet_docbase WHERE koddoc = '" . $_ROW_dockalplan['koddoc'] . "'");
+    $DOCTIP    = $db_handle->runQuery("SELECT nametip FROM dognet_sptipdog WHERE kodtip = '" . $DOCBASE[0]['kodtip'] . "'");
     $DOCSTATUS = $db_handle->runQuery("SELECT statusnameshot FROM dognet_spstatus WHERE kodstatus = '" . $DOCBASE[0]['kodstatus'] . "'");
-    $DOCOBJ = $db_handle->runQuery("SELECT nameobjectshot FROM sp_objects WHERE kodobject = '" . $DOCBASE[0]['kodobject'] . "'");
-    $DOCZAK = $db_handle->runQuery("SELECT nameshort FROM sp_contragents WHERE kodcontragent = '" . $DOCBASE[0]['kodzakaz'] . "'");
-    $DOCISP = $db_handle->runQuery("SELECT ispolnameshot FROM dognet_spispol WHERE kodispol = '" . $DOCBASE[0]['kodispol'] . "'");
+    $DOCOBJ    = $db_handle->runQuery("SELECT nameobjectshot FROM sp_objects WHERE kodobject = '" . $DOCBASE[0]['kodobject'] . "'");
+    $DOCZAK    = $db_handle->runQuery("SELECT nameshort FROM sp_contragents WHERE kodcontragent = '" . $DOCBASE[0]['kodzakaz'] . "'");
+    $DOCISP    = $db_handle->runQuery("SELECT ispolnameshot FROM dognet_spispol WHERE kodispol = '" . $DOCBASE[0]['kodispol'] . "'");
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-    $_DOCTIP = $DOCTIP[0]['nametip'];
+    $_DOCTIP    = $DOCTIP[0]['nametip'];
     $_DOCSTATUS = $DOCSTATUS[0]['statusnameshot'];
-    $_DOCOBJ = $DOCOBJ[0]['nameobjectshot'];
-    $_DOCZAK = $DOCZAK[0]['nameshort'];
-    $_DOCISP = $DOCISP[0]['ispolnameshot'];
-    $_DOCNAME = $DOCBASE[0]['docnameshot'];
-    $_DOCNUM = $DOCBASE[0]['docnumber'];
+    $_DOCOBJ    = $DOCOBJ[0]['nameobjectshot'];
+    $_DOCZAK    = $DOCZAK[0]['nameshort'];
+    $_DOCISP    = $DOCISP[0]['ispolnameshot'];
+    $_DOCNAME   = $DOCBASE[0]['docnameshot'];
+    $_DOCNUM    = $DOCBASE[0]['docnumber'];
     $_STAGENAME = $_ROW_dockalplan['nameshotstage'];
-    $_STAGENUM = $_ROW_dockalplan['numberstage'];
+    $_STAGENUM  = $_ROW_dockalplan['numberstage'];
     //
     $firstdateavans = $_ROW_dockalplan['firstdateavans'];
-    $srokstage = $_ROW_dockalplan['srokstage'];
-    $dateplan = $_ROW_dockalplan['dateplan'];
-    $idsrokstage = $_ROW_dockalplan['idsrokstage'];
+    $srokstage      = $_ROW_dockalplan['srokstage'];
+    $dateplan       = $_ROW_dockalplan['dateplan'];
+    $idsrokstage    = $_ROW_dockalplan['idsrokstage'];
     $srokstage_date = $_ROW_dockalplan['srokstage_date'];
-    $objectready = $_ROW_dockalplan['idobjectready'];
+    $objectready    = $_ROW_dockalplan['idobjectready'];
     if ($srokstage != "" && $srokstage != null) {
         if ($idsrokstage == 0) {
             if ($firstdateavans != "" && $firstdateavans != null) {
@@ -259,9 +264,9 @@ while ($_ROW_dockalplan = mysqli_fetch_assoc($_QRY_dockalplan)) {
     }
     $_STAGESROK = $out;
     //
-    $_STAGESUM = $_ROW_dockalplan['summastage'];
+    $_STAGESUM    = $_ROW_dockalplan['summastage'];
     $_STAGECHFSUM = $_ROW_dockalplan['sumchfstage'];
-    $_STAGEZADOL = $_ROW_dockalplan['zadolsum_stage'];
+    $_STAGEZADOL  = $_ROW_dockalplan['zadolsum_stage'];
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     // Задаем высоту строки и шрифт
     $activeSheet->getRowDimension($line)->setRowHeight(18);
@@ -343,9 +348,9 @@ $activeSheet->getStyle("A{$line}:L{$line}")->applyFromArray($_BORDER_BOTTOM_THIN
 #
 #
 // Добавляем рамку к шапке таблицы
-$activeSheet->getStyle("A{$start_table}:I{$start_table}")->applyFromArray($_BORDER_OUTSIDE_THIN);
+$activeSheet->getStyle("A{$start_table}:L{$start_table}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 // Добавляем рамку ко всей таблице
 $activeSheet->getStyle("A{$start_table}:L{$line}")->applyFromArray($_BORDER_OUTSIDE_THIN);
 
 // $objPHPExcel->getActiveSheet()->setAutoFilter($objPHPExcel->getActiveSheet()->calculateWorksheetDimension());
-$objPHPExcel->getActiveSheet()->setAutoFilter("A{$start_table}:I{$start_table}");
+$objPHPExcel->getActiveSheet()->setAutoFilter("A{$start_table}:L{$start_table}");

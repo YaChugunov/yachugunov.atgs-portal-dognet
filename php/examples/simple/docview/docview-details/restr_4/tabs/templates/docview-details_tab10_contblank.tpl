@@ -2,7 +2,7 @@
 	'<div class="row">'+
 		'<div class="hidden-xs col-sm-12 col-md-12 col-lg-12">'+
 
-			'<div class="space10"></div>'+
+			'<div class="space10"><p class="text-danger"><b>'+d.title+'</b></p></div>'+
 			'<table id="row-details-docview-details-table" class="table table-condensed table-striped" >'+
 				'<tbody>'+
 					'<tr>'+
