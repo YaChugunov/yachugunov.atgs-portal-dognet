@@ -121,8 +121,12 @@ require_once '../config.inc.php';
 
 <div id="service-version" class="container-fluid">
     <div class="text-right"><span class="smallsmalltext">Сервис Договор&nbsp;<span style="color:#666">Версия 201912-05
-                build
-                2007</span><?php echo ($testMode && checkIsItSuperadmin($_SESSION['id']) == 1) ? '&nbsp;|&nbsp;<span class="text-danger"><b>Тестовый режим</b></span>' : ''; ?></span>
+                build 2007</span>
+            <?php
+            if (($_SESSION['id'] == '999' || $_SESSION['id'] == '1011') && $testMode) {
+                echo ($testMode && $_SESSION['id'] == '1011') ? '&nbsp;|&nbsp;<span class="text-danger"><b>Тестовый режим</b></span>' : '&nbsp;|&nbsp;<span class="text-danger"><b>Режим разработки</b></span>';
+            }
+            ?>
     </div>
 </div>
 <div id="footer">

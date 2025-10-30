@@ -42,22 +42,24 @@ if (isset($_SESSION['password']) && isset($_SESSION['login'])) {
 						// BLANKVIEW-CURRENT ::: ОТКРЫТ
 						if (checkDognetSectionAccess('blankview', 'access_current') == 1) {
 							require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/___header.php');
-							if (checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
-								include ('php/examples/simple/blankview/blankview-current/.dev/dognet-blankview-current.php');
-							} elseif ((checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1 || checkIsItSuperadmin($_SESSION['id']) == 1) && checkIsItGIP($_SESSION['id']) == 1) {
-								$testMode ? include ('php/examples/simple/blankview/blankview-gip/.test/dognet-blankview-gip.php') : include ('php/examples/simple/blankview/blankview-gip/.dev/dognet-blankview-gip.php');
-							} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
-								include ('php/examples/simple/blankview/blankview-gip/.dev/dognet-blankview-gip.php');
-							} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
-								include ($_SERVER['DOCUMENT_ROOT'] . '/_assets/includes/msg.inc/message_service-noaccess185.php');
-							} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 1) == 1 && checkIsItGIP($_SESSION['id']) == 1) {
-								include ('php/examples/simple/blankview/blankview-gip/.prod/dognet-blankview-gip.php');
-							} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 3, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
-								include ($_SERVER['DOCUMENT_ROOT'] . '/_assets/includes/msg.inc/message_service-noaccess185.php');
-							} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 3, 1) == 1 && checkIsItGIP($_SESSION['id']) == 1) {
-								include ('php/examples/simple/blankview/blankview-gip/.prod/dognet-blankview-gip.php');
+							if (($_SESSION['id'] == '999' || $_SESSION['id'] == '1011') && checkIsItGIP($_SESSION['id']) == 1 && $testMode) {
+								($_SESSION['id'] == '1011') ? include ('php/examples/simple/blankview/blankview-gip/.test/dognet-blankview-gip.php') : include ('php/examples/simple/blankview/blankview-gip/.dev/dognet-blankview-gip.php');
 							} else {
-								include ($_SERVER['DOCUMENT_ROOT'] . '/_assets/includes/msg.inc/message_service-nopermission185.php');
+								if (checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
+									include ('php/examples/simple/blankview/blankview-current/.dev/dognet-blankview-current.php');
+								} elseif ((checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1 || checkIsItSuperadmin($_SESSION['id']) == 1) && checkIsItGIP($_SESSION['id']) == 1) {
+									$testMode ? include ('php/examples/simple/blankview/blankview-gip/.dev/dognet-blankview-gip.php') : include ('php/examples/simple/blankview/blankview-gip/.dev/dognet-blankview-gip.php');
+								} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 1) == 1 && checkIsItGIP($_SESSION['id']) == 1) {
+									include ('php/examples/simple/blankview/blankview-gip/.prod/dognet-blankview-gip.php');
+								} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
+									include ('php/examples/simple/blankview/blankview-current/restr_4/dognet-blankview-current(restr_4).php');
+								} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 3, 1) == 1 && checkIsItGIP($_SESSION['id']) == 1) {
+									include ('php/examples/simple/blankview/blankview-gip/.prod/dognet-blankview-gip.php');
+								} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 3, 1) == 1 && checkIsItGIP($_SESSION['id']) != 1) {
+									include ($_SERVER['DOCUMENT_ROOT'] . '/_assets/includes/msg.inc/message_service-noaccess185.php');
+								} else {
+									include ($_SERVER['DOCUMENT_ROOT'] . '/_assets/includes/msg.inc/message_service-nopermission185.php');
+								}
 							}
 						}
 						// BLANKVIEW-CURRENT ::: ЗАКРЫТ
@@ -91,29 +93,21 @@ if (isset($_SESSION['password']) && isset($_SESSION['login'])) {
 						// ----- ----- ----- ----- -----
 						// BLANKVIEW-EDIT ::: ОТКРЫТ
 						if (checkDognetSectionAccess('blankview', 'access_edit') == 1) {
-							if (checkUserRestrictions($_SESSION['id'], 'dognet', 5, 1) == 1) {
+							$editFolder = '.prod';
+							if (($_SESSION['id'] == '999' || $_SESSION['id'] == '1011') && $testMode) {
+								$editFolder = $_SESSION['id'] == '1011' ? '.test' : '.dev';
+							}
+							if (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 0) == 1) {
 								if ($_GET['export'] == 'yes') {
-									require ('php/examples/simple/blankview/blankview-edit/.dev/tabs/export/___header-export.php');
+									require ('php/examples/simple/blankview/blankview-edit/' . $editFolder . '/tabs/export/___header-export.php');
 									if ($_GET['blank'] != '') {
-										include ($_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/blankview/blankview-edit/.dev/tabs/export/___controls-export.php');
+										include ($_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/blankview/blankview-edit/' . $editFolder . '/tabs/export/___controls-export.php');
 									} else {
-										include ($_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/blankview/blankview-edit/.dev/tabs/export/___controls-export.php');
+										include ($_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/blankview/blankview-edit/' . $editFolder . '/tabs/export/___controls-export.php');
 									}
 								} else {
 									require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/___header.php');
-									include ('php/examples/simple/blankview/blankview-edit/.dev/dognet-blankview-edit.php');
-								}
-							} elseif (checkUserRestrictions($_SESSION['id'], 'dognet', 4, 1) == 1) {
-								if ($_GET['export'] == 'yes') {
-									require ('php/examples/simple/blankview/blankview-edit/restr_4/tabs/export/___header-export.php');
-									if ($_GET['blank'] != '') {
-										include ($_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/blankview/blankview-edit/restr_4/tabs/export/___controls-export.php');
-									} else {
-										include ($_SERVER['DOCUMENT_ROOT'] . '/dognet/php/examples/simple/blankview/blankview-edit/restr_4/tabs/export/___controls-export.php');
-									}
-								} else {
-									require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/___header.php');
-									include ('php/examples/simple/blankview/blankview-edit/restr_4/dognet-blankview-edit(restr_4).php');
+									include ('php/examples/simple/blankview/blankview-edit/' . $editFolder . '/dognet-blankview-edit.php');
 								}
 							} else {
 								require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/___header.php');

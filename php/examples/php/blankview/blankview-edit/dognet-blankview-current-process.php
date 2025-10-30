@@ -1,38 +1,39 @@
 <?php
 date_default_timezone_set('Europe/Moscow');
-# Подключаем конфигурационный файл
+// Подключаем конфигурационный файл
 // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаемся к базе
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_connection.php");
-require_once($_SERVER['DOCUMENT_ROOT'] . "/_assets/drivers/db_controller.php");
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Подключаемся к базе
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_connection.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_controller.php');
 $db_handle = new DBController();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-# Подключаем общие функции безопасности
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// Подключаем общие функции безопасности
 // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require($_SERVER['DOCUMENT_ROOT'] . "/_assets/functions/funcSecure.inc.php");
-# Подключаем собственные функции сервиса Почта
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/functions/funcDognet.inc.php");
-# Включаем режим сессии
+require ($_SERVER['DOCUMENT_ROOT'] . '/_assets/functions/funcSecure.inc.php');
+// Подключаем собственные функции сервиса Почта
+require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/functions/funcDognet.inc.php');
+// Включаем режим сессии
 session_start();
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 $__startDateIn = $_SESSION['in_startTableDate'];
-$__endDateIn = $_SESSION['in_endTableDate'];
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
-#
-#
-#
-# ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-#
+$__endDateIn   = $_SESSION['in_endTableDate'];
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+//
+//
+//
+// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+//
+
 /*
  * Example PHP implementation used for the index.html example
-*/
+ */
 // DataTables PHP library
-require($_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_datatables-php-api-editor/DataTables.php");
+require ($_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/_datatables-php-api-editor/DataTables.php');
+
 // Alias Editor classes so they are easy to use
-use
-	DataTables\Editor,
+use DataTables\Editor,
 	DataTables\Editor\Field,
 	DataTables\Editor\Format,
 	DataTables\Editor\Mjoin,
@@ -40,6 +41,7 @@ use
 	DataTables\Editor\Upload,
 	DataTables\Editor\Validate,
 	DataTables\Editor\ValidateOptions;
+
 // Build our Editor instance and process the data coming from _POST
 Editor::inst($db, 'dognet_docblankwork')
 	->fields(
@@ -119,14 +121,10 @@ Editor::inst($db, 'dognet_docblankwork')
 		Field::inst('dognet_docblankwork.kodispol'),
 		Field::inst('dognet_docblankwork.kodispolruk'),
 		Field::inst('dognet_docblankwork.kodtipblank'),
-
 		Field::inst('dognet_sysdefs_blankstatus.id'),
 		Field::inst('dognet_sysdefs_blankstatus.status_description'),
-
 		Field::inst('dognet_spispol.kodispol'),
-
 		Field::inst('dognet_spispol.ispolnameshot')
-
 	)
 	// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 	->leftJoin('dognet_sysdefs_blankstatus', 'dognet_sysdefs_blankstatus.status_kod', '=', 'dognet_docblankwork.kodstatusblank')

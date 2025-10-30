@@ -1,0 +1,145 @@
+/*
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+
+ТАБЛИЦА ФАЙЛОВ ПРИЛОЖЕНИЙ : blankview-edit-sub-blankpril-table
+
+----- ----- ----- ----- ----- ----- ----- ----- ----- -----
+*/
+#blankview-edit-sub-blankpril { padding:10px 15px; border:2px #e9e9e9 solid; border-radius:5px }
+#blankview-edit-sub-blankpril > h3 { color:#111; font-family:'Oswald', sans-serif; font-weight:400; font-size:1.7em; letter-spacing:0.05em }
+#blankview-edit-sub-blankpril-table > tbody > tr.selected { color:#000;	background-color:#e9e9e9 }
+/* Общее для таблицы */
+#blankview-edit-sub-blankpril-table {  }
+#blankview-edit-sub-blankpril-table .details-control:hover { cursor:hand }
+/* Заголовок таблицы */
+#blankview-edit-sub-blankpril-table > thead {	display:none }
+#blankview-edit-sub-blankpril-table > thead > tr > th { color:#333; border-bottom:none; font-weight:500; font-size:1.2em; text-transform:uppercase }
+#blankview-edit-sub-blankpril-table .sorting:after, #blankview-edit-sub-table .sorting_asc:after, #blankview-edit-sub-table .sorting_desc:after { display:none }
+#blankview-edit-sub-blankpril-table > thead > tr > th.sorting_asc { padding-right:8px }
+#blankview-edit-sub-blankpril-table > thead > tr > th.sorting_desc { padding-right:8px }
+#blankview-edit-sub-blankpril-table .sorting_asc:after { display:none }
+#blankview-edit-sub-blankpril-table > thead > tr > th.sorting_asc { padding-right:8px }
+/* Тело таблицы */
+#blankview-edit-sub-blankpril-table > tbody > tr > td { padding:5px; border:none }
+#blankview-edit-sub-blankpril-table > tbody > tr > td:first-child { width:5%; text-align:left }
+#blankview-edit-sub-blankpril-table > tbody > tr > td:nth-child(2) { width:7%; text-align:left }
+#blankview-edit-sub-blankpril-table > tbody > tr > td:nth-child(3) { width:83%; text-align:left }
+#blankview-edit-sub-blankpril-table > tbody > tr > td:nth-child(4) { width:5%; text-align:right; text-transform:uppercase }
+/* Разное */
+#blankview-edit-sub-blankpril-table a.blank_link { color:#08C; text-decoration:underline }
+#blankview-edit-sub-blankpril-table a.blank_link:hover { text-decoration:none }
+
+div.DTE div.DTE_Processing_Indicator span, div.DTE div.DTE_Processing_Indicator:before, div.DTE div.DTE_Processing_Indicator:after { display:none }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+/*
+	Пользовательская форма создания/редактирования записи
+*/
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_blankworkpril_sub { display: flex; flex-flow: row wrap; }
+#customForm_blankworkpril_sub fieldset legend { padding: 5px 20px; font-weight: bold; }
+#customForm_blankworkpril_sub fieldset.name { flex: 1 50%; }
+#customForm_blankworkpril_sub fieldset.name legend {}
+#customForm_blankworkpril_sub fieldset.office legend {}
+#customForm_blankworkpril_sub fieldset.hr legend { background: #ffbfbf; }
+#customForm_blankworkpril_sub div.DTE_Field { padding:0; text-align: left; }
+#customForm_blankworkpril_sub div.DTE_Field > label.control-label { text-align: left; font-family: 'HeliosCond', sans-serif; text-transform: none; font-style: normal; font-weight: bold; font-size: 1.3em; color: #000; }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_blankworkpril_sub {
+	font-family: 'Play', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 0.9em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_blankworkpril_sub div.Section {
+	justify-content:flex-start;
+	padding:0;
+	background-color:#fafafa;
+	display:flex;
+	flex-flow:row wrap;
+	flex-grow:1;
+	flex-shrink:2;
+	flex-basis:70%;
+	align-content:flex-start;
+}
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_blankworkpril_sub div.Block100 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:100%; justify-content:flex-start; align-content:flex-start }
+#customForm_blankworkpril_sub div.Block75 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:75%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block70 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:70%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block60 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:60%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block50 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:50%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block40 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:40%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block30 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:30%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block25 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:25%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+#customForm_blankworkpril_sub div.Block20 { display:flex; flex-flow:row wrap; flex-grow:0; flex-shrink:0; flex-basis:20%; justify-content:flex-start; align-content:flex-start; padding: 0 2px }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_blankworkpril_sub > div.Section > div > fieldset > div > label.control-label { width: 100% }
+#customForm_blankworkpril_sub > div.Section > div.Block100 > fieldset.dateplan > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+		#customForm_blankworkpril_sub fieldset.field10 { flex-grow:0; flex-shrink:0; flex-basis:10% }
+		#customForm_blankworkpril_sub fieldset.field10 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field15 { flex-grow:0; flex-shrink:0; flex-basis:15% }
+		#customForm_blankworkpril_sub fieldset.field15 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field20 {	flex-grow:0; flex-shrink:0; flex-basis:20% }
+		#customForm_blankworkpril_sub fieldset.field20 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field25 {	flex-grow:0; flex-shrink:0; flex-basis:25% }
+		#customForm_blankworkpril_sub fieldset.field25 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field30 {	flex-grow:0; flex-shrink:0; flex-basis:30% }
+		#customForm_blankworkpril_sub fieldset.field30 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field40 {	flex-grow:0; flex-shrink:0; flex-basis:40% }
+		#customForm_blankworkpril_sub fieldset.field40 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field45 {	flex-grow:0; flex-shrink:0; flex-basis:45% }
+		#customForm_blankworkpril_sub fieldset.field45 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field50 {	flex-grow:0; flex-shrink:0; flex-basis:50% }
+		#customForm_blankworkpril_sub fieldset.field50 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field60 {	flex-grow:0; flex-shrink:0; flex-basis:60% }
+		#customForm_blankworkpril_sub fieldset.field60 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field70 {	flex-grow:0; flex-shrink:0; flex-basis:70% }
+		#customForm_blankworkpril_sub fieldset.field70 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field80 {	flex-grow:0; flex-shrink:0; flex-basis:80% }
+		#customForm_blankworkpril_sub fieldset.field80 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field90 {	flex-grow:0; flex-shrink:0; flex-basis:90% }
+		#customForm_blankworkpril_sub fieldset.field90 > div > div { width:100% }
+		#customForm_blankworkpril_sub fieldset.field100 { flex-grow:0; flex-shrink:0; flex-basis:100% }
+		#customForm_blankworkpril_sub fieldset.field100 > div > div { width:100% }
+/* ----- ----- ----- ----- ----- ----- ----- ----- ----- ----- */
+#customForm_blankworkpril_sub div.DTE_Field_InputControl { text-align:center }
+#customForm_blankworkpril_sub > div.Section > div > fieldset > div.DTE_Field_Type_checkbox > label.control-label { text-align:center }
+#customForm_blankworkpril_sub div.DTE_Field_InputControl > div > div > label { display:none }
+#customForm_blankworkpril_sub fieldset > div > label.control-label { width:100% }
+
+#customForm_blankworkpril_sub > div.Section > div > legend,
+#customForm_blankworkpril_sub > div.Section > div > div > legend { padding: 5px 0 5px 15px; font-family: 'HeliosCond', sans-serif; font-weight: normal; border: none; border-left: 10px #b95959 solid; text-transform: none; color: #111; background-color: #ddd; }
+
+textarea[id=DTE_Field_dognet_blankworkpril-namepril] { height:8em; resize:none }
+
+#DTE_Field_dognet_blankworkpril-msgDocFileID {
+    font-size: 1.5em;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'HeliosCond',sans-serif;
+    color: #b95959;
+    border: 2px #b95959 solid;
+    background-color: transparent;
+    padding: 5% 0;
+}
+div.DTE div.editor_upload div.cell {
+    display: table-cell;
+    position: relative;
+    width: 100%;
+    vertical-align: top;
+}
+#customForm_blankworkpril_sub .cell.upload,
+#customForm_blankworkpril_sub div.DTE_Field_InputControl div.cell.upload.limitHide > button {
+    color: #666;
+    font-size: 1.2em;
+    text-transform:uppercase
+}
+#customForm_blankworkpril_sub div.DTE_Field_InputControl div.row.second div.cell.limitHide,
+#customForm_blankworkpril_sub div.DTE_Field_InputControl div.cell.clearValue {
+    display: none;
+}

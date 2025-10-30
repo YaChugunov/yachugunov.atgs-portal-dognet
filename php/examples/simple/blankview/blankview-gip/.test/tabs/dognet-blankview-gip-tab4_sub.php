@@ -65,7 +65,7 @@ $(document).ready(function() {
     var editor_blankview_edit_sub = new $.fn.dataTable.Editor({
         display: "bootstrap",
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-process.php"
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-process.php"
         },
         table: "#blankview-gip-sub-table",
         i18n: {
@@ -121,8 +121,27 @@ $(document).ready(function() {
             def: "---",
             placeholder: "Выберите подрядчика"
         }, {
+            label: "Конкурсная основа :",
+            name: "dognet_blankdocsub.kodusetender",
+            type: "select",
+            options: [{
+                    label: 'Выберите вариант',
+                    value: null
+                },
+                {
+                    label: 'Без конкурса',
+                    value: '0'
+                },
+                {
+                    label: 'На основе выигранного тендера',
+                    value: '1'
+                }
+            ],
+            placeholder: "Выберите вариант"
+        }, {
             label: "Название договора :",
-            name: "dognet_blankdocsub.namedocblank"
+            name: "dognet_blankdocsub.namedocblank",
+            type: "textarea",
         }, {
             label: "Как заказчик",
             type: "checkbox",
@@ -305,16 +324,16 @@ $(document).ready(function() {
             name: "dognet_blankdocsub.defuslgiptext",
             type: "textarea",
             fieldInfo: ""
-        }, {
-            label: "По итогам выигранного тендера",
-            type: "checkbox",
-            name: "dognet_blankdocsub.kodusetender",
-            options: [{
-                label: "",
-                value: 1
-            }],
-            separator: "",
-            unselectedValue: 0
+            // }, {
+            //     label: "По итогам выигранного тендера",
+            //     type: "checkbox",
+            //     name: "dognet_blankdocsub.kodusetender",
+            //     options: [{
+            //         label: "",
+            //         value: 1
+            //     }],
+            //     separator: "",
+            //     unselectedValue: 0
         }, {
             label: "",
             type: "checkbox",
@@ -724,7 +743,7 @@ $(document).ready(function() {
     // API INSTANCE ЗАЯВКИ ГИПА НА субподряд ::: Редактор
     var editor_blankview_gip_sub = new $.fn.dataTable.Editor({
         display: "bootstrap",
-        ajax: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-process.php",
+        ajax: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-process.php",
         table: "#blankview-gip-sub-table",
         i18n: {
             create: {
@@ -1111,7 +1130,7 @@ $(document).ready(function() {
             url: "php/examples/simple/blankview/blankview-gip/dt_russian-tab4_sub.json"
         },
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-process.php",
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-process.php",
             type: "POST"
         },
         serverSide: true,
@@ -1412,7 +1431,7 @@ $(document).ready(function() {
     // БЛАНКИ ДЛЯ ПЕЧАТИ ::: Редактор
     var editor_blankview_gip_sub_docfiles = new $.fn.dataTable.Editor({
         display: "bootstrap",
-        ajax: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-docfiles-process.php",
+        ajax: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-docfiles-process.php",
         table: "#blankview-gip-sub-docfiles-table",
         i18n: {
             create: {
@@ -1471,7 +1490,7 @@ $(document).ready(function() {
             url: "php/examples/simple/blankview/blankview-gip/dt_russian-tab4_sub-docfiles.json"
         },
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-docfiles-process.php",
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-docfiles-process.php",
             type: 'post',
             data: function(d) {
                 var selected = table_blankview_gip_sub.row({
@@ -1594,7 +1613,7 @@ $(document).ready(function() {
     var editor_blankview_gip_sub_blankpril = new $.fn.dataTable.Editor({
         display: "bootstrap",
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-blankpril-process.php",
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-blankpril-process.php",
             data: function(d) {
                 var selected = table_blankview_gip_sub.row({
                     selected: true
@@ -1721,7 +1740,7 @@ $(document).ready(function() {
             url: "php/examples/simple/blankview/blankview-gip/dt_russian-tab4_sub-prilfiles.json"
         },
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-blankpril-process.php",
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-blankpril-process.php",
             type: 'post',
             data: function(d) {
                 var selected = table_blankview_gip_sub.row({
@@ -1785,9 +1804,9 @@ $(document).ready(function() {
                     text_link = ((data !== "") ? data : "Файл без имени");
                     if (row.dognet_blankworkpril_files.file_url == null) {
                         return text_link;
-                        } else {
-                            return '<a class="blank_link" href="' + row.dognet_blankworkpril_files
-                                .file_url + '" target="_blank">' + text_link + '</a>';
+                    } else {
+                        return '<a class="blank_link" href="' + row.dognet_blankworkpril_files
+                            .file_url + '" target="_blank">' + text_link + '</a>';
                     }
                 },
                 targets: 2
@@ -1862,7 +1881,7 @@ $(document).ready(function() {
     var editor_blankview_gip_sub_summadop = new $.fn.dataTable.Editor({
         display: "bootstrap",
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-summadop-process.php",
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-summadop-process.php",
             data: function(d) {
                 var selected = table_blankview_gip_sub.row({
                     selected: true
@@ -1943,7 +1962,7 @@ $(document).ready(function() {
             url: "php/examples/simple/blankview/blankview-gip/dt_russian-tab4_sub-summadop.json"
         },
         ajax: {
-            url: "php/examples/php/blankview/blankview-gip/dognet-blankview-gip-sub-summadop-process.php",
+            url: "php/examples/simple/blankview/blankview-gip/.test/tabs/process/dognet-blankview-gip-sub-summadop-process.php",
             type: 'post',
             data: function(d) {
                 var selected = table_blankview_gip_sub.row({
@@ -2327,8 +2346,11 @@ $(document).ready(function() {
                     </div>
                     <div class="Block100">
                         <legend>Название договора</legend>
-                        <fieldset class="field100">
+                        <fieldset class="field70">
                             <editor-field name="dognet_blankdocsub.namedocblank"></editor-field>
+                        </fieldset>
+                        <fieldset class="field30">
+                            <editor-field name="dognet_blankdocsub.kodusetender"></editor-field>
                         </fieldset>
                     </div>
                 </div>
@@ -2574,11 +2596,8 @@ $(document).ready(function() {
                 <div class="Section">
                     <div class="Block100">
                         <legend>Особые условия (определяются ГИПом)</legend>
-                        <fieldset class="field80">
+                        <fieldset class="field100">
                             <editor-field name="dognet_blankdocsub.defuslgiptext"></editor-field>
-                        </fieldset>
-                        <fieldset class="field20">
-                            <editor-field name="dognet_blankdocsub.kodusetender"></editor-field>
                         </fieldset>
                     </div>
                 </div>
