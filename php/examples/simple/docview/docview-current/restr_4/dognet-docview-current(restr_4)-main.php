@@ -235,7 +235,7 @@ $(document).ready(function() {
             label: "Бланк (год / номер / организация) :",
             name: "dognet_docbase.kodblankwork",
             type: "select",
-            placeholder: "Выберите бланк (из посл. 20-ти)"
+            placeholder: "Выберите бланк (из последней сотни)"
         }, {
             // ----- -----
             label: "Начало договора (число) :",

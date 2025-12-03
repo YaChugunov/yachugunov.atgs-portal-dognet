@@ -290,7 +290,7 @@ Editor::inst($db, 'dognet_docbase')
 						$q2->or_where('kodstatusblank', 'RD', '=');
 					})
 					->order('yearblankwork desc, numberblankwork desc')
-					->limit(20)
+					->limit(100)
 			),
 		// ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 		Field::inst('dognet_docbase.koddoc'),
