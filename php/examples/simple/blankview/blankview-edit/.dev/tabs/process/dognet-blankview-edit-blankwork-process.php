@@ -4,20 +4,20 @@ date_default_timezone_set('Europe/Moscow');
 // require($_SERVER['DOCUMENT_ROOT']."/config.inc.php");
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 // Подключаемся к базе
-require_once $_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_connection.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/_assets/drivers/db_controller.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/_assets/drivers/db_connection.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/_assets/drivers/db_controller.php';
 $db_handle = new DBController();
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 // Подключаем общие функции безопасности
 // require(dirname(__FILE__) . '/_assets/functions/funcSecure.inc.php');
-require $_SERVER['DOCUMENT_ROOT'] . '/_assets/functions/funcSecure.inc.php';
+require $_SERVER['DOCUMENT_ROOT'].'/_assets/functions/funcSecure.inc.php';
 // Подключаем собственные функции сервиса Почта
-require $_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/functions/funcDognet.inc.php';
+require $_SERVER['DOCUMENT_ROOT'].'/dognet/_assets/functions/funcDognet.inc.php';
 // Включаем режим сессии
 session_start();
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
-$_QRY     = mysqlQuery('SELECT * FROM dognet_users_kods WHERE id=' . $_SESSION['id']);
-$_ROW     = mysqli_fetch_assoc($_QRY);
+$_QRY = mysqlQuery('SELECT * FROM dognet_users_kods WHERE id='.$_SESSION['id']);
+$_ROW = mysqli_fetch_assoc($_QRY);
 $KODISPOL = $_ROW['kodispol'];
 
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
@@ -26,46 +26,49 @@ $KODISPOL = $_ROW['kodispol'];
 // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
 // Функция обновления полей основной таблицы (dognet_kalplanchf)
 //
-function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values)
+function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values, $row)
 {
     // :::
     // ::: Если была нажата кнопка "ИЗМЕНИТЬ"
     // :::
     if ($action_docblankwork == 'UPD') {
         // Если договор приявязан, то определяем номер договора и меняем статус бланка
-        $_QRY = $db->sql('SELECT kodblankwork, kodzakaz, kodsubpodr, koddoc, kodtipblank, dateblankdoc FROM dognet_docblankwork WHERE id=' . $id)->fetchAll();
+        $_QRY = $db->sql('SELECT kodblankwork, kodzakaz, kodsubpodr, koddoc, kodtipblank, dateblankdoc, kodusetender FROM dognet_docblankwork WHERE id='.$id)->fetchAll();
+        $_koddoc = $_QRY[0]['koddoc'] ?? '';
+        $_kodusetender = $_QRY[0]['kodusetender'] ?? 0;
+
         if ($_QRY[0]['koddoc'] != '') {
-            $_QRY_DocNumber   = $db->sql('SELECT docnumber FROM dognet_docbase WHERE koddoc=' . $_QRY[0]['koddoc'])->fetchAll();
+            $_QRY_DocNumber = $db->sql('SELECT docnumber FROM dognet_docbase WHERE koddoc='.$_QRY[0]['koddoc'])->fetchAll();
             // Номер договора
-            $_numberdoccr     = $_QRY_DocNumber[0]['docnumber'];
+            $_numberdoccr = $_QRY_DocNumber[0]['docnumber'];
             // Определяем статус бланка
-            $_kodstatusblank  = 'DO';
-            $_QRY_StatusBlank = $db->sql("SELECT status_name FROM dognet_sysdefs_blankstatus WHERE status_kod='" . $_kodstatusblank . "'")->fetchAll();
+            $_kodstatusblank = 'DO';
+            $_QRY_StatusBlank = $db->sql("SELECT status_name FROM dognet_sysdefs_blankstatus WHERE status_kod='".$_kodstatusblank."'")->fetchAll();
             $_statusblankwork = $_QRY_StatusBlank[0]['status_name'];
             // Дата привязки к договору
-            $_dateblankdoc    = $_QRY[0]['dateblankdoc'];
+            $_dateblankdoc = $_QRY[0]['dateblankdoc'];
             if ($_QRY[0]['dateblankdoc'] == '' or $_QRY[0]['dateblankdoc'] == null) {
                 $_dateblankdoc = date('Y-m-d');
             }
             // Обновляем заказчика
-            $_kodzakaz  = $_QRY[0]['kodzakaz'];
+            $_kodzakaz = $_QRY[0]['kodzakaz'];
             $_zakazName = '';
             if ($_kodzakaz != '') {
-                $_QRY_ZakazName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodzakaz . "'")->fetchAll();
-                $_zakazName     = $_QRY_ZakazName[0]['nameshort'];
+                $_QRY_ZakazName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='".$_kodzakaz."'")->fetchAll();
+                $_zakazName = $_QRY_ZakazName[0]['nameshort'];
             }
             // Обновляем подрядчика
-            $_kodsubpodr  = $_QRY[0]['kodsubpodr'];
+            $_kodsubpodr = $_QRY[0]['kodsubpodr'];
             $_subpodrName = '';
             if ($_kodsubpodr != '') {
-                $_QRY_SubpodrName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodsubpodr . "'")->fetchAll();
-                $_subpodrName     = $_QRY_SubpodrName[0]['nameshort'];
+                $_QRY_SubpodrName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='".$_kodsubpodr."'")->fetchAll();
+                $_subpodrName = $_QRY_SubpodrName[0]['nameshort'];
             }
             $db->update('dognet_docblankwork', [
-                'numberdoccr'     => $_numberdoccr,
-                'kodstatusblank'  => $_kodstatusblank,
+                'numberdoccr' => $_numberdoccr,
+                'kodstatusblank' => $_kodstatusblank,
                 'statusblankwork' => $_statusblankwork,
-                'dateblankdoc'    => $_dateblankdoc,
+                'dateblankdoc' => $_dateblankdoc,
             ], ['id' => $id]);
             if ($_QRY[0]['kodtipblank'] == 'SUB') {
                 $db->update('dognet_docblankwork', [
@@ -82,27 +85,30 @@ function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values)
             //                 'kodblankdone' => 1,
             //                 ), array( 'kodblankwork' => $_QRY[0]['kodblankwork'], 'kodstatusblank' => "CR" ));
             // END :: UPD20200724
+            $db->update('dognet_docbase', [
+                'kodusetender' => $_kodusetender,
+            ], ['koddoc' => $_koddoc]);
         } else {
-            $_kodstatusblank  = 'RD';
-            $_QRY_StatusBlank = $db->sql("SELECT status_name FROM dognet_sysdefs_blankstatus WHERE status_kod='" . $_kodstatusblank . "'")->fetchAll();
+            $_kodstatusblank = 'RD';
+            $_QRY_StatusBlank = $db->sql("SELECT status_name FROM dognet_sysdefs_blankstatus WHERE status_kod='".$_kodstatusblank."'")->fetchAll();
             $_statusblankwork = $_QRY_StatusBlank[0]['status_name'];
             // Обновляем заказчика
             if ($_QRY[0]['kodzakaz'] != '') {
-                $_kodzakaz      = $_QRY[0]['kodzakaz'];
-                $_QRY_ZakazName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodzakaz . "'")->fetchAll();
-                $_zakazName     = $_QRY_ZakazName[0]['nameshort'];
+                $_kodzakaz = $_QRY[0]['kodzakaz'];
+                $_QRY_ZakazName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='".$_kodzakaz."'")->fetchAll();
+                $_zakazName = $_QRY_ZakazName[0]['nameshort'];
             }
             // Обновляем подрядчика
             if ($_QRY[0]['kodsubpodr'] != '') {
-                $_kodsubpodr      = $_QRY[0]['kodsubpodr'];
-                $_QRY_SubpodrName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='" . $_kodsubpodr . "'")->fetchAll();
-                $_subpodrName     = $_QRY_SubpodrName[0]['nameshort'];
+                $_kodsubpodr = $_QRY[0]['kodsubpodr'];
+                $_QRY_SubpodrName = $db->sql("SELECT nameshort, namefull FROM sp_contragents WHERE kodcontragent='".$_kodsubpodr."'")->fetchAll();
+                $_subpodrName = $_QRY_SubpodrName[0]['nameshort'];
             }
             $db->update('dognet_docblankwork', [
-                'numberdoccr'     => '',
-                'kodstatusblank'  => $_kodstatusblank,
+                'numberdoccr' => '',
+                'kodstatusblank' => $_kodstatusblank,
                 'statusblankwork' => $_statusblankwork,
-                'dateblankdoc'    => null,
+                'dateblankdoc' => null,
             ], ['id' => $id]);
             if ($_QRY[0]['kodtipblank'] == 'SUB') {
                 $db->update('dognet_docblankwork', [
@@ -134,7 +140,7 @@ function updatefieldsDocblankwork($db, $action_docblankwork, $id, $values)
  * Example PHP implementation used for the index.html example
  */
 // DataTables PHP library
-require $_SERVER['DOCUMENT_ROOT'] . '/dognet/_assets/_datatables-php-api-editor/DataTables.php';
+require $_SERVER['DOCUMENT_ROOT'].'/dognet/_assets/_datatables-php-api-editor/DataTables.php';
 
 // Alias Editor classes so they are easy to use
 use DataTables\Editor\Field;
@@ -210,7 +216,7 @@ Editor::inst($db, 'dognet_docblankwork')
                     })
                     ->render(function ($row) {
                         // return "№ " . $row['docnumber'] . " : " . $row['docnameshot'];
-                        return '№ ' . $row['docnumber'] . ' : ' . mb_strimwidth($row['docnameshot'], 0, 77, '...');
+                        return '№ '.$row['docnumber'].' : '.mb_strimwidth($row['docnameshot'], 0, 77, '...');
                     })
             ),
         Field::inst('dognet_docblankwork.numberdoccr'),
@@ -254,7 +260,7 @@ Editor::inst($db, 'dognet_docblankwork')
                     ->label(['datedocsubpodr', 'namedocsubpodr', 'numberdocsubpodr'])
                     ->order('datedocsubpodr desc')
                     ->render(function ($row) {
-                        return date('d.m.Y', strtotime($row['datedocsubpodr'])) . ' : ' . $row['numberdocsubpodr'] . ' : ' . (!empty($row['namedocsubpodr']) ? $row['namedocsubpodr'] : '---');
+                        return date('d.m.Y', strtotime($row['datedocsubpodr'])).' : '.$row['numberdocsubpodr'].' : '.(! empty($row['namedocsubpodr']) ? $row['namedocsubpodr'] : '---');
                     })
                     ->where(function ($q) {
                         $q->where('koddel', '99', '<>');
@@ -589,7 +595,7 @@ Editor::inst($db, 'dognet_docblankwork')
     //
     //
     ->on('postEdit', function ($editor, $id, $values, $row) {
-        updatefieldsDocblankwork($editor->db(), 'UPD', $id, $values);
+        updatefieldsDocblankwork($editor->db(), 'UPD', $id, $values, $row);
     })
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     //
