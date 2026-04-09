@@ -1,55 +1,56 @@
 <?php
-    date_default_timezone_set('Europe/Moscow');
+date_default_timezone_set('Europe/Moscow');
 
-    ini_set('error_reporting', E_ALL);
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_NCL/NCLNameCaseRu.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/dognet/_assets/_NCL/NCLNameCaseRu.php';
 
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/dognet/_assets/_Morpher/morpher-ws3-php-client-1.0.0/vendor/autoload.php";
+require_once $_SERVER['DOCUMENT_ROOT'].'/dognet/_assets/_Morpher/morpher-ws3-php-client-1.0.0/vendor/autoload.php';
 
-    use Morpher\Ws3Client\Morpher;
-    use Morpher\Ws3Client\WebClient;
+use Morpher\Ws3Client\Morpher;
+use Morpher\Ws3Client\WebClient;
 
-    $__title       = 'Договор';
-    $__subtitle    = "Экспорт отчетных данных";
-    $__subsubtitle = "Экспорт отчетных данных";
+$__title = 'Договор';
+$__subtitle = 'Экспорт отчетных данных';
+$__subsubtitle = 'Экспорт отчетных данных';
 
-    # ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+// ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 
-    function numberFormat($digit, $width)
-    {
-        $result = "";
-        if (! empty($digit) && ! empty($width)) {
-            while (strlen($digit) < $width) {
-                $result .= '0' . $digit;
-            }
-        } else {
-            $result = "";
+function numberFormat($digit, $width)
+{
+    $result = '';
+    if (! empty($digit) && ! empty($width)) {
+        while (strlen($digit) < $width) {
+            $result .= '0'.$digit;
         }
-        return $result;
+    } else {
+        $result = '';
     }
 
-    # ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+    return $result;
+}
 
-    $_docSrok = "";
-    $_koddoc  = "";
-    if (isset($_GET['uniqueID1']) && ! empty($_GET['uniqueID1'])) {
-        $_koddoc  = $_GET['uniqueID1'];
-        $_QRY_DOC = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM dognet_docbase WHERE koddoc='{$_koddoc}'"));
-        $_docSrok = $_QRY_DOC['dayenddoc'] . "." . $_QRY_DOC['monthenddoc'] . "." . $_QRY_DOC['yearenddoc'];
-    }
-    if (isset($_GET['zak']) && ! empty($_GET['zak'])) {
-        $_kodzakaz     = $_GET['zak'];
-        $_QRY_SP       = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent='{$_kodzakaz}'"));
-        $_docZak       = $_QRY_SP['namefull'];
-        $_kodformlegal = $_QRY_SP['kodformlegal'];
-        $_QRY_OPF      = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM sp_contragents_opf WHERE kodformlegal='{$_kodformlegal}'"));
-        $_docZakOpf    = $_QRY_OPF['abbr'];
-        $_zakOrg       = $_docZakOpf . " " . "\"" . $_docZak . "\"";
-    }
-    # ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+// ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
+
+$_docSrok = '';
+$_koddoc = '';
+if (isset($_GET['uniqueID1']) && ! empty($_GET['uniqueID1'])) {
+    $_koddoc = $_GET['uniqueID1'];
+    $_QRY_DOC = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM dognet_docbase WHERE koddoc='{$_koddoc}'"));
+    $_docSrok = $_QRY_DOC['dayenddoc'].'.'.$_QRY_DOC['monthenddoc'].'.'.$_QRY_DOC['yearenddoc'];
+}
+if (isset($_GET['zak']) && ! empty($_GET['zak'])) {
+    $_kodzakaz = $_GET['zak'];
+    $_QRY_SP = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent='{$_kodzakaz}'"));
+    $_docZak = $_QRY_SP['namefull'];
+    $_kodformlegal = $_QRY_SP['kodformlegal'];
+    $_QRY_OPF = mysqli_fetch_assoc(mysqlQuery("SELECT * FROM sp_contragents_opf WHERE kodformlegal='{$_kodformlegal}'"));
+    $_docZakOpf = $_QRY_OPF['abbr'];
+    $_zakOrg = $_docZakOpf.' '.'"'.$_docZak.'"';
+}
+// ##### ##### ##### ##### ##### ##### ##### ##### ##### #####
 ?>
 
 <style>
@@ -392,20 +393,19 @@ button#clearSrok.btn:focus {
 <div class="container">
     <div class="space50"></div>
     <?php
-        if (empty($_GET['done']) || ! isset($_GET['done']) || $_GET['done'] != "ok") {
+    if (empty($_GET['done']) || ! isset($_GET['done']) || $_GET['done'] != 'ok') {
+        $_QRY = mysqlQuery("SELECT * FROM dognet_docbase WHERE koddoc = '".$_GET['uniqueID1']."'");
+        $_ROW = mysqli_fetch_assoc($_QRY);
 
-            $_QRY = mysqlQuery("SELECT * FROM dognet_docbase WHERE koddoc = '" . $_GET['uniqueID1'] . "'");
-            $_ROW = mysqli_fetch_assoc($_QRY);
-
-            /*
-$_QRY = mysqlQuery( "SELECT * FROM sp_contragents" );
-while ($_ROW = mysqli_fetch_assoc($_QRY)) {
-	$pos_space = mb_strpos($_ROW['zakfio'], " ", 0, 'utf-8');
-	$subname = mb_substr($_ROW['zakfio'], 0, ($pos_space+1), 'utf-8');
-	echo $subname." | ";
-// 	$_QRY_A = mysqlQuery( "UPDATE sp_contragents SET director_lastname='".$subname."'" );
-}
-*/
+        /*
+         * $_QRY = mysqlQuery( "SELECT * FROM sp_contragents" );
+         * while ($_ROW = mysqli_fetch_assoc($_QRY)) {
+         * 	$pos_space = mb_strpos($_ROW['zakfio'], " ", 0, 'utf-8');
+         * 	$subname = mb_substr($_ROW['zakfio'], 0, ($pos_space+1), 'utf-8');
+         * 	echo $subname." | ";
+         * // 	$_QRY_A = mysqlQuery( "UPDATE sp_contragents SET director_lastname='".$subname."'" );
+         * }
+         */
 
         ?>
     <div class="row space20">
@@ -418,105 +418,104 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
                             <input type="hidden" name="reportview" value="zadolchf">
                             <input type="hidden" name="export" value="yes">
                             <input type="hidden" name="uniqueID1"
-                                   value="<?php echo(isset($_GET['uniqueID1']) && ! empty($_GET['uniqueID1'])) ? $_GET['uniqueID1'] : ""; ?>">
+                                   value="<?php echo (isset($_GET['uniqueID1']) && ! empty($_GET['uniqueID1'])) ? $_GET['uniqueID1'] : ''; ?>">
                             <input type="hidden" name="zak"
-                                   value="<?php echo(isset($_GET['zak']) && ! empty($_GET['zak'])) ? $_GET['zak'] : ""; ?>">
+                                   value="<?php echo (isset($_GET['zak']) && ! empty($_GET['zak'])) ? $_GET['zak'] : ''; ?>">
                             <div class="col-xs-hidden col-sm-12 col-md-12 col-lg-12 space20">
                                 <div class="form-group text-left">
                                     <h4 class="section-title space10">Выберите счета-фактуры для письма</h4>
                                     <select id="selectCHF" class='form-control' name='chfID[]' multiple size='10'
                                             style="font-size:0.9em; min-height:205px">
                                         <?php
-                                            $_QRY_A = mysqlQuery("SELECT koddoc, docnumber, daynachdoc, monthnachdoc, yearnachdoc, kodzakaz FROM dognet_docbase WHERE kodzakaz = '" . $_GET['zak'] . "'");
-                                                $_QRY_B = mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent = '" . $_GET['zak'] . "'");
-                                                $_ROW_B = mysqli_fetch_assoc($_QRY_B);
-                                                while ($_ROW_A = mysqli_fetch_assoc($_QRY_A)) {
-                                                    $daynachdoc   = ! empty($_ROW_A['daynachdoc']) ? str_pad($_ROW_A['daynachdoc'], 2, "0", STR_PAD_LEFT) : "--";
-                                                    $monthnachdoc = ! empty($_ROW_A['monthnachdoc']) ? str_pad($_ROW_A['monthnachdoc'], 2, "0", STR_PAD_LEFT) : "--";
-                                                    $yearnachdoc  = ! empty($_ROW_A['yearnachdoc']) ? $_ROW_A['yearnachdoc'] : "----";
-                                                    $docdate      = $daynachdoc . "." . $monthnachdoc . "." . $yearnachdoc;
+                                        $_QRY_A = mysqlQuery("SELECT koddoc, docnumber, daynachdoc, monthnachdoc, yearnachdoc, kodzakaz FROM dognet_docbase WHERE kodzakaz = '".$_GET['zak']."'");
+                                        $_QRY_B = mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent = '".$_GET['zak']."'");
+                                        $_ROW_B = mysqli_fetch_assoc($_QRY_B);
+                                        while ($_ROW_A = mysqli_fetch_assoc($_QRY_A)) {
+                                            $daynachdoc = ! empty($_ROW_A['daynachdoc']) ? str_pad($_ROW_A['daynachdoc'], 2, '0', STR_PAD_LEFT) : '--';
+                                            $monthnachdoc = ! empty($_ROW_A['monthnachdoc']) ? str_pad($_ROW_A['monthnachdoc'], 2, '0', STR_PAD_LEFT) : '--';
+                                            $yearnachdoc = ! empty($_ROW_A['yearnachdoc']) ? $_ROW_A['yearnachdoc'] : '----';
+                                            $docdate = $daynachdoc.'.'.$monthnachdoc.'.'.$yearnachdoc;
 
-                                                    $_QRY = mysqlQuery("SELECT * FROM dognet_reports_zadolchf WHERE koddoc = '" . $_ROW_A['koddoc'] . "'");
-                                                    while ($_ROW = mysqli_fetch_assoc($_QRY)) {
-                                                    ?>
-                                        <option value='<?php echo $_ROW["kodchfact"]; ?>' selected="selected">
-                                            <?php echo 'С/Ф №' . $_ROW["chetfnumber"] . ' от ' . date("d.m.Y", strtotime($_ROW["chetfdate"])) . ' / Договор №3-4/' . $_ROW_A["docnumber"] . ' от ' . $docdate . ' / ' . number_format($_ROW["summazadol"], 2, '.', ' '); ?>
+                                            $_QRY = mysqlQuery("SELECT * FROM dognet_reports_zadolchf WHERE koddoc = '".$_ROW_A['koddoc']."'");
+                                            while ($_ROW = mysqli_fetch_assoc($_QRY)) {
+                                                ?>
+                                        <option value='<?php echo $_ROW['kodchfact']; ?>' selected="selected">
+                                            <?php echo 'С/Ф №'.$_ROW['chetfnumber'].' от '.date('d.m.Y', strtotime($_ROW['chetfdate'])).' / Договор №3-4/'.$_ROW_A['docnumber'].' от '.$docdate.' / '.number_format($_ROW['summazadol'], 2, '.', ' '); ?>
                                         </option>
                                         <?php
                                             }
-                                                }
-                                            ?>
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <?php
 
-                                        $_zakLastName_D  = "";
-                                        $_zakFirstName_D = "";
-                                        $_zakMidName_D   = "";
-                                        $_zakDolj_D      = "";
+                                $_zakLastName_D = '';
+                                $_zakFirstName_D = '';
+                                $_zakMidName_D = '';
+                                $_zakDolj_D = '';
 
-                                        $_QRY_A = mysqlQuery("SELECT docnumber, daynachdoc, monthnachdoc, yearnachdoc, kodzakaz FROM dognet_docbase WHERE koddoc = '" . $_GET['uniqueID1'] . "'");
-                                        $_ROW_A = mysqli_fetch_assoc($_QRY_A);
-                                        //
-                                        $_QRY_B        = mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent = '" . $_GET['zak'] . "'");
-                                        $_ROW_B        = mysqli_fetch_assoc($_QRY_B);
-                                        $daynachdoc    = ! empty($_ROW_B['daynachdoc']) ? str_pad($_ROW_B['daynachdoc'], 2, "0", STR_PAD_LEFT) : "--";
-                                        $monthnachdoc  = ! empty($_ROW_B['monthnachdoc']) ? str_pad($_ROW_B['monthnachdoc'], 2, "0", STR_PAD_LEFT) : "--";
-                                        $yearnachdoc   = ! empty($_ROW_B['yearnachdoc']) ? $_ROW_B['yearnachdoc'] : "----";
-                                        $docdate       = $daynachdoc . "." . $monthnachdoc . "." . $yearnachdoc;
-                                        $_zakFirstName = ! empty($_ROW_B['director_firstname']) ? $_ROW_B['director_firstname'] : "";
-                                        $_zakMidName   = ! empty($_ROW_B['director_middlename']) ? $_ROW_B['director_middlename'] : "";
-                                        $_zakLastName  = ! empty($_ROW_B['director_lastname']) ? $_ROW_B['director_lastname'] : "";
-                                        $_zakDolj      = ! empty($_ROW_B['director_post']) ? $_ROW_B['director_post'] : "";
-                                        /**
-                                         *
-                                         * Формируем дательный падеж для ИО руководителя компании-заказчика
-                                         * На основе класса https://github.com/petrovich/petrovich-php
-                                         *
-                                         */
-                                        if (! empty($_zakLastName) && ! empty($_zakFirstName) && 1 == 1) {
-                                            mb_internal_encoding('UTF-8');
-                                            $nc              = new NCLNameCaseRu();
-                                            $_zakLastName_D  = $nc->qFullName($_zakLastName, $_zakFirstName, $_zakMidName, null, NCL::$DATELN, "S");
-                                            $_zakFirstName_D = $nc->qFullName($_zakLastName, $_zakFirstName, $_zakMidName, null, NCL::$DATELN, "N");
-                                            $_zakMidName_D   = $nc->qFullName($_zakLastName, $_zakFirstName, $_zakMidName, null, NCL::$DATELN, "F");
-                                            // $_zakDolj_D = $_zakDolj;
+                                $_QRY_A = mysqlQuery("SELECT docnumber, daynachdoc, monthnachdoc, yearnachdoc, kodzakaz FROM dognet_docbase WHERE koddoc = '".$_GET['uniqueID1']."'");
+                                $_ROW_A = mysqli_fetch_assoc($_QRY_A);
+                                //
+                                $_QRY_B = mysqlQuery("SELECT * FROM sp_contragents WHERE kodcontragent = '".$_GET['zak']."'");
+                                $_ROW_B = mysqli_fetch_assoc($_QRY_B);
+                                $daynachdoc = ! empty($_ROW_B['daynachdoc']) ? str_pad($_ROW_B['daynachdoc'], 2, '0', STR_PAD_LEFT) : '--';
+                                $monthnachdoc = ! empty($_ROW_B['monthnachdoc']) ? str_pad($_ROW_B['monthnachdoc'], 2, '0', STR_PAD_LEFT) : '--';
+                                $yearnachdoc = ! empty($_ROW_B['yearnachdoc']) ? $_ROW_B['yearnachdoc'] : '----';
+                                $docdate = $daynachdoc.'.'.$monthnachdoc.'.'.$yearnachdoc;
+                                $_zakFirstName = ! empty($_ROW_B['director_firstname']) ? $_ROW_B['director_firstname'] : '';
+                                $_zakMidName = ! empty($_ROW_B['director_middlename']) ? $_ROW_B['director_middlename'] : '';
+                                $_zakLastName = ! empty($_ROW_B['director_lastname']) ? $_ROW_B['director_lastname'] : '';
+                                $_zakDolj = ! empty($_ROW_B['director_post']) ? $_ROW_B['director_post'] : '';
 
-                                            $base_url   = 'https://ws3.morpher.ru';
-                                            $token      = "";
-                                            $morpher    = new Morpher($base_url, $token);
-                                            $_zakDolj_D = $morpher->russian->Parse($_zakDolj)->Dative;
-                                        } else {
-                                            $_zakLastName_D  = $_zakLastName;
-                                            $_zakFirstName_D = $_zakFirstName;
-                                            $_zakMidName_D   = $_zakMidName;
-                                            $_zakDolj_D      = $_zakDolj;
-                                        }
-                                    ?>
+                                /**
+                                 * Формируем дательный падеж для ИО руководителя компании-заказчика
+                                 * На основе класса https://github.com/petrovich/petrovich-php
+                                 */
+                                if (! empty($_zakLastName) && ! empty($_zakFirstName) && 1 != 1) {
+                                    mb_internal_encoding('UTF-8');
+                                    $nc = new NCLNameCaseRu();
+                                    $_zakLastName_D = $nc->qFullName($_zakLastName, $_zakFirstName, $_zakMidName, null, NCL::$DATELN, 'S');
+                                    $_zakFirstName_D = $nc->qFullName($_zakLastName, $_zakFirstName, $_zakMidName, null, NCL::$DATELN, 'N');
+                                    $_zakMidName_D = $nc->qFullName($_zakLastName, $_zakFirstName, $_zakMidName, null, NCL::$DATELN, 'F');
+                                    // $_zakDolj_D = $_zakDolj;
+
+                                    $base_url = 'https://ws3.morpher.ru';
+                                    $token = '';
+                                    $morpher = new Morpher($base_url, $token);
+                                    $_zakDolj_D = $morpher->russian->Parse($_zakDolj)->Dative;
+                                } else {
+                                    $_zakLastName_D = $_zakLastName;
+                                    $_zakFirstName_D = $_zakFirstName;
+                                    $_zakMidName_D = $_zakMidName;
+                                    $_zakDolj_D = $_zakDolj;
+                                }
+                                ?>
 
                                 <h4 class="section-title space10">Информация о контрагенте (из справочника)</h4>
                                 <div class="col-sm-12 text-left space10">
                                     <span><b>Фамилия Имя Отчество адресата</b></span><br>
                                     <span>
                                         <?php
-                                            echo $_zakFirstName . " " . $_zakMidName . " " . $_zakLastName;
-                                            ?>
+                                        echo $_zakFirstName.' '.$_zakMidName.' '.$_zakLastName;
+                                        ?>
                                     </span>
                                 </div>
                                 <div class="col-sm-12 text-left space10">
                                     <span><b>Должность адресата</b></span><br>
                                     <span>
                                         <?php
-                                            echo $_zakDolj;
-                                            ?>
+                                        echo $_zakDolj;
+                                        ?>
                                     </span>
                                 </div>
                                 <div class="col-sm-12 text-left space10">
                                     <span><b>Организация-адресат</b></span><br>
                                     <span>
                                         <?php
-                                            echo $_zakOrg;
-                                            ?>
+                                        echo $_zakOrg;
+                                        ?>
                                     </span>
                                 </div>
                             </div>
@@ -663,29 +662,29 @@ while ($_ROW = mysqli_fetch_assoc($_QRY)) {
         </div>
     </div>
     <?php
-        }
+    }
     ?>
     <div class="row space50">
         <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
             <div class="text-center">
                 <?php
-                    if (isset($_GET['format'])) {
-                        switch ($_GET['format']) {
-                            case "doc":
-                                include $_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/report/report-details/restr_4/reports/letter/zakzadolchf/export/_docx/export2docx.php";
-                                break;
-                            case "xls":
-                                include '';
-                                break;
-                            case "pdf":
-                                include '';
-                                break;
-                            default:
-                                echo "<div class='format-not-selected'></div>";
-                        }
-                    } else {
-                        echo "<div class='format-not-selected'></div>";
+                if (isset($_GET['format'])) {
+                    switch ($_GET['format']) {
+                        case 'doc':
+                            include $_SERVER['DOCUMENT_ROOT'].'/dognet/php/examples/simple/report/report-details/restr_4/reports/letter/zakzadolchf/export/_docx/export2docx.php';
+                            break;
+                        case 'xls':
+                            include '';
+                            break;
+                        case 'pdf':
+                            include '';
+                            break;
+                        default:
+                            echo "<div class='format-not-selected'></div>";
                     }
+                } else {
+                    echo "<div class='format-not-selected'></div>";
+                }
                 ?>
             </div>
         </div>
