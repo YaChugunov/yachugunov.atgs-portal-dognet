@@ -593,11 +593,10 @@ $(document).ready(function() {
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     //
     // АВАНСЫ ЗАЧТЕННЫЕ ПО СЧЕТАМ-ФАКТУРАМ : форма редактирования
-    // АВАНСЫ ЗАЧТЕННЫЕ ПО СЧЕТАМ-ФАКТУРАМ : форма редактирования
     editor_tab3_chfavans = new $.fn.dataTable.Editor({
         display: "bootstrap",
         ajax: {
-            url: 'php/examples/simple/docview/docview-edit/restr_5/tabs/process/dognet-docview-edit(restr_5)-tab3_chfavans_child-process.php',
+            url: 'php/examples/simple/docview/docview-edit/restr_4/tabs/process/dognet-docview-edit(restr_4)-tab3_chfavans_child-process.php',
             data: function(d) {
                 var selected_chfavans = table_tab3_kalplanchf.row({
                     selected: true
@@ -649,14 +648,7 @@ $(document).ready(function() {
         }, {
             label: "Счет-фактура :",
             name: "dognet_chfavans.kodchfact",
-            type: "select",
-        }, {
-            label: "Счет-фактура :",
-            name: "dognet_kalplanchf.chetfnumber",
-            type: "text",
-            attr: {
-                readonly: "readonly"
-            }
+            type: "select"
         }, {
             label: "Аванс :",
             name: "dognet_chfavans.kodavans",
@@ -678,258 +670,6 @@ $(document).ready(function() {
             name: "dognet_chfavans.tmp"
         }]
     });
-
-
-    // ============================================================
-    // ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ ДЛЯ ФОРМАТИРОВАНИЯ ДАТЫ В ФОРМАТ ДД.ММ.ГГГГ
-    // ============================================================
-    function formatDateToRussian(dateStr) {
-        if (!dateStr) return '';
-
-        // Если дата в формате YYYY-MM-DD
-        var parts = dateStr.split('-');
-        if (parts.length === 3) {
-            return parts[2] + '.' + parts[1] + '.' + parts[0];
-        }
-
-        // Если дата уже в формате DD.MM.YYYY
-        var parts2 = dateStr.split('.');
-        if (parts2.length === 3 && parts2[0].length === 2 && parts2[1].length === 2 && parts2[2].length === 4) {
-            return dateStr;
-        }
-
-        // Если дата в формате YYYY/MM/DD
-        var parts3 = dateStr.split('/');
-        if (parts3.length === 3) {
-            return parts3[2] + '.' + parts3[1] + '.' + parts3[0];
-        }
-
-        return dateStr;
-    }
-
-    // ============================================================
-    // КЭШ ДЛЯ ДАТ СЧЕТОВ-ФАКТУР
-    // ============================================================
-    var chfDateCache = {};
-
-    // ============================================================
-    // ФУНКЦИЯ ДЛЯ ПОЛУЧЕНИЯ ДАТЫ СЧЕТА-ФАКТУРЫ С КЭШИРОВАНИЕМ
-    // ============================================================
-    function getChfDate(kodchfact, callback) {
-        // Проверяем кэш
-        if (chfDateCache[kodchfact]) {
-            callback(chfDateCache[kodchfact]);
-            return;
-        }
-
-        // Делаем AJAX запрос
-        $.ajax({
-            url: "php/examples/simple/docview/docview-edit/restr_4/tabs/process/ajaxrequests/ajaxGetChfDate.php",
-            type: "post",
-            data: {
-                kodchfact: kodchfact
-            },
-            success: function(response) {
-                var dateStr = response.trim();
-                // Сохраняем в кэш
-                chfDateCache[kodchfact] = dateStr;
-                callback(dateStr);
-            },
-            error: function() {
-                callback(null);
-            }
-        });
-    }
-
-    // ============================================================
-    // ПЕРЕМЕННАЯ ДЛЯ ТАЙМЕРА DEBOUNCE
-    // ============================================================
-    var avansSelectTimer = null;
-
-    // ============================================================
-    // ФУНКЦИЯ ДЛЯ ПРОВЕРКИ ДАТЫ АВАНСА (ОПТИМИЗИРОВАННАЯ)
-    // ============================================================
-    function validateAvansDate(editor, fieldName, kodchfact, avansDateStr) {
-        // Получаем выбранный аванс
-        var kodavans = editor.field('dognet_chfavans.kodavans').val();
-
-        if (!kodavans || kodavans == '') {
-            editor.field('dognet_chfavans.kodavans').error(null);
-            $('.DTE_Action_Submit').prop('disabled', false).removeClass('disabled');
-            return;
-        }
-
-        if (!avansDateStr) {
-            return;
-        }
-
-        var avansDate = parseDate(avansDateStr);
-        if (!avansDate) {
-            return;
-        }
-
-        // Получаем дату СФ из кэша или через AJAX
-        getChfDate(kodchfact, function(chfDateStr) {
-            if (!chfDateStr) {
-                return;
-            }
-
-            // Форматируем дату СФ в российский формат ДД.ММ.ГГГГ
-            var chfDateStrFormatted = formatDateToRussian(chfDateStr);
-            var chfDate = parseDate(chfDateStr);
-
-            // Проверяем, не изменился ли выбранный аванс за время выполнения запроса
-            var currentKodavans = editor.field('dognet_chfavans.kodavans').val();
-            if (currentKodavans != kodavans) {
-                // Если изменился - игнорируем результат
-                return;
-            }
-
-            // Сравниваем даты
-            if (avansDate && chfDate && avansDate > chfDate) {
-                var errorMessage = 'Дата выбранного аванса (' + avansDateStr +
-                    ') не может быть позже даты выбранного счета-фактуры (' + chfDateStrFormatted + ')';
-                editor.field('dognet_chfavans.kodavans').error(errorMessage);
-                $('.DTE_Action_Submit').prop('disabled', true).addClass('disabled');
-            } else {
-                editor.field('dognet_chfavans.kodavans').error(null);
-                $('.DTE_Action_Submit').prop('disabled', false).removeClass('disabled');
-            }
-        });
-    }
-
-    // ============================================================
-    // ОБРАБОТЧИК ИЗМЕНЕНИЯ АВАНСА С DEBOUNCE
-    // ============================================================
-    function handleAvansChange(editor, val, data, callback) {
-        // Очищаем предыдущий таймер
-        if (avansSelectTimer) {
-            clearTimeout(avansSelectTimer);
-            avansSelectTimer = null;
-        }
-
-        // Очищаем предыдущие ошибки
-        editor.field('dognet_chfavans.kodavans').error(null);
-        $('.DTE_Action_Submit').prop('disabled', false).removeClass('disabled');
-
-        if (!val || val == '') {
-            $('#fieldset-table-row_useostatok').css({
-                "display": "none"
-            });
-            editor.field('useostatok').disable();
-            editor.field('useostatok').hide(false);
-            return;
-        }
-
-        // Получаем текст выбранного аванса
-        var selectedOption = $('#DTE_Field_dognet_chfavans-kodavans option:selected');
-        var optionText = selectedOption.text();
-
-        if (optionText == '') {
-            return;
-        }
-
-        // Извлекаем сумму, остаток и дату из текста
-        var x = optionText.split('/');
-        var sum = (x[1] != '') ? x[1].replace(/\ /g, '') : "";
-        var ost = (x[2] != '') ? x[2].replace(/\ /g, '') : "";
-
-        // Извлекаем дату аванса из текста
-        var dateMatch = optionText.match(/Oт (\d{2}\.\d{2}\.\d{4})/);
-        var avansDateStr = dateMatch ? dateMatch[1] : null;
-
-        console.log("Выбран аванс: " + optionText);
-        console.log("Сумма: " + sum + " / Остаток: " + ost + " / Дата: " + avansDateStr);
-
-        // ============================================================
-        // ПРОВЕРКА ДАТЫ АВАНСА (С ЗАДЕРЖКОЙ ДЛЯ ИЗБЕЖАНИЯ ПОВТОРНЫХ ЗАПРОСОВ)
-        // ============================================================
-        var kodchfact = null;
-        var selectedRow = table_tab3_kalplanchf.row({
-            selected: true
-        });
-        if (selectedRow.any()) {
-            kodchfact = selectedRow.data().dognet_kalplanchf.kodchfact;
-        }
-
-        if (kodchfact && avansDateStr) {
-            // Устанавливаем таймер с задержкой 300мс
-            avansSelectTimer = setTimeout(function() {
-                validateAvansDate(editor, 'dognet_chfavans.kodavans', kodchfact, avansDateStr);
-                avansSelectTimer = null;
-            }, 300);
-        }
-        // ============================================================
-
-        // Обработка остатка аванса
-        if (ost > 0.0 && ost != '') {
-            $('#fieldset-table-row_useostatok').css({
-                "display": ""
-            });
-            editor.field('useostatok').enable();
-            editor.field('useostatok').show(false);
-
-            editor.dependent('useostatok', function(val2, data2, callback2) {
-                if (val2 == 1) {
-                    editor.field('dognet_chfavans.summaoplav').disable();
-                    editor.field('dognet_chfavans.summaoplav').set(ost);
-                } else {
-                    editor.field('dognet_chfavans.summaoplav').enable();
-                    editor.field('dognet_chfavans.summaoplav').set(
-                        editor.field('dognet_chfavans.tmp').get()
-                    );
-                }
-            });
-        } else {
-            $('#fieldset-table-row_useostatok').css({
-                "display": "none"
-            });
-            editor.field('useostatok').disable();
-            editor.field('useostatok').hide(false);
-        }
-
-        // Очищаем checkbox остатка
-        editor.field('useostatok').set(0);
-    }
-
-    // ============================================================
-    // ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ ДЛЯ ПАРСИНГА ДАТЫ
-    // ============================================================
-    function parseDate(dateStr) {
-        if (!dateStr) return null;
-
-        // Формат DD.MM.YYYY
-        var parts = dateStr.split('.');
-        if (parts.length === 3) {
-            var day = parseInt(parts[0], 10);
-            var month = parseInt(parts[1], 10) - 1;
-            var year = parseInt(parts[2], 10);
-            return new Date(year, month, day);
-        }
-
-        // Формат YYYY-MM-DD
-        var parts2 = dateStr.split('-');
-        if (parts2.length === 3) {
-            var day2 = parseInt(parts2[2], 10);
-            var month2 = parseInt(parts2[1], 10) - 1;
-            var year2 = parseInt(parts2[0], 10);
-            return new Date(year2, month2, day2);
-        }
-
-        // Формат YYYY/MM/DD
-        var parts3 = dateStr.split('/');
-        if (parts3.length === 3) {
-            var day3 = parseInt(parts3[2], 10);
-            var month3 = parseInt(parts3[1], 10) - 1;
-            var year3 = parseInt(parts3[0], 10);
-            return new Date(year3, month3, day3);
-        }
-
-        return null;
-    }
-
-
-
     //
     // Изменяем размер диалогового окна редактирования договора субподряда
     editor_tab3_chfavans.on('open', function() {
@@ -1229,154 +969,66 @@ $(document).ready(function() {
         $('button.tab1-refreshButton').click();
     });
     editor_tab3_chfavans.on('initEdit initCreate', function() {
-        editor_tab3_chfavans.field('dognet_chfavans.kodchfact').disable(false);
+        editor_tab3_chfavans.disable(['dognet_chfavans.kodchfact']);
     });
 
-    // ============================================================
-    // ОБРАБОТЧИКИ СОБЫТИЙ ДЛЯ EDITOR_TAB3_CHFAVANS
-    // ============================================================
-
-    // Изменяем размер диалогового окна
+    // Обрабатываем checkbox "Зачесть остаток аванса"
     editor_tab3_chfavans.on('open', function() {
-        $(".modal-dialog").css({
-            "width": "60%",
-            "min-width": "640px",
-            "max-width": "800px"
-        });
+        editor_tab3_chfavans.field('dognet_chfavans.tmp').set(editor_tab3_chfavans.field(
+            'dognet_chfavans.summaoplav').get());
 
-        // Очищаем ошибки при открытии
-        editor_tab3_chfavans.field('dognet_chfavans.kodavans').error(null);
-        $('.DTE_Action_Submit').prop('disabled', false).removeClass('disabled');
-
-        // Сбрасываем кэш дат при открытии (опционально)
-        // chfDateCache = {};
-
-        // Настройка inputmask для суммы
-        $('#DTE_Field_dognet_chfavans-summaoplav').inputmask({
-            alias: "currency",
-            rightAlign: false,
-            greedy: false,
-            tabThrough: true,
-            enforceDigitsOnBlur: false,
-            radixPoint: ".",
-            positionCaretOnClick: "radixFocus",
-            groupSeparator: " ",
-            allowMinus: "true",
-            inputType: "number",
-            unmaskAsNumber: false,
-            suffix: " р",
-            removeMaskOnSubmit: true,
-            autoUnmask: true,
-            onUnMask: function(maskedValue, unmaskedValue) {
-                var x = unmaskedValue.split('.');
-                return x[0].replace(/\ /g, '') + '.' + x[1];
-            }
-        });
-
-        // Сохраняем временное значение суммы
-        editor_tab3_chfavans.field('dognet_chfavans.tmp').set(
-            editor_tab3_chfavans.field('dognet_chfavans.summaoplav').get()
-        );
-
-        // ============================================================
-        // ОБРАБОТЧИК ИЗМЕНЕНИЯ АВАНСА (С DEBOUNCE)
-        // ============================================================
         editor_tab3_chfavans.dependent('dognet_chfavans.kodavans', function(val, data, callback) {
-            handleAvansChange(editor_tab3_chfavans, val, data, callback);
+            editor_tab3_chfavans.field('useostatok').set(0);
+            if (val != '') {
+                var val_selected = $('#DTE_Field_dognet_chfavans-kodavans option:selected')
+                    .val();
+                var txt_selected = $('#DTE_Field_dognet_chfavans-kodavans option:selected')
+                    .text();
+                if (txt_selected != '') {
+                    var x = txt_selected.split('/');
+                    var sum = (x[1] != '') ? x[1].replace(/\ /g, '') : "";
+                    var ost = (x[2] != '') ? x[2].replace(/\ /g, '') : "";
+                    console.log("TXT " + txt_selected);
+                    console.log("SUM " + sum + " / OST " + ost);
+                }
+                if (ost > 0.0) {
+                    $('#fieldset-table-row_useostatok').css({
+                        "display": ""
+                    });
+                    editor_tab3_chfavans.field('useostatok').enable();
+                    editor_tab3_chfavans.field('useostatok').show(false);
+                    editor_tab3_chfavans.dependent('useostatok', function(val, data, callback) {
+                        if (val == 1) {
+                            editor_tab3_chfavans.field('dognet_chfavans.summaoplav')
+                                .disable();
+                            editor_tab3_chfavans.field('dognet_chfavans.summaoplav')
+                                .set(ost);
+                        } else {
+                            editor_tab3_chfavans.field('dognet_chfavans.summaoplav')
+                                .enable();
+                            editor_tab3_chfavans.field('dognet_chfavans.summaoplav')
+                                .set(editor_tab3_chfavans.field('dognet_chfavans.tmp')
+                                    .get());
+                        }
+                    });
+                } else {
+                    $('#fieldset-table-row_useostatok').css({
+                        "display": "none"
+                    });
+                    editor_tab3_chfavans.field('useostatok').disable();
+                    editor_tab3_chfavans.field('useostatok').hide(false);
+                }
+            } else {
+                $('#fieldset-table-row_useostatok').css({
+                    "display": "none"
+                });
+                editor_tab3_chfavans.field('useostatok').disable();
+                editor_tab3_chfavans.field('useostatok').hide(false);
+            }
         }, {
             event: 'change'
         });
     });
-
-    // ============================================================
-    // ОТМЕНЯЕМ ТАЙМЕР ПРИ ЗАКРЫТИИ РЕДАКТОРА
-    // ============================================================
-    editor_tab3_chfavans.on('close', function() {
-        if (avansSelectTimer) {
-            clearTimeout(avansSelectTimer);
-            avansSelectTimer = null;
-        }
-    });
-
-
-    // ============================================================
-    // ПРОВЕРКА ПРИ ПОПЫТКЕ ОТПРАВКИ ФОРМЫ
-    // ============================================================
-    editor_tab3_chfavans.on('preSubmit', function(e, data, action) {
-        // Отменяем таймер при отправке
-        if (avansSelectTimer) {
-            clearTimeout(avansSelectTimer);
-            avansSelectTimer = null;
-        }
-
-        // Проверяем дату перед отправкой
-        var kodchfact = null;
-        var selectedRow = table_tab3_kalplanchf.row({
-            selected: true
-        });
-        if (selectedRow.any()) {
-            kodchfact = selectedRow.data().dognet_kalplanchf.kodchfact;
-        }
-
-        if (kodchfact) {
-            // Получаем выбранный аванс
-            var kodavans = editor_tab3_chfavans.field('dognet_chfavans.kodavans').val();
-            if (kodavans && kodavans != '') {
-                var selectedOption = $('#DTE_Field_dognet_chfavans-kodavans option:selected');
-                var optionText = selectedOption.text();
-                var dateMatch = optionText.match(/Oт (\d{2}\.\d{2}\.\d{4})/);
-
-                if (dateMatch) {
-                    var avansDateStr = dateMatch[1];
-                    var avansDate = parseDate(avansDateStr);
-
-                    // Получаем дату СФ (синхронно, с кэшем)
-                    var chfDateStr = chfDateCache[kodchfact];
-                    if (!chfDateStr) {
-                        // Если нет в кэше - делаем синхронный запрос
-                        $.ajax({
-                            url: "php/examples/simple/docview/docview-edit/restr_4/tabs/process/ajaxrequests/ajaxGetChfDate.php",
-                            type: "post",
-                            async: false,
-                            data: {
-                                kodchfact: kodchfact
-                            },
-                            success: function(response) {
-                                chfDateStr = response.trim();
-                                chfDateCache[kodchfact] = chfDateStr;
-                            }
-                        });
-                    }
-
-                    var chfDate = parseDate(chfDateStr);
-
-                    if (avansDate && chfDate && avansDate > chfDate) {
-                        // Форматируем дату СФ в российский формат для сообщения об ошибке
-                        var chfDateStrFormatted = formatDateToRussian(chfDateStr);
-
-                        // Блокируем отправку
-                        e.preventDefault();
-                        editor_tab3_chfavans.field('dognet_chfavans.kodavans').error(
-                            'Дата выбранного аванса (' + avansDateStr +
-                            ') не может быть позже даты выбранного счета-фактуры (' +
-                            chfDateStrFormatted + ')'
-                        );
-                        return false;
-                    }
-                }
-            }
-        }
-    });
-
-    // ============================================================
-    // ОБРАБОТЧИК УСПЕШНОЙ ОТПРАВКИ
-    // ============================================================
-    editor_tab3_chfavans.on('submitSuccess', function() {
-        table_tab3_kalplanchf.ajax.reload(null, false);
-        table_tab4_avans.ajax.reload();
-        $('button.tab1-refreshButton').click();
-    });
-
     // ----- ----- ----- ----- ----- ----- ----- ----- ----- -----
     //
     //
@@ -1679,9 +1331,9 @@ $(document).ready(function() {
 // ----- ----- ----- ----- -----
 // Подключаем формы и выводим таблицы
 // :::
-include ($_SERVER['DOCUMENT_ROOT'].'/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab3_kalplanchf-customForm.php');
-include ($_SERVER['DOCUMENT_ROOT'].'/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab3_kalplanchf_oplata-customForm.php');
-include ($_SERVER['DOCUMENT_ROOT'].'/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab3_kalplanchf_avans-customForm.php');
+include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab3_kalplanchf-customForm.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab3_kalplanchf_oplata-customForm.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/forms/docview-edit_tab3_kalplanchf_avans-customForm.php");
 ?>
 <section>
     <link rel="stylesheet"
@@ -1706,10 +1358,10 @@ include ($_SERVER['DOCUMENT_ROOT'].'/dognet/php/examples/simple/docview/docview-
             </thead>
         </table>
         <?php
-        // ----- ----- ----- ----- -----
-        // Таблицы оплат и авансов
-        // :::
-        ?>
+    // ----- ----- ----- ----- -----
+    // Таблицы оплат и авансов
+    // :::
+    ?>
         <link rel="stylesheet"
               href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/css/docview-edit-tab3_kalplanchf_oplata.css">
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

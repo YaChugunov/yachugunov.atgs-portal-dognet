@@ -4,7 +4,7 @@
 // :::
 ?>
 <link rel="stylesheet"
-    href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/css/docview-edit-tab3_kalplanchf_avans-customForm.css">
+      href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/dognet/php/examples/simple/docview/docview-edit/restr_4/tabs/css/docview-edit-tab3_kalplanchf_avans-customForm.css">
 <div id="customForm_tab3_avans">
 
     <div class="doc-editor-tabs" style="width:100%">
