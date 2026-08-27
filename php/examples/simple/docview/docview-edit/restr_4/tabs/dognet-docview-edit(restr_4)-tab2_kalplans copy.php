@@ -1104,14 +1104,18 @@ $(document).ready(function() {
                 extend: "remove",
                 editor: editor_tab2_kalplans,
                 text: "УДАЛИТЬ",
-                formButtons: ['Удалить',
+                formButtons: [{
+                        text: 'Удалить',
+                        className: 'btn-danger'
+                    },
                     {
                         text: 'Отмена',
                         action: function() {
                             this.close();
                         }
                     }
-                ]
+                ],
+                className: 'btn-danger'
             }
         ],
         initComplete: function() {
